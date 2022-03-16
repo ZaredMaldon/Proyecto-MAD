@@ -1,0 +1,12 @@
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MAD.exe.config
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MAD.exe
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MAD.pdb
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\FontAwesome.Sharp.dll
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.AssemblyReference.cache
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Login.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Properties.Resources.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.GenerateResource.cache
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.CoreCompileInputs.cache
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.CopyComplete
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.exe
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.pdb

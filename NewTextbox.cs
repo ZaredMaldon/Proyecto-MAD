@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Proyecto_MAD
 {
-    public partial class Login : Form
+    public partial class NewTextbox : UserControl
     {
-        public Login()
+        public NewTextbox()
         {
             InitializeComponent();
         }

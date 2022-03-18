@@ -40,11 +40,13 @@ namespace Proyecto_MAD
             this.User_TB = new System.Windows.Forms.TextBox();
             this.Password_TB = new System.Windows.Forms.TextBox();
             this.Titulo_LB = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.Login_btn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // fileSystemWatcher1
@@ -62,7 +64,7 @@ namespace Proyecto_MAD
             this.Salir_Btn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
             this.Salir_Btn.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Salir_Btn.IconSize = 28;
-            this.Salir_Btn.Location = new System.Drawing.Point(469, 9);
+            this.Salir_Btn.Location = new System.Drawing.Point(267, 9);
             this.Salir_Btn.Margin = new System.Windows.Forms.Padding(0);
             this.Salir_Btn.Name = "Salir_Btn";
             this.Salir_Btn.Size = new System.Drawing.Size(25, 26);
@@ -81,10 +83,10 @@ namespace Proyecto_MAD
             this.User_icon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
             this.User_icon.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.User_icon.IconSize = 25;
-            this.User_icon.Location = new System.Drawing.Point(69, 73);
+            this.User_icon.Location = new System.Drawing.Point(24, 190);
             this.User_icon.Margin = new System.Windows.Forms.Padding(0);
             this.User_icon.Name = "User_icon";
-            this.User_icon.Size = new System.Drawing.Size(44, 43);
+            this.User_icon.Size = new System.Drawing.Size(28, 36);
             this.User_icon.TabIndex = 1;
             this.User_icon.UseVisualStyleBackColor = true;
             // 
@@ -99,10 +101,10 @@ namespace Proyecto_MAD
             this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
-            this.iconButton1.Location = new System.Drawing.Point(69, 127);
+            this.iconButton1.Location = new System.Drawing.Point(24, 242);
             this.iconButton1.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(44, 43);
+            this.iconButton1.Size = new System.Drawing.Size(28, 35);
             this.iconButton1.TabIndex = 2;
             this.iconButton1.UseVisualStyleBackColor = true;
             // 
@@ -112,63 +114,92 @@ namespace Proyecto_MAD
             // 
             // User_TB
             // 
-            this.User_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.User_TB.Location = new System.Drawing.Point(116, 80);
+            this.User_TB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.User_TB.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.User_TB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
+            this.User_TB.Location = new System.Drawing.Point(55, 190);
+            this.User_TB.Multiline = true;
             this.User_TB.Name = "User_TB";
-            this.User_TB.Size = new System.Drawing.Size(290, 26);
+            this.User_TB.Size = new System.Drawing.Size(221, 24);
             this.User_TB.TabIndex = 1;
             // 
             // Password_TB
             // 
-            this.Password_TB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Password_TB.Location = new System.Drawing.Point(116, 134);
+            this.Password_TB.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Password_TB.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold);
+            this.Password_TB.Location = new System.Drawing.Point(55, 248);
+            this.Password_TB.Multiline = true;
             this.Password_TB.Name = "Password_TB";
             this.Password_TB.PasswordChar = '*';
-            this.Password_TB.Size = new System.Drawing.Size(290, 26);
+            this.Password_TB.Size = new System.Drawing.Size(221, 20);
             this.Password_TB.TabIndex = 2;
+            this.Password_TB.TextChanged += new System.EventHandler(this.Password_TB_TextChanged);
             // 
             // Titulo_LB
             // 
             this.Titulo_LB.AutoSize = true;
-            this.Titulo_LB.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(5)));
-            this.Titulo_LB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Titulo_LB.Location = new System.Drawing.Point(11, 4);
+            this.Titulo_LB.Font = new System.Drawing.Font("Elephant", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titulo_LB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
+            this.Titulo_LB.Location = new System.Drawing.Point(102, 117);
             this.Titulo_LB.Name = "Titulo_LB";
-            this.Titulo_LB.Size = new System.Drawing.Size(63, 28);
+            this.Titulo_LB.Size = new System.Drawing.Size(120, 42);
             this.Titulo_LB.TabIndex = 5;
             this.Titulo_LB.Text = "Login";
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.panel1.Controls.Add(this.Salir_Btn);
-            this.panel1.Controls.Add(this.Titulo_LB);
-            this.panel1.Location = new System.Drawing.Point(1, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(504, 42);
-            this.panel1.TabIndex = 6;
-            // 
             // Login_btn
             // 
+            this.Login_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
             this.Login_btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
-            this.Login_btn.Font = new System.Drawing.Font("Yu Gothic UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Login_btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(27)))));
-            this.Login_btn.Location = new System.Drawing.Point(400, 185);
+            this.Login_btn.FlatAppearance.BorderSize = 0;
+            this.Login_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Login_btn.Font = new System.Drawing.Font("Bookshelf Symbol 7", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Login_btn.ForeColor = System.Drawing.Color.White;
+            this.Login_btn.Location = new System.Drawing.Point(24, 369);
             this.Login_btn.Name = "Login_btn";
-            this.Login_btn.Size = new System.Drawing.Size(92, 34);
+            this.Login_btn.Size = new System.Drawing.Size(252, 33);
             this.Login_btn.TabIndex = 3;
-            this.Login_btn.Text = "Inicio";
-            this.Login_btn.UseVisualStyleBackColor = true;
+            this.Login_btn.Text = "Entrar";
+            this.Login_btn.UseVisualStyleBackColor = false;
             this.Login_btn.Click += new System.EventHandler(this.Login_btn_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(118, 43);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(87, 71);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
+            this.panel1.Location = new System.Drawing.Point(46, 220);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(230, 1);
+            this.panel1.TabIndex = 8;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
+            this.panel2.Location = new System.Drawing.Point(46, 272);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(230, 1);
+            this.panel2.TabIndex = 9;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(44)))), ((int)(((byte)(58)))));
-            this.ClientSize = new System.Drawing.Size(504, 231);
-            this.Controls.Add(this.Login_btn);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(308, 486);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Salir_Btn);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Titulo_LB);
+            this.Controls.Add(this.Login_btn);
             this.Controls.Add(this.Password_TB);
             this.Controls.Add(this.User_TB);
             this.Controls.Add(this.iconButton1);
@@ -178,12 +209,12 @@ namespace Proyecto_MAD
             this.Location = new System.Drawing.Point(1000, 1000);
             this.MaximizeBox = false;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,8 +229,10 @@ namespace Proyecto_MAD
         private FontAwesome.Sharp.IconButton User_icon;
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.Button Login_btn;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Titulo_LB;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

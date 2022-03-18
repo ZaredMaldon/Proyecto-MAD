@@ -22,7 +22,7 @@ namespace Proyecto_MAD
             DialogResult dialogResult = MessageBox.Show("¿Estas seguro que quieres cerrar?","Salir",MessageBoxButtons.YesNo);
             if (dialogResult==DialogResult.Yes)
             {
-                this.Close();
+                Application.Exit();
             }
         }
 
@@ -64,6 +64,11 @@ namespace Proyecto_MAD
             {
                 //Abre la ventana
             }
+        }
+
+        private void Password_TB_TextChanged(object sender, EventArgs e)
+        {
+
         }
         //private bool AlgoritmoContraseñaSegura(string password)
         //{

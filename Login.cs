@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_MAD.Empleados;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,7 +63,13 @@ namespace Proyecto_MAD
             }
             else
             {
+                
                 //Abre la ventana
+                InicioEmpleados form = new InicioEmpleados();
+                form.Show();
+                this.Hide();
+                
+
             }
         }
 

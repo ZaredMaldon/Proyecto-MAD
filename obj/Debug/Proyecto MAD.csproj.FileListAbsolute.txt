@@ -10,3 +10,9 @@ F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MA
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.CopyComplete
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.exe
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.pdb
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Gerente.Empresa.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Gerente.GestionEmpleado.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.InicioEmpleados.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.Home.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.DatosPersonales.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.ConsultaRecibo.resources

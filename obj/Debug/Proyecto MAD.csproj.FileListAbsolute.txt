@@ -16,3 +16,5 @@ F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MA
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.Home.resources
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.DatosPersonales.resources
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.ConsultaRecibo.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Gerente.InicioGerentes.resources
+F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Reportes.ReporteGeneral.resources

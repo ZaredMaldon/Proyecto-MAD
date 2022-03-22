@@ -16,5 +16,10 @@ namespace Proyecto_MAD.Gerente
         {
             InitializeComponent();
         }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

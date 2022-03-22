@@ -36,10 +36,11 @@ namespace Proyecto_MAD.Empleados
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Panel_Contenedor = new System.Windows.Forms.Panel();
             this.Inicio_Btn = new FontAwesome.Sharp.IconButton();
             this.Recibo_Btn = new FontAwesome.Sharp.IconButton();
             this.DatosPer_Btn = new FontAwesome.Sharp.IconButton();
-            this.Panel_Contenedor = new System.Windows.Forms.Panel();
+            this.Panel_Conten = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -111,6 +112,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.panel2.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(44)))), ((int)(((byte)(58)))));
+            this.panel2.Controls.Add(this.Panel_Contenedor);
             this.panel2.Controls.Add(this.Inicio_Btn);
             this.panel2.Controls.Add(this.Recibo_Btn);
             this.panel2.Controls.Add(this.DatosPer_Btn);
@@ -120,6 +122,14 @@ namespace Proyecto_MAD.Empleados
             this.panel2.Size = new System.Drawing.Size(220, 620);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // Panel_Contenedor
+            // 
+            this.Panel_Contenedor.Location = new System.Drawing.Point(221, 0);
+            this.Panel_Contenedor.Name = "Panel_Contenedor";
+            this.Panel_Contenedor.Size = new System.Drawing.Size(732, 621);
+            this.Panel_Contenedor.TabIndex = 2;
+            this.Panel_Contenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Contenedor_Paint);
             // 
             // Inicio_Btn
             // 
@@ -134,7 +144,7 @@ namespace Proyecto_MAD.Empleados
             this.Inicio_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.Inicio_Btn.IconSize = 55;
             this.Inicio_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Inicio_Btn.Location = new System.Drawing.Point(0, 126);
+            this.Inicio_Btn.Location = new System.Drawing.Point(0, 144);
             this.Inicio_Btn.Name = "Inicio_Btn";
             this.Inicio_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.Inicio_Btn.Size = new System.Drawing.Size(217, 83);
@@ -156,7 +166,7 @@ namespace Proyecto_MAD.Empleados
             this.Recibo_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.Recibo_Btn.IconSize = 55;
             this.Recibo_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Recibo_Btn.Location = new System.Drawing.Point(0, 304);
+            this.Recibo_Btn.Location = new System.Drawing.Point(0, 322);
             this.Recibo_Btn.Name = "Recibo_Btn";
             this.Recibo_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.Recibo_Btn.Size = new System.Drawing.Size(217, 83);
@@ -180,7 +190,7 @@ namespace Proyecto_MAD.Empleados
             this.DatosPer_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.DatosPer_Btn.IconSize = 55;
             this.DatosPer_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DatosPer_Btn.Location = new System.Drawing.Point(0, 215);
+            this.DatosPer_Btn.Location = new System.Drawing.Point(0, 233);
             this.DatosPer_Btn.Name = "DatosPer_Btn";
             this.DatosPer_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.DatosPer_Btn.Size = new System.Drawing.Size(217, 83);
@@ -190,12 +200,14 @@ namespace Proyecto_MAD.Empleados
             this.DatosPer_Btn.UseVisualStyleBackColor = true;
             this.DatosPer_Btn.Click += new System.EventHandler(this.DatosPer_Btn_Click);
             // 
-            // Panel_Contenedor
+            // Panel_Conten
             // 
-            this.Panel_Contenedor.Location = new System.Drawing.Point(218, 55);
-            this.Panel_Contenedor.Name = "Panel_Contenedor";
-            this.Panel_Contenedor.Size = new System.Drawing.Size(732, 621);
-            this.Panel_Contenedor.TabIndex = 2;
+            this.Panel_Conten.BackColor = System.Drawing.Color.Black;
+            this.Panel_Conten.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel_Conten.Location = new System.Drawing.Point(220, 55);
+            this.Panel_Conten.Name = "Panel_Conten";
+            this.Panel_Conten.Size = new System.Drawing.Size(730, 620);
+            this.Panel_Conten.TabIndex = 2;
             // 
             // InicioEmpleados
             // 
@@ -204,7 +216,7 @@ namespace Proyecto_MAD.Empleados
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(950, 675);
-            this.Controls.Add(this.Panel_Contenedor);
+            this.Controls.Add(this.Panel_Conten);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -212,6 +224,7 @@ namespace Proyecto_MAD.Empleados
             this.Name = "InicioEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioEmpleados";
+            this.Load += new System.EventHandler(this.InicioEmpleados_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -232,5 +245,6 @@ namespace Proyecto_MAD.Empleados
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton Salir_Btn;
         private System.Windows.Forms.Panel Panel_Contenedor;
+        private System.Windows.Forms.Panel Panel_Conten;
     }
 }

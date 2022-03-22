@@ -39,6 +39,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -53,6 +54,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnlaceDB.cs" />
     <Compile Include="Calculo\Departamentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,42 +66,6 @@
     </Compile>
     <Compile Include="Calculo\Puestos.Designer.cs">
       <DependentUpon>Puestos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Empleados\DeduccionesEmpleado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empleados\DeduccionesEmpleado.Designer.cs">
-      <DependentUpon>DeduccionesEmpleado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Empleados\DatosPersonales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empleados\DatosPersonales.Designer.cs">
-      <DependentUpon>DatosPersonales.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Empleados\ConsultaRecibo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empleados\ConsultaRecibo.Designer.cs">
-      <DependentUpon>ConsultaRecibo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Empleados\Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empleados\Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Empleados\InicioEmpleados.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empleados\InicioEmpleados.Designer.cs">
-      <DependentUpon>InicioEmpleados.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Empleados\PercepcionesEmpleado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Empleados\PercepcionesEmpleado.Designer.cs">
-      <DependentUpon>PercepcionesEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="Gerente\Empresa.cs">
       <SubType>Form</SubType>
@@ -163,23 +129,38 @@
     <Compile Include="Reportes\ReporteNómina.Designer.cs">
       <DependentUpon>ReporteNómina.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Empleados\DatosPersonales.resx">
-      <DependentUpon>DatosPersonales.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Empleados\ConsultaRecibo.resx">
+    <Compile Include="Empleados\ConsultaRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados\ConsultaRecibo.Designer.cs">
       <DependentUpon>ConsultaRecibo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Empleados\Home.resx">
+    </Compile>
+    <Compile Include="Empleados\DatosPersonales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados\DatosPersonales.Designer.cs">
+      <DependentUpon>DatosPersonales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Empleados\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Empleados\InicioEmpleados.resx">
+    </Compile>
+    <Compile Include="Empleados\InicioEmpleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados\InicioEmpleados.Designer.cs">
       <DependentUpon>InicioEmpleados.cs</DependentUpon>
-    </EmbeddedResource>
+    </Compile>
     <EmbeddedResource Include="Gerente\Empresa.resx">
       <DependentUpon>Empresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gerente\GestionEmpleado.resx">
       <DependentUpon>GestionEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gerente\InicioGerentes.resx">
+      <DependentUpon>InicioGerentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -194,6 +175,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Empleados\ConsultaRecibo.resx">
+      <DependentUpon>ConsultaRecibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleados\DatosPersonales.resx">
+      <DependentUpon>DatosPersonales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleados\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleados\InicioEmpleados.resx">
+      <DependentUpon>InicioEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteGeneral.resx">
+      <DependentUpon>ReporteGeneral.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

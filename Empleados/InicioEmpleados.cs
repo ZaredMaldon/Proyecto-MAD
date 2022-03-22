@@ -18,16 +18,16 @@ namespace Proyecto_MAD.Empleados
         }
         private void AbrirFormHija(object formhija)//ABRIR EN EL PANEL UNA PANTALLA
         {
-            if (this.Panel_Contenedor.Controls.Count > 0)
+            if (this.Panel_Conten.Controls.Count > 0)
             {
-                this.Panel_Contenedor.Controls.RemoveAt(0);
+                this.Panel_Conten.Controls.RemoveAt(0);
             }
 
             Form fh = formhija as Form;
             fh.TopLevel = false;
             fh.Dock = DockStyle.Fill;
-            this.Panel_Contenedor.Controls.Add(fh);
-            this.Panel_Contenedor.Tag = fh;
+            this.Panel_Conten.Controls.Add(fh);
+            this.Panel_Conten.Tag = fh;
             fh.Show();
         }
 
@@ -61,11 +61,20 @@ namespace Proyecto_MAD.Empleados
         {
             AbrirFormHija(new ConsultaRecibo());
         }
+
+
+
+
         #endregion
 
+        private void Panel_Contenedor_Paint(object sender, PaintEventArgs e)
+        {
 
-      
+        }
 
-      
+        private void InicioEmpleados_Load(object sender, EventArgs e)
+        {
+            Inicio_Btn_Click(null,e);
+        }
     }
 }

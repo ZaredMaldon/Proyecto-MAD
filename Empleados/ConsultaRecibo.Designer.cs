@@ -31,12 +31,12 @@ namespace Proyecto_MAD.Empleados
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaRecibo));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.LBL_Informacion = new System.Windows.Forms.Label();
+            this.Inicio_Btn = new FontAwesome.Sharp.IconButton();
+            this.DGV_Recibos = new System.Windows.Forms.DataGridView();
+            this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
-            this.CB_Mes = new System.Windows.Forms.ComboBox();
-            this.DGV_Recibos = new System.Windows.Forms.DataGridView();
-            this.Inicio_Btn = new FontAwesome.Sharp.IconButton();
-            this.LBL_Informacion = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Recibos)).BeginInit();
             this.SuspendLayout();
@@ -55,60 +55,17 @@ namespace Proyecto_MAD.Empleados
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 22;
             // 
-            // LBL_Title
+            // LBL_Informacion
             // 
-            this.LBL_Title.AutoSize = true;
-            this.LBL_Title.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Title.ForeColor = System.Drawing.Color.White;
-            this.LBL_Title.Location = new System.Drawing.Point(13, 16);
-            this.LBL_Title.Name = "LBL_Title";
-            this.LBL_Title.Size = new System.Drawing.Size(187, 23);
-            this.LBL_Title.TabIndex = 20;
-            this.LBL_Title.Text = "Recibo de Nómina";
-            // 
-            // LBL_Mes
-            // 
-            this.LBL_Mes.AutoSize = true;
-            this.LBL_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Mes.ForeColor = System.Drawing.Color.White;
-            this.LBL_Mes.Location = new System.Drawing.Point(324, 54);
-            this.LBL_Mes.Name = "LBL_Mes";
-            this.LBL_Mes.Size = new System.Drawing.Size(46, 21);
-            this.LBL_Mes.TabIndex = 8;
-            this.LBL_Mes.Text = "Mes";
-            this.LBL_Mes.Click += new System.EventHandler(this.LBL_Mes_Click);
-            // 
-            // CB_Mes
-            // 
-            this.CB_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.CB_Mes.FormattingEnabled = true;
-            this.CB_Mes.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.CB_Mes.Location = new System.Drawing.Point(267, 78);
-            this.CB_Mes.Name = "CB_Mes";
-            this.CB_Mes.Size = new System.Drawing.Size(156, 23);
-            this.CB_Mes.TabIndex = 21;
-            this.CB_Mes.SelectedIndexChanged += new System.EventHandler(this.CB_Mes_SelectedIndexChanged);
-            // 
-            // DGV_Recibos
-            // 
-            this.DGV_Recibos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
-            this.DGV_Recibos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Recibos.Location = new System.Drawing.Point(26, 176);
-            this.DGV_Recibos.Name = "DGV_Recibos";
-            this.DGV_Recibos.Size = new System.Drawing.Size(623, 324);
-            this.DGV_Recibos.TabIndex = 22;
+            this.LBL_Informacion.AutoSize = true;
+            this.LBL_Informacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_Informacion.ForeColor = System.Drawing.Color.Red;
+            this.LBL_Informacion.Location = new System.Drawing.Point(23, 157);
+            this.LBL_Informacion.Name = "LBL_Informacion";
+            this.LBL_Informacion.Size = new System.Drawing.Size(177, 16);
+            this.LBL_Informacion.TabIndex = 24;
+            this.LBL_Informacion.Text = "*No hay recibos disponibles";
+            this.LBL_Informacion.Visible = false;
             // 
             // Inicio_Btn
             // 
@@ -134,17 +91,60 @@ namespace Proyecto_MAD.Empleados
             this.Inicio_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Inicio_Btn.UseVisualStyleBackColor = false;
             // 
-            // LBL_Informacion
+            // DGV_Recibos
             // 
-            this.LBL_Informacion.AutoSize = true;
-            this.LBL_Informacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Informacion.ForeColor = System.Drawing.Color.Red;
-            this.LBL_Informacion.Location = new System.Drawing.Point(23, 157);
-            this.LBL_Informacion.Name = "LBL_Informacion";
-            this.LBL_Informacion.Size = new System.Drawing.Size(177, 16);
-            this.LBL_Informacion.TabIndex = 24;
-            this.LBL_Informacion.Text = "*No hay recibos disponibles";
-            this.LBL_Informacion.Visible = false;
+            this.DGV_Recibos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.DGV_Recibos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_Recibos.Location = new System.Drawing.Point(26, 176);
+            this.DGV_Recibos.Name = "DGV_Recibos";
+            this.DGV_Recibos.Size = new System.Drawing.Size(623, 324);
+            this.DGV_Recibos.TabIndex = 22;
+            // 
+            // CB_Mes
+            // 
+            this.CB_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CB_Mes.FormattingEnabled = true;
+            this.CB_Mes.Items.AddRange(new object[] {
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
+            this.CB_Mes.Location = new System.Drawing.Point(267, 78);
+            this.CB_Mes.Name = "CB_Mes";
+            this.CB_Mes.Size = new System.Drawing.Size(156, 23);
+            this.CB_Mes.TabIndex = 21;
+            this.CB_Mes.SelectedIndexChanged += new System.EventHandler(this.CB_Mes_SelectedIndexChanged);
+            // 
+            // LBL_Title
+            // 
+            this.LBL_Title.AutoSize = true;
+            this.LBL_Title.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_Title.ForeColor = System.Drawing.Color.White;
+            this.LBL_Title.Location = new System.Drawing.Point(13, 16);
+            this.LBL_Title.Name = "LBL_Title";
+            this.LBL_Title.Size = new System.Drawing.Size(187, 23);
+            this.LBL_Title.TabIndex = 20;
+            this.LBL_Title.Text = "Recibo de Nómina";
+            // 
+            // LBL_Mes
+            // 
+            this.LBL_Mes.AutoSize = true;
+            this.LBL_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_Mes.ForeColor = System.Drawing.Color.White;
+            this.LBL_Mes.Location = new System.Drawing.Point(324, 54);
+            this.LBL_Mes.Name = "LBL_Mes";
+            this.LBL_Mes.Size = new System.Drawing.Size(46, 21);
+            this.LBL_Mes.TabIndex = 8;
+            this.LBL_Mes.Text = "Mes";
+            this.LBL_Mes.Click += new System.EventHandler(this.LBL_Mes_Click);
             // 
             // ConsultaRecibo
             // 

@@ -1,4 +1,5 @@
 ﻿using Proyecto_MAD.Empleados;
+using Proyecto_MAD.Gerente;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,9 +64,11 @@ namespace Proyecto_MAD
             }
             else
             {
-                
+
                 //Abre la ventana
-                InicioEmpleados form = new InicioEmpleados();
+               // InicioEmpleados form = new InicioEmpleados();
+                InicioGerentes form = new InicioGerentes();
+
                 form.Show();
                 this.Hide();
                 

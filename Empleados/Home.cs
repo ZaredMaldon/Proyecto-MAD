@@ -16,5 +16,10 @@ namespace Proyecto_MAD.Empleados
         {
             InitializeComponent();
         }
+
+        private void LBL_Title_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

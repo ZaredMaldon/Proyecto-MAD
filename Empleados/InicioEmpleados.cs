@@ -76,5 +76,13 @@ namespace Proyecto_MAD.Empleados
         {
             Inicio_Btn_Click(null,e);
         }
+
+        private void Btn_Desconectar_Click(object sender, EventArgs e)
+        {
+            Login form = new Login();
+
+            form.Show();
+            this.Close();
+        }
     }
 }

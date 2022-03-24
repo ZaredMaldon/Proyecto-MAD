@@ -105,11 +105,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recibo\GenerarRecibo.cs">
+    <Compile Include="Recibo\Calculo de Nómina.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Recibo\GenerarRecibo.Designer.cs">
-      <DependentUpon>GenerarRecibo.cs</DependentUpon>
+    <Compile Include="Recibo\Calculo de Nómina.Designer.cs">
+      <DependentUpon>Calculo de Nómina.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\ReporteGeneral.cs">
       <SubType>Form</SubType>
@@ -153,6 +153,18 @@
     <Compile Include="Empleados\InicioEmpleados.Designer.cs">
       <DependentUpon>InicioEmpleados.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Calculo\Deducciones.resx">
+      <DependentUpon>Deducciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calculo\Departamentos.resx">
+      <DependentUpon>Departamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calculo\Percepciones.resx">
+      <DependentUpon>Percepciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calculo\Puestos.resx">
+      <DependentUpon>Puestos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gerente\Empresa.resx">
       <DependentUpon>Empresa.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,8 +199,17 @@
     <EmbeddedResource Include="Empleados\InicioEmpleados.resx">
       <DependentUpon>InicioEmpleados.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Recibo\Calculo de Nómina.resx">
+      <DependentUpon>Calculo de Nómina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteGeneral.resx">
       <DependentUpon>ReporteGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteHeadcounter.resx">
+      <DependentUpon>ReporteHeadcounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReporteNómina.resx">
+      <DependentUpon>ReporteNómina.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

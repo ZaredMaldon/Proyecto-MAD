@@ -16,5 +16,10 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             InitializeComponent();
         }
+
+        private void Panel_Background_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

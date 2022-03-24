@@ -45,7 +45,7 @@ namespace Proyecto_MAD.Gerente
 
         private void InicioGerentes_Load(object sender, EventArgs e)
         {
-
+            Btn_Inicio_Click(null,e);
         }
 
         #region BotonesMenu
@@ -89,8 +89,15 @@ namespace Proyecto_MAD.Gerente
 
 
 
+
         #endregion
 
-        
+        private void Btn_Desconectar_Click(object sender, EventArgs e)
+        {
+            Login form = new Login();
+
+            form.Show();
+            this.Close();
+        }
     }
 }

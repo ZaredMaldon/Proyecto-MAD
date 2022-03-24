@@ -38,6 +38,7 @@ namespace Proyecto_MAD.Gerente
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_Desconectar = new FontAwesome.Sharp.IconButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Panel_submenu = new System.Windows.Forms.Panel();
             this.Btn_Nómina = new FontAwesome.Sharp.IconButton();
@@ -48,7 +49,6 @@ namespace Proyecto_MAD.Gerente
             this.Btn_Inicio = new FontAwesome.Sharp.IconButton();
             this.Btn_Recibo = new FontAwesome.Sharp.IconButton();
             this.Btn_Empleados = new FontAwesome.Sharp.IconButton();
-            this.Btn_Desconectar = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -150,6 +150,30 @@ namespace Proyecto_MAD.Gerente
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(226, 620);
             this.panel2.TabIndex = 6;
+            // 
+            // Btn_Desconectar
+            // 
+            this.Btn_Desconectar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(44)))), ((int)(((byte)(58)))));
+            this.Btn_Desconectar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_Desconectar.FlatAppearance.BorderSize = 2;
+            this.Btn_Desconectar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_Desconectar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_Desconectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Desconectar.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Desconectar.ForeColor = System.Drawing.Color.White;
+            this.Btn_Desconectar.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
+            this.Btn_Desconectar.IconColor = System.Drawing.Color.White;
+            this.Btn_Desconectar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_Desconectar.IconSize = 25;
+            this.Btn_Desconectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Desconectar.Location = new System.Drawing.Point(0, 583);
+            this.Btn_Desconectar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_Desconectar.Name = "Btn_Desconectar";
+            this.Btn_Desconectar.Size = new System.Drawing.Size(38, 38);
+            this.Btn_Desconectar.TabIndex = 34;
+            this.Btn_Desconectar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_Desconectar.UseVisualStyleBackColor = false;
+            this.Btn_Desconectar.Click += new System.EventHandler(this.Btn_Desconectar_Click);
             // 
             // panel5
             // 
@@ -345,30 +369,6 @@ namespace Proyecto_MAD.Gerente
             this.Btn_Empleados.UseVisualStyleBackColor = true;
             this.Btn_Empleados.Click += new System.EventHandler(this.Btn_Empleados_Click);
             // 
-            // Btn_Desconectar
-            // 
-            this.Btn_Desconectar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(44)))), ((int)(((byte)(58)))));
-            this.Btn_Desconectar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.Btn_Desconectar.FlatAppearance.BorderSize = 2;
-            this.Btn_Desconectar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.Btn_Desconectar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Btn_Desconectar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Desconectar.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Desconectar.ForeColor = System.Drawing.Color.White;
-            this.Btn_Desconectar.IconChar = FontAwesome.Sharp.IconChar.PowerOff;
-            this.Btn_Desconectar.IconColor = System.Drawing.Color.White;
-            this.Btn_Desconectar.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Btn_Desconectar.IconSize = 25;
-            this.Btn_Desconectar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Desconectar.Location = new System.Drawing.Point(0, 583);
-            this.Btn_Desconectar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.Btn_Desconectar.Name = "Btn_Desconectar";
-            this.Btn_Desconectar.Size = new System.Drawing.Size(38, 38);
-            this.Btn_Desconectar.TabIndex = 34;
-            this.Btn_Desconectar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_Desconectar.UseVisualStyleBackColor = false;
-            this.Btn_Desconectar.Click += new System.EventHandler(this.Btn_Desconectar_Click);
-            // 
             // InicioGerentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,7 +395,6 @@ namespace Proyecto_MAD.Gerente
 
         #endregion
         private FontAwesome.Sharp.IconButton Salir_Btn;
-        private System.Windows.Forms.Panel Panel_Conten;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
@@ -413,5 +412,6 @@ namespace Proyecto_MAD.Gerente
         private FontAwesome.Sharp.IconButton Btn_Recibo;
         private FontAwesome.Sharp.IconButton Btn_Empleados;
         private FontAwesome.Sharp.IconButton Btn_Desconectar;
+        public System.Windows.Forms.Panel Panel_Conten;
     }
 }

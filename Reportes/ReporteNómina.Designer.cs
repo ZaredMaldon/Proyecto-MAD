@@ -126,9 +126,9 @@ namespace Proyecto_MAD.Reportes
             this.LBL_Title.ForeColor = System.Drawing.Color.White;
             this.LBL_Title.Location = new System.Drawing.Point(13, 16);
             this.LBL_Title.Name = "LBL_Title";
-            this.LBL_Title.Size = new System.Drawing.Size(172, 23);
+            this.LBL_Title.Size = new System.Drawing.Size(168, 23);
             this.LBL_Title.TabIndex = 20;
-            this.LBL_Title.Text = "Reporte General";
+            this.LBL_Title.Text = "Reporte Nómina";
             // 
             // ReporteNómina
             // 

@@ -54,6 +54,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculo\DatosEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calculo\DatosEmpresa.Designer.cs">
+      <DependentUpon>DatosEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="EnlaceDB.cs" />
     <Compile Include="Calculo\Departamentos.cs">
       <SubType>Form</SubType>
@@ -153,6 +159,9 @@
     <Compile Include="Empleados\InicioEmpleados.Designer.cs">
       <DependentUpon>InicioEmpleados.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Calculo\DatosEmpresa.resx">
+      <DependentUpon>DatosEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Calculo\Deducciones.resx">
       <DependentUpon>Deducciones.cs</DependentUpon>
     </EmbeddedResource>

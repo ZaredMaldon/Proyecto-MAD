@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_MAD.EnlaceDB;
+using System.Text.RegularExpressions;
 
 namespace Proyecto_MAD
 {
@@ -38,26 +39,38 @@ namespace Proyecto_MAD
 
         private bool validaciones()
         {
+            Regex rx = new Regex(@"^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{4,10}$");
+            //Validaciones campos no vacios
             bool permiso = true;
 
             if (User_TB.Text == "")
             {
+                MessageBox.Show("Llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 permiso = false;
             }
 
             if (Password_TB.Text == "")
             {
+                MessageBox.Show("Llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 permiso = false;
             }
             if (CB_Tipo.Text == "")
             {
+                MessageBox.Show("Llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 permiso = false;
             }
-            
+            //Validaciones para textos
+            //if (!rx.IsMatch(Password_TB.Text))
+            //{
+            //    MessageBox.Show("La contraseña debe contar con:\n-4 a 10 caracteres\n-Al menos un dígito\n-Al menos una Mayúscula\n-Al menos una minúscula\n-Al menos un caracter no alfanumérico", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    permiso = false;
+
+            //}
 
             return permiso;
         }
 
+        //boton entrar
         private void Login_btn_Click(object sender, EventArgs e)
         {
             bool permiso = true;
@@ -65,19 +78,16 @@ namespace Proyecto_MAD
 
             permiso = validaciones();
 
-            if (!permiso)
+           
+            if(permiso)
             {
-                MessageBox.Show("Llene todos los campos","Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                //Aquí se realiza el login Autentificar regresa true o false
+                //Login
                 if (CB_Tipo.Text == "Gerente")
                 {
                     bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text);
                     if (existencia)
                     {
-                        //Abre la ventana
+                       
                         
                         InicioGerentes form = new InicioGerentes();
 
@@ -95,7 +105,7 @@ namespace Proyecto_MAD
                     bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text);
                     if (existencia)
                     {
-                        //Abre la ventana
+                        
                         InicioEmpleados form = new InicioEmpleados();
                
                         form.Show();
@@ -108,10 +118,6 @@ namespace Proyecto_MAD
                     }
 
                 }
-                
-               
-                
-                
 
             }
         }
@@ -120,39 +126,6 @@ namespace Proyecto_MAD
         {
 
         }
-        //private bool AlgoritmoContraseñaSegura(string password)
-        //{
-        //    bool mayuscula = false, minuscula = false, numero = false, carespecial = false;
-
-        //    for (int i = 0; i < password.Length; i++)
-        //    {
-        //        if (Char.IsUpper(password, i))
-        //        {
-        //            mayuscula = true;
-        //        }
-        //        else if (Char.IsLower(password, i))
-        //        {
-        //            minuscula = true;
-        //        }
-        //        else if (Char.IsDigit(password, i))
-        //        {
-        //            numero = true;
-        //        }
-        //        else
-        //        {
-        //            carespecial = true;
-        //        }
-        //    }
-        //    if (mayuscula && minuscula && numero && carespecial && password.Length >= 8)
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Su contraseña necesita:\n-Mínimo 8 caracteres\n-Al menos una letra minuscula\n-Al menos una letra mayúscula\n-Al menos un número\n-Al menos un caracter especial","Contraseña insegura",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-
-        //}
+        
     }
 }

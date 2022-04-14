@@ -44,6 +44,7 @@ namespace Proyecto_MAD
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.CB_Tipo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,7 +84,7 @@ namespace Proyecto_MAD
             this.User_icon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
             this.User_icon.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.User_icon.IconSize = 25;
-            this.User_icon.Location = new System.Drawing.Point(24, 190);
+            this.User_icon.Location = new System.Drawing.Point(24, 228);
             this.User_icon.Margin = new System.Windows.Forms.Padding(0);
             this.User_icon.Name = "User_icon";
             this.User_icon.Size = new System.Drawing.Size(28, 36);
@@ -101,7 +102,7 @@ namespace Proyecto_MAD
             this.iconButton1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 25;
-            this.iconButton1.Location = new System.Drawing.Point(24, 242);
+            this.iconButton1.Location = new System.Drawing.Point(24, 280);
             this.iconButton1.Margin = new System.Windows.Forms.Padding(0);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(28, 35);
@@ -117,7 +118,7 @@ namespace Proyecto_MAD
             this.User_TB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.User_TB.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.User_TB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
-            this.User_TB.Location = new System.Drawing.Point(55, 190);
+            this.User_TB.Location = new System.Drawing.Point(55, 228);
             this.User_TB.Multiline = true;
             this.User_TB.Name = "User_TB";
             this.User_TB.Size = new System.Drawing.Size(221, 24);
@@ -127,7 +128,7 @@ namespace Proyecto_MAD
             // 
             this.Password_TB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Password_TB.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold);
-            this.Password_TB.Location = new System.Drawing.Point(55, 248);
+            this.Password_TB.Location = new System.Drawing.Point(55, 286);
             this.Password_TB.Multiline = true;
             this.Password_TB.Name = "Password_TB";
             this.Password_TB.PasswordChar = '*';
@@ -175,7 +176,7 @@ namespace Proyecto_MAD
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
-            this.panel1.Location = new System.Drawing.Point(46, 220);
+            this.panel1.Location = new System.Drawing.Point(46, 258);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 1);
             this.panel1.TabIndex = 8;
@@ -183,10 +184,21 @@ namespace Proyecto_MAD
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
-            this.panel2.Location = new System.Drawing.Point(46, 272);
+            this.panel2.Location = new System.Drawing.Point(46, 310);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(230, 1);
             this.panel2.TabIndex = 9;
+            // 
+            // CB_Tipo
+            // 
+            this.CB_Tipo.FormattingEnabled = true;
+            this.CB_Tipo.Items.AddRange(new object[] {
+            "Gerente",
+            "Empleado"});
+            this.CB_Tipo.Location = new System.Drawing.Point(24, 179);
+            this.CB_Tipo.Name = "CB_Tipo";
+            this.CB_Tipo.Size = new System.Drawing.Size(252, 21);
+            this.CB_Tipo.TabIndex = 10;
             // 
             // Login
             // 
@@ -194,6 +206,7 @@ namespace Proyecto_MAD
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(308, 486);
+            this.Controls.Add(this.CB_Tipo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Salir_Btn);
@@ -233,6 +246,7 @@ namespace Proyecto_MAD
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ComboBox CB_Tipo;
     }
 }
 

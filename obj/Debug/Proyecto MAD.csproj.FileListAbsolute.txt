@@ -26,3 +26,31 @@ F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MA
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Percepciones_y_deducciones.Percepciones.resources
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Calculo.Puestos.resources
 F:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Calculo.DatosEmpresa.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.AssemblyReference.cache
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Calculo.DatosEmpresa.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Percepciones_y_deducciones.Deducciones.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Calculo.Departamentos.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Percepciones_y_deducciones.Percepciones.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Calculo.Puestos.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Gerente.Empresa.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Gerente.GestionEmpleado.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Gerente.InicioGerentes.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Login.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Properties.Resources.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.ConsultaRecibo.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.DatosPersonales.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.Home.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.InicioEmpleados.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Recibo.GenerarRecibo.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Reportes.ReporteGeneral.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Reportes.ReporteHeadcounter.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Reportes.ReporteNómina.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.GenerateResource.cache
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.CoreCompileInputs.cache
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.exe
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.pdb
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MAD.exe.config
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MAD.exe
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MAD.pdb
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\FontAwesome.Sharp.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.CopyComplete

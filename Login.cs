@@ -9,11 +9,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_MAD.EnlaceDB;
 
 namespace Proyecto_MAD
 {
     public partial class Login : Form
     {
+        EnlaceDB.EnlaceDB query= new EnlaceDB.EnlaceDB();
         public Login()
         {
             InitializeComponent();
@@ -47,6 +49,10 @@ namespace Proyecto_MAD
             {
                 permiso = false;
             }
+            if (CB_Tipo.Text == "")
+            {
+                permiso = false;
+            }
             
 
             return permiso;
@@ -56,6 +62,7 @@ namespace Proyecto_MAD
         {
             bool permiso = true;
 
+
             permiso = validaciones();
 
             if (!permiso)
@@ -64,13 +71,46 @@ namespace Proyecto_MAD
             }
             else
             {
+                //Aquí se realiza el login Autentificar regresa true o false
+                if (CB_Tipo.Text == "Gerente")
+                {
+                    bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text);
+                    if (existencia)
+                    {
+                        //Abre la ventana
+                        
+                        InicioGerentes form = new InicioGerentes();
 
-                //Abre la ventana
-               // InicioEmpleados form = new InicioEmpleados();
-                InicioGerentes form = new InicioGerentes();
+                        form.Show();
+                        this.Hide();
 
-                form.Show();
-                this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario o Contraseña incorrectos\nIntente nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }else if (CB_Tipo.Text == "Empleado")
+                {
+                    bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text);
+                    if (existencia)
+                    {
+                        //Abre la ventana
+                        InicioEmpleados form = new InicioEmpleados();
+               
+                        form.Show();
+                        this.Hide();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuario o Contraseña incorrectos\nIntente nuevamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                
+               
+                
                 
 
             }

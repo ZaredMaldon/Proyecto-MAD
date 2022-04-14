@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace Proyecto_MAD.EnlaceDB
 {
     public class EnlaceDB
     {
@@ -30,7 +25,7 @@ namespace WindowsFormsApp1
         private static void conectar()
         {
             //string cnn = ConfigurationManager.AppSettings["desarrollo1"];
-            string cnn = ConfigurationManager.ConnectionStrings["Grupo03"].ToString();
+            string cnn = ConfigurationManager.ConnectionStrings["BD_MAD_1"].ToString();
             _conexion = new SqlConnection(cnn);
             _conexion.Open();
         }
@@ -59,13 +54,14 @@ namespace WindowsFormsApp1
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(_tabla);
 
-                if(_tabla.Rows.Count > 0)
+                if (_tabla.Rows.Count > 0)
                 {
                     isValid = true;
                 }
+                else isValid = false;
 
             }
-            catch(SqlException e)
+            catch (SqlException e)
             {
                 isValid = false;
             }
@@ -162,7 +158,7 @@ namespace WindowsFormsApp1
                 parametro2.Value = depto;
 
                 _adaptador.InsertCommand = _comandosql;
-                
+
                 _comandosql.ExecuteNonQuery();
 
             }
@@ -175,7 +171,7 @@ namespace WindowsFormsApp1
             }
             finally
             {
-                desconectar();                
+                desconectar();
             }
 
             return add;

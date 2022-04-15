@@ -54,3 +54,4 @@ H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MA
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MAD.pdb
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\FontAwesome.Sharp.dll
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.CopyComplete
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.SuggestedBindingRedirects.cache

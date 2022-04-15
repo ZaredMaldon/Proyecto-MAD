@@ -84,7 +84,7 @@ namespace Proyecto_MAD
                 //Login
                 if (CB_Tipo.Text == "Gerente")
                 {
-                    bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text);
+                    bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text,1);
                     if (existencia)
                     {
                        
@@ -102,7 +102,7 @@ namespace Proyecto_MAD
 
                 }else if (CB_Tipo.Text == "Empleado")
                 {
-                    bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text);
+                    bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text,2);
                     if (existencia)
                     {
                         

@@ -35,27 +35,30 @@ namespace Proyecto_MAD.EnlaceDB
             _conexion.Close();
         }
 
-        public bool Autentificar(string us, string ps)
+        public bool Autentificar(string us, string ps,int Opc)
         {
             bool isValid = false;
             try
             {
+                
                 conectar();
                 string qry = "SP_ValidaUser";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 9000;
 
-                var parametro1 = _comandosql.Parameters.Add("@u", SqlDbType.Char, 20);
+                var parametro1 = _comandosql.Parameters.Add("@u", SqlDbType.Char, 10);
                 parametro1.Value = us;
-                var parametro2 = _comandosql.Parameters.Add("@p", SqlDbType.Char, 20);
+                var parametro2 = _comandosql.Parameters.Add("@p", SqlDbType.Char, 10);
                 parametro2.Value = ps;
-
+                var parametro3 = _comandosql.Parameters.Add("@Opc",SqlDbType.Int);
+                parametro3.Value = Opc;
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(_tabla);
 
                 if (_tabla.Rows.Count > 0)
                 {
+                    _tabla.Rows.Clear();
                     isValid = true;
                 }
                 else isValid = false;
@@ -63,6 +66,7 @@ namespace Proyecto_MAD.EnlaceDB
             }
             catch (SqlException e)
             {
+                _tabla.Rows.Clear();
                 isValid = false;
             }
             finally

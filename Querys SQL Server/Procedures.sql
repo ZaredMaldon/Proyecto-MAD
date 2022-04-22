@@ -30,8 +30,8 @@ alter procedure ControlEmpleados
 @NSS					char(11)=null,
 @RFC					char(13)=null,
 @Email					varchar(50)=null,
-@Telefono1			int=null,
-@Telefono2			int = null,
+@Telefono1			varchar(11)=null,
+@Telefono2			varchar(11)=null,
 @FContratacion     date=null,
 @SalarioDiario		money=null,
 @Banco					varchar(30)=null,
@@ -65,31 +65,49 @@ end
 
 if(@Opc=2)/*Modificar Empleado*/
 begin
-UPDATE Usuarios SET Usuario=@Usuario,Contraseña=@Contraseña where idUsuario=@IdUsuario;
+UPDATE Usuarios SET Usuario=@Usuario,Contraseña=@Contraseña 
+from Empleados e join Usuarios u
+on e.Usuariofk=u.idUsuario
+where e.NoEmpleado=@IdEmpleado;
 
 UPDATE Empleados SET Nombre=@Nombre,APaterno=@AP,AMaterno=@AM,FechaNacimiento=@FechaNac,CURP=@CURP,NSS=@NSS,RFC=@RFC,Email=@Email,Telefono1=@Telefono1,Telefono2=@Telefono2,
 Contratacion=@FContratacion,SalarioDiario=@SalarioDiario,Banco=@Banco,NoCuenta=@NoCuenta
 from Empleados e join Usuarios u
 on e.Usuariofk=u.idUsuario
-where e.Usuariofk=@IdUsuario;
+where e.NoEmpleado=@IdEmpleado;
 
 UPDATE Direcciones SET MunicipioFk=@Municipio,Cp=@CP,Colonia=@Colonia,Calle=@Calle,NoInterior=@Nointerior,NoExt=@NoExt
 from Direcciones d
 join Empleados e on e.Direccionfk=d.idDireccion
 join Usuarios u on e.Usuariofk=u.idUsuario
-where e.Usuariofk=@IdUsuario;
+where e.NoEmpleado=@IdEmpleado;
  
 end
 if(@Opc=3)/*Eliminar Empleado*/
 begin
-Delete from Empleados where NoEmpleado=@IdEmpleado;
 Delete from Usuarios where idUsuario=@IdUsuario;
 Delete from Direcciones where idDireccion=@IdDireccion;
+Delete from Empleados where NoEmpleado=@IdEmpleado;
+Delete from Asiganciones where Empleadofk=@IdEmpleado;
 end
-if(@Opc=4)
+if(@Opc=4)/*Muestra estos datos al Dgv de Empleados desde la vista vw_Empleados*/
 begin
 Select Número,Nombre,Usuario,Ingreso,Direccion,Telefono1,Telefono2,Salario from vw_Empleados;
 end
+if(@Opc=5)/*se hace select para pasar los datos al c#*/
+begin
+Select e.NoEmpleado,e.Nombre,e.APaterno,e.AMaterno,e.CURP,e.NSS,e.RFC,e.Email,m.NombreMunicipio,p.NombrePuesto,de.NombreDpto,d.Calle,d.Colonia,d.Cp,d.NoExt,d.NoInterior,e.FechaNacimiento,e.Contratacion,e.Telefono1,e.Telefono2,e.Banco,
+e.NoCuenta,u.Usuario,u.Contraseña,e.SalarioDiario from Empleados e
+inner join Direcciones d on d.idDireccion=e.Direccionfk
+inner join Municipios m on m.idMunicipio=d.MunicipioFk
+inner join Usuarios u on u.idUsuario=e.Usuariofk
+inner join Asiganciones a on e.NoEmpleado=a.Empleadofk
+inner join Puestos p on p.IdPuesto=a.Puestofk
+inner join Departamentos de on de.idDpto=a.Departamentofk 
+where NoEmpleado=@IdEmpleado;
+
+end
+
 end
 
 go

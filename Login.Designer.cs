@@ -119,6 +119,7 @@ namespace Proyecto_MAD
             this.User_TB.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.User_TB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(85)))), ((int)(((byte)(99)))), ((int)(((byte)(141)))));
             this.User_TB.Location = new System.Drawing.Point(55, 228);
+            this.User_TB.MaxLength = 10;
             this.User_TB.Name = "User_TB";
             this.User_TB.Size = new System.Drawing.Size(221, 21);
             this.User_TB.TabIndex = 1;
@@ -128,6 +129,7 @@ namespace Proyecto_MAD
             this.Password_TB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Password_TB.Font = new System.Drawing.Font("Elephant", 12F, System.Drawing.FontStyle.Bold);
             this.Password_TB.Location = new System.Drawing.Point(55, 286);
+            this.Password_TB.MaxLength = 10;
             this.Password_TB.Name = "Password_TB";
             this.Password_TB.PasswordChar = '*';
             this.Password_TB.Size = new System.Drawing.Size(221, 21);

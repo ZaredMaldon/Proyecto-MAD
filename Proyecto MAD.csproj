@@ -60,6 +60,7 @@
     <Compile Include="Calculo\DatosEmpresa.Designer.cs">
       <DependentUpon>DatosEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAO_Empleado.cs" />
     <Compile Include="EnlaceDB.cs" />
     <Compile Include="Calculo\Departamentos.cs">
       <SubType>Form</SubType>

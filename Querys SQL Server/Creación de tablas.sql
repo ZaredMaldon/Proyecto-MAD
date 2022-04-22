@@ -48,18 +48,17 @@ CONSTRAINT fk_Usuario FOREIGN KEY (idUsuarios) REFERENCES Usuarios(idUsuario)
 );
 
 CREATE TABLE Empleados(
-NoEmpleado        int           IDENTITY (1,10000)	NOT NULL,
+NoEmpleado        int           IDENTITY (100000,1)	NOT NULL,
 Nombre            varchar(25)	NOT NULL,
 APaterno          varchar(25)	NOT NULL,
 AMaterno          varchar(25)	NULL DEFAULT('NO TIENE'),
 FechaNacimiento   date			NOT NULL,
-FechaContratacion date			NOT NULL,
 CURP              char(18)		NOT NULL,
 NSS               char(11)		NOT NULL,
 RFC               char(13)		NOT NULL,
 Email             varchar(50)	NOT NULL,
-Telefono1         int			NOT NULL,
-Telefono2         int			NULL DEFAULT('--------'),
+Telefono1         varchar(11)		NOT NULL,
+Telefono2         varchar(11)		NULL DEFAULT('--------'),
 Contratacion      date			NOT NULL,
 Direccionfk       int	        NOT NULL, --FOREING KEY
 Usuariofk         int			NOT NULL,
@@ -68,21 +67,27 @@ Banco			  varchar(30),
 NoCuenta          int,
 CONSTRAINT PK_Empleado PRIMARY KEY (NoEmpleado),
 CONSTRAINT fk_Direcciones2 FOREIGN KEY (Direccionfk) REFERENCES Direcciones(idDireccion),
-CONSTRAINT fk_Usuario2 FOREIGN KEY (Usuariofk) REFERENCES Usuarios(idUsuario)
+CONSTRAINT fk_Usuario2 FOREIGN KEY (Usuariofk) REFERENCES Usuarios(idUsuario),
+constraint UQ_Empleados_RFC UNIQUE (RFC),
+constraint UQ_Empleados_CURP UNIQUE (CURP),
+constraint UQ_Empleados_NSS UNIQUE(NSS),
+constraint UQ_Empleados_NoCuenta UNIQUE (NoCuenta)
 );
 
 CREATE TABLE Departamentos(
-idDpto				int			IDENTITY (1,10000)	NOT NULL,
+idDpto				int			IDENTITY (1,1)	NOT NULL,
 NombreDpto          varchar(25)	NOT NULL,
 SueldoBase			money		NOT NULL,
-CONSTRAINT PK_Departamento PRIMARY KEY (idDpto)
+CONSTRAINT PK_Departamento PRIMARY KEY (idDpto),
+constraint UQ_Dpto_Nombre UNIQUE (NombreDpto)
 );
 
 CREATE TABLE Puestos(
-IdPuesto			int			IDENTITY (1,10000)	NOT NULL,
+IdPuesto			int			IDENTITY (1,1)	NOT NULL,
 NombrePuesto		varchar(25)	NOT NULL,
 NivelSalarial		float			NULL,
-CONSTRAINT PK_Puestos PRIMARY KEY(IdPuesto)
+CONSTRAINT PK_Puestos PRIMARY KEY(IdPuesto),
+constraint UQ_Puestos_Nombre UNIQUE (NombrePuesto)
 );
 
 CREATE TABLE Deducciones(
@@ -91,7 +96,8 @@ NombreDeduccion			varchar(25)	NOT NULL,
 FechaAplicada			date		NOT NULL,
 Descuento				money		    NULL DEFAULT('NO APLICA'),
 DescuentoPorcentaje		float			NOT NULL,
-CONSTRAINT PK_Deducciones PRIMARY KEY(IdDeduccion)
+CONSTRAINT PK_Deducciones PRIMARY KEY(IdDeduccion),
+constraint UQ_Deducciones_Nombre UNIQUE (NombreDeduccion)
 )
 
 CREATE TABLE Percepciones(
@@ -100,30 +106,29 @@ NombrePercepcion  varchar(25)	NOT NULL,
 FechaAplicada	  date			NOT NULL,	
 Bono              money		    NULL DEFAULT('NO APLICA'),
 BonoPorcentaje    float			NOT NULL,
-CONSTRAINT PK_Percepciones PRIMARY KEY(IdPercepcion)
+CONSTRAINT PK_Percepciones PRIMARY KEY(IdPercepcion),
+constraint UQ_Percepciones_Nombre UNIQUE (NombrePercepcion)
 )
 
-CREATE TABLE Pecepciones_Empleado(
-IdPE		      int			IDENTITY (1,1)	NOT NULL,
+CREATE TABLE Percepciones_Empleado(
 Empleadofk        int			NOT NULL,
 Percepcionfk      int			NOT NULL,
-CONSTRAINT PK_PEmp PRIMARY KEY(IdPE),
+CONSTRAINT PK_PEmp PRIMARY KEY(Empleadofk,Percepcionfk),
 CONSTRAINT FK_Empleado FOREIGN KEY (Empleadofk) REFERENCES Empleados(NoEmpleado),
 CONSTRAINT FK_Percepciones FOREIGN KEY(Percepcionfk) REFERENCES Percepciones(IdPercepcion)
 )
 
 CREATE TABLE Deducciones_Empleado(
-IdDE		      int			IDENTITY (1,1)	NOT NULL,
 Empleadofk        int			NOT NULL,
 Deduccionfk		  int			NOT NULL,	
-CONSTRAINT PK_DEmp PRIMARY KEY(IdDE),
+CONSTRAINT PK_DEmp PRIMARY KEY(Empleadofk,Deduccionfk),
 CONSTRAINT FK_Empleado2 FOREIGN KEY (Empleadofk) REFERENCES Empleados(NoEmpleado),
 CONSTRAINT FK_Deducciones FOREIGN KEY(Deduccionfk) REFERENCES Deducciones(IdDeduccion) 
 )
 
 
 CREATE TABLE NOMINA(
-IdNomina             int IDENTITY (1,1000000)	NOT NULL,
+IdNomina             int IDENTITY (1000000,1)	NOT NULL,
 Empleadofk           int				NOT NULL,
 Sueldo_bruto         money				NOT NULL,
 Sueldo_neto          money				NOT NULL,
@@ -145,3 +150,5 @@ CONSTRAINT FK_Empleado4 FOREIGN KEY(Empleadofk) REFERENCES Empleados(NoEMpleado)
 CONSTRAINT FK_Departamento FOREIGN KEY(Departamentofk) REFERENCES Departamentos(idDpto),
 CONSTRAINT FK_Puestp FOREIGN KEY(Puestofk) REFERENCES Puestos(IdPuesto)
 )
+
+/*DBCC CHECKIDENT('Empleados',RESEED,0);  /*RESETEAR EL IDENTITY*/*/

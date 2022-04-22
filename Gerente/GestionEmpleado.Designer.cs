@@ -96,9 +96,14 @@ namespace Proyecto_MAD.Gerente
             this.Dgv_GestionEmpleados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
             this.Dgv_GestionEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_GestionEmpleados.Location = new System.Drawing.Point(34, 454);
+            this.Dgv_GestionEmpleados.MultiSelect = false;
             this.Dgv_GestionEmpleados.Name = "Dgv_GestionEmpleados";
+            this.Dgv_GestionEmpleados.ReadOnly = true;
+            this.Dgv_GestionEmpleados.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.Dgv_GestionEmpleados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_GestionEmpleados.Size = new System.Drawing.Size(519, 146);
             this.Dgv_GestionEmpleados.TabIndex = 0;
+            this.Dgv_GestionEmpleados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_GestionEmpleados_CellClick);
             // 
             // Panel_Registro
             // 
@@ -168,6 +173,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Cp.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Cp.Location = new System.Drawing.Point(484, 277);
+            this.TB_Cp.MaxLength = 5;
             this.TB_Cp.Name = "TB_Cp";
             this.TB_Cp.Size = new System.Drawing.Size(150, 23);
             this.TB_Cp.TabIndex = 59;
@@ -210,6 +216,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_NoCuenta.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_NoCuenta.Location = new System.Drawing.Point(484, 361);
+            this.TB_NoCuenta.MaxLength = 6;
             this.TB_NoCuenta.Name = "TB_NoCuenta";
             this.TB_NoCuenta.Size = new System.Drawing.Size(150, 23);
             this.TB_NoCuenta.TabIndex = 55;
@@ -229,6 +236,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Banco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Banco.Location = new System.Drawing.Point(484, 323);
+            this.TB_Banco.MaxLength = 30;
             this.TB_Banco.Name = "TB_Banco";
             this.TB_Banco.Size = new System.Drawing.Size(150, 23);
             this.TB_Banco.TabIndex = 54;
@@ -271,6 +279,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Usuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Usuario.Location = new System.Drawing.Point(121, 13);
+            this.TB_Usuario.MaxLength = 10;
             this.TB_Usuario.Name = "TB_Usuario";
             this.TB_Usuario.Size = new System.Drawing.Size(150, 23);
             this.TB_Usuario.TabIndex = 42;
@@ -290,6 +299,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.Tb_Password2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.Tb_Password2.Location = new System.Drawing.Point(121, 71);
+            this.Tb_Password2.MaxLength = 10;
             this.Tb_Password2.Name = "Tb_Password2";
             this.Tb_Password2.Size = new System.Drawing.Size(150, 23);
             this.Tb_Password2.TabIndex = 46;
@@ -320,6 +330,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Password.Location = new System.Drawing.Point(121, 42);
+            this.TB_Password.MaxLength = 10;
             this.TB_Password.Name = "TB_Password";
             this.TB_Password.Size = new System.Drawing.Size(150, 23);
             this.TB_Password.TabIndex = 43;
@@ -379,6 +390,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_NoInt.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_NoInt.Location = new System.Drawing.Point(575, 134);
+            this.TB_NoInt.MaxLength = 4;
             this.TB_NoInt.Name = "TB_NoInt";
             this.TB_NoInt.Size = new System.Drawing.Size(59, 23);
             this.TB_NoInt.TabIndex = 35;
@@ -398,6 +410,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_NoExt.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_NoExt.Location = new System.Drawing.Point(391, 134);
+            this.TB_NoExt.MaxLength = 4;
             this.TB_NoExt.Name = "TB_NoExt";
             this.TB_NoExt.Size = new System.Drawing.Size(59, 23);
             this.TB_NoExt.TabIndex = 32;
@@ -417,6 +430,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Calle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Calle.Location = new System.Drawing.Point(484, 247);
+            this.TB_Calle.MaxLength = 25;
             this.TB_Calle.Name = "TB_Calle";
             this.TB_Calle.Size = new System.Drawing.Size(150, 23);
             this.TB_Calle.TabIndex = 34;
@@ -436,6 +450,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Colonia.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Colonia.Location = new System.Drawing.Point(484, 212);
+            this.TB_Colonia.MaxLength = 25;
             this.TB_Colonia.Name = "TB_Colonia";
             this.TB_Colonia.Size = new System.Drawing.Size(150, 23);
             this.TB_Colonia.TabIndex = 31;
@@ -479,6 +494,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Telefono2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Telefono2.Location = new System.Drawing.Point(129, 174);
+            this.TB_Telefono2.MaxLength = 10;
             this.TB_Telefono2.Name = "TB_Telefono2";
             this.TB_Telefono2.Size = new System.Drawing.Size(150, 23);
             this.TB_Telefono2.TabIndex = 14;
@@ -487,6 +503,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_RFC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_RFC.Location = new System.Drawing.Point(361, 79);
+            this.TB_RFC.MaxLength = 13;
             this.TB_RFC.Name = "TB_RFC";
             this.TB_RFC.Size = new System.Drawing.Size(154, 23);
             this.TB_RFC.TabIndex = 10;
@@ -495,6 +512,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_ApMat.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_ApMat.Location = new System.Drawing.Point(361, 34);
+            this.TB_ApMat.MaxLength = 25;
             this.TB_ApMat.Name = "TB_ApMat";
             this.TB_ApMat.Size = new System.Drawing.Size(154, 23);
             this.TB_ApMat.TabIndex = 7;
@@ -503,6 +521,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_NSS.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_NSS.Location = new System.Drawing.Point(190, 79);
+            this.TB_NSS.MaxLength = 11;
             this.TB_NSS.Name = "TB_NSS";
             this.TB_NSS.Size = new System.Drawing.Size(154, 23);
             this.TB_NSS.TabIndex = 9;
@@ -545,6 +564,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Telefono.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Telefono.Location = new System.Drawing.Point(129, 134);
+            this.TB_Telefono.MaxLength = 10;
             this.TB_Telefono.Name = "TB_Telefono";
             this.TB_Telefono.Size = new System.Drawing.Size(150, 23);
             this.TB_Telefono.TabIndex = 13;
@@ -564,6 +584,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_CURP.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_CURP.Location = new System.Drawing.Point(20, 79);
+            this.TB_CURP.MaxLength = 18;
             this.TB_CURP.Name = "TB_CURP";
             this.TB_CURP.Size = new System.Drawing.Size(154, 23);
             this.TB_CURP.TabIndex = 8;
@@ -572,6 +593,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Email.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Email.Location = new System.Drawing.Point(533, 79);
+            this.TB_Email.MaxLength = 50;
             this.TB_Email.Name = "TB_Email";
             this.TB_Email.Size = new System.Drawing.Size(101, 23);
             this.TB_Email.TabIndex = 11;
@@ -602,6 +624,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_ApPat.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_ApPat.Location = new System.Drawing.Point(190, 34);
+            this.TB_ApPat.MaxLength = 25;
             this.TB_ApPat.Name = "TB_ApPat";
             this.TB_ApPat.Size = new System.Drawing.Size(154, 23);
             this.TB_ApPat.TabIndex = 6;
@@ -632,6 +655,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.TB_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Nombre.Location = new System.Drawing.Point(20, 34);
+            this.TB_Nombre.MaxLength = 25;
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 5;

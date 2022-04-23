@@ -487,6 +487,127 @@ namespace Proyecto_MAD.EnlaceDB
 
         #endregion
 
+        #region Control Percepciones
+        //Agregar
+        public bool ControldePercepciones(int Opc,int idPer,string Nombre, DateTime fechaAplicada, float Bono, float BonoPorcentaje)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlPercepciones";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@NombrePer", SqlDbType.VarChar, 25);
+                parametro2.Value = Nombre;
+                var parametro3 = _comandosql.Parameters.Add("@FechaAplicada ", SqlDbType.Date);
+                parametro3.Value = fechaAplicada;
+                var parametro4 = _comandosql.Parameters.Add("@Bono", SqlDbType.Money);
+                parametro4.Value = Bono;
+                var parametro5 = _comandosql.Parameters.Add("@BonoPorcentaje", SqlDbType.Float);
+                parametro5.Value = BonoPorcentaje;
+                var parametro6 = _comandosql.Parameters.Add("@idPer", SqlDbType.Int);
+                parametro6.Value = idPer;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return add;
+        }
+        //Eliminar
+        public bool ControldePercepciones(int Opc, int idPer)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlPercepciones";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro6 = _comandosql.Parameters.Add("@idPer", SqlDbType.Int);
+                parametro6.Value = idPer;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return add;
+        }
+        //Carga Datos al grid
+        public DataTable DataTable_MostrarPercep(int Opc)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "SP_ControlPercepciones";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
+        }
+
+        #endregion
+
         #region Llenado de ComboBox
         public void Cargar_DatosMuni_CB(int Opc,ComboBox a)
         {

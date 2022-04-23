@@ -21,5 +21,30 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
 
         }
+
+        private void LBL_Nombre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TB_Nombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_CargarExcel_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Hoja de cálculo de Microsoft Excel|*.xlsx";
+            openFileDialog.InitialDirectory = @"H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\Excel";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string direccion = openFileDialog.FileName;//obtienes el nombre del archivo 
+
+                //Aqui debe estar la funcion para agregar masivamente
+
+            }
+        }
     }
 }

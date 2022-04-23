@@ -43,6 +43,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.LBL_Title = new System.Windows.Forms.Label();
             this.Dgv_Deducciones = new System.Windows.Forms.DataGridView();
             this.Btn_EliminarDeduccion = new FontAwesome.Sharp.IconButton();
+            this.btn_CargarExcel = new FontAwesome.Sharp.IconButton();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Deducciones)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +51,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.btn_CargarExcel);
             this.Panel_Background.Controls.Add(this.Btn_EliminarDeduccion);
             this.Panel_Background.Controls.Add(this.Dgv_Deducciones);
             this.Panel_Background.Controls.Add(this.Cb_Mes);
@@ -85,7 +87,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.Cb_Mes.Location = new System.Drawing.Point(17, 79);
+            this.Cb_Mes.Location = new System.Drawing.Point(197, 79);
             this.Cb_Mes.Name = "Cb_Mes";
             this.Cb_Mes.Size = new System.Drawing.Size(121, 23);
             this.Cb_Mes.TabIndex = 58;
@@ -95,7 +97,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Lbl_SalarioDiario.AutoSize = true;
             this.Lbl_SalarioDiario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_SalarioDiario.ForeColor = System.Drawing.Color.White;
-            this.Lbl_SalarioDiario.Location = new System.Drawing.Point(14, 60);
+            this.Lbl_SalarioDiario.Location = new System.Drawing.Point(194, 60);
             this.Lbl_SalarioDiario.Name = "Lbl_SalarioDiario";
             this.Lbl_SalarioDiario.Size = new System.Drawing.Size(105, 16);
             this.Lbl_SalarioDiario.TabIndex = 57;
@@ -142,21 +144,23 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // TB_Nombre
             // 
             this.TB_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Nombre.Location = new System.Drawing.Point(155, 79);
+            this.TB_Nombre.Location = new System.Drawing.Point(17, 79);
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 52;
+            this.TB_Nombre.TextChanged += new System.EventHandler(this.TB_Nombre_TextChanged);
             // 
             // LBL_Nombre
             // 
             this.LBL_Nombre.AutoSize = true;
             this.LBL_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Nombre.ForeColor = System.Drawing.Color.White;
-            this.LBL_Nombre.Location = new System.Drawing.Point(152, 60);
+            this.LBL_Nombre.Location = new System.Drawing.Point(14, 60);
             this.LBL_Nombre.Name = "LBL_Nombre";
             this.LBL_Nombre.Size = new System.Drawing.Size(67, 16);
             this.LBL_Nombre.TabIndex = 51;
             this.LBL_Nombre.Text = "Nombre*";
+            this.LBL_Nombre.Click += new System.EventHandler(this.LBL_Nombre_Click);
             // 
             // Btn_AgregarDeduccion
             // 
@@ -173,7 +177,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Btn_AgregarDeduccion.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.Btn_AgregarDeduccion.IconSize = 45;
             this.Btn_AgregarDeduccion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_AgregarDeduccion.Location = new System.Drawing.Point(365, 313);
+            this.Btn_AgregarDeduccion.Location = new System.Drawing.Point(260, 313);
             this.Btn_AgregarDeduccion.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.Btn_AgregarDeduccion.Name = "Btn_AgregarDeduccion";
             this.Btn_AgregarDeduccion.Size = new System.Drawing.Size(138, 51);
@@ -230,6 +234,31 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Btn_EliminarDeduccion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_EliminarDeduccion.UseVisualStyleBackColor = false;
             // 
+            // btn_CargarExcel
+            // 
+            this.btn_CargarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.btn_CargarExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.btn_CargarExcel.FlatAppearance.BorderSize = 2;
+            this.btn_CargarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_CargarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.btn_CargarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CargarExcel.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CargarExcel.ForeColor = System.Drawing.Color.White;
+            this.btn_CargarExcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
+            this.btn_CargarExcel.IconColor = System.Drawing.Color.White;
+            this.btn_CargarExcel.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_CargarExcel.IconSize = 45;
+            this.btn_CargarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_CargarExcel.Location = new System.Drawing.Point(0, 316);
+            this.btn_CargarExcel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.btn_CargarExcel.Name = "btn_CargarExcel";
+            this.btn_CargarExcel.Size = new System.Drawing.Size(158, 51);
+            this.btn_CargarExcel.TabIndex = 63;
+            this.btn_CargarExcel.Text = "Cargar Excel";
+            this.btn_CargarExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_CargarExcel.UseVisualStyleBackColor = false;
+            this.btn_CargarExcel.Click += new System.EventHandler(this.btn_CargarExcel_Click);
+            // 
             // Deducciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -262,5 +291,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         private FontAwesome.Sharp.IconButton Btn_AgregarDeduccion;
         private System.Windows.Forms.DataGridView Dgv_Deducciones;
         private FontAwesome.Sharp.IconButton Btn_EliminarDeduccion;
+        private FontAwesome.Sharp.IconButton btn_CargarExcel;
     }
 }

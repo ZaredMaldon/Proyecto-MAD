@@ -55,3 +55,10 @@ H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Proyecto MA
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\FontAwesome.Sharp.dll
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.CopyComplete
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto MAD.csproj.SuggestedBindingRedirects.cache
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\DocumentFormat.OpenXml.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\SpreadsheetLight.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Drawing.Common.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.IO.Packaging.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\DocumentFormat.OpenXml.xml
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\SpreadsheetLight.xml
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.IO.Packaging.xml

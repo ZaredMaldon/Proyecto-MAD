@@ -31,18 +31,21 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Percepciones));
             this.Panel_Background = new System.Windows.Forms.Panel();
-            this.Cb_Mes = new System.Windows.Forms.ComboBox();
+            this.btn_CargarExcel = new FontAwesome.Sharp.IconButton();
+            this.Btn_EliminarPercepcion = new FontAwesome.Sharp.IconButton();
+            this.Dgv_Percepciones = new System.Windows.Forms.DataGridView();
+            this.Cb_Año = new System.Windows.Forms.ComboBox();
             this.Lbl_SalarioDiario = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TB_Porcentaje = new System.Windows.Forms.TextBox();
-            this.TB_NivelSalarial = new System.Windows.Forms.TextBox();
+            this.TB_Bono = new System.Windows.Forms.TextBox();
             this.Lbl_Bono = new System.Windows.Forms.Label();
             this.TB_Nombre = new System.Windows.Forms.TextBox();
             this.LBL_Nombre = new System.Windows.Forms.Label();
-            this.Btn_Percepcion = new FontAwesome.Sharp.IconButton();
+            this.Btn_AgregarPercepcion = new FontAwesome.Sharp.IconButton();
             this.LBL_Title = new System.Windows.Forms.Label();
-            this.Dgv_Percepciones = new System.Windows.Forms.DataGridView();
-            this.Btn_EliminarPercepcion = new FontAwesome.Sharp.IconButton();
+            this.CB_Mes = new System.Windows.Forms.ComboBox();
+            this.Lbl_Año = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Percepciones)).BeginInit();
             this.SuspendLayout();
@@ -50,160 +53,50 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.CB_Mes);
+            this.Panel_Background.Controls.Add(this.Lbl_Año);
+            this.Panel_Background.Controls.Add(this.btn_CargarExcel);
             this.Panel_Background.Controls.Add(this.Btn_EliminarPercepcion);
             this.Panel_Background.Controls.Add(this.Dgv_Percepciones);
-            this.Panel_Background.Controls.Add(this.Cb_Mes);
+            this.Panel_Background.Controls.Add(this.Cb_Año);
             this.Panel_Background.Controls.Add(this.Lbl_SalarioDiario);
             this.Panel_Background.Controls.Add(this.label1);
             this.Panel_Background.Controls.Add(this.TB_Porcentaje);
-            this.Panel_Background.Controls.Add(this.TB_NivelSalarial);
+            this.Panel_Background.Controls.Add(this.TB_Bono);
             this.Panel_Background.Controls.Add(this.Lbl_Bono);
             this.Panel_Background.Controls.Add(this.TB_Nombre);
             this.Panel_Background.Controls.Add(this.LBL_Nombre);
-            this.Panel_Background.Controls.Add(this.Btn_Percepcion);
+            this.Panel_Background.Controls.Add(this.Btn_AgregarPercepcion);
             this.Panel_Background.Controls.Add(this.LBL_Title);
             this.Panel_Background.Location = new System.Drawing.Point(12, 12);
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(647, 364);
             this.Panel_Background.TabIndex = 26;
             // 
-            // Cb_Mes
+            // btn_CargarExcel
             // 
-            this.Cb_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.Cb_Mes.FormattingEnabled = true;
-            this.Cb_Mes.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.Cb_Mes.Location = new System.Drawing.Point(191, 75);
-            this.Cb_Mes.Name = "Cb_Mes";
-            this.Cb_Mes.Size = new System.Drawing.Size(121, 23);
-            this.Cb_Mes.TabIndex = 41;
-            // 
-            // Lbl_SalarioDiario
-            // 
-            this.Lbl_SalarioDiario.AutoSize = true;
-            this.Lbl_SalarioDiario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_SalarioDiario.ForeColor = System.Drawing.Color.White;
-            this.Lbl_SalarioDiario.Location = new System.Drawing.Point(188, 56);
-            this.Lbl_SalarioDiario.Name = "Lbl_SalarioDiario";
-            this.Lbl_SalarioDiario.Size = new System.Drawing.Size(105, 16);
-            this.Lbl_SalarioDiario.TabIndex = 39;
-            this.Lbl_SalarioDiario.Text = "Mes Aplicado*";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(520, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 16);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "Porcentaje*";
-            // 
-            // TB_Porcentaje
-            // 
-            this.TB_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Porcentaje.Location = new System.Drawing.Point(523, 75);
-            this.TB_Porcentaje.Name = "TB_Porcentaje";
-            this.TB_Porcentaje.Size = new System.Drawing.Size(109, 23);
-            this.TB_Porcentaje.TabIndex = 37;
-            // 
-            // TB_NivelSalarial
-            // 
-            this.TB_NivelSalarial.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_NivelSalarial.Location = new System.Drawing.Point(344, 75);
-            this.TB_NivelSalarial.Name = "TB_NivelSalarial";
-            this.TB_NivelSalarial.Size = new System.Drawing.Size(154, 23);
-            this.TB_NivelSalarial.TabIndex = 36;
-            // 
-            // Lbl_Bono
-            // 
-            this.Lbl_Bono.AutoSize = true;
-            this.Lbl_Bono.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Bono.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Bono.Location = new System.Drawing.Point(341, 56);
-            this.Lbl_Bono.Name = "Lbl_Bono";
-            this.Lbl_Bono.Size = new System.Drawing.Size(47, 16);
-            this.Lbl_Bono.TabIndex = 35;
-            this.Lbl_Bono.Text = "Bono*";
-            // 
-            // TB_Nombre
-            // 
-            this.TB_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Nombre.Location = new System.Drawing.Point(17, 75);
-            this.TB_Nombre.Name = "TB_Nombre";
-            this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
-            this.TB_Nombre.TabIndex = 34;
-            // 
-            // LBL_Nombre
-            // 
-            this.LBL_Nombre.AutoSize = true;
-            this.LBL_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Nombre.ForeColor = System.Drawing.Color.White;
-            this.LBL_Nombre.Location = new System.Drawing.Point(14, 56);
-            this.LBL_Nombre.Name = "LBL_Nombre";
-            this.LBL_Nombre.Size = new System.Drawing.Size(67, 16);
-            this.LBL_Nombre.TabIndex = 33;
-            this.LBL_Nombre.Text = "Nombre*";
-            // 
-            // Btn_Percepcion
-            // 
-            this.Btn_Percepcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
-            this.Btn_Percepcion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.Btn_Percepcion.FlatAppearance.BorderSize = 2;
-            this.Btn_Percepcion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.Btn_Percepcion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Btn_Percepcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Percepcion.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Percepcion.ForeColor = System.Drawing.Color.White;
-            this.Btn_Percepcion.IconChar = FontAwesome.Sharp.IconChar.Coins;
-            this.Btn_Percepcion.IconColor = System.Drawing.Color.White;
-            this.Btn_Percepcion.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Btn_Percepcion.IconSize = 45;
-            this.Btn_Percepcion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Percepcion.Location = new System.Drawing.Point(367, 316);
-            this.Btn_Percepcion.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.Btn_Percepcion.Name = "Btn_Percepcion";
-            this.Btn_Percepcion.Size = new System.Drawing.Size(136, 51);
-            this.Btn_Percepcion.TabIndex = 23;
-            this.Btn_Percepcion.Text = "Agregar Percepción";
-            this.Btn_Percepcion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_Percepcion.UseVisualStyleBackColor = false;
-            // 
-            // LBL_Title
-            // 
-            this.LBL_Title.AutoSize = true;
-            this.LBL_Title.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Title.ForeColor = System.Drawing.Color.White;
-            this.LBL_Title.Location = new System.Drawing.Point(13, 16);
-            this.LBL_Title.Name = "LBL_Title";
-            this.LBL_Title.Size = new System.Drawing.Size(145, 23);
-            this.LBL_Title.TabIndex = 20;
-            this.LBL_Title.Text = "Percepciones";
-            // 
-            // Dgv_Percepciones
-            // 
-            this.Dgv_Percepciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
-            this.Dgv_Percepciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Percepciones.Location = new System.Drawing.Point(17, 128);
-            this.Dgv_Percepciones.MultiSelect = false;
-            this.Dgv_Percepciones.Name = "Dgv_Percepciones";
-            this.Dgv_Percepciones.ReadOnly = true;
-            this.Dgv_Percepciones.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.Dgv_Percepciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dgv_Percepciones.Size = new System.Drawing.Size(615, 167);
-            this.Dgv_Percepciones.TabIndex = 42;
+            this.btn_CargarExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.btn_CargarExcel.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.btn_CargarExcel.FlatAppearance.BorderSize = 2;
+            this.btn_CargarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_CargarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.btn_CargarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CargarExcel.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CargarExcel.ForeColor = System.Drawing.Color.White;
+            this.btn_CargarExcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel;
+            this.btn_CargarExcel.IconColor = System.Drawing.Color.White;
+            this.btn_CargarExcel.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_CargarExcel.IconSize = 45;
+            this.btn_CargarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_CargarExcel.Location = new System.Drawing.Point(0, 313);
+            this.btn_CargarExcel.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.btn_CargarExcel.Name = "btn_CargarExcel";
+            this.btn_CargarExcel.Size = new System.Drawing.Size(158, 51);
+            this.btn_CargarExcel.TabIndex = 62;
+            this.btn_CargarExcel.Text = "Cargar Excel";
+            this.btn_CargarExcel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_CargarExcel.UseVisualStyleBackColor = false;
+            this.btn_CargarExcel.Click += new System.EventHandler(this.btn_CargarExcel_Click);
             // 
             // Btn_EliminarPercepcion
             // 
@@ -228,6 +121,175 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Btn_EliminarPercepcion.Text = "Eliminar Percepción";
             this.Btn_EliminarPercepcion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_EliminarPercepcion.UseVisualStyleBackColor = false;
+            this.Btn_EliminarPercepcion.Click += new System.EventHandler(this.Btn_EliminarPercepcion_Click);
+            // 
+            // Dgv_Percepciones
+            // 
+            this.Dgv_Percepciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Dgv_Percepciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Percepciones.Location = new System.Drawing.Point(17, 145);
+            this.Dgv_Percepciones.MultiSelect = false;
+            this.Dgv_Percepciones.Name = "Dgv_Percepciones";
+            this.Dgv_Percepciones.ReadOnly = true;
+            this.Dgv_Percepciones.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.Dgv_Percepciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Dgv_Percepciones.Size = new System.Drawing.Size(615, 150);
+            this.Dgv_Percepciones.TabIndex = 42;
+            this.Dgv_Percepciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Percepciones_CellClick);
+            // 
+            // Cb_Año
+            // 
+            this.Cb_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.Cb_Año.FormattingEnabled = true;
+            this.Cb_Año.Items.AddRange(new object[] {
+            "2022",
+            "2021",
+            "2020",
+            "2019"});
+            this.Cb_Año.Location = new System.Drawing.Point(381, 104);
+            this.Cb_Año.Name = "Cb_Año";
+            this.Cb_Año.Size = new System.Drawing.Size(94, 23);
+            this.Cb_Año.TabIndex = 41;
+            // 
+            // Lbl_SalarioDiario
+            // 
+            this.Lbl_SalarioDiario.AutoSize = true;
+            this.Lbl_SalarioDiario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_SalarioDiario.ForeColor = System.Drawing.Color.White;
+            this.Lbl_SalarioDiario.Location = new System.Drawing.Point(174, 85);
+            this.Lbl_SalarioDiario.Name = "Lbl_SalarioDiario";
+            this.Lbl_SalarioDiario.Size = new System.Drawing.Size(105, 16);
+            this.Lbl_SalarioDiario.TabIndex = 39;
+            this.Lbl_SalarioDiario.Text = "Mes Aplicado*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(480, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(85, 16);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Porcentaje*";
+            // 
+            // TB_Porcentaje
+            // 
+            this.TB_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_Porcentaje.Location = new System.Drawing.Point(483, 62);
+            this.TB_Porcentaje.MaxLength = 5;
+            this.TB_Porcentaje.Name = "TB_Porcentaje";
+            this.TB_Porcentaje.Size = new System.Drawing.Size(109, 23);
+            this.TB_Porcentaje.TabIndex = 37;
+            // 
+            // TB_Bono
+            // 
+            this.TB_Bono.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_Bono.Location = new System.Drawing.Point(269, 59);
+            this.TB_Bono.MaxLength = 8;
+            this.TB_Bono.Name = "TB_Bono";
+            this.TB_Bono.Size = new System.Drawing.Size(107, 23);
+            this.TB_Bono.TabIndex = 36;
+            // 
+            // Lbl_Bono
+            // 
+            this.Lbl_Bono.AutoSize = true;
+            this.Lbl_Bono.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Bono.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Bono.Location = new System.Drawing.Point(266, 40);
+            this.Lbl_Bono.Name = "Lbl_Bono";
+            this.Lbl_Bono.Size = new System.Drawing.Size(47, 16);
+            this.Lbl_Bono.TabIndex = 35;
+            this.Lbl_Bono.Text = "Bono*";
+            // 
+            // TB_Nombre
+            // 
+            this.TB_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_Nombre.Location = new System.Drawing.Point(67, 62);
+            this.TB_Nombre.MaxLength = 25;
+            this.TB_Nombre.Name = "TB_Nombre";
+            this.TB_Nombre.Size = new System.Drawing.Size(120, 23);
+            this.TB_Nombre.TabIndex = 34;
+            // 
+            // LBL_Nombre
+            // 
+            this.LBL_Nombre.AutoSize = true;
+            this.LBL_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_Nombre.ForeColor = System.Drawing.Color.White;
+            this.LBL_Nombre.Location = new System.Drawing.Point(64, 43);
+            this.LBL_Nombre.Name = "LBL_Nombre";
+            this.LBL_Nombre.Size = new System.Drawing.Size(67, 16);
+            this.LBL_Nombre.TabIndex = 33;
+            this.LBL_Nombre.Text = "Nombre*";
+            // 
+            // Btn_AgregarPercepcion
+            // 
+            this.Btn_AgregarPercepcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_AgregarPercepcion.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_AgregarPercepcion.FlatAppearance.BorderSize = 2;
+            this.Btn_AgregarPercepcion.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_AgregarPercepcion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_AgregarPercepcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_AgregarPercepcion.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_AgregarPercepcion.ForeColor = System.Drawing.Color.White;
+            this.Btn_AgregarPercepcion.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            this.Btn_AgregarPercepcion.IconColor = System.Drawing.Color.White;
+            this.Btn_AgregarPercepcion.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_AgregarPercepcion.IconSize = 45;
+            this.Btn_AgregarPercepcion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_AgregarPercepcion.Location = new System.Drawing.Point(269, 313);
+            this.Btn_AgregarPercepcion.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_AgregarPercepcion.Name = "Btn_AgregarPercepcion";
+            this.Btn_AgregarPercepcion.Size = new System.Drawing.Size(136, 51);
+            this.Btn_AgregarPercepcion.TabIndex = 23;
+            this.Btn_AgregarPercepcion.Text = "Agregar Percepción";
+            this.Btn_AgregarPercepcion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_AgregarPercepcion.UseVisualStyleBackColor = false;
+            this.Btn_AgregarPercepcion.Click += new System.EventHandler(this.Btn_AgregarPercepcion_Click);
+            // 
+            // LBL_Title
+            // 
+            this.LBL_Title.AutoSize = true;
+            this.LBL_Title.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_Title.ForeColor = System.Drawing.Color.White;
+            this.LBL_Title.Location = new System.Drawing.Point(3, 0);
+            this.LBL_Title.Name = "LBL_Title";
+            this.LBL_Title.Size = new System.Drawing.Size(145, 23);
+            this.LBL_Title.TabIndex = 20;
+            this.LBL_Title.Text = "Percepciones";
+            // 
+            // CB_Mes
+            // 
+            this.CB_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CB_Mes.FormattingEnabled = true;
+            this.CB_Mes.Items.AddRange(new object[] {
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
+            this.CB_Mes.Location = new System.Drawing.Point(177, 104);
+            this.CB_Mes.Name = "CB_Mes";
+            this.CB_Mes.Size = new System.Drawing.Size(94, 23);
+            this.CB_Mes.TabIndex = 64;
+            // 
+            // Lbl_Año
+            // 
+            this.Lbl_Año.AutoSize = true;
+            this.Lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Año.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Año.Location = new System.Drawing.Point(378, 85);
+            this.Lbl_Año.Name = "Lbl_Año";
+            this.Lbl_Año.Size = new System.Drawing.Size(103, 16);
+            this.Lbl_Año.TabIndex = 63;
+            this.Lbl_Año.Text = "Año Aplicado*";
             // 
             // Percepciones
             // 
@@ -239,6 +301,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Percepciones";
             this.Text = "Percepciones";
+            this.Load += new System.EventHandler(this.Percepciones_Load);
             this.Panel_Background.ResumeLayout(false);
             this.Panel_Background.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Percepciones)).EndInit();
@@ -249,17 +312,20 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         #endregion
 
         private System.Windows.Forms.Panel Panel_Background;
-        private FontAwesome.Sharp.IconButton Btn_Percepcion;
+        private FontAwesome.Sharp.IconButton Btn_AgregarPercepcion;
         private System.Windows.Forms.Label LBL_Title;
-        private System.Windows.Forms.ComboBox Cb_Mes;
+        private System.Windows.Forms.ComboBox Cb_Año;
         private System.Windows.Forms.Label Lbl_SalarioDiario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TB_Porcentaje;
-        private System.Windows.Forms.TextBox TB_NivelSalarial;
+        private System.Windows.Forms.TextBox TB_Bono;
         private System.Windows.Forms.Label Lbl_Bono;
         private System.Windows.Forms.TextBox TB_Nombre;
         private System.Windows.Forms.Label LBL_Nombre;
         private System.Windows.Forms.DataGridView Dgv_Percepciones;
         private FontAwesome.Sharp.IconButton Btn_EliminarPercepcion;
+        private FontAwesome.Sharp.IconButton btn_CargarExcel;
+        private System.Windows.Forms.ComboBox CB_Mes;
+        private System.Windows.Forms.Label Lbl_Año;
     }
 }

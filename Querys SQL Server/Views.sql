@@ -7,3 +7,8 @@ Select e.NoEmpleado as Número,CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as 
  from Empleados e
 Inner join Usuarios u on e.Usuariofk=u.idUsuario
 Inner join Direcciones d on e.Direccionfk=d.idDireccion 
+/*-------------------------------------------------------------- View de Percepciones ----------------------------------------------------------------------------------------*/
+go
+create view vw_Percepciones
+as
+SELECT IdPercepcion as ID,NombrePercepcion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,Bono,BonoPorcentaje as Porcentaje from Percepciones;

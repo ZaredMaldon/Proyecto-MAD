@@ -109,7 +109,7 @@ where NoEmpleado=@IdEmpleado;
 end
 
 end
-
+/*---------------------------------------------------------------------------------------- Llenado de Combobox -----------------------------------------------------------------------------------------------------------------------------------*/
 go
 create procedure SP_LlenadoCombobox
 @Opc int
@@ -121,4 +121,29 @@ begin
  Select idMunicipio,NombreMunicipio from Municipios;
 end 
 
+end
+
+/*-------------------------------------------------------------------------------------- Percepciones------------------------------------------------------------------------------------------------------------------------------------------------*/
+go
+alter procedure SP_ControlPercepciones
+@Opc int,
+@idPer int =null,
+@NombrePer varchar(25) =null,
+@FechaAplicada date =null,
+@Bono money= null,
+@BonoPorcentaje float =null
+as
+begin
+if(@Opc =1)/*Agregar*/
+begin
+Insert into Percepciones (NombrePercepcion,FechaAplicada,Bono,BonoPorcentaje) values (@NombrePer,@FechaAplicada,@Bono,@BonoPorcentaje);
+end
+if(@Opc = 2)/*Eliminar*/
+begin
+Delete from Percepciones where IdPercepcion=@idPer;
+end
+if(@Opc = 3)
+begin
+Select ID,Nombre,Mes,Año,Bono,Porcentaje from vw_Percepciones;
+end
 end

@@ -9,6 +9,12 @@ Inner join Usuarios u on e.Usuariofk=u.idUsuario
 Inner join Direcciones d on e.Direccionfk=d.idDireccion 
 /*-------------------------------------------------------------- View de Percepciones ----------------------------------------------------------------------------------------*/
 go
-create view vw_Percepciones
+alter view vw_Percepciones
 as
-SELECT IdPercepcion as ID,NombrePercepcion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,Bono,BonoPorcentaje as Porcentaje from Percepciones;
+SELECT IdPercepcion as ID,NombrePercepcion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,CONCAT('$ ',Bono)AS Bono,BonoPorcentaje as Porcentaje from Percepciones;
+
+/*-------------------------------------------------------------- View de Deducciones ----------------------------------------------------------------------------------------*/
+go
+create view vw_Deducciones
+as
+SELECT IdDeduccion as ID,NombreDeduccion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,CONCAT('$ ',Descuento)AS Descuento,DescuentoPorcentaje as Porcentaje from Deducciones;

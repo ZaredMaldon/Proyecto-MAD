@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Proyecto_MAD.Tools
 {
@@ -11,9 +12,9 @@ namespace Proyecto_MAD.Tools
     {
         public static DateTime ConvertirStringFechas(string anio, string mes)
         {
-            string fecha="01"+mes+anio;
+            string fecha = "01" + mes + anio;
             CultureInfo info = new CultureInfo("es-MX");
-            DateTime Fecha=DateTime.Parse(fecha,info);
+            DateTime Fecha = DateTime.Parse(fecha, info);
 
             return Fecha;
         }
@@ -24,5 +25,6 @@ namespace Proyecto_MAD.Tools
 
             return Fecha;
         }
+    
     }
 }

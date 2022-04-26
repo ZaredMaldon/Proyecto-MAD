@@ -142,8 +142,35 @@ if(@Opc = 2)/*Eliminar*/
 begin
 Delete from Percepciones where IdPercepcion=@idPer;
 end
-if(@Opc = 3)
+if(@Opc = 3)/*Tabla(view)*/
 begin
 Select ID,Nombre,Mes,Año,Bono,Porcentaje from vw_Percepciones;
 end
+end
+
+/*----------------------------------------------------------------------------------------------Deducciones------------------------------------------------------------------------------------------------------------------------------------------------*/
+go 
+alter procedure SP_ControlDeducciones
+@Opc int,
+@idDeduc int = null,
+@NombreDeduc varchar(25) = null,
+@FechaAplicada date = null,
+@Descuento money=null,
+@Porcentaje float = null
+as
+begin
+
+if(@Opc =1)/*Agregar*/
+begin
+Insert into Deducciones(NombreDeduccion,FechaAplicada,Descuento,DescuentoPorcentaje) values (@NombreDeduc,@FechaAplicada,@Descuento,@Porcentaje);
+end
+if(@Opc = 2)/*Eliminar*/
+begin
+Delete from Deducciones where IdDeduccion=@idDeduc;
+end
+if(@Opc = 3)/*Tabla(view)*/
+begin
+Select ID,Nombre,Mes,Año,Descuento,Porcentaje from vw_Deducciones;
+end
+
 end

@@ -837,5 +837,94 @@ namespace Proyecto_MAD.EnlaceDB
             }
         }
         #endregion
+
+        //----------------------------------------------------------Departamento----------------------------------------------------------------//
+
+        #region ControlDeptos
+
+        public bool ControlDepto(int Op, int idDepto, string Nombre, int sueldoBase)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlDeptos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Op;
+                var parametro2 = _comandosql.Parameters.Add("@NombreDepto", SqlDbType.VarChar, 25);
+                parametro2.Value = Nombre;
+                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Date);
+                parametro3.Value = sueldoBase;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        #endregion
+
+        //----------------------------------------------------Puesto---------------------------------------------------------------------//
+
+        #region ControlDeptos
+
+        public bool ControlPuesto(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlDeptos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Op;
+                var parametro2 = _comandosql.Parameters.Add("@NombrePuesto", SqlDbType.VarChar, 25);
+                parametro2.Value = NombrePuesto;
+                var parametro3 = _comandosql.Parameters.Add("@NivelSalarial", SqlDbType.Date);
+                parametro3.Value = NivelSalarial;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
     }
 }

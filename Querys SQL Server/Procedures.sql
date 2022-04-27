@@ -174,3 +174,48 @@ Select ID,Nombre,Mes,Año,Descuento,Porcentaje from vw_Deducciones;
 end
 
 end
+
+
+/*---------------------------------------------------------------------------Departamentos-------------------------------------------------------------------------------------*/
+
+go
+alter procedure SP_ControlDepto
+@Opc int,
+@idDepto int = null,
+@NombreDepto varchar(25) = null,
+@sueldoBase money = null
+
+as
+begin
+
+if(@Opc =1)/*Agregar*/
+begin
+Insert into Departamentos(NombreDpto,SueldoBase) values (@NombreDepto,@sueldoBase);
+end
+if(@Opc = 2)/*Eliminar*/
+begin
+Delete from Departamentos where idDpto = @idDepto;
+end
+end
+
+
+/*---------------------------------------------------------------------------------------Puesto------------------------------------------------------------------------------------*/
+go
+alter procedure SP_ControlPuesto
+@Opc int,
+@IdPuestos int = null,
+@NombrePuesto varchar(25) = null,
+@NivelSalarial float = null
+
+as
+begin
+
+if(@Opc =1)/*Agregar*/
+begin
+Insert into Puestos(NombrePuesto,NivelSalarial) values (@NombrePuesto,@NivelSalarial);
+end
+if(@Opc = 2)/*Eliminar*/
+begin
+Delete from Puestos where IdPuesto = @IdPuestos;
+end
+end

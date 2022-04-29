@@ -24,6 +24,8 @@ namespace Proyecto_MAD.EnlaceDB
             }
         }
 
+        
+
         #region Conexión
         private static void conectar()
         {
@@ -879,6 +881,13 @@ namespace Proyecto_MAD.EnlaceDB
             }
 
             return add;
+        }
+
+        //Cargar al grid
+
+        internal DataTable DataTable_MostrarDepartamentos(int v)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

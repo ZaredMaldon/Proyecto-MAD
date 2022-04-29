@@ -88,11 +88,12 @@
       <DependentUpon>DatosEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAO_Empleado.cs" />
+    <Compile Include="Departamentos\RegistroDeptos.cs" />
     <Compile Include="EnlaceDB.cs" />
-    <Compile Include="Calculo\Departamentos.cs">
+    <Compile Include="Departamentos\Departamentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Calculo\Departamentos.Designer.cs">
+    <Compile Include="Departamentos\Departamentos.Designer.cs">
       <DependentUpon>Departamentos.cs</DependentUpon>
     </Compile>
     <Compile Include="Calculo\Puestos.cs">
@@ -194,7 +195,7 @@
     <EmbeddedResource Include="Calculo\Deducciones.resx">
       <DependentUpon>Deducciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Calculo\Departamentos.resx">
+    <EmbeddedResource Include="Departamentos\Departamentos.resx">
       <DependentUpon>Departamentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calculo\Percepciones.resx">

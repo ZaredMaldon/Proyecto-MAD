@@ -84,6 +84,7 @@ namespace Proyecto_MAD.Calculo
             this.Btn_ModificarDpto.Text = "Modificar Departamento";
             this.Btn_ModificarDpto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_ModificarDpto.UseVisualStyleBackColor = false;
+            this.Btn_ModificarDpto.Click += new System.EventHandler(this.Btn_ModificarDpto_Click);
             // 
             // Btn_EliminarDpto
             // 
@@ -108,6 +109,7 @@ namespace Proyecto_MAD.Calculo
             this.Btn_EliminarDpto.Text = "Eliminar Departamento";
             this.Btn_EliminarDpto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_EliminarDpto.UseVisualStyleBackColor = false;
+            this.Btn_EliminarDpto.Click += new System.EventHandler(this.Btn_EliminarDpto_Click);
             // 
             // Dgv_Deptos
             // 
@@ -121,6 +123,7 @@ namespace Proyecto_MAD.Calculo
             this.Dgv_Deptos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_Deptos.Size = new System.Drawing.Size(615, 167);
             this.Dgv_Deptos.TabIndex = 52;
+            this.Dgv_Deptos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Deptos_CellContentClick);
             // 
             // Btn_AgregarDpto
             // 
@@ -145,6 +148,7 @@ namespace Proyecto_MAD.Calculo
             this.Btn_AgregarDpto.Text = "Agregar Departamento";
             this.Btn_AgregarDpto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_AgregarDpto.UseVisualStyleBackColor = false;
+            this.Btn_AgregarDpto.Click += new System.EventHandler(this.Btn_AgregarDpto_Click);
             // 
             // TB_SueldoBase
             // 
@@ -205,6 +209,7 @@ namespace Proyecto_MAD.Calculo
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Departamentos";
             this.Text = "Departamentos";
+            this.Load += new System.EventHandler(this.Departamentos_Load);
             this.Panel_Background.ResumeLayout(false);
             this.Panel_Background.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Deptos)).EndInit();

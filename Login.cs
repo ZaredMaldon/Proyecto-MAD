@@ -87,13 +87,11 @@ namespace Proyecto_MAD
                     bool existencia = query.Autentificar(User_TB.Text, Password_TB.Text,1);
                     if (existencia)
                     {
-                       
-                        
+                                              
                         InicioGerentes form = new InicioGerentes();
 
                         form.Show();
                         this.Hide();
-
                     }
                     else
                     {
@@ -126,6 +124,10 @@ namespace Proyecto_MAD
         {
 
         }
-        
+
+        private void User_TB_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

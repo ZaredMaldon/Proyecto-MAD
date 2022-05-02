@@ -22,9 +22,7 @@ namespace Proyecto_MAD.EnlaceDB
             {
                 return _tabla;
             }
-        }
-
-        
+        }        
 
         #region Conexión
         private static void conectar()
@@ -32,8 +30,7 @@ namespace Proyecto_MAD.EnlaceDB
             //string cnn = ConfigurationManager.AppSettings["desarrollo1"];
             string cnn = ConfigurationManager.ConnectionStrings["BD_MAD_1"].ToString();
             _conexion = new SqlConnection(cnn);
-            _conexion.Open();
-           
+            _conexion.Open();           
         }
         
         private static void desconectar()
@@ -861,7 +858,7 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro1.Value = Op;
                 var parametro2 = _comandosql.Parameters.Add("@NombreDepto", SqlDbType.VarChar, 25);
                 parametro2.Value = Nombre;
-                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Date);
+                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Int);
                 parametro3.Value = sueldoBase;
 
                 _adaptador.InsertCommand = _comandosql;
@@ -896,7 +893,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         #region ControlDeptos
 
-        public bool ControlPuesto(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial)
+        public bool ControlPuesto(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial, float SalarioDiario)
         {
             var msg = "";
             var add = true;
@@ -913,8 +910,10 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro1.Value = Op;
                 var parametro2 = _comandosql.Parameters.Add("@NombrePuesto", SqlDbType.VarChar, 25);
                 parametro2.Value = NombrePuesto;
-                var parametro3 = _comandosql.Parameters.Add("@NivelSalarial", SqlDbType.Date);
+                var parametro3 = _comandosql.Parameters.Add("@NivelSalarial", SqlDbType.Float);
                 parametro3.Value = NivelSalarial;
+                var parametro4 = _comandosql.Parameters.Add("@SalarioDiario", SqlDbType.Float);
+                parametro4.Value = SalarioDiario;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();

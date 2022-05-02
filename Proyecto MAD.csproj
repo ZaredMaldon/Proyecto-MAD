@@ -88,7 +88,6 @@
       <DependentUpon>DatosEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="DAO\DAO_Empleado.cs" />
-    <Compile Include="Departamentos\RegistroDeptos.cs" />
     <Compile Include="EnlaceDB.cs" />
     <Compile Include="Departamentos\Departamentos.cs">
       <SubType>Form</SubType>

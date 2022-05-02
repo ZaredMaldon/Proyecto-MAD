@@ -18,3 +18,5 @@ go
 create view vw_Deducciones
 as
 SELECT IdDeduccion as ID,NombreDeduccion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,CONCAT('$ ',Descuento)AS Descuento,DescuentoPorcentaje as Porcentaje from Deducciones;
+
+

@@ -31,7 +31,26 @@ namespace Proyecto_MAD.Calculo
         #region Botones
         private void Btn_AgregarPuesto_Click(object sender, EventArgs e)
         {
-            bool realizada = db.ControlPuesto(1, 0, TB_Nombre.Text, float.Parse(TB_Bono.Text));
+            if (Validaciones())
+            {
+                bool realizada = db.ControlPuesto(1, 0, TB_Nombre.Text, int.Parse(TB_NivelSalarial.Text), float.Parse(TB_SalarioDiario.Text));
+                if (realizada)
+                {
+                    MessageBox.Show("Registro Completado", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private bool Validaciones()
+        {
+            bool validaciones = true;
+
+            if (TB_Nombre.Text == "" || TB_NivelSalarial.Text == "" || TB_SalarioDiario.Text == "")
+            {
+                MessageBox.Show("Llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                validaciones = false;
+            }
+            return validaciones;
         }
 
         private void Btn_ModificarPuesto_Click(object sender, EventArgs e)
@@ -41,7 +60,24 @@ namespace Proyecto_MAD.Calculo
 
         private void Btn_EliminarPuesto_Click(object sender, EventArgs e)
         {
+            if (!use)
+            {
+                MessageBox.Show("Seleccione primero un Puesto de la tabla", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                DialogResult dR = MessageBox.Show("¿Esta seguro de eliminar a este Puesto?\n Al eliminarlo no podrá recuperar los datos de este por ningun medio", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dR == DialogResult.Yes)
+                {
+                    bool realizada = db.ControlPuesto(2, id, TB_Nombre.Text, int.Parse(TB_SalarioDiario.Text), float.Parse(TB_NivelSalarial.Text));
+                    if (realizada)
+                    {
+                        MessageBox.Show("Se ha eliminado el Puesto correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
+                }
+
+            }
         }
 
         #endregion

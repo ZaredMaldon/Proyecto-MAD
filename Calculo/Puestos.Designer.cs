@@ -34,10 +34,8 @@ namespace Proyecto_MAD.Calculo
             this.Btn_EliminarPuesto = new FontAwesome.Sharp.IconButton();
             this.Btn_ModificarPuesto = new FontAwesome.Sharp.IconButton();
             this.Dgv_Puestos = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TB_SalarioDiario = new System.Windows.Forms.TextBox();
             this.Lbl_SalarioDiario = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TB_Porcentaje = new System.Windows.Forms.TextBox();
             this.TB_NivelSalarial = new System.Windows.Forms.TextBox();
             this.Lbl_NivelSalarial = new System.Windows.Forms.Label();
             this.TB_Nombre = new System.Windows.Forms.TextBox();
@@ -54,10 +52,8 @@ namespace Proyecto_MAD.Calculo
             this.Panel_Background.Controls.Add(this.Btn_EliminarPuesto);
             this.Panel_Background.Controls.Add(this.Btn_ModificarPuesto);
             this.Panel_Background.Controls.Add(this.Dgv_Puestos);
-            this.Panel_Background.Controls.Add(this.textBox1);
+            this.Panel_Background.Controls.Add(this.TB_SalarioDiario);
             this.Panel_Background.Controls.Add(this.Lbl_SalarioDiario);
-            this.Panel_Background.Controls.Add(this.label1);
-            this.Panel_Background.Controls.Add(this.TB_Porcentaje);
             this.Panel_Background.Controls.Add(this.TB_NivelSalarial);
             this.Panel_Background.Controls.Add(this.Lbl_NivelSalarial);
             this.Panel_Background.Controls.Add(this.TB_Nombre);
@@ -133,13 +129,13 @@ namespace Proyecto_MAD.Calculo
             this.Dgv_Puestos.TabIndex = 43;
             this.Dgv_Puestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Puestos_CellContentClick);
             // 
-            // textBox1
+            // TB_SalarioDiario
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.textBox1.Location = new System.Drawing.Point(476, 76);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 23);
-            this.textBox1.TabIndex = 31;
+            this.TB_SalarioDiario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_SalarioDiario.Location = new System.Drawing.Point(476, 76);
+            this.TB_SalarioDiario.Name = "TB_SalarioDiario";
+            this.TB_SalarioDiario.Size = new System.Drawing.Size(154, 23);
+            this.TB_SalarioDiario.TabIndex = 31;
             // 
             // Lbl_SalarioDiario
             // 
@@ -151,25 +147,6 @@ namespace Proyecto_MAD.Calculo
             this.Lbl_SalarioDiario.Size = new System.Drawing.Size(104, 16);
             this.Lbl_SalarioDiario.TabIndex = 30;
             this.Lbl_SalarioDiario.Text = "Salario Diario*";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(341, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 16);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Porcentaje*";
-            // 
-            // TB_Porcentaje
-            // 
-            this.TB_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Porcentaje.Location = new System.Drawing.Point(344, 76);
-            this.TB_Porcentaje.Name = "TB_Porcentaje";
-            this.TB_Porcentaje.Size = new System.Drawing.Size(103, 23);
-            this.TB_Porcentaje.TabIndex = 28;
             // 
             // TB_NivelSalarial
             // 
@@ -269,10 +246,8 @@ namespace Proyecto_MAD.Calculo
         private FontAwesome.Sharp.IconButton Btn_AgregarPuesto;
         private System.Windows.Forms.Label LBL_Title;
         private System.Windows.Forms.Label LBL_Nombre;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TB_SalarioDiario;
         private System.Windows.Forms.Label Lbl_SalarioDiario;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TB_Porcentaje;
         private System.Windows.Forms.TextBox TB_NivelSalarial;
         private System.Windows.Forms.Label Lbl_NivelSalarial;
         private System.Windows.Forms.TextBox TB_Nombre;

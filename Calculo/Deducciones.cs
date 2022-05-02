@@ -144,6 +144,9 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             }
         }
 
-        
+        private void Dgv_Deducciones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

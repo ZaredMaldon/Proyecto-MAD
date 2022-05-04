@@ -37,11 +37,11 @@ if(@bis=0)/*Año bis*/
 begin
 	if(@Aux = 0)/*Para tomar los meses que tienen 30 dias*/
 	begin
-		if(@Aux=2)/*Febrero*/
+		if(@Mes=2)/*Febrero*/
 		begin
 		Select @NoDias=29
 		end
-		else if(@Aux<>2)/*Abril, junio, septiembre y noviembre*/
+		else if(@Mes<>2)/*Abril, junio, septiembre y noviembre*/
 		begin 
 		Select @NoDias=30
 		end
@@ -55,11 +55,11 @@ else if(@bis<>0)/*Año no bis*/
 begin
 	if(@Aux = 0)/*Para tomar los meses que tienen 30 dias*/
 	begin
-		if(@Aux=2)/*Febrero*/
+		if(@Mes=2)/*Febrero*/
 		begin
 		Select @NoDias=28
 		end
-		else if(@Aux<>2)/*Abril, junio, septiembre y noviembre*/
+		else if(@Mes<>2)/*Abril, junio, septiembre y noviembre*/
 		begin 
 		Select @NoDias=30
 		end
@@ -71,4 +71,17 @@ begin
 end
 
 RETURN @NoDias
+END
+/*------------------------------------------------------------------------------------ Dias trabajados -----------------------------------------------------------------------------------------*/
+go
+CREATE FUNCTION fn_DiasTrabajados(@Fecha Date,@Ingreso Date) RETURNS INT
+AS
+BEGIN
+Declare @Diferencia int
+Select @Diferencia= DATEDIFF(MONTH,@Ingreso,@Fecha)
+--Select DATEDIFF(MONTH,'20220528',Getdate())
+if(@Diferencia=0)
+begin
+
+end
 END

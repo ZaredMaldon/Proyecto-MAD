@@ -31,6 +31,8 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Deducciones));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.Lbl_Año = new System.Windows.Forms.Label();
+            this.Cb_Año = new System.Windows.Forms.ComboBox();
             this.btn_CargarExcel = new FontAwesome.Sharp.IconButton();
             this.Btn_EliminarDeduccion = new FontAwesome.Sharp.IconButton();
             this.Dgv_Deducciones = new System.Windows.Forms.DataGridView();
@@ -44,8 +46,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.LBL_Nombre = new System.Windows.Forms.Label();
             this.Btn_AgregarDeduccion = new FontAwesome.Sharp.IconButton();
             this.LBL_Title = new System.Windows.Forms.Label();
-            this.Lbl_Año = new System.Windows.Forms.Label();
-            this.Cb_Año = new System.Windows.Forms.ComboBox();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Deducciones)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +72,31 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(647, 364);
             this.Panel_Background.TabIndex = 25;
+            // 
+            // Lbl_Año
+            // 
+            this.Lbl_Año.AutoSize = true;
+            this.Lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Año.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Año.Location = new System.Drawing.Point(422, 100);
+            this.Lbl_Año.Name = "Lbl_Año";
+            this.Lbl_Año.Size = new System.Drawing.Size(103, 16);
+            this.Lbl_Año.TabIndex = 65;
+            this.Lbl_Año.Text = "Año Aplicado*";
+            // 
+            // Cb_Año
+            // 
+            this.Cb_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.Cb_Año.FormattingEnabled = true;
+            this.Cb_Año.Items.AddRange(new object[] {
+            "2022",
+            "2021",
+            "2020",
+            "2019"});
+            this.Cb_Año.Location = new System.Drawing.Point(425, 119);
+            this.Cb_Año.Name = "Cb_Año";
+            this.Cb_Año.Size = new System.Drawing.Size(94, 23);
+            this.Cb_Año.TabIndex = 64;
             // 
             // btn_CargarExcel
             // 
@@ -136,6 +161,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Dgv_Deducciones.Size = new System.Drawing.Size(615, 150);
             this.Dgv_Deducciones.TabIndex = 59;
             this.Dgv_Deducciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Deducciones_CellClick);
+            this.Dgv_Deducciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Deducciones_CellContentClick);
             // 
             // Cb_Mes
             // 
@@ -262,31 +288,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.LBL_Title.Size = new System.Drawing.Size(138, 23);
             this.LBL_Title.TabIndex = 20;
             this.LBL_Title.Text = "Deducciones";
-            // 
-            // Lbl_Año
-            // 
-            this.Lbl_Año.AutoSize = true;
-            this.Lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Año.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Año.Location = new System.Drawing.Point(422, 100);
-            this.Lbl_Año.Name = "Lbl_Año";
-            this.Lbl_Año.Size = new System.Drawing.Size(103, 16);
-            this.Lbl_Año.TabIndex = 65;
-            this.Lbl_Año.Text = "Año Aplicado*";
-            // 
-            // Cb_Año
-            // 
-            this.Cb_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.Cb_Año.FormattingEnabled = true;
-            this.Cb_Año.Items.AddRange(new object[] {
-            "2022",
-            "2021",
-            "2020",
-            "2019"});
-            this.Cb_Año.Location = new System.Drawing.Point(425, 119);
-            this.Cb_Año.Name = "Cb_Año";
-            this.Cb_Año.Size = new System.Drawing.Size(94, 23);
-            this.Cb_Año.TabIndex = 64;
             // 
             // Deducciones
             // 

@@ -62,3 +62,39 @@ H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.IO.P
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\DocumentFormat.OpenXml.xml
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\SpreadsheetLight.xml
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.IO.Packaging.xml
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\Proyecto MAD.exe.config
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\Proyecto MAD.exe
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\Proyecto MAD.pdb
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\SpreadsheetLight.dll
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\System.Drawing.Common.dll
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\System.IO.Packaging.dll
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\SpreadsheetLight.xml
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\bin\Debug\System.IO.Packaging.xml
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto MAD.csproj.AssemblyReference.cache
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto MAD.csproj.SuggestedBindingRedirects.cache
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Calculo.DatosEmpresa.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Percepciones_y_deducciones.Deducciones.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Calculo.Departamentos.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Percepciones_y_deducciones.Percepciones.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Calculo.Puestos.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Gerente.Empresa.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Gerente.GestionEmpleado.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Gerente.InicioGerentes.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Login.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Properties.Resources.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.ConsultaRecibo.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.DatosPersonales.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.Home.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.InicioEmpleados.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Recibo.GenerarRecibo.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Reportes.ReporteGeneral.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Reportes.ReporteHeadcounter.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto_MAD.Reportes.ReporteNómina.resources
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto MAD.csproj.GenerateResource.cache
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto MAD.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto MAD.csproj.CopyComplete
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto MAD.exe
+C:\Users\DELL\Documents\GitHub\Proyecto-MAD\obj\Debug\Proyecto MAD.pdb

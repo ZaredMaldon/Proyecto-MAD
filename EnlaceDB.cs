@@ -22,7 +22,7 @@ namespace Proyecto_MAD.EnlaceDB
             {
                 return _tabla;
             }
-        }
+        }        
 
         #region Conexión
         private static void conectar()
@@ -30,8 +30,7 @@ namespace Proyecto_MAD.EnlaceDB
             //string cnn = ConfigurationManager.AppSettings["desarrollo1"];
             string cnn = ConfigurationManager.ConnectionStrings["BD_MAD_1"].ToString();
             _conexion = new SqlConnection(cnn);
-            _conexion.Open();
-           
+            _conexion.Open();           
         }
         
         private static void desconectar()
@@ -837,5 +836,105 @@ namespace Proyecto_MAD.EnlaceDB
             }
         }
         #endregion
+
+        //----------------------------------------------------------Departamento----------------------------------------------------------------//
+
+        #region ControlDeptos
+
+        public bool ControlDepto(int Op, int idDepto, string Nombre, int sueldoBase)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlDeptos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Op;
+                var parametro2 = _comandosql.Parameters.Add("@NombreDepto", SqlDbType.VarChar, 25);
+                parametro2.Value = Nombre;
+                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Int);
+                parametro3.Value = sueldoBase;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        //Cargar al grid
+
+        internal DataTable DataTable_MostrarDepartamentos(int v)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        //----------------------------------------------------Puesto---------------------------------------------------------------------//
+
+        #region ControlDeptos
+
+        public bool ControlPuesto(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial, float SalarioDiario)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlDeptos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Op;
+                var parametro2 = _comandosql.Parameters.Add("@NombrePuesto", SqlDbType.VarChar, 25);
+                parametro2.Value = NombrePuesto;
+                var parametro3 = _comandosql.Parameters.Add("@NivelSalarial", SqlDbType.Float);
+                parametro3.Value = NivelSalarial;
+                var parametro4 = _comandosql.Parameters.Add("@SalarioDiario", SqlDbType.Float);
+                parametro4.Value = SalarioDiario;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+
+        #endregion
+
     }
 }

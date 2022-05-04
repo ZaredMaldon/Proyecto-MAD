@@ -123,6 +123,7 @@ namespace Proyecto_MAD
             this.User_TB.Name = "User_TB";
             this.User_TB.Size = new System.Drawing.Size(221, 21);
             this.User_TB.TabIndex = 1;
+            this.User_TB.TextChanged += new System.EventHandler(this.User_TB_TextChanged);
             // 
             // Password_TB
             // 

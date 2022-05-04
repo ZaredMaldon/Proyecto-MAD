@@ -172,7 +172,10 @@ if(@Opc = 3)/*Tabla(view)*/
 begin
 Select ID,Nombre,Mes,Año,Descuento,Porcentaje from vw_Deducciones;
 end
-
+begin UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase
+from Departamentos
+where idDpto=@idDepto;
+end
 end
 
 
@@ -226,6 +229,10 @@ Delete from Puestos where IdPuesto = @IdPuestos;
 end
 if(@Opc = 3)/*Editar*/
 begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial
+from Puestos
+where IdPuesto=@IdPuestos;
+end
+begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial, SalarioDiario =@SalarioDiario 
 from Puestos
 where IdPuesto=@IdPuestos;
 end

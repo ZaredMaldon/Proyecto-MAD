@@ -24,7 +24,7 @@ namespace Proyecto_MAD.Calculo
         private void Puestos_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            dt = db.DataTable_MostrarPercep(3);
+            dt = db.DataTable_MostrarPuestos(3);
             Dgv_Puestos.DataSource = dt;
         }
 
@@ -33,7 +33,7 @@ namespace Proyecto_MAD.Calculo
         {
             if (Validaciones())
             {
-                bool realizada = db.ControlPuesto(1, 0, TB_Nombre.Text, int.Parse(TB_NivelSalarial.Text), float.Parse(TB_SalarioDiario.Text));
+                bool realizada = db.ControlPuestos(1, 0, TB_Nombre.Text, int.Parse(TB_NivelSalarial.Text), float.Parse(TB_SalarioDiario.Text));
                 if (realizada)
                 {
                     MessageBox.Show("Registro Completado", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -69,7 +69,7 @@ namespace Proyecto_MAD.Calculo
                 DialogResult dR = MessageBox.Show("¿Esta seguro de eliminar a este Puesto?\n Al eliminarlo no podrá recuperar los datos de este por ningun medio", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dR == DialogResult.Yes)
                 {
-                    bool realizada = db.ControlPuesto(2, id, TB_Nombre.Text, int.Parse(TB_SalarioDiario.Text), float.Parse(TB_NivelSalarial.Text));
+                    bool realizada = db.ControlPuestos(2, id, TB_Nombre.Text, int.Parse(TB_SalarioDiario.Text), float.Parse(TB_NivelSalarial.Text));
                     if (realizada)
                     {
                         MessageBox.Show("Se ha eliminado el Puesto correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);

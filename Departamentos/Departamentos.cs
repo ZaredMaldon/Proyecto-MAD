@@ -24,7 +24,7 @@ namespace Proyecto_MAD.Calculo
         private void Departamentos_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            dt = db.DataTable_MostrarPercep(3);
+            dt = db.DataTable_MostrarDeptos(3);
             Dgv_Deptos.DataSource = dt;
         }
 

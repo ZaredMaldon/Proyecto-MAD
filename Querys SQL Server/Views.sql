@@ -19,4 +19,20 @@ create view vw_Deducciones
 as
 SELECT IdDeduccion as ID,NombreDeduccion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,CONCAT('$ ',Descuento)AS Descuento,DescuentoPorcentaje as Porcentaje from Deducciones;
 
+/*-------------------------------------------------------------- View de Departamentos ----------------------------------------------------------------------------------------*/
+go
+create view vw_Departamentos
+as
+SELECT idDpto as ID,NombreDpto as Nombre,CONCAT('$ ',SueldoBase)AS SueldoBase from Departamentos;
+
+/*-------------------------------------------------------------- View de Puestos ----------------------------------------------------------------------------------------*/
+go
+create view vw_Puestos
+as
+SELECT IdPuesto as ID,NombrePuesto as Nombre,CONCAT('$ ', NivelSalarial)AS NivelSalarial from Puestos;
+
+
+
+
+
 

@@ -849,7 +849,7 @@ namespace Proyecto_MAD.EnlaceDB
             try
             {
                 conectar();
-                string qry = "SP_ControlDeptos";
+                string qry = "SP_ControlDepto";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 1200;
@@ -880,11 +880,42 @@ namespace Proyecto_MAD.EnlaceDB
             return add;
         }
 
-        //Cargar al grid
-
-        internal DataTable DataTable_MostrarDepartamentos(int v)
+        //Carga Datos al grid
+        public DataTable DataTable_MostrarDeptos(int Opc)
         {
-            throw new NotImplementedException();
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "SP_ControlDepto";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
         }
 
         #endregion
@@ -893,7 +924,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         #region ControlPuestos
 
-        public bool ControlPuesto(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial, float SalarioDiario)
+        public bool ControlPuestos(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial, float SalarioDiario)
         {
             var msg = "";
             var add = true;
@@ -901,7 +932,7 @@ namespace Proyecto_MAD.EnlaceDB
             try
             {
                 conectar();
-                string qry = "SP_ControlDeptos";
+                string qry = "SP_ControlPuestos";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 1200;
@@ -932,6 +963,44 @@ namespace Proyecto_MAD.EnlaceDB
             }
 
             return add;
+        }
+
+        //Carga Datos al grid
+        public DataTable DataTable_MostrarPuestos(int Opc)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "SP_ControlPuestos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
         }
 
         #endregion

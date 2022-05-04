@@ -179,7 +179,7 @@ end
 /*---------------------------------------------------------------------------Departamentos-------------------------------------------------------------------------------------*/
 
 go
-alter procedure SP_ControlDepto
+create procedure SP_ControlDepto
 @Opc int,
 @idDepto int = null,
 @NombreDepto varchar(25) = null,
@@ -206,11 +206,11 @@ end
 
 /*---------------------------------------------------------------------------------------Puesto------------------------------------------------------------------------------------*/
 go
-alter procedure SP_ControlPuesto
+create procedure SP_ControlPuesto
 @Opc int,
 @IdPuestos int = null,
 @NombrePuesto varchar(25) = null,
-@NivelSalarial float = null
+@NivelSalarial float = null,
 @SalarioDiario float =null
 
 as
@@ -218,15 +218,15 @@ begin
 
 if(@Opc =1)/*Agregar*/
 begin
-Insert into Puestos(NombrePuesto,NivelSalarial, SalarioDiario) values (@NombrePuesto,@NivelSalarial,@SalarioDiario);
+Insert into Puestos(NombrePuesto,NivelSalarial) values (@NombrePuesto,@NivelSalarial);
 end
 if(@Opc = 2)/*Eliminar*/
 begin
 Delete from Puestos where IdPuesto = @IdPuestos;
 end
 if(@Opc = 3)/*Editar*/
-begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial, SalarioDiario =@SalarioDiario 
+begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial
 from Puestos
-where IdPuesto=@idPuesto;
+where IdPuesto=@IdPuestos;
 end
 end

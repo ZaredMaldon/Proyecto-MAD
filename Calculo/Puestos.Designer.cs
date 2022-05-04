@@ -151,7 +151,7 @@ namespace Proyecto_MAD.Calculo
             // TB_NivelSalarial
             // 
             this.TB_NivelSalarial.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_NivelSalarial.Location = new System.Drawing.Point(196, 76);
+            this.TB_NivelSalarial.Location = new System.Drawing.Point(269, 76);
             this.TB_NivelSalarial.Name = "TB_NivelSalarial";
             this.TB_NivelSalarial.Size = new System.Drawing.Size(103, 23);
             this.TB_NivelSalarial.TabIndex = 27;
@@ -161,7 +161,7 @@ namespace Proyecto_MAD.Calculo
             this.Lbl_NivelSalarial.AutoSize = true;
             this.Lbl_NivelSalarial.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_NivelSalarial.ForeColor = System.Drawing.Color.White;
-            this.Lbl_NivelSalarial.Location = new System.Drawing.Point(193, 57);
+            this.Lbl_NivelSalarial.Location = new System.Drawing.Point(266, 57);
             this.Lbl_NivelSalarial.Name = "Lbl_NivelSalarial";
             this.Lbl_NivelSalarial.Size = new System.Drawing.Size(103, 16);
             this.Lbl_NivelSalarial.TabIndex = 26;

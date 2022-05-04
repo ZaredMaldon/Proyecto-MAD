@@ -161,7 +161,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Dgv_Deducciones.Size = new System.Drawing.Size(615, 150);
             this.Dgv_Deducciones.TabIndex = 59;
             this.Dgv_Deducciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Deducciones_CellClick);
-            this.Dgv_Deducciones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Deducciones_CellContentClick);
             // 
             // Cb_Mes
             // 

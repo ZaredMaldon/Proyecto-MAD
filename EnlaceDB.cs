@@ -891,7 +891,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         //----------------------------------------------------Puesto---------------------------------------------------------------------//
 
-        #region ControlDeptos
+        #region ControlPuestos
 
         public bool ControlPuesto(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial, float SalarioDiario)
         {

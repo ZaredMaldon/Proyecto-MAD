@@ -1,1 +1,5 @@
 /App.config
+*.config
+*.sln
+bin/
+packages/

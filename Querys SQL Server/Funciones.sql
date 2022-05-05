@@ -74,14 +74,25 @@ RETURN @NoDias
 END
 /*------------------------------------------------------------------------------------ Dias trabajados -----------------------------------------------------------------------------------------*/
 go
-CREATE FUNCTION fn_DiasTrabajados(@Fecha Date,@Ingreso Date) RETURNS INT
+ALTER FUNCTION fn_Diastrabajados(@Fecha Date,@Ingreso Date) RETURNS INT/*Se obtienen los dias trabajados solo si la persona se inscribe el mes de la nomina*/
 AS
 BEGIN
-Declare @Diferencia int
-Select @Diferencia= DATEDIFF(MONTH,@Ingreso,@Fecha)
---Select DATEDIFF(MONTH,'20220528',Getdate())
-if(@Diferencia=0)
-begin
+Declare @Diastrabajados	int
+Declare @Diferencia			int
+Declare @Aux					int	
+Declare @Diasdelmes			int
 
+Select @Diferencia= DATEDIFF(MONTH,@Ingreso,@Fecha)
+--Select DATEDIFF(Day,'20220501',Getdate())
+if(@Diferencia=0)/*Si esta en el mismo mes de su ingreso*/
+begin
+	Select @Aux=DATEPART(DAY,@Ingreso),@Diasdelmes=dbo.fn_DiasdelMes(@Fecha)
+	Select @Diastrabajados=@Diasdelmes-@Aux;
 end
+else
+begin
+	Select @Diastrabajados=dbo.fn_DiasdelMes(@Fecha)--esto puede ser modificado para que detecte las faltas de cada mes de una persona y restarlas 
+end
+
+return @Diastrabajados
 END

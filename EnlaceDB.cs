@@ -879,6 +879,41 @@ namespace Proyecto_MAD.EnlaceDB
 
             return add;
         }
+        public bool ControlDeptos(int Opc, int idDepto)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlDepto";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro6 = _comandosql.Parameters.Add("@idDepto", SqlDbType.Int);
+                parametro6.Value = idDepto;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return add;
+        }
 
         //Carga Datos al grid
         public DataTable DataTable_MostrarDeptos(int Opc)
@@ -898,8 +933,6 @@ namespace Proyecto_MAD.EnlaceDB
 
                 var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
                 parametro1.Value = Opc;
-
-
 
                 _adaptador.SelectCommand = _comandosql;
                 _adaptador.Fill(tabla);
@@ -962,6 +995,41 @@ namespace Proyecto_MAD.EnlaceDB
                 desconectar();
             }
 
+            return add;
+        }
+        public bool ControlPuesto(int Opc, int idPuestos)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlPuestos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro6 = _comandosql.Parameters.Add("@idPuestos", SqlDbType.Int);
+                parametro6.Value = idPuestos;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
             return add;
         }
 

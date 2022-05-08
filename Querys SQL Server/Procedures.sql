@@ -125,7 +125,7 @@ end
 
 /*-------------------------------------------------------------------------------------- Percepciones------------------------------------------------------------------------------------------------------------------------------------------------*/
 go
-alter procedure SP_ControlPercepciones
+create procedure SP_ControlPercepciones
 @Opc int,
 @idPer int =null,
 @NombrePer varchar(25) =null,
@@ -182,7 +182,7 @@ end
 /*---------------------------------------------------------------------------Departamentos-------------------------------------------------------------------------------------*/
 
 go
-create procedure SP_ControlDepto
+alter procedure SP_ControlDepto
 @Opc int,
 @idDepto int = null,
 @NombreDepto varchar(25) = null,
@@ -203,6 +203,10 @@ if(@Opc = 3)/*Editar*/
 begin UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase
 from Departamentos
 where idDpto=@idDepto;
+end
+if(@Opc = 4) /*mostrar*/
+begin
+Select ID,Nombre,SueldoBase from vw_Departamentos;
 end
 end
 
@@ -232,8 +236,8 @@ begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial
 from Puestos
 where IdPuesto=@IdPuestos;
 end
-begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial, SalarioDiario =@SalarioDiario 
-from Puestos
-where IdPuesto=@IdPuestos;
+if(@Opc = 4) /*mostrar*/
+begin
+Select ID,Nombre,NivelSalarial from vw_Puestos;
 end
 end

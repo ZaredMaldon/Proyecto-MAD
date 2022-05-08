@@ -9,7 +9,7 @@ Inner join Usuarios u on e.Usuariofk=u.idUsuario
 Inner join Direcciones d on e.Direccionfk=d.idDireccion 
 /*-------------------------------------------------------------- View de Percepciones ----------------------------------------------------------------------------------------*/
 go
-alter view vw_Percepciones
+create view vw_Percepciones
 as
 SELECT IdPercepcion as ID,NombrePercepcion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,CONCAT('$ ',Bono)AS Bono,BonoPorcentaje as Porcentaje from Percepciones;
 

@@ -24,7 +24,7 @@ namespace Proyecto_MAD.Calculo
         private void Puestos_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-            dt = db.DataTable_MostrarPuestos(3);
+            dt = db.DataTable_MostrarPuestos(4);
             Dgv_Puestos.DataSource = dt;
         }
 
@@ -55,7 +55,25 @@ namespace Proyecto_MAD.Calculo
 
         private void Btn_ModificarPuesto_Click(object sender, EventArgs e)
         {
-
+            if (!use)
+            {
+                MessageBox.Show("Seleccione primero un Puesto de la tabla", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                DialogResult dR = MessageBox.Show("¿Esta seguro de modificar a este Puesto?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dR == DialogResult.Yes)
+                {
+                    if (Validaciones())
+                    {
+                        bool realizada = db.ControlPuestos(3, 0, TB_Nombre.Text, int.Parse(TB_NivelSalarial.Text), float.Parse(TB_SalarioDiario.Text));
+                        if (realizada)
+                        {
+                            MessageBox.Show("Se ha modificado el Puesto correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }           
         }
 
         private void Btn_EliminarPuesto_Click(object sender, EventArgs e)
@@ -69,7 +87,7 @@ namespace Proyecto_MAD.Calculo
                 DialogResult dR = MessageBox.Show("¿Esta seguro de eliminar a este Puesto?\n Al eliminarlo no podrá recuperar los datos de este por ningun medio", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dR == DialogResult.Yes)
                 {
-                    bool realizada = db.ControlPuestos(2, id, TB_Nombre.Text, int.Parse(TB_SalarioDiario.Text), float.Parse(TB_NivelSalarial.Text));
+                    bool realizada = db.ControlPuesto(2, id);
                     if (realizada)
                     {
                         MessageBox.Show("Se ha eliminado el Puesto correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);

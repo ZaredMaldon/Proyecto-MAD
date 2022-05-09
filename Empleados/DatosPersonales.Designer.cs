@@ -261,6 +261,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.TB_Telefono2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Telefono2.Location = new System.Drawing.Point(428, 253);
+            this.TB_Telefono2.MaxLength = 10;
             this.TB_Telefono2.Name = "TB_Telefono2";
             this.TB_Telefono2.Size = new System.Drawing.Size(150, 23);
             this.TB_Telefono2.TabIndex = 14;
@@ -270,6 +271,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.TB_RFC.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_RFC.Location = new System.Drawing.Point(428, 149);
+            this.TB_RFC.MaxLength = 13;
             this.TB_RFC.Name = "TB_RFC";
             this.TB_RFC.Size = new System.Drawing.Size(150, 23);
             this.TB_RFC.TabIndex = 10;
@@ -278,6 +280,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.TB_NSS.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_NSS.Location = new System.Drawing.Point(227, 149);
+            this.TB_NSS.MaxLength = 11;
             this.TB_NSS.Name = "TB_NSS";
             this.TB_NSS.Size = new System.Drawing.Size(154, 23);
             this.TB_NSS.TabIndex = 9;
@@ -309,6 +312,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.TB_Telefono.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Telefono.Location = new System.Drawing.Point(428, 224);
+            this.TB_Telefono.MaxLength = 10;
             this.TB_Telefono.Name = "TB_Telefono";
             this.TB_Telefono.Size = new System.Drawing.Size(150, 23);
             this.TB_Telefono.TabIndex = 13;
@@ -329,6 +333,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.TB_CURP.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_CURP.Location = new System.Drawing.Point(37, 149);
+            this.TB_CURP.MaxLength = 18;
             this.TB_CURP.Name = "TB_CURP";
             this.TB_CURP.Size = new System.Drawing.Size(150, 23);
             this.TB_CURP.TabIndex = 8;
@@ -612,6 +617,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.TB_NoCuenta.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_NoCuenta.Location = new System.Drawing.Point(421, 38);
+            this.TB_NoCuenta.MaxLength = 20;
             this.TB_NoCuenta.Name = "TB_NoCuenta";
             this.TB_NoCuenta.Size = new System.Drawing.Size(150, 23);
             this.TB_NoCuenta.TabIndex = 22;

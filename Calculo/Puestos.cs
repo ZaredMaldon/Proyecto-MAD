@@ -113,6 +113,8 @@ namespace Proyecto_MAD.Calculo
 
             }
         }
+
+        #region validaciones
         //cuando se presiona una tecla
         private void TB_NivelSalarial_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -139,5 +141,8 @@ namespace Proyecto_MAD.Calculo
                return;
            }       
         }
+
+        #endregion
+
     }
 }

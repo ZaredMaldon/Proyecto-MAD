@@ -505,6 +505,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_Telefono2.Name = "TB_Telefono2";
             this.TB_Telefono2.Size = new System.Drawing.Size(150, 23);
             this.TB_Telefono2.TabIndex = 14;
+            this.TB_Telefono2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Telefono2_KeyPress);
             // 
             // TB_RFC
             // 
@@ -577,6 +578,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_Telefono.Name = "TB_Telefono";
             this.TB_Telefono.Size = new System.Drawing.Size(150, 23);
             this.TB_Telefono.TabIndex = 13;
+            this.TB_Telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Telefono_KeyPress);
             // 
             // lblb_Email
             // 

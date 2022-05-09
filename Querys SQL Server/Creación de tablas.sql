@@ -89,6 +89,16 @@ CONSTRAINT PK_Puestos PRIMARY KEY(IdPuesto),
 constraint UQ_Puestos_Nombre UNIQUE (NombrePuesto)
 );
 
+CREATE TABLE PuestoDepartamento(
+IdPD								  int IDENTITY (1,1)	NOT NULL,
+Departamentofk				  int						NOT NULL,  
+Puestofk						  int						NOT NULL,
+SalarioDiario					  money	,
+CONSTRAINT PK_PuestoDpto PRIMARY KEY(IdPD),
+CONSTRAINT FK_Departamento2 FOREIGN KEY(Departamentofk) REFERENCES Departamentos(idDpto),
+CONSTRAINT FK_Puesto2 FOREIGN KEY(Puestofk) REFERENCES Puestos(IdPuesto)
+);
+
 CREATE TABLE Deducciones(
 IdDeduccion				int			IDENTITY (1,1)	NOT NULL,
 NombreDeduccion			varchar(25)	NOT NULL,
@@ -148,13 +158,5 @@ CONSTRAINT FK_Empleado4 FOREIGN KEY(Empleadofk) REFERENCES Empleados(NoEMpleado)
 CONSTRAINT FK_PuestoDeDpto FOREIGN KEY(PuestoDptofk) REFERENCES PuestoDepartamento(IdPD)
 )
 
-CREATE TABLE PuestoDepartamento(
-IdPD								  int IDENTITY (1,1)	NOT NULL,
-Departamentofk				  int						NOT NULL,  
-Puestofk						  int						NOT NULL,
-SalarioDiario					  money	,
-CONSTRAINT PK_PuestoDpto PRIMARY KEY(IdPD),
-CONSTRAINT FK_Departamento2 FOREIGN KEY(Departamentofk) REFERENCES Departamentos(idDpto),
-CONSTRAINT FK_Puesto2 FOREIGN KEY(Puestofk) REFERENCES Puestos(IdPuesto)
-)
+
 /*DBCC CHECKIDENT('Empleados',RESEED,0);  /*RESETEAR EL IDENTITY*/*/

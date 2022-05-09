@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_MAD.DAO;
 
 namespace Proyecto_MAD.Calculo
 {
@@ -54,6 +55,8 @@ namespace Proyecto_MAD.Calculo
 
         private void Btn_ModificarDpto_Click(object sender, EventArgs e)
         {
+
+
         }
 
         private void Btn_EliminarDpto_Click(object sender, EventArgs e)
@@ -97,6 +100,7 @@ namespace Proyecto_MAD.Calculo
 
         }
 
+        #region| Validaciones
         private void TB_SueldoBase_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 32 && e.KeyChar <= 45) || (e.KeyChar >= 58 && e.KeyChar <= 255) || (e.KeyChar == 47))
@@ -116,5 +120,19 @@ namespace Proyecto_MAD.Calculo
               return;
            }
         }
+        #endregion
+
+        private void CargarDatos()
+        {
+
+            db.Toma_Datos_Puestos(5, id);
+            //cargar los datos de Dao_Puesto
+            if (TB_Nombre.Text != "")
+            {
+                TB_Nombre.Text = DAO_Departamentos.Nombre;
+                TB_SueldoBase.Text = DAO_Departamentos.Sueldo_Base.ToString();
+            }
+        }
+
     }
 }

@@ -999,6 +999,49 @@ namespace Proyecto_MAD.EnlaceDB
 
         #endregion
 
+        public void Toma_Datos_Departamentos(int Opc, int idDepto)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlDepartamentos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@idDepto", SqlDbType.Int);
+                parametro2.Value = idDepto;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_Departamentos.id = dr.GetInt32(0);
+                    DAO_Departamentos.Nombre = dr.GetString(1);
+                    DAO_Departamentos.Sueldo_Base = dr.GetFloat(2);                   
+
+                }
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
         //----------------------------------------------------Puesto---------------------------------------------------------------------//
 
         #region ControlPuestos
@@ -1118,6 +1161,54 @@ namespace Proyecto_MAD.EnlaceDB
         }
 
         #endregion
+
+        public void Toma_Datos_Puestos(int Opc, int idPuesto)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlPuestos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@IdPuestos", SqlDbType.Int);
+                parametro2.Value = idPuesto;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_Puestos.id = dr.GetInt32(0);
+                    DAO_Puestos.Puesto = dr.GetString(1);
+                    DAO_Puestos.Nivel_Salarial = dr.GetFloat(2);
+                    DAO_Puestos.Departamento = dr.GetString(3);
+                    DAO_Puestos.Salario_Diario = (decimal)dr.GetSqlMoney(4);
+                    
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
 
     }
 }

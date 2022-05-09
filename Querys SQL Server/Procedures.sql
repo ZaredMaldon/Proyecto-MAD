@@ -20,7 +20,7 @@ end
 end
 /*-----------------------------------------------------------------Agregar,Eliminar y Modificar Empleado---------------------------------------------------------------------------------------------------------*/
 go
-alter procedure ControlEmpleados
+create procedure ControlEmpleados
 @Opc					int,
 @Nombre				varchar(25)=null,
 @AP						varchar(25)=null,
@@ -134,7 +134,7 @@ end
 end
 /*---------------------------------------------------------------------------------------- Llenado de Combobox -----------------------------------------------------------------------------------------------------------------------------------*/
 go
-alter procedure SP_LlenadoCombobox
+create procedure SP_LlenadoCombobox
 @Opc int,
 @Dpto varchar(20) = null
 as
@@ -181,7 +181,7 @@ end
 
 /*----------------------------------------------------------------------------------------------Deducciones------------------------------------------------------------------------------------------------------------------------------------------------*/
 go 
-alter procedure SP_ControlDeducciones
+create procedure SP_ControlDeducciones
 @Opc int,
 @idDeduc int = null,
 @NombreDeduc varchar(25) = null,
@@ -203,17 +203,13 @@ if(@Opc = 3)/*Tabla(view)*/
 begin
 Select ID,Nombre,Mes,Año,Descuento,Porcentaje from vw_Deducciones;
 end
-begin UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase
-from Departamentos
-where idDpto=@idDepto;
-end
 end
 
 
 /*---------------------------------------------------------------------------Departamentos-------------------------------------------------------------------------------------*/
 
 go
-alter procedure SP_ControlDepto
+create procedure SP_ControlDepto
 @Opc int,
 @idDepto int = null,
 @NombreDepto varchar(25) = null,
@@ -279,5 +275,10 @@ end
 if(@Opc = 4) /*mostrar*/
 begin
 Select ID,Puesto,[Nivel Salarial],Departamento from vw_Puestos;
+end
+if(@Opc = 5) /* LLENAR DATOS*/
+begin
+SELECT ID,Puesto,[Nivel Salarial],Departamento, [Salario Diario] from vw_Puestos
+WHERE ID = @IdPuestos;
 end
 end

@@ -87,7 +87,9 @@
     <Compile Include="Calculo\DatosEmpresa.Designer.cs">
       <DependentUpon>DatosEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAO_Departamentos.cs" />
     <Compile Include="DAO\DAO_Empleado.cs" />
+    <Compile Include="DAO\DAO_Puestos.cs" />
     <Compile Include="EnlaceDB.cs" />
     <Compile Include="Departamentos\Departamentos.cs">
       <SubType>Form</SubType>

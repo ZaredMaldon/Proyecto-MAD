@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_MAD.Tools;
+using Proyecto_MAD.DAO;
 
 namespace Proyecto_MAD.Calculo
 {
@@ -58,26 +59,18 @@ namespace Proyecto_MAD.Calculo
 
         private void Btn_ModificarPuesto_Click(object sender, EventArgs e)
         {
-            if (!use)
+            if (use)
             {
-                MessageBox.Show("Seleccione primero un Puesto de la tabla", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
-                DialogResult dR = MessageBox.Show("¿Esta seguro de modificar a este Puesto?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dR == DialogResult.Yes)
-                {
-                    if (Validaciones())
-                    {
-                        bool realizada = db.ControlPuestos(3, 0, TB_Nombre.Text, float.Parse(TB_NivelSalarial.Text), CB_Dpto.Text);
-                        if (realizada)
-                        {
-                            MessageBox.Show("Se ha modificado el Puesto correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                    }
-                }
-            }           
+                MessageBox.Show("Seleccione un Puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
+
+
 
         private void Btn_EliminarPuesto_Click(object sender, EventArgs e)
         {
@@ -144,5 +137,20 @@ namespace Proyecto_MAD.Calculo
 
         #endregion
 
+        private void CargarDatos()
+        {
+
+            db.Toma_Datos_Puestos(5, id);
+            //cargar los datos de Dao_Puesto
+            if (TB_Nombre.Text != "")
+            {
+                TB_Nombre.Text = DAO_Puestos.Puesto;
+                TB_NivelSalarial.Text = DAO_Puestos.Nivel_Salarial.ToString();
+                CB_Dpto.Text = DAO_Puestos.Departamento;
+            }
+        }
+
     }
+
+
 }

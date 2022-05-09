@@ -74,7 +74,7 @@ RETURN @NoDias
 END
 /*------------------------------------------------------------------------------------ Dias trabajados -----------------------------------------------------------------------------------------*/
 go
-ALTER FUNCTION fn_Diastrabajados(@Fecha Date,@Ingreso Date) RETURNS INT/*Se obtienen los dias trabajados solo si la persona se inscribe el mes de la nomina*/
+CREATE FUNCTION fn_Diastrabajados(@Fecha Date,@Ingreso Date) RETURNS INT/*Se obtienen los dias trabajados solo si la persona se inscribe el mes de la nomina*/
 AS
 BEGIN
 Declare @Diastrabajados	int

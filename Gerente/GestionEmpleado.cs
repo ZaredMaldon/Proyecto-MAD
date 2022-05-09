@@ -31,8 +31,9 @@ namespace Proyecto_MAD.Gerente
             dt=dB.DataTable_MostrarEmpleado(4);
             Dgv_GestionEmpleados.DataSource=dt;
 
-            //cargar combobox municipio
+            //cargar combobox
             dB.Cargar_DatosMuni_CB(1,CB_Municipio);
+            dB.Cargar_DatosDPTO_CB(2, CB_Dpto);
         }
 
         #region Botones
@@ -142,23 +143,23 @@ namespace Proyecto_MAD.Gerente
             {
                 if (TB_Telefono2.Text == "" && TB_NoInt.Text == "")
                 {
-                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, DTP_Contratacion.Value, float.Parse("57.85"), TB_Banco.Text, int.Parse(TB_NoCuenta.Text),
+                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, DTP_Contratacion.Value, TB_Banco.Text, int.Parse(TB_NoCuenta.Text),
                         TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoExt.Text),idEmp);
 
                 }
                 else if (TB_Telefono2.Text == "")
                 {
-                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, DTP_Contratacion.Value, float.Parse("57.85"), TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text), idEmp);
+                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, DTP_Contratacion.Value,TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text), idEmp);
 
                 }
                 else if (TB_NoInt.Text == "")
                 {
-                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value, float.Parse("57.85"), TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoExt.Text),idEmp);
+                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value, TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoExt.Text),idEmp);
                 }
             }
             else//Si estan todos los datos
             {
-                realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value, float.Parse("57.85"), TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text), idEmp);
+                realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value,TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text), idEmp);
 
             }
 
@@ -200,32 +201,38 @@ namespace Proyecto_MAD.Gerente
            
             dB.Toma_Datos_Empleado(5,idEmp);
             //cargar los datos de Dao_Empleados
+            if (TB_Nombre.Text !="")
+            {
+                TB_Nombre.Text = DAO_Empleado.Nombre;
+                TB_ApPat.Text = DAO_Empleado.ApPaterno;
+                TB_ApMat.Text = DAO_Empleado.ApMaterno;
+                TB_CURP.Text = DAO_Empleado.CURP;
+                TB_NSS.Text = DAO_Empleado.NSS;
+                TB_RFC.Text = DAO_Empleado.RFC;
+                TB_Email.Text = DAO_Empleado.email;
+                CB_Municipio.Text = DAO_Empleado.municipio;
+                CB_Puesto.Text = DAO_Empleado.puesto;
+                CB_Dpto.Text = DAO_Empleado.departamento;
+                TB_Calle.Text = DAO_Empleado.Calle;
+                TB_Colonia.Text = DAO_Empleado.Colonia;
+                TB_Cp.Text = DAO_Empleado.Cp;
+                TB_NoExt.Text = DAO_Empleado.numExt.ToString();
+                TB_NoInt.Text = DAO_Empleado.numInt.ToString();
+                DTP_FechaNacimiento.Value = DAO_Empleado.Fecha_nacimiento.Date;
+                DTP_Contratacion.Value = DAO_Empleado.Fecha_Contratacion;
+                TB_Telefono.Text = DAO_Empleado.Telefono1;
+                TB_Telefono2.Text = DAO_Empleado.Telefono2;
+                TB_Banco.Text = DAO_Empleado.Banco;
+                TB_NoCuenta.Text = DAO_Empleado.NoCuenta.ToString();
+                TB_Usuario.Text = DAO_Empleado.Usuario;
+                TB_Password.Text = DAO_Empleado.Contraseña;
+                Tb_Password2.Text = DAO_Empleado.Contraseña;
+            }
+        }
 
-            TB_Nombre.Text= DAO_Empleado.Nombre;
-            TB_ApPat.Text = DAO_Empleado.ApPaterno;
-            TB_ApMat.Text= DAO_Empleado.ApMaterno;
-            TB_CURP.Text= DAO_Empleado.CURP;
-            TB_NSS.Text= DAO_Empleado.NSS;
-            TB_RFC.Text= DAO_Empleado.RFC;
-            TB_Email.Text = DAO_Empleado.email;
-            CB_Municipio.Text= DAO_Empleado.municipio;
-            CB_Puesto.Text= DAO_Empleado.puesto;
-            CB_Dpto.Text= DAO_Empleado.departamento;
-            TB_Calle.Text= DAO_Empleado.Calle;
-            TB_Colonia.Text= DAO_Empleado.Colonia;
-            TB_Cp.Text= DAO_Empleado.Cp;
-            TB_NoExt.Text= DAO_Empleado.numExt.ToString();
-            TB_NoInt.Text= DAO_Empleado.numInt.ToString();
-            DTP_FechaNacimiento.Value= DAO_Empleado.Fecha_nacimiento.Date;
-            DTP_Contratacion.Value= DAO_Empleado.Fecha_Contratacion;
-            TB_Telefono.Text= DAO_Empleado.Telefono1;
-            TB_Telefono2.Text= DAO_Empleado.Telefono2;
-            TB_Banco.Text= DAO_Empleado.Banco;
-            TB_NoCuenta.Text= DAO_Empleado.NoCuenta.ToString();
-            TB_Usuario.Text= DAO_Empleado.Usuario;
-            TB_Password.Text= DAO_Empleado.Contraseña;
-            Tb_Password2.Text= DAO_Empleado.Contraseña;
-            
+        private void CB_Dpto_DropDownClosed(object sender, EventArgs e)
+        {
+            dB.Cargar_DatosPUESTOS_CB(3, CB_Dpto.Text, CB_Puesto);
         }
     }
 }

@@ -62,7 +62,6 @@ Telefono2         varchar(11)		NULL DEFAULT('--------'),
 Contratacion      date			NOT NULL,
 Direccionfk       int	        NOT NULL, --FOREING KEY
 Usuariofk         int			NOT NULL,
-SalarioDiario		money		NOT NULL,
 Banco			  varchar(30),
 NoCuenta          int,
 CONSTRAINT PK_Empleado PRIMARY KEY (NoEmpleado),

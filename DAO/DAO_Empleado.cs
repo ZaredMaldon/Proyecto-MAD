@@ -32,7 +32,7 @@ namespace Proyecto_MAD.DAO
         public static int NoCuenta { get; set; }
         public static string Usuario { get; set; }
         public static string Contraseña { get; set; }
-        public static decimal Sueldo { get; set; }
+        public static decimal SalarioDiario { get; set; }
 
     }
 }

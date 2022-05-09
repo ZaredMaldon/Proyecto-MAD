@@ -90,7 +90,7 @@ namespace Proyecto_MAD.EnlaceDB
         #region Control Empleado
         //Abstraccion Control Empleados
         //sin telefono 2
-        public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1, DateTime Contratacion, float SalarioDiario,
+        public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1, DateTime Contratacion,
             string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short Nointerior, short NoExt, int idEmp)
         {
             var msg = "";
@@ -128,9 +128,7 @@ namespace Proyecto_MAD.EnlaceDB
                 var parametro10 = _comandosql.Parameters.Add("@Telefono1", SqlDbType.VarChar, 11);
                 parametro10.Value = Telefono1;
                 var parametro12 = _comandosql.Parameters.Add("@FContratacion", SqlDbType.Date);
-                parametro12.Value = Contratacion;
-                var parametro13 = _comandosql.Parameters.Add("@SalarioDiario", SqlDbType.Money);
-                parametro13.Value = SalarioDiario;
+                parametro12.Value = Contratacion;   
                 var parametro14 = _comandosql.Parameters.Add("@Banco", SqlDbType.VarChar, 30);
                 parametro14.Value = Banco;
                 var parametro15 = _comandosql.Parameters.Add("@NoCuenta", SqlDbType.Int);
@@ -181,7 +179,7 @@ namespace Proyecto_MAD.EnlaceDB
             return add;
         }
         //Sin numero interior
-        public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1,string Telefono2, DateTime Contratacion, float SalarioDiario,
+        public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1,string Telefono2, DateTime Contratacion,
             string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short NoExt, int idEmp)
         {
             var msg = "";
@@ -222,8 +220,6 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro11.Value = Telefono2;
                 var parametro12 = _comandosql.Parameters.Add("@FContratacion", SqlDbType.Date);
                 parametro12.Value = Contratacion;
-                var parametro13 = _comandosql.Parameters.Add("@SalarioDiario", SqlDbType.Money);
-                parametro13.Value = SalarioDiario;
                 var parametro14 = _comandosql.Parameters.Add("@Banco", SqlDbType.VarChar, 30);
                 parametro14.Value = Banco;
                 var parametro15 = _comandosql.Parameters.Add("@NoCuenta", SqlDbType.Int);
@@ -270,7 +266,7 @@ namespace Proyecto_MAD.EnlaceDB
         }
 
         //Sin num interior y sin telefono 2 
-        public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1,DateTime Contratacion, float SalarioDiario,
+        public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1,DateTime Contratacion,
             string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short NoExt,int idEmp)
         {
             var msg = "";
@@ -309,8 +305,6 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro10.Value = Telefono1;  
                 var parametro12 = _comandosql.Parameters.Add("@FContratacion", SqlDbType.Date);
                 parametro12.Value = Contratacion;
-                var parametro13 = _comandosql.Parameters.Add("@SalarioDiario", SqlDbType.Money);
-                parametro13.Value = SalarioDiario;
                 var parametro14 = _comandosql.Parameters.Add("@Banco", SqlDbType.VarChar, 30);
                 parametro14.Value = Banco;
                 var parametro15 = _comandosql.Parameters.Add("@NoCuenta", SqlDbType.Int);
@@ -356,7 +350,7 @@ namespace Proyecto_MAD.EnlaceDB
             return add;
         }
         //Con todos los datos
-        public bool ControldeEmpleados(int Opc, string Nombre,string AP,string AM, DateTime Nacimiento,string CURP,string NSS,string RFC,string Email,string Telefono1,string Telefono2,DateTime Contratacion,float SalarioDiario,
+        public bool ControldeEmpleados(int Opc, string Nombre,string AP,string AM, DateTime Nacimiento,string CURP,string NSS,string RFC,string Email,string Telefono1,string Telefono2,DateTime Contratacion,
             string Banco,int NoCuenta,string Usuario,string Password,string Tipo,int Municipio,string Cp,string Colonia,string Calle,short Nointerior,short NoExt,int idEmp)
         {
             var msg = "";
@@ -397,8 +391,6 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro11.Value = Telefono2;
                 var parametro12 = _comandosql.Parameters.Add("@FContratacion", SqlDbType.Date);
                 parametro12.Value = Contratacion;
-                var parametro13 = _comandosql.Parameters.Add("@SalarioDiario", SqlDbType.Money);
-                parametro13.Value = SalarioDiario;
                 var parametro14 = _comandosql.Parameters.Add("@Banco", SqlDbType.VarChar, 30);
                 parametro14.Value = Banco;
                 var parametro15 = _comandosql.Parameters.Add("@NoCuenta", SqlDbType.Int);
@@ -782,6 +774,33 @@ namespace Proyecto_MAD.EnlaceDB
 
         }
 
+        public void Cargar_DatosPUESTOS_CB(int Opc,string Departamento, ComboBox a)
+        {
+            conectar();
+            string qry = "SP_LlenadoCombobox";
+
+            _comandosql = new SqlCommand(qry, _conexion);
+            _comandosql.CommandType = CommandType.StoredProcedure;
+            _comandosql.CommandTimeout = 1200;
+
+            var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+            parametro1.Value = Opc;
+            var parametro2 = _comandosql.Parameters.Add("@Dpto", SqlDbType.VarChar,20);
+            parametro2.Value = Departamento;
+
+            SqlDataAdapter da = new SqlDataAdapter(_comandosql);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            desconectar();
+
+            DataRow fila = dt.NewRow();
+            fila["Puesto"] = "Selecciona un Puesto";
+            dt.Rows.InsertAt(fila, 0);
+            a.ValueMember = "ID";
+            a.DisplayMember = "Puesto";
+            a.DataSource = dt;
+
+        }
         #endregion
 
         #region Toma de datos 
@@ -844,7 +863,7 @@ namespace Proyecto_MAD.EnlaceDB
                     DAO_Empleado.NoCuenta=dr.GetInt32(21);
                     DAO_Empleado.Usuario = dr.GetString(22);
                     DAO_Empleado.Contraseña = dr.GetString(23);
-                    DAO_Empleado.Sueldo = (decimal)dr.GetSqlMoney(24);
+                    DAO_Empleado.SalarioDiario = (decimal)dr.GetSqlMoney(24);
                 }
 
 

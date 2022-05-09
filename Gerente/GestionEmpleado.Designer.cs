@@ -354,6 +354,7 @@ namespace Proyecto_MAD.Gerente
             this.CB_Dpto.Name = "CB_Dpto";
             this.CB_Dpto.Size = new System.Drawing.Size(150, 23);
             this.CB_Dpto.TabIndex = 48;
+            this.CB_Dpto.DropDownClosed += new System.EventHandler(this.CB_Dpto_DropDownClosed);
             // 
             // LBL_Municipio
             // 

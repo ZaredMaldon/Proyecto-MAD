@@ -34,14 +34,15 @@ namespace Proyecto_MAD.Calculo
             this.Btn_EliminarPuesto = new FontAwesome.Sharp.IconButton();
             this.Btn_ModificarPuesto = new FontAwesome.Sharp.IconButton();
             this.Dgv_Puestos = new System.Windows.Forms.DataGridView();
-            this.TB_SalarioDiario = new System.Windows.Forms.TextBox();
-            this.Lbl_SalarioDiario = new System.Windows.Forms.Label();
             this.TB_NivelSalarial = new System.Windows.Forms.TextBox();
             this.Lbl_NivelSalarial = new System.Windows.Forms.Label();
             this.TB_Nombre = new System.Windows.Forms.TextBox();
             this.LBL_Nombre = new System.Windows.Forms.Label();
             this.Btn_AgregarPuesto = new FontAwesome.Sharp.IconButton();
             this.LBL_Title = new System.Windows.Forms.Label();
+            this.Lbl_Dpto = new System.Windows.Forms.Label();
+            this.CB_Dpto = new System.Windows.Forms.ComboBox();
+            this.Lbl_Porcentaje = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Puestos)).BeginInit();
             this.SuspendLayout();
@@ -49,11 +50,12 @@ namespace Proyecto_MAD.Calculo
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.Lbl_Porcentaje);
+            this.Panel_Background.Controls.Add(this.Lbl_Dpto);
+            this.Panel_Background.Controls.Add(this.CB_Dpto);
             this.Panel_Background.Controls.Add(this.Btn_EliminarPuesto);
             this.Panel_Background.Controls.Add(this.Btn_ModificarPuesto);
             this.Panel_Background.Controls.Add(this.Dgv_Puestos);
-            this.Panel_Background.Controls.Add(this.TB_SalarioDiario);
-            this.Panel_Background.Controls.Add(this.Lbl_SalarioDiario);
             this.Panel_Background.Controls.Add(this.TB_NivelSalarial);
             this.Panel_Background.Controls.Add(this.Lbl_NivelSalarial);
             this.Panel_Background.Controls.Add(this.TB_Nombre);
@@ -129,39 +131,22 @@ namespace Proyecto_MAD.Calculo
             this.Dgv_Puestos.TabIndex = 43;
             this.Dgv_Puestos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Puestos_CellContentClick);
             // 
-            // TB_SalarioDiario
-            // 
-            this.TB_SalarioDiario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_SalarioDiario.Location = new System.Drawing.Point(476, 76);
-            this.TB_SalarioDiario.Name = "TB_SalarioDiario";
-            this.TB_SalarioDiario.Size = new System.Drawing.Size(154, 23);
-            this.TB_SalarioDiario.TabIndex = 31;
-            // 
-            // Lbl_SalarioDiario
-            // 
-            this.Lbl_SalarioDiario.AutoSize = true;
-            this.Lbl_SalarioDiario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_SalarioDiario.ForeColor = System.Drawing.Color.White;
-            this.Lbl_SalarioDiario.Location = new System.Drawing.Point(473, 57);
-            this.Lbl_SalarioDiario.Name = "Lbl_SalarioDiario";
-            this.Lbl_SalarioDiario.Size = new System.Drawing.Size(104, 16);
-            this.Lbl_SalarioDiario.TabIndex = 30;
-            this.Lbl_SalarioDiario.Text = "Salario Diario*";
-            // 
             // TB_NivelSalarial
             // 
             this.TB_NivelSalarial.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_NivelSalarial.Location = new System.Drawing.Point(269, 76);
+            this.TB_NivelSalarial.Location = new System.Drawing.Point(281, 71);
             this.TB_NivelSalarial.Name = "TB_NivelSalarial";
             this.TB_NivelSalarial.Size = new System.Drawing.Size(103, 23);
             this.TB_NivelSalarial.TabIndex = 27;
+            this.TB_NivelSalarial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NivelSalarial_KeyPress);
+            this.TB_NivelSalarial.Leave += new System.EventHandler(this.TB_NivelSalarial_Leave);
             // 
             // Lbl_NivelSalarial
             // 
             this.Lbl_NivelSalarial.AutoSize = true;
             this.Lbl_NivelSalarial.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_NivelSalarial.ForeColor = System.Drawing.Color.White;
-            this.Lbl_NivelSalarial.Location = new System.Drawing.Point(266, 57);
+            this.Lbl_NivelSalarial.Location = new System.Drawing.Point(278, 52);
             this.Lbl_NivelSalarial.Name = "Lbl_NivelSalarial";
             this.Lbl_NivelSalarial.Size = new System.Drawing.Size(103, 16);
             this.Lbl_NivelSalarial.TabIndex = 26;
@@ -170,7 +155,7 @@ namespace Proyecto_MAD.Calculo
             // TB_Nombre
             // 
             this.TB_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Nombre.Location = new System.Drawing.Point(17, 76);
+            this.TB_Nombre.Location = new System.Drawing.Point(17, 71);
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 25;
@@ -180,7 +165,7 @@ namespace Proyecto_MAD.Calculo
             this.LBL_Nombre.AutoSize = true;
             this.LBL_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Nombre.ForeColor = System.Drawing.Color.White;
-            this.LBL_Nombre.Location = new System.Drawing.Point(14, 57);
+            this.LBL_Nombre.Location = new System.Drawing.Point(14, 52);
             this.LBL_Nombre.Name = "LBL_Nombre";
             this.LBL_Nombre.Size = new System.Drawing.Size(67, 16);
             this.LBL_Nombre.TabIndex = 24;
@@ -222,6 +207,37 @@ namespace Proyecto_MAD.Calculo
             this.LBL_Title.TabIndex = 20;
             this.LBL_Title.Text = "Puestos";
             // 
+            // Lbl_Dpto
+            // 
+            this.Lbl_Dpto.AutoSize = true;
+            this.Lbl_Dpto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Dpto.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Dpto.Location = new System.Drawing.Point(479, 52);
+            this.Lbl_Dpto.Name = "Lbl_Dpto";
+            this.Lbl_Dpto.Size = new System.Drawing.Size(108, 16);
+            this.Lbl_Dpto.TabIndex = 52;
+            this.Lbl_Dpto.Text = "Departamento*";
+            // 
+            // CB_Dpto
+            // 
+            this.CB_Dpto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CB_Dpto.FormattingEnabled = true;
+            this.CB_Dpto.Location = new System.Drawing.Point(478, 71);
+            this.CB_Dpto.Name = "CB_Dpto";
+            this.CB_Dpto.Size = new System.Drawing.Size(154, 23);
+            this.CB_Dpto.TabIndex = 51;
+            // 
+            // Lbl_Porcentaje
+            // 
+            this.Lbl_Porcentaje.AutoSize = true;
+            this.Lbl_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Porcentaje.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Porcentaje.Location = new System.Drawing.Point(302, 97);
+            this.Lbl_Porcentaje.Name = "Lbl_Porcentaje";
+            this.Lbl_Porcentaje.Size = new System.Drawing.Size(79, 16);
+            this.Lbl_Porcentaje.TabIndex = 53;
+            this.Lbl_Porcentaje.Text = "Porcentaje";
+            // 
             // Puestos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,13 +262,14 @@ namespace Proyecto_MAD.Calculo
         private FontAwesome.Sharp.IconButton Btn_AgregarPuesto;
         private System.Windows.Forms.Label LBL_Title;
         private System.Windows.Forms.Label LBL_Nombre;
-        private System.Windows.Forms.TextBox TB_SalarioDiario;
-        private System.Windows.Forms.Label Lbl_SalarioDiario;
         private System.Windows.Forms.TextBox TB_NivelSalarial;
         private System.Windows.Forms.Label Lbl_NivelSalarial;
         private System.Windows.Forms.TextBox TB_Nombre;
         private System.Windows.Forms.DataGridView Dgv_Puestos;
         private FontAwesome.Sharp.IconButton Btn_EliminarPuesto;
         private FontAwesome.Sharp.IconButton Btn_ModificarPuesto;
+        private System.Windows.Forms.Label Lbl_Dpto;
+        private System.Windows.Forms.ComboBox CB_Dpto;
+        private System.Windows.Forms.Label Lbl_Porcentaje;
     }
 }

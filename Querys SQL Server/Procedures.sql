@@ -111,17 +111,25 @@ end
 end
 /*---------------------------------------------------------------------------------------- Llenado de Combobox -----------------------------------------------------------------------------------------------------------------------------------*/
 go
-create procedure SP_LlenadoCombobox
-@Opc int
+alter procedure SP_LlenadoCombobox
+@Opc int,
+@Dpto varchar(20) = null
 as
-begin
+BEGIN
 
 if(@Opc=1)/*Selecciona info de municipios para ponerlo en un CB*/
 begin
- Select idMunicipio,NombreMunicipio from Municipios;
+	Select idMunicipio,NombreMunicipio from Municipios;
 end 
-
+if(@Opc=2)/*Llenado de CB departamento*/
+begin
+	Select idDpto,NombreDpto from Departamentos;
 end
+if(@Opc=3)/*Llenado de CB Puestos por DPTO*/
+begin
+	Select ID,Puesto from vw_Puestos where Departamento=@Dpto;
+end
+END
 
 /*-------------------------------------------------------------------------------------- Percepciones------------------------------------------------------------------------------------------------------------------------------------------------*/
 go
@@ -200,9 +208,7 @@ begin
 Delete from Departamentos where idDpto = @idDepto;
 end
 if(@Opc = 3)/*Editar*/
-begin UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase
-from Departamentos
-where idDpto=@idDepto;
+begin UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase where idDpto=@idDepto
 end
 if(@Opc = 4) /*mostrar*/
 begin
@@ -213,31 +219,42 @@ end
 
 /*---------------------------------------------------------------------------------------Puesto------------------------------------------------------------------------------------*/
 go
-create procedure SP_ControlPuesto
+alter procedure SP_ControlPuestos
 @Opc int,
 @IdPuestos int = null,
 @NombrePuesto varchar(25) = null,
 @NivelSalarial float = null,
-@SalarioDiario float =null
+@Departamento varchar(20) =null
 
 as
 begin
+Declare @idP		int
+Declare @idD	int
 
 if(@Opc =1)/*Agregar*/
 begin
-Insert into Puestos(NombrePuesto,NivelSalarial) values (@NombrePuesto,@NivelSalarial);
+	Begin try
+		Begin Tran
+			Insert into Puestos(NombrePuesto,NivelSalarial) values (@NombrePuesto,@NivelSalarial);
+			SET @idP=(SELECT @@IDENTITY);
+			Select @idD=idDpto from Departamentos where NombreDpto=@Departamento
+			Insert into PuestoDepartamento(Departamentofk,Puestofk) values (@idD,@idP)
+		commit tran
+	End try
+	Begin catch
+			Rollback tran
+	end catch
+
 end
 if(@Opc = 2)/*Eliminar*/
 begin
 Delete from Puestos where IdPuesto = @IdPuestos;
 end
 if(@Opc = 3)/*Editar*/
-begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial
-from Puestos
-where IdPuesto=@IdPuestos;
+begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial where IdPuesto=@IdPuestos
 end
 if(@Opc = 4) /*mostrar*/
 begin
-Select ID,Nombre,NivelSalarial from vw_Puestos;
+Select ID,Puesto,[Nivel Salarial],Departamento from vw_Puestos;
 end
 end

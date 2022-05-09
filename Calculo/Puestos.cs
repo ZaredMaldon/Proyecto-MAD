@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_MAD.Tools;
 
 namespace Proyecto_MAD.Calculo
 {
@@ -26,6 +27,8 @@ namespace Proyecto_MAD.Calculo
             DataTable dt = new DataTable();
             dt = db.DataTable_MostrarPuestos(4);
             Dgv_Puestos.DataSource = dt;
+            db.Cargar_DatosDPTO_CB(2, CB_Dpto);
+            
         }
 
         #region Botones
@@ -33,7 +36,7 @@ namespace Proyecto_MAD.Calculo
         {
             if (Validaciones())
             {
-                bool realizada = db.ControlPuestos(1, 0, TB_Nombre.Text, int.Parse(TB_NivelSalarial.Text), float.Parse(TB_SalarioDiario.Text));
+                bool realizada = db.ControlPuestos(1, 0, TB_Nombre.Text, float.Parse(TB_NivelSalarial.Text), CB_Dpto.Text);
                 if (realizada)
                 {
                     MessageBox.Show("Registro Completado", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -45,7 +48,7 @@ namespace Proyecto_MAD.Calculo
         {
             bool validaciones = true;
 
-            if (TB_Nombre.Text == "" || TB_NivelSalarial.Text == "" || TB_SalarioDiario.Text == "")
+            if (TB_Nombre.Text == "" || TB_NivelSalarial.Text == "" || CB_Dpto.SelectedValue.ToString()=="")
             {
                 MessageBox.Show("Llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 validaciones = false;
@@ -66,7 +69,7 @@ namespace Proyecto_MAD.Calculo
                 {
                     if (Validaciones())
                     {
-                        bool realizada = db.ControlPuestos(3, 0, TB_Nombre.Text, int.Parse(TB_NivelSalarial.Text), float.Parse(TB_SalarioDiario.Text));
+                        bool realizada = db.ControlPuestos(3, 0, TB_Nombre.Text, float.Parse(TB_NivelSalarial.Text), CB_Dpto.Text);
                         if (realizada)
                         {
                             MessageBox.Show("Se ha modificado el Puesto correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -109,6 +112,22 @@ namespace Proyecto_MAD.Calculo
                 id = Convert.ToInt32(this.Dgv_Puestos.SelectedRows[0].Cells[0].Value);
 
             }
+        }
+        //cuando se presiona una tecla
+        private void TB_NivelSalarial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 45) ||(e.KeyChar >=58 && e.KeyChar <= 255)|| (e.KeyChar ==47))
+            {
+                MessageBox.Show("Solo inserte numeros en Nivel salarial","Alerta",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+          
+        }
+
+        private void TB_NivelSalarial_Leave(object sender, EventArgs e)
+        {
+            Lbl_Porcentaje.Text ="%"+ Tools_z.Porcentaje(TB_NivelSalarial.Text);
         }
     }
 }

@@ -755,6 +755,32 @@ namespace Proyecto_MAD.EnlaceDB
 
         }
 
+        public void Cargar_DatosDPTO_CB(int Opc, ComboBox a)
+        {
+            conectar();
+            string qry = "SP_LlenadoCombobox";
+
+            _comandosql = new SqlCommand(qry, _conexion);
+            _comandosql.CommandType = CommandType.StoredProcedure;
+            _comandosql.CommandTimeout = 1200;
+
+            var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+            parametro1.Value = Opc;
+
+
+            SqlDataAdapter da = new SqlDataAdapter(_comandosql);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            desconectar();
+
+            DataRow fila = dt.NewRow();
+            fila["NombreDpto"] = "Selecciona un Departamento";
+            dt.Rows.InsertAt(fila, 0);
+            a.ValueMember = "idDpto";
+            a.DisplayMember = "NombreDpto";
+            a.DataSource = dt;
+
+        }
 
         #endregion
 
@@ -835,6 +861,7 @@ namespace Proyecto_MAD.EnlaceDB
                 desconectar();
             }
         }
+
         #endregion
 
         //----------------------------------------------------------Departamento----------------------------------------------------------------//
@@ -957,7 +984,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         #region ControlPuestos
 
-        public bool ControlPuestos(int Op, int IdPuesto, string NombrePuesto, int NivelSalarial, float SalarioDiario)
+        public bool ControlPuestos(int Op, int IdPuesto, string NombrePuesto, float NivelSalarial, string Departamento)
         {
             var msg = "";
             var add = true;
@@ -976,8 +1003,8 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro2.Value = NombrePuesto;
                 var parametro3 = _comandosql.Parameters.Add("@NivelSalarial", SqlDbType.Float);
                 parametro3.Value = NivelSalarial;
-                var parametro4 = _comandosql.Parameters.Add("@SalarioDiario", SqlDbType.Float);
-                parametro4.Value = SalarioDiario;
+                var parametro4 = _comandosql.Parameters.Add("@Departamento", SqlDbType.VarChar,20);
+                parametro4.Value = Departamento;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();

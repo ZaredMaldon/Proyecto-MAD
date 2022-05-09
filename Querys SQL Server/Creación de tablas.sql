@@ -141,14 +141,21 @@ CONSTRAINT FK_Empleado3 FOREIGN KEY(Empleadofk) REFERENCES Empleados(NoEmpleado)
 
 
 CREATE TABLE Asiganciones(
-IdAsignacion        int IDENTITY (1,1)	NOT NULL,
-Empleadofk			int					NOT NULL,       
-Departamentofk      int					NOT NULL,  
-Puestofk            int					NOT NULL,
+IdAsignacion			int IDENTITY (1,1)	NOT NULL,
+Empleadofk			int							NOT NULL,       
+PuestoDptofk			int,
 CONSTRAINT PK_Asignaciones PRIMARY KEY(IdAsignacion),
 CONSTRAINT FK_Empleado4 FOREIGN KEY(Empleadofk) REFERENCES Empleados(NoEMpleado),
-CONSTRAINT FK_Departamento FOREIGN KEY(Departamentofk) REFERENCES Departamentos(idDpto),
-CONSTRAINT FK_Puestp FOREIGN KEY(Puestofk) REFERENCES Puestos(IdPuesto)
+CONSTRAINT FK_PuestoDeDpto FOREIGN KEY(PuestoDptofk) REFERENCES PuestoDepartamento(IdPD)
 )
 
+CREATE TABLE PuestoDepartamento(
+IdPD								  int IDENTITY (1,1)	NOT NULL,
+Departamentofk				  int						NOT NULL,  
+Puestofk						  int						NOT NULL,
+SalarioDiario					  money	,
+CONSTRAINT PK_PuestoDpto PRIMARY KEY(IdPD),
+CONSTRAINT FK_Departamento2 FOREIGN KEY(Departamentofk) REFERENCES Departamentos(idDpto),
+CONSTRAINT FK_Puesto2 FOREIGN KEY(Puestofk) REFERENCES Puestos(IdPuesto)
+)
 /*DBCC CHECKIDENT('Empleados',RESEED,0);  /*RESETEAR EL IDENTITY*/*/

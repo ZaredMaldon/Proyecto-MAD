@@ -240,6 +240,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 52;
+            this.TB_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Nombre_KeyPress);
             // 
             // LBL_Nombre
             // 

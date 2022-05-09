@@ -31,6 +31,8 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Percepciones));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.CB_Mes = new System.Windows.Forms.ComboBox();
+            this.Lbl_Año = new System.Windows.Forms.Label();
             this.btn_CargarExcel = new FontAwesome.Sharp.IconButton();
             this.Btn_EliminarPercepcion = new FontAwesome.Sharp.IconButton();
             this.Dgv_Percepciones = new System.Windows.Forms.DataGridView();
@@ -44,8 +46,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.LBL_Nombre = new System.Windows.Forms.Label();
             this.Btn_AgregarPercepcion = new FontAwesome.Sharp.IconButton();
             this.LBL_Title = new System.Windows.Forms.Label();
-            this.CB_Mes = new System.Windows.Forms.ComboBox();
-            this.Lbl_Año = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Percepciones)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +72,39 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(647, 364);
             this.Panel_Background.TabIndex = 26;
+            // 
+            // CB_Mes
+            // 
+            this.CB_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CB_Mes.FormattingEnabled = true;
+            this.CB_Mes.Items.AddRange(new object[] {
+            "Enero",
+            "Febrero",
+            "Marzo",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"});
+            this.CB_Mes.Location = new System.Drawing.Point(177, 104);
+            this.CB_Mes.Name = "CB_Mes";
+            this.CB_Mes.Size = new System.Drawing.Size(94, 23);
+            this.CB_Mes.TabIndex = 64;
+            // 
+            // Lbl_Año
+            // 
+            this.Lbl_Año.AutoSize = true;
+            this.Lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Año.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Año.Location = new System.Drawing.Point(378, 85);
+            this.Lbl_Año.Name = "Lbl_Año";
+            this.Lbl_Año.Size = new System.Drawing.Size(103, 16);
+            this.Lbl_Año.TabIndex = 63;
+            this.Lbl_Año.Text = "Año Aplicado*";
             // 
             // btn_CargarExcel
             // 
@@ -210,6 +243,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(120, 23);
             this.TB_Nombre.TabIndex = 34;
+            this.TB_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Nombre_KeyPress);
             // 
             // LBL_Nombre
             // 
@@ -257,39 +291,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.LBL_Title.Size = new System.Drawing.Size(145, 23);
             this.LBL_Title.TabIndex = 20;
             this.LBL_Title.Text = "Percepciones";
-            // 
-            // CB_Mes
-            // 
-            this.CB_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.CB_Mes.FormattingEnabled = true;
-            this.CB_Mes.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.CB_Mes.Location = new System.Drawing.Point(177, 104);
-            this.CB_Mes.Name = "CB_Mes";
-            this.CB_Mes.Size = new System.Drawing.Size(94, 23);
-            this.CB_Mes.TabIndex = 64;
-            // 
-            // Lbl_Año
-            // 
-            this.Lbl_Año.AutoSize = true;
-            this.Lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Año.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Año.Location = new System.Drawing.Point(378, 85);
-            this.Lbl_Año.Name = "Lbl_Año";
-            this.Lbl_Año.Size = new System.Drawing.Size(103, 16);
-            this.Lbl_Año.TabIndex = 63;
-            this.Lbl_Año.Text = "Año Aplicado*";
             // 
             // Percepciones
             // 

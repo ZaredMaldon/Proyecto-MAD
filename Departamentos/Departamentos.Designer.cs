@@ -157,6 +157,8 @@ namespace Proyecto_MAD.Calculo
             this.TB_SueldoBase.Name = "TB_SueldoBase";
             this.TB_SueldoBase.Size = new System.Drawing.Size(154, 23);
             this.TB_SueldoBase.TabIndex = 31;
+            this.TB_SueldoBase.TextChanged += new System.EventHandler(this.TB_SueldoBase_TextChanged);
+            this.TB_SueldoBase.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_SueldoBase_KeyPress);
             // 
             // Lbl_SueldoBase
             // 
@@ -176,6 +178,7 @@ namespace Proyecto_MAD.Calculo
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 29;
+            this.TB_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Nombre_KeyPress);
             // 
             // LBL_Nombre
             // 

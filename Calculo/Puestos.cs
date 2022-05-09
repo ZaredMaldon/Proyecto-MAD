@@ -129,5 +129,15 @@ namespace Proyecto_MAD.Calculo
         {
             Lbl_Porcentaje.Text ="%"+ Tools_z.Porcentaje(TB_NivelSalarial.Text);
         }
+
+        private void TB_Nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+           {
+               MessageBox.Show("Ingrese solo letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+               e.Handled = true;
+               return;
+           }       
+        }
     }
 }

@@ -177,6 +177,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_Cp.Name = "TB_Cp";
             this.TB_Cp.Size = new System.Drawing.Size(150, 23);
             this.TB_Cp.TabIndex = 59;
+            this.TB_Cp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Cp_KeyPress);
             // 
             // lbl_ingreso
             // 
@@ -220,6 +221,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_NoCuenta.Name = "TB_NoCuenta";
             this.TB_NoCuenta.Size = new System.Drawing.Size(150, 23);
             this.TB_NoCuenta.TabIndex = 55;
+            this.TB_NoCuenta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NoCuenta_KeyPress);
             // 
             // LBL_Banco
             // 
@@ -240,6 +242,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_Banco.Name = "TB_Banco";
             this.TB_Banco.Size = new System.Drawing.Size(150, 23);
             this.TB_Banco.TabIndex = 54;
+            this.TB_Banco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Banco_KeyPress);
             // 
             // Lbl_Puesto
             // 
@@ -395,6 +398,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_NoInt.Name = "TB_NoInt";
             this.TB_NoInt.Size = new System.Drawing.Size(59, 23);
             this.TB_NoInt.TabIndex = 35;
+            this.TB_NoInt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NoInt_KeyPress);
             // 
             // LBL_NoExt
             // 
@@ -415,6 +419,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_NoExt.Name = "TB_NoExt";
             this.TB_NoExt.Size = new System.Drawing.Size(59, 23);
             this.TB_NoExt.TabIndex = 32;
+            this.TB_NoExt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NoExt_KeyPress);
             // 
             // LBL_Calle
             // 
@@ -455,6 +460,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_Colonia.Name = "TB_Colonia";
             this.TB_Colonia.Size = new System.Drawing.Size(150, 23);
             this.TB_Colonia.TabIndex = 31;
+            this.TB_Colonia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Colonia_KeyPress);
             // 
             // label11
             // 
@@ -517,6 +523,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_ApMat.Name = "TB_ApMat";
             this.TB_ApMat.Size = new System.Drawing.Size(154, 23);
             this.TB_ApMat.TabIndex = 7;
+            this.TB_ApMat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_ApMat_KeyPress);
             // 
             // TB_NSS
             // 
@@ -526,6 +533,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_NSS.Name = "TB_NSS";
             this.TB_NSS.Size = new System.Drawing.Size(154, 23);
             this.TB_NSS.TabIndex = 9;
+            this.TB_NSS.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_NSS_KeyPress);
             // 
             // LBL_CURP
             // 
@@ -629,6 +637,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_ApPat.Name = "TB_ApPat";
             this.TB_ApPat.Size = new System.Drawing.Size(154, 23);
             this.TB_ApPat.TabIndex = 6;
+            this.TB_ApPat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_ApPat_KeyPress);
             // 
             // LBL_RFC
             // 
@@ -660,6 +669,7 @@ namespace Proyecto_MAD.Gerente
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 5;
+            this.TB_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Nombre_KeyPress);
             // 
             // LBL_ApPat
             // 

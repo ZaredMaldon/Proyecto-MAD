@@ -92,5 +92,29 @@ namespace Proyecto_MAD.Calculo
             }
         }
 
+        private void TB_SueldoBase_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TB_SueldoBase_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 32 && e.KeyChar <= 45) || (e.KeyChar >= 58 && e.KeyChar <= 255) || (e.KeyChar == 47))
+            {
+                MessageBox.Show("Solo inserte numeros en Sueldo Base", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void TB_Nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+           {
+              MessageBox.Show("Solo letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+              e.Handled = true;
+              return;
+           }
+        }
     }
 }

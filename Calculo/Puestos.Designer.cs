@@ -31,6 +31,9 @@ namespace Proyecto_MAD.Calculo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Puestos));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.Lbl_Porcentaje = new System.Windows.Forms.Label();
+            this.Lbl_Dpto = new System.Windows.Forms.Label();
+            this.CB_Dpto = new System.Windows.Forms.ComboBox();
             this.Btn_EliminarPuesto = new FontAwesome.Sharp.IconButton();
             this.Btn_ModificarPuesto = new FontAwesome.Sharp.IconButton();
             this.Dgv_Puestos = new System.Windows.Forms.DataGridView();
@@ -40,9 +43,6 @@ namespace Proyecto_MAD.Calculo
             this.LBL_Nombre = new System.Windows.Forms.Label();
             this.Btn_AgregarPuesto = new FontAwesome.Sharp.IconButton();
             this.LBL_Title = new System.Windows.Forms.Label();
-            this.Lbl_Dpto = new System.Windows.Forms.Label();
-            this.CB_Dpto = new System.Windows.Forms.ComboBox();
-            this.Lbl_Porcentaje = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Puestos)).BeginInit();
             this.SuspendLayout();
@@ -66,6 +66,37 @@ namespace Proyecto_MAD.Calculo
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(647, 364);
             this.Panel_Background.TabIndex = 26;
+            // 
+            // Lbl_Porcentaje
+            // 
+            this.Lbl_Porcentaje.AutoSize = true;
+            this.Lbl_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Porcentaje.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Porcentaje.Location = new System.Drawing.Point(302, 97);
+            this.Lbl_Porcentaje.Name = "Lbl_Porcentaje";
+            this.Lbl_Porcentaje.Size = new System.Drawing.Size(79, 16);
+            this.Lbl_Porcentaje.TabIndex = 53;
+            this.Lbl_Porcentaje.Text = "Porcentaje";
+            // 
+            // Lbl_Dpto
+            // 
+            this.Lbl_Dpto.AutoSize = true;
+            this.Lbl_Dpto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Dpto.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Dpto.Location = new System.Drawing.Point(479, 52);
+            this.Lbl_Dpto.Name = "Lbl_Dpto";
+            this.Lbl_Dpto.Size = new System.Drawing.Size(108, 16);
+            this.Lbl_Dpto.TabIndex = 52;
+            this.Lbl_Dpto.Text = "Departamento*";
+            // 
+            // CB_Dpto
+            // 
+            this.CB_Dpto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CB_Dpto.FormattingEnabled = true;
+            this.CB_Dpto.Location = new System.Drawing.Point(478, 71);
+            this.CB_Dpto.Name = "CB_Dpto";
+            this.CB_Dpto.Size = new System.Drawing.Size(154, 23);
+            this.CB_Dpto.TabIndex = 51;
             // 
             // Btn_EliminarPuesto
             // 
@@ -159,6 +190,7 @@ namespace Proyecto_MAD.Calculo
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 25;
+            this.TB_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Nombre_KeyPress);
             // 
             // LBL_Nombre
             // 
@@ -206,37 +238,6 @@ namespace Proyecto_MAD.Calculo
             this.LBL_Title.Size = new System.Drawing.Size(88, 23);
             this.LBL_Title.TabIndex = 20;
             this.LBL_Title.Text = "Puestos";
-            // 
-            // Lbl_Dpto
-            // 
-            this.Lbl_Dpto.AutoSize = true;
-            this.Lbl_Dpto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Dpto.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Dpto.Location = new System.Drawing.Point(479, 52);
-            this.Lbl_Dpto.Name = "Lbl_Dpto";
-            this.Lbl_Dpto.Size = new System.Drawing.Size(108, 16);
-            this.Lbl_Dpto.TabIndex = 52;
-            this.Lbl_Dpto.Text = "Departamento*";
-            // 
-            // CB_Dpto
-            // 
-            this.CB_Dpto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.CB_Dpto.FormattingEnabled = true;
-            this.CB_Dpto.Location = new System.Drawing.Point(478, 71);
-            this.CB_Dpto.Name = "CB_Dpto";
-            this.CB_Dpto.Size = new System.Drawing.Size(154, 23);
-            this.CB_Dpto.TabIndex = 51;
-            // 
-            // Lbl_Porcentaje
-            // 
-            this.Lbl_Porcentaje.AutoSize = true;
-            this.Lbl_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Porcentaje.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Porcentaje.Location = new System.Drawing.Point(302, 97);
-            this.Lbl_Porcentaje.Name = "Lbl_Porcentaje";
-            this.Lbl_Porcentaje.Size = new System.Drawing.Size(79, 16);
-            this.Lbl_Porcentaje.TabIndex = 53;
-            this.Lbl_Porcentaje.Text = "Porcentaje";
             // 
             // Puestos
             // 

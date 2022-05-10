@@ -129,12 +129,11 @@ namespace Proyecto_MAD.Calculo
         {
 
             db.Toma_Datos_Departamentos(5, id);
-            //cargar los datos de Dao_Puesto
-            if (TB_Nombre.Text != "")
-            {
-                TB_Nombre.Text = DAO_Departamentos.Nombre;
-                TB_SueldoBase.Text = DAO_Departamentos.Sueldo_Base.ToString();
-            }
+            //cargar los datos de Dao_Departamento
+
+            TB_Nombre.Text = DAO_Departamentos.Nombre;
+            TB_SueldoBase.Text = DAO_Departamentos.Sueldo_Base;
+            
         }
 
     }

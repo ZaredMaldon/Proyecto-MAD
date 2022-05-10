@@ -9,6 +9,9 @@ namespace Proyecto_MAD.EnlaceDB
 {
     public class EnlaceDB
     {
+        /*<add name="BD_MAD_1" connectionString="data source=PCZAZA\SQLEXPRESS;Initial Catalog=BD_MAD_1;persist security info=True;Integrated Security=SSPI" providerName="System.Data.SqlClient" />
+          <add name="BD_MAD_1" connectionString="Server=JAIME-ASUS\SQLEXPRESS;Database=BD_MAD_1;User Id=sa;Password=jddsaa2128"/>*/
+
         static private string _aux { set; get; }
         static private SqlConnection _conexion;
         static private SqlDataAdapter _adaptador = new SqlDataAdapter();
@@ -1027,7 +1030,8 @@ namespace Proyecto_MAD.EnlaceDB
                 {
                     DAO_Departamentos.id = dr.GetInt32(0);
                     DAO_Departamentos.Nombre = dr.GetString(1);
-                    DAO_Departamentos.Sueldo_Base = (decimal)dr.GetSqlMoney(2);
+
+                    DAO_Departamentos.Sueldo_Base = dr.GetSqlString(2).ToString();
 
                 }
             }

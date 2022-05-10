@@ -27,7 +27,7 @@ SELECT idDpto as ID,NombreDpto as Nombre,CONCAT('$ ',SueldoBase)AS SueldoBase fr
 
 /*-------------------------------------------------------------- View de Puestos ----------------------------------------------------------------------------------------*/
 go
-create view vw_Puestos
+alter view vw_Puestos
 as
 SELECT p.IdPuesto as ID,p.NombrePuesto as Puesto,p.NivelSalarial AS [Nivel Salarial],d.NombreDpto AS Departamento, pd.SalarioDiario as [Salario Diario] FROM PuestoDepartamento pd
 join Departamentos d on pd.Departamentofk=d.idDpto

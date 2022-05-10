@@ -181,7 +181,7 @@ end
 
 /*----------------------------------------------------------------------------------------------Deducciones------------------------------------------------------------------------------------------------------------------------------------------------*/
 go 
-create procedure SP_ControlDeducciones
+alter procedure SP_ControlDeducciones
 @Opc int,
 @idDeduc int = null,
 @NombreDeduc varchar(25) = null,
@@ -244,7 +244,7 @@ end
 
 /*---------------------------------------------------------------------------------------Puesto------------------------------------------------------------------------------------*/
 go
-create procedure SP_ControlPuestos
+alter procedure SP_ControlPuestos
 @Opc int,
 @IdPuestos int = null,
 @NombrePuesto varchar(25) = null,

@@ -78,7 +78,7 @@ namespace Proyecto_MAD.Tools
                 float res = float.Parse(numero) * 100;
                 string val1 = res.ToString();
                 int ciclos = 0, band = 0, length = val1.Length;
-                bool punto = false;
+                bool punto = false,inicio0=false;
                 //encontrar le punto
                 while (band <= length)
                 {
@@ -92,27 +92,57 @@ namespace Proyecto_MAD.Tools
                         }
                         else
                         {
-                            band++;
-                            ciclos++;
+                            if (numero[0] == '0')
+                            {
+                                inicio0 = true;
+                                band = length + 1;
+                            }
+                            else
+                            {
+                                band++;
+                                ciclos++;
+                            }
+                           
                         }
                     }
                     else band = length + 1;
 
 
                 }
-                if (!punto)
-                    porcentaje = val1;
+                if (!inicio0)
+                {
+                    if (!punto)
+                        porcentaje = val1;
+                    else
+                    {
+                        int a = length - (ciclos + 5);
+
+                        if (a < -1)
+                            porcentaje = val1.Substring(0, ciclos + 2);
+                        else if (a == -1)
+                            porcentaje = val1.Substring(0, ciclos + 4);
+                        else
+                            porcentaje = val1.Substring(0, ciclos + 5);
+                    }
+
+                }
                 else
                 {
-                    int a =length- (ciclos + 5);
+                    if (!punto)
+                        porcentaje = val1;
+                    else
+                    {
+                        int a = length - (ciclos + 4);
 
-                    if(a<-1) 
-                        porcentaje = val1.Substring(0, ciclos + 2);
-                    else if(a==-1)
-                        porcentaje = val1.Substring(0, ciclos + 4);
-                    else 
-                        porcentaje = val1.Substring(0,ciclos+5);
+                        if (a < -1)
+                            porcentaje = val1.Substring(0, ciclos + 2);
+                        else if (a == -1)
+                            porcentaje = val1.Substring(0, ciclos + 4);
+                        else
+                            porcentaje = val1.Substring(0, ciclos + 5);
+                    }
                 }
+                
             }
             
             

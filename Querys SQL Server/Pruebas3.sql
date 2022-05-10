@@ -41,3 +41,5 @@ Delete from Direcciones
 
 	delete from PuestoDepartamento where Departamentofk = @IdDepto and Puestofk = @IdPuestos;
 Delete from Puestos where IdPuesto = 2;
+
+insert Usuarios values ('sam','sam*12','Gerente')

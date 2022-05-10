@@ -227,7 +227,8 @@ begin
 Delete from Departamentos where idDpto = @idDepto;
 end
 if(@Opc = 3)/*Editar*/
-begin UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase where idDpto=@idDepto
+begin 
+UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase where idDpto=@idDepto;
 end
 if(@Opc = 4) /*mostrar*/
 begin
@@ -238,7 +239,7 @@ end
 
 /*---------------------------------------------------------------------------------------Puesto------------------------------------------------------------------------------------*/
 go
-ALTER procedure SP_ControlPuestos
+create procedure SP_ControlPuestos
 @Opc int,
 @IdPuestos int = null,
 @NombrePuesto varchar(25) = null,

@@ -15,6 +15,7 @@ namespace Proyecto_MAD.EnlaceDB
         static private SqlCommand _comandosql = new SqlCommand();
         static private DataTable _tabla = new DataTable();
         static private DataSet _DS = new DataSet();
+        //static public bool login_tipo;
 
         public DataTable obtenertabla
         {

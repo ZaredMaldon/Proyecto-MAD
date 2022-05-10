@@ -73,11 +73,9 @@ namespace Proyecto_MAD.Calculo
                     bool realizada = db.ControlDeptos(2, id);
                     if (realizada)
                     {
-                        MessageBox.Show("Se ha eliminado el Departamento correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
+                        MessageBox.Show("Se ha eliminado el Departamentos correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }                
                 }
-
             }
         }
 
@@ -91,7 +89,12 @@ namespace Proyecto_MAD.Calculo
             {
                 use = true;
                 id = Convert.ToInt32(this.Dgv_Deptos.SelectedRows[0].Cells[0].Value);
+                DialogResult dR = MessageBox.Show("¿Quieres cargar los datos de este PUESTO?", "Cuestionamiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dR == DialogResult.Yes)
+                {
+                    CargarDatos();
 
+                }
             }
         }
 

@@ -21,7 +21,7 @@ SELECT IdDeduccion as ID,NombreDeduccion as Nombre,DATENAME(MONTH,FechaAplicada)
 
 /*-------------------------------------------------------------- View de Departamentos ----------------------------------------------------------------------------------------*/
 go
-create view vw_Departamentos
+alter view vw_Departamentos
 as
 SELECT idDpto as ID,NombreDpto as Nombre,CONCAT('$ ',SueldoBase)AS SueldoBase from Departamentos;
 

@@ -209,7 +209,7 @@ end
 /*---------------------------------------------------------------------------Departamentos-------------------------------------------------------------------------------------*/
 
 go
-create procedure SP_ControlDepto
+alter procedure SP_ControlDepto
 @Opc int,
 @idDepto int = null,
 @NombreDepto varchar(25) = null,
@@ -233,6 +233,11 @@ end
 if(@Opc = 4) /*mostrar*/
 begin
 Select ID,Nombre,SueldoBase from vw_Departamentos;
+end
+if (@Opc = 5) /*Cargar*/
+begin
+SELECT ID, Nombre, SueldoBase from vw_Departamentos
+WHERE ID = @idDepto;
 end
 end
 

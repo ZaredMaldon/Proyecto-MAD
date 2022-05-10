@@ -10,6 +10,6 @@ namespace Proyecto_MAD.DAO
     {
         public static int id { get; set; }
         public static string Nombre { get; set; }
-        public static float Sueldo_Base { get; set; }
+        public static decimal Sueldo_Base { get; set; }
     }
 }

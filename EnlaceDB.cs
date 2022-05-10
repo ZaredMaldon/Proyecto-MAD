@@ -1008,7 +1008,7 @@ namespace Proyecto_MAD.EnlaceDB
             try
             {
                 conectar();
-                string qry = "SP_ControlDepartamentos";
+                string qry = "SP_ControlDepto";
                 _comandosql = new SqlCommand(qry, _conexion);
                 _comandosql.CommandType = CommandType.StoredProcedure;
                 _comandosql.CommandTimeout = 1200;
@@ -1027,7 +1027,7 @@ namespace Proyecto_MAD.EnlaceDB
                 {
                     DAO_Departamentos.id = dr.GetInt32(0);
                     DAO_Departamentos.Nombre = dr.GetString(1);
-                    DAO_Departamentos.Sueldo_Base = dr.GetFloat(2);                   
+                    DAO_Departamentos.Sueldo_Base = (decimal)dr.GetSqlMoney(2);
 
                 }
             }

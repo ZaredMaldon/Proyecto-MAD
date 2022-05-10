@@ -149,7 +149,7 @@ namespace Proyecto_MAD.Calculo
 
         private void CargarDatos()
         {
-                        db.Toma_Datos_Puestos(5, id);
+             db.Toma_Datos_Puestos(5, id);
             //cargar los datos de Dao_Puesto
               TB_Nombre.Text = DAO_Puestos.Puesto;
               TB_NivelSalarial.Text = DAO_Puestos.Nivel_Salarial.ToString();

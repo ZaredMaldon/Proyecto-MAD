@@ -89,7 +89,7 @@ namespace Proyecto_MAD.Calculo
             {
                 use = true;
                 id = Convert.ToInt32(this.Dgv_Deptos.SelectedRows[0].Cells[0].Value);
-                DialogResult dR = MessageBox.Show("¿Quieres cargar los datos de este PUESTO?", "Cuestionamiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dR = MessageBox.Show("¿Quieres cargar los datos de este DEPARTAMENTO?", "Cuestionamiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dR == DialogResult.Yes)
                 {
                     CargarDatos();
@@ -128,7 +128,7 @@ namespace Proyecto_MAD.Calculo
         private void CargarDatos()
         {
 
-            db.Toma_Datos_Puestos(5, id);
+            db.Toma_Datos_Departamentos(5, id);
             //cargar los datos de Dao_Puesto
             if (TB_Nombre.Text != "")
             {

@@ -1046,7 +1046,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         #region ControlPuestos
 
-        public bool ControlPuestos(int Op, int IdPuesto, string NombrePuesto, float NivelSalarial, string Departamento)
+        public bool ControlPuestos(int Op, int IdPuesto, string NombrePuesto, float NivelSalarial, string Departamento, int idDepto) //INSERTAR
         {
             var msg = "";
             var add = true;
@@ -1061,12 +1061,16 @@ namespace Proyecto_MAD.EnlaceDB
 
                 var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
                 parametro1.Value = Op;
+                var parametro5 = _comandosql.Parameters.Add("@IdPuestos", SqlDbType.Int);
+                parametro5.Value = IdPuesto;
                 var parametro2 = _comandosql.Parameters.Add("@NombrePuesto", SqlDbType.VarChar, 25);
                 parametro2.Value = NombrePuesto;
                 var parametro3 = _comandosql.Parameters.Add("@NivelSalarial", SqlDbType.Float);
                 parametro3.Value = NivelSalarial;
                 var parametro4 = _comandosql.Parameters.Add("@Departamento", SqlDbType.VarChar,20);
                 parametro4.Value = Departamento;
+                var parametro6 = _comandosql.Parameters.Add("@IdDepto", SqlDbType.Int);
+                parametro5.Value = idDepto;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();
@@ -1086,7 +1090,7 @@ namespace Proyecto_MAD.EnlaceDB
 
             return add;
         }
-        public bool ControlPuesto(int Opc, int idPuestos)
+        public bool ControlPuesto(int Opc, int idPuestos) //ELIMINAR
         {
             var msg = "";
             var add = true;
@@ -1189,7 +1193,7 @@ namespace Proyecto_MAD.EnlaceDB
                 {
                     DAO_Puestos.id = dr.GetInt32(0);
                     DAO_Puestos.Puesto = dr.GetString(1);
-                    DAO_Puestos.Nivel_Salarial = dr.GetFloat(2);
+                    DAO_Puestos.Nivel_Salarial = (float)dr.GetDouble(2);
                     DAO_Puestos.Departamento = dr.GetString(3);
                     DAO_Puestos.Salario_Diario = (decimal)dr.GetSqlMoney(4);
                     

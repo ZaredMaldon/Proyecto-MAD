@@ -238,12 +238,13 @@ end
 
 /*---------------------------------------------------------------------------------------Puesto------------------------------------------------------------------------------------*/
 go
-alter procedure SP_ControlPuestos
+ALTER procedure SP_ControlPuestos
 @Opc int,
 @IdPuestos int = null,
 @NombrePuesto varchar(25) = null,
 @NivelSalarial float = null,
-@Departamento varchar(20) =null
+@Departamento varchar(20) =null,
+@IdDepto     int = null
 
 as
 begin
@@ -267,10 +268,12 @@ begin
 end
 if(@Opc = 2)/*Eliminar*/
 begin
-Delete from Puestos where IdPuesto = @IdPuestos;
+delete from PuestoDepartamento where Puestofk = @IdPuestos;
+Delete from Puestos where IdPuesto = @IdPuestos; /*primero se debe eliminar regristro de la tabla puestodepartamento*/
 end
 if(@Opc = 3)/*Editar*/
-begin UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial where IdPuesto=@IdPuestos
+begin 
+UPDATE Puestos SET NombrePuesto=@NombrePuesto,NivelSalarial=@NivelSalarial where IdPuesto=@IdPuestos
 end
 if(@Opc = 4) /*mostrar*/
 begin

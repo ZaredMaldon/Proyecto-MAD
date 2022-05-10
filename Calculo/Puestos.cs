@@ -37,7 +37,7 @@ namespace Proyecto_MAD.Calculo
         {
             if (Validaciones())
             {
-                bool realizada = db.ControlPuestos(1, 0, TB_Nombre.Text, float.Parse(TB_NivelSalarial.Text), CB_Dpto.Text);
+                bool realizada = db.ControlPuestos(1, 0, TB_Nombre.Text, float.Parse(TB_NivelSalarial.Text), CB_Dpto.Text, CB_Dpto.SelectedIndex);
                 if (realizada)
                 {
                     MessageBox.Show("Registro Completado", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -59,18 +59,23 @@ namespace Proyecto_MAD.Calculo
 
         private void Btn_ModificarPuesto_Click(object sender, EventArgs e)
         {
-            if (use)
-            {
-
-            }
-            else
+            if (!use)
             {
                 MessageBox.Show("Seleccione un Puesto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            else
+            {
+                //db.Toma_Datos_Puestos(5, id);
+                if (Validaciones())
+                {
+                    //modifica
+                    db.ControlPuestos(3, id, TB_Nombre.Text, float.Parse(TB_NivelSalarial.Text), CB_Dpto.Text, CB_Dpto.SelectedIndex);
+                    MessageBox.Show("Se ha modificado el Puesto correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
             
         }
-
-
 
         private void Btn_EliminarPuesto_Click(object sender, EventArgs e)
         {
@@ -103,7 +108,12 @@ namespace Proyecto_MAD.Calculo
             {
                 use = true;
                 id = Convert.ToInt32(this.Dgv_Puestos.SelectedRows[0].Cells[0].Value);
+                DialogResult dR = MessageBox.Show("¿Quieres cargar los datos de este PUESTO?", "Cuestionamiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dR == DialogResult.Yes)
+                {
+                    CargarDatos();
 
+                }
             }
         }
 
@@ -139,15 +149,12 @@ namespace Proyecto_MAD.Calculo
 
         private void CargarDatos()
         {
-
-            db.Toma_Datos_Puestos(5, id);
+                        db.Toma_Datos_Puestos(5, id);
             //cargar los datos de Dao_Puesto
-            if (TB_Nombre.Text != "")
-            {
-                TB_Nombre.Text = DAO_Puestos.Puesto;
-                TB_NivelSalarial.Text = DAO_Puestos.Nivel_Salarial.ToString();
-                CB_Dpto.Text = DAO_Puestos.Departamento;
-            }
+              TB_Nombre.Text = DAO_Puestos.Puesto;
+              TB_NivelSalarial.Text = DAO_Puestos.Nivel_Salarial.ToString();
+              CB_Dpto.Text = DAO_Puestos.Departamento;
+            
         }
 
     }

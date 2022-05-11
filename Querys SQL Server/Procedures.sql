@@ -299,3 +299,39 @@ SELECT ID,Puesto,[Nivel Salarial],Departamento, [Salario Diario] from vw_Puestos
 WHERE ID = @IdPuestos;
 end
 end
+/*---------------------------------------------------------------------------------------PEDE_Empleado------------------------------------------------------------------------------------*/
+Create procedure SP_ControlPEDE_Empleado
+@Opc					 int,
+@Empleadofk		 int	 = null,
+@Percepcionfk		 int	 = null,
+@Deduccionfk		 int	 = null,
+@Departamentofk  int	 = null	
+
+as
+BEGIN
+	Declare @Contador int
+	Declare @Cantidad int
+
+	if(@Opc=1)--Agregar Deduccion a Empleado individual
+	begin
+		Insert into Deducciones_Empleado(Empleadofk,Deduccionfk) values(@Empleadofk,@Deduccionfk);
+	end
+	if(@Opc=2)--Agregar Percepcion a Empleado individual
+	begin
+		Insert into Percepciones_Empleado(Empleadofk,Percepcionfk) values(@Empleadofk,@Percepcionfk);
+	end
+	if(@Opc=3)
+	begin
+		set @Contador=1
+	
+		Select @Cantidad=COUNT(idEmp) from vw_Asignaciones
+		WHILE @Contador<=@Cantidad
+		BEGIN
+			Select @Empleadofk=idEmp,@Deduccionfk=idDeduccion from vw_Asignaciones where 
+			Set @Contador=@Contador+1
+		END
+
+		while 
+	end
+
+END

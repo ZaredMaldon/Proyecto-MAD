@@ -51,6 +51,8 @@ namespace Proyecto_MAD.Recibo
             this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
+            this.Btn_ElimDeduc = new FontAwesome.Sharp.IconButton();
+            this.Btn_ElimPercep = new FontAwesome.Sharp.IconButton();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EmpDep)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +60,8 @@ namespace Proyecto_MAD.Recibo
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.Btn_ElimPercep);
+            this.Panel_Background.Controls.Add(this.Btn_ElimDeduc);
             this.Panel_Background.Controls.Add(this.label3);
             this.Panel_Background.Controls.Add(this.label2);
             this.Panel_Background.Controls.Add(this.BTN_ADed);
@@ -126,6 +130,7 @@ namespace Proyecto_MAD.Recibo
             this.BTN_ADed.TabIndex = 41;
             this.BTN_ADed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTN_ADed.UseVisualStyleBackColor = false;
+            this.BTN_ADed.Click += new System.EventHandler(this.BTN_ADed_Click);
             // 
             // BTN_APer
             // 
@@ -148,6 +153,7 @@ namespace Proyecto_MAD.Recibo
             this.BTN_APer.TabIndex = 40;
             this.BTN_APer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BTN_APer.UseVisualStyleBackColor = false;
+            this.BTN_APer.Click += new System.EventHandler(this.BTN_APer_Click);
             // 
             // LBL_Datagrid
             // 
@@ -172,6 +178,7 @@ namespace Proyecto_MAD.Recibo
             this.Dgv_EmpDep.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dgv_EmpDep.Size = new System.Drawing.Size(623, 121);
             this.Dgv_EmpDep.TabIndex = 8;
+            this.Dgv_EmpDep.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_EmpDep_CellContentClick);
             // 
             // CB_Modo
             // 
@@ -243,7 +250,6 @@ namespace Proyecto_MAD.Recibo
             this.LB_Deducciones.HorizontalScrollbar = true;
             this.LB_Deducciones.Location = new System.Drawing.Point(26, 256);
             this.LB_Deducciones.Name = "LB_Deducciones";
-            this.LB_Deducciones.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.LB_Deducciones.Size = new System.Drawing.Size(303, 95);
             this.LB_Deducciones.TabIndex = 6;
             // 
@@ -253,7 +259,6 @@ namespace Proyecto_MAD.Recibo
             this.LB_Percepciones.HorizontalScrollbar = true;
             this.LB_Percepciones.Location = new System.Drawing.Point(346, 256);
             this.LB_Percepciones.Name = "LB_Percepciones";
-            this.LB_Percepciones.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.LB_Percepciones.Size = new System.Drawing.Size(303, 95);
             this.LB_Percepciones.TabIndex = 7;
             // 
@@ -304,6 +309,7 @@ namespace Proyecto_MAD.Recibo
             this.Btn_Agregar.Text = "Agregar";
             this.Btn_Agregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_Agregar.UseVisualStyleBackColor = false;
+            this.Btn_Agregar.Click += new System.EventHandler(this.Btn_Agregar_Click);
             // 
             // CB_Mes
             // 
@@ -349,6 +355,52 @@ namespace Proyecto_MAD.Recibo
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Mes";
             // 
+            // Btn_ElimDeduc
+            // 
+            this.Btn_ElimDeduc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_ElimDeduc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_ElimDeduc.FlatAppearance.BorderSize = 2;
+            this.Btn_ElimDeduc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_ElimDeduc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_ElimDeduc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ElimDeduc.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ElimDeduc.ForeColor = System.Drawing.Color.White;
+            this.Btn_ElimDeduc.IconChar = FontAwesome.Sharp.IconChar.Backspace;
+            this.Btn_ElimDeduc.IconColor = System.Drawing.Color.White;
+            this.Btn_ElimDeduc.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_ElimDeduc.IconSize = 25;
+            this.Btn_ElimDeduc.Location = new System.Drawing.Point(295, 328);
+            this.Btn_ElimDeduc.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_ElimDeduc.Name = "Btn_ElimDeduc";
+            this.Btn_ElimDeduc.Size = new System.Drawing.Size(34, 23);
+            this.Btn_ElimDeduc.TabIndex = 44;
+            this.Btn_ElimDeduc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_ElimDeduc.UseVisualStyleBackColor = false;
+            this.Btn_ElimDeduc.Click += new System.EventHandler(this.Btn_ElimDeduc_Click);
+            // 
+            // Btn_ElimPercep
+            // 
+            this.Btn_ElimPercep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_ElimPercep.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_ElimPercep.FlatAppearance.BorderSize = 2;
+            this.Btn_ElimPercep.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_ElimPercep.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_ElimPercep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ElimPercep.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ElimPercep.ForeColor = System.Drawing.Color.White;
+            this.Btn_ElimPercep.IconChar = FontAwesome.Sharp.IconChar.Backspace;
+            this.Btn_ElimPercep.IconColor = System.Drawing.Color.White;
+            this.Btn_ElimPercep.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_ElimPercep.IconSize = 25;
+            this.Btn_ElimPercep.Location = new System.Drawing.Point(615, 328);
+            this.Btn_ElimPercep.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_ElimPercep.Name = "Btn_ElimPercep";
+            this.Btn_ElimPercep.Size = new System.Drawing.Size(34, 23);
+            this.Btn_ElimPercep.TabIndex = 45;
+            this.Btn_ElimPercep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_ElimPercep.UseVisualStyleBackColor = false;
+            this.Btn_ElimPercep.Click += new System.EventHandler(this.Btn_ElimPercep_Click);
+            // 
             // PEDE_Empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,5 +442,7 @@ namespace Proyecto_MAD.Recibo
         private FontAwesome.Sharp.IconButton BTN_ADed;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private FontAwesome.Sharp.IconButton Btn_ElimPercep;
+        private FontAwesome.Sharp.IconButton Btn_ElimDeduc;
     }
 }

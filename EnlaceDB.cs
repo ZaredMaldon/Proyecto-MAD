@@ -722,6 +722,50 @@ namespace Proyecto_MAD.EnlaceDB
 
         #endregion
 
+        #region Control PEDE_Empleado
+        //Asignaciones de percepciones y deducciones a cada empleado
+        public bool ControlPEDE_Empleado(int Opc, int idDepto, string Nombre, float sueldoBase)
+        {
+            var msg = "";
+            var add = true;
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlPEDE_Empleado";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@NombreDepto", SqlDbType.VarChar, 25);
+                parametro2.Value = Nombre;
+                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Money);
+                parametro3.Value = sueldoBase;
+                var parametro4 = _comandosql.Parameters.Add("@idDepto", SqlDbType.Money);
+                parametro4.Value = idDepto;
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+            return add;
+        }
+        #endregion
+
         #region Llenado de ComboBox
         public void Cargar_DatosMuni_CB(int Opc,ComboBox a)
         {

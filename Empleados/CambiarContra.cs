@@ -26,5 +26,10 @@ namespace Proyecto_MAD.Empleados
         {
 
         }
+
+        private void TB_Usuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

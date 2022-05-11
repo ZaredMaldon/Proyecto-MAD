@@ -67,7 +67,6 @@ namespace Proyecto_MAD.Empleados
         }
 
 
-
         #endregion
 
         private void Panel_Contenedor_Paint(object sender, PaintEventArgs e)

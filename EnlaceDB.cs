@@ -983,6 +983,50 @@ namespace Proyecto_MAD.EnlaceDB
             }
         }
 
+        public void Toma_UsPs_Empleado(int Opc, int idEmp)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "ControlEmpleados";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@IdEmpleado", SqlDbType.Int);
+                parametro2.Value = idEmp;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {                   
+                    DAO_Empleado.Usuario = dr.GetString(22);
+                    DAO_Empleado.Contraseña = dr.GetString(23);
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
         #endregion
 
         //----------------------------------------------------------Departamento----------------------------------------------------------------//

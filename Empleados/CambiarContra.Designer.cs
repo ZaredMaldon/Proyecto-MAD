@@ -31,14 +31,14 @@ namespace Proyecto_MAD.Empleados
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CambiarContra));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.TB_Password2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TB_Password = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TB_Usuario = new System.Windows.Forms.TextBox();
             this.Btn_Cambiar = new FontAwesome.Sharp.IconButton();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
-            this.TB_Usuario = new System.Windows.Forms.TextBox();
-            this.TB_Password = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TB_Password2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,57 @@ namespace Proyecto_MAD.Empleados
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 22;
+            // 
+            // TB_Password2
+            // 
+            this.TB_Password2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_Password2.Location = new System.Drawing.Point(220, 345);
+            this.TB_Password2.Name = "TB_Password2";
+            this.TB_Password2.PasswordChar = '*';
+            this.TB_Password2.Size = new System.Drawing.Size(218, 23);
+            this.TB_Password2.TabIndex = 28;
+            this.TB_Password2.UseSystemPasswordChar = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(216, 312);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(199, 21);
+            this.label2.TabIndex = 27;
+            this.label2.Text = "Confirma Contraseña";
+            // 
+            // TB_Password
+            // 
+            this.TB_Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_Password.Location = new System.Drawing.Point(220, 257);
+            this.TB_Password.Name = "TB_Password";
+            this.TB_Password.PasswordChar = '*';
+            this.TB_Password.Size = new System.Drawing.Size(218, 23);
+            this.TB_Password.TabIndex = 26;
+            this.TB_Password.UseSystemPasswordChar = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(216, 221);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 21);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "Contraseña";
+            // 
+            // TB_Usuario
+            // 
+            this.TB_Usuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_Usuario.Location = new System.Drawing.Point(220, 167);
+            this.TB_Usuario.Name = "TB_Usuario";
+            this.TB_Usuario.Size = new System.Drawing.Size(218, 23);
+            this.TB_Usuario.TabIndex = 24;
+            this.TB_Usuario.TextChanged += new System.EventHandler(this.TB_Usuario_TextChanged);
             // 
             // Btn_Cambiar
             // 
@@ -104,56 +155,6 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Usuario";
             this.LBL_Mes.Click += new System.EventHandler(this.LBL_Mes_Click);
-            // 
-            // TB_Usuario
-            // 
-            this.TB_Usuario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Usuario.Location = new System.Drawing.Point(220, 167);
-            this.TB_Usuario.Name = "TB_Usuario";
-            this.TB_Usuario.Size = new System.Drawing.Size(218, 23);
-            this.TB_Usuario.TabIndex = 24;
-            // 
-            // TB_Password
-            // 
-            this.TB_Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Password.Location = new System.Drawing.Point(220, 257);
-            this.TB_Password.Name = "TB_Password";
-            this.TB_Password.PasswordChar = '*';
-            this.TB_Password.Size = new System.Drawing.Size(218, 23);
-            this.TB_Password.TabIndex = 26;
-            this.TB_Password.UseSystemPasswordChar = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(216, 221);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 21);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Contraseña";
-            // 
-            // TB_Password2
-            // 
-            this.TB_Password2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Password2.Location = new System.Drawing.Point(220, 345);
-            this.TB_Password2.Name = "TB_Password2";
-            this.TB_Password2.PasswordChar = '*';
-            this.TB_Password2.Size = new System.Drawing.Size(218, 23);
-            this.TB_Password2.TabIndex = 28;
-            this.TB_Password2.UseSystemPasswordChar = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(216, 312);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 21);
-            this.label2.TabIndex = 27;
-            this.label2.Text = "Confirma Contraseña";
             // 
             // CambiarContra
             // 

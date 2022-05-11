@@ -31,6 +31,11 @@ namespace Proyecto_MAD.Recibo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PEDE_Empleado));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.BTN_ADed = new FontAwesome.Sharp.IconButton();
+            this.BTN_APer = new FontAwesome.Sharp.IconButton();
+            this.LBL_Datagrid = new System.Windows.Forms.Label();
             this.Dgv_EmpDep = new System.Windows.Forms.DataGridView();
             this.CB_Modo = new System.Windows.Forms.ComboBox();
             this.Lbl_Modo = new System.Windows.Forms.Label();
@@ -46,11 +51,6 @@ namespace Proyecto_MAD.Recibo
             this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
-            this.LBL_Datagrid = new System.Windows.Forms.Label();
-            this.BTN_APer = new FontAwesome.Sharp.IconButton();
-            this.BTN_ADed = new FontAwesome.Sharp.IconButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EmpDep)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +83,83 @@ namespace Proyecto_MAD.Recibo
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 24;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(26, 232);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(126, 21);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Deducciones";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(342, 232);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(133, 21);
+            this.label2.TabIndex = 42;
+            this.label2.Text = "Percepciones";
+            // 
+            // BTN_ADed
+            // 
+            this.BTN_ADed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.BTN_ADed.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.BTN_ADed.FlatAppearance.BorderSize = 2;
+            this.BTN_ADed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.BTN_ADed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.BTN_ADed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_ADed.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_ADed.ForeColor = System.Drawing.Color.White;
+            this.BTN_ADed.IconChar = FontAwesome.Sharp.IconChar.BoxOpen;
+            this.BTN_ADed.IconColor = System.Drawing.Color.White;
+            this.BTN_ADed.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.BTN_ADed.IconSize = 25;
+            this.BTN_ADed.Location = new System.Drawing.Point(572, 157);
+            this.BTN_ADed.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.BTN_ADed.Name = "BTN_ADed";
+            this.BTN_ADed.Size = new System.Drawing.Size(34, 23);
+            this.BTN_ADed.TabIndex = 41;
+            this.BTN_ADed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_ADed.UseVisualStyleBackColor = false;
+            // 
+            // BTN_APer
+            // 
+            this.BTN_APer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.BTN_APer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.BTN_APer.FlatAppearance.BorderSize = 2;
+            this.BTN_APer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.BTN_APer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.BTN_APer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_APer.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_APer.ForeColor = System.Drawing.Color.White;
+            this.BTN_APer.IconChar = FontAwesome.Sharp.IconChar.BoxOpen;
+            this.BTN_APer.IconColor = System.Drawing.Color.White;
+            this.BTN_APer.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.BTN_APer.IconSize = 25;
+            this.BTN_APer.Location = new System.Drawing.Point(572, 78);
+            this.BTN_APer.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.BTN_APer.Name = "BTN_APer";
+            this.BTN_APer.Size = new System.Drawing.Size(34, 23);
+            this.BTN_APer.TabIndex = 40;
+            this.BTN_APer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_APer.UseVisualStyleBackColor = false;
+            // 
+            // LBL_Datagrid
+            // 
+            this.LBL_Datagrid.AutoSize = true;
+            this.LBL_Datagrid.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBL_Datagrid.ForeColor = System.Drawing.Color.White;
+            this.LBL_Datagrid.Location = new System.Drawing.Point(22, 358);
+            this.LBL_Datagrid.Name = "LBL_Datagrid";
+            this.LBL_Datagrid.Size = new System.Drawing.Size(337, 21);
+            this.LBL_Datagrid.TabIndex = 39;
+            this.LBL_Datagrid.Text = "Lista de Empleados y departamentos";
+            // 
             // Dgv_EmpDep
             // 
             this.Dgv_EmpDep.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
@@ -107,6 +184,7 @@ namespace Proyecto_MAD.Recibo
             this.CB_Modo.Name = "CB_Modo";
             this.CB_Modo.Size = new System.Drawing.Size(209, 23);
             this.CB_Modo.TabIndex = 1;
+            this.CB_Modo.SelectedIndexChanged += new System.EventHandler(this.CB_Modo_SelectedIndexChanged);
             // 
             // Lbl_Modo
             // 
@@ -147,7 +225,6 @@ namespace Proyecto_MAD.Recibo
             this.Cb_Deducciones.Name = "Cb_Deducciones";
             this.Cb_Deducciones.Size = new System.Drawing.Size(169, 23);
             this.Cb_Deducciones.TabIndex = 5;
-            this.Cb_Deducciones.SelectedIndexChanged += new System.EventHandler(this.Cb_Deducciones_SelectedIndexChanged);
             // 
             // Lbl_Deducciones
             // 
@@ -272,83 +349,6 @@ namespace Proyecto_MAD.Recibo
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Mes";
             // 
-            // LBL_Datagrid
-            // 
-            this.LBL_Datagrid.AutoSize = true;
-            this.LBL_Datagrid.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Datagrid.ForeColor = System.Drawing.Color.White;
-            this.LBL_Datagrid.Location = new System.Drawing.Point(22, 358);
-            this.LBL_Datagrid.Name = "LBL_Datagrid";
-            this.LBL_Datagrid.Size = new System.Drawing.Size(337, 21);
-            this.LBL_Datagrid.TabIndex = 39;
-            this.LBL_Datagrid.Text = "Lista de Empleados y departamentos";
-            // 
-            // BTN_APer
-            // 
-            this.BTN_APer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
-            this.BTN_APer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.BTN_APer.FlatAppearance.BorderSize = 2;
-            this.BTN_APer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.BTN_APer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.BTN_APer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_APer.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_APer.ForeColor = System.Drawing.Color.White;
-            this.BTN_APer.IconChar = FontAwesome.Sharp.IconChar.BoxOpen;
-            this.BTN_APer.IconColor = System.Drawing.Color.White;
-            this.BTN_APer.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.BTN_APer.IconSize = 25;
-            this.BTN_APer.Location = new System.Drawing.Point(572, 78);
-            this.BTN_APer.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.BTN_APer.Name = "BTN_APer";
-            this.BTN_APer.Size = new System.Drawing.Size(34, 23);
-            this.BTN_APer.TabIndex = 40;
-            this.BTN_APer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BTN_APer.UseVisualStyleBackColor = false;
-            // 
-            // BTN_ADed
-            // 
-            this.BTN_ADed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
-            this.BTN_ADed.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.BTN_ADed.FlatAppearance.BorderSize = 2;
-            this.BTN_ADed.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.BTN_ADed.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.BTN_ADed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_ADed.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_ADed.ForeColor = System.Drawing.Color.White;
-            this.BTN_ADed.IconChar = FontAwesome.Sharp.IconChar.BoxOpen;
-            this.BTN_ADed.IconColor = System.Drawing.Color.White;
-            this.BTN_ADed.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.BTN_ADed.IconSize = 25;
-            this.BTN_ADed.Location = new System.Drawing.Point(572, 157);
-            this.BTN_ADed.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.BTN_ADed.Name = "BTN_ADed";
-            this.BTN_ADed.Size = new System.Drawing.Size(34, 23);
-            this.BTN_ADed.TabIndex = 41;
-            this.BTN_ADed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BTN_ADed.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(342, 232);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(133, 21);
-            this.label2.TabIndex = 42;
-            this.label2.Text = "Percepciones";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(26, 232);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 21);
-            this.label3.TabIndex = 43;
-            this.label3.Text = "Deducciones";
-            // 
             // PEDE_Empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,6 +359,7 @@ namespace Proyecto_MAD.Recibo
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PEDE_Empleado";
             this.Text = "GenerarRecibo";
+            this.Load += new System.EventHandler(this.PEDE_Empleado_Load);
             this.Panel_Background.ResumeLayout(false);
             this.Panel_Background.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EmpDep)).EndInit();

@@ -134,7 +134,7 @@ end
 end
 /*---------------------------------------------------------------------------------------- Llenado de Combobox -----------------------------------------------------------------------------------------------------------------------------------*/
 go
-create procedure SP_LlenadoCombobox
+alter procedure SP_LlenadoCombobox
 @Opc int,
 @Dpto varchar(20) = null
 as
@@ -151,6 +151,14 @@ end
 if(@Opc=3)/*Llenado de CB Puestos por DPTO*/
 begin
 	Select ID,Puesto from vw_Puestos where Departamento=@Dpto;
+end
+if(@Opc=4)/*Llenado de CB Perc por percepciones*/
+begin
+	Select IdPercepcion,NombrePercepcion from Percepciones;
+end
+if(@Opc=5)/*Llenado de CB Deduc por Deducciones*/
+begin
+	Select IdDeduccion,NombreDeduccion from Deducciones;
 end
 END
 

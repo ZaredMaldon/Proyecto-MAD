@@ -805,6 +805,60 @@ namespace Proyecto_MAD.EnlaceDB
             a.DataSource = dt;
 
         }
+
+        public void Cargar_DatosPercep_CB(int Opc, ComboBox a)
+        {
+            conectar();
+            string qry = "SP_LlenadoCombobox";
+
+            _comandosql = new SqlCommand(qry, _conexion);
+            _comandosql.CommandType = CommandType.StoredProcedure;
+            _comandosql.CommandTimeout = 1200;
+
+            var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+            parametro1.Value = Opc;
+
+
+            SqlDataAdapter da = new SqlDataAdapter(_comandosql);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            desconectar();
+
+            DataRow fila = dt.NewRow();
+            fila["NombrePercepcion"] = "Selecciona una Percepción";
+            dt.Rows.InsertAt(fila, 0);
+            a.ValueMember = "IdPercepcion";
+            a.DisplayMember = "NombrePercepcion";
+            a.DataSource = dt;
+
+        }
+
+        public void Cargar_DatosDeduc_CB(int Opc, ComboBox a)
+        {
+            conectar();
+            string qry = "SP_LlenadoCombobox";
+
+            _comandosql = new SqlCommand(qry, _conexion);
+            _comandosql.CommandType = CommandType.StoredProcedure;
+            _comandosql.CommandTimeout = 1200;
+
+            var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+            parametro1.Value = Opc;
+
+
+            SqlDataAdapter da = new SqlDataAdapter(_comandosql);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            desconectar();
+
+            DataRow fila = dt.NewRow();
+            fila["NombreDeduccion"] = "Selecciona una Deduccion";
+            dt.Rows.InsertAt(fila, 0);
+            a.ValueMember = "IdDeduccion";
+            a.DisplayMember = "NombreDeduccion";
+            a.DataSource = dt;
+
+        }
         #endregion
 
         #region Toma de datos 

@@ -19,16 +19,23 @@ namespace Proyecto_MAD.Recibo
         {
             InitializeComponent();
         }
-
-        private void Btn_CSV_Click(object sender, EventArgs e)
+        private void PEDE_Empleado_Load(object sender, EventArgs e)
         {
-            DataTable dt = dB.DataTable_MostrarDeduccion(3);//cambiar 
-            Tools_z.CrearCsv(dt,"nómina");
+            dB.Cargar_DatosDeduc_CB(5,Cb_Deducciones);
+            dB.Cargar_DatosPercep_CB(4, Cb_Percepciones);
         }
 
-        private void Cb_Deducciones_SelectedIndexChanged(object sender, EventArgs e)
+        private void CB_Modo_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int a=CB_Modo.SelectedIndex;
 
+            if(CB_Modo.SelectedIndex == 0)
+            {
+
+            }else if(CB_Modo.SelectedIndex == 1)//Departamento
+            {
+
+            }
         }
     }
 }

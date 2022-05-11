@@ -99,7 +99,7 @@ namespace Proyecto_MAD.Recibo
                 LB_Percepciones.Items.RemoveAt(indice);
             }
         }
-        //Agrega las percepciones y deducciones que tendra el empleado ese mes
+        //Agrega las percepciones y deducciones que tendra el empleado del mes correspondiente
         private void Btn_Agregar_Click(object sender, EventArgs e)
         {
             if (!use)

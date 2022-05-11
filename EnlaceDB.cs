@@ -1220,5 +1220,42 @@ namespace Proyecto_MAD.EnlaceDB
             }
         }
 
+        #region calculo
+        public void Calculo_de_Nomina(DateTime date)
+        {
+            var msg = "";
+
+            try
+            {
+                conectar();
+                string qry = "SP_Calculo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+
+                var parametro1 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Date);
+                parametro1.Value = date;
+
+
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+        }
+        #endregion
+
     }
 }

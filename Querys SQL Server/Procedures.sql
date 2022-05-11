@@ -236,8 +236,8 @@ Select idDpto ,NombreDpto,SueldoBase from Departamentos;
 end
 if (@Opc = 5) /*Cargar*/
 begin
-SELECT ID, Nombre, SueldoBase from vw_Departamentos
-WHERE ID = @idDepto;
+SELECT idDpto,NombreDpto, SueldoBase from Departamentos
+WHERE idDpto = @idDepto;
 end
 end
 

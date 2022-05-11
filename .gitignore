@@ -3,3 +3,4 @@
 *.sln
 bin/
 packages/
+App.config

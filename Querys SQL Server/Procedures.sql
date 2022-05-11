@@ -232,7 +232,7 @@ UPDATE Departamentos SET NombreDpto=@NombreDepto,SueldoBase=@sueldoBase where id
 end
 if(@Opc = 4) /*mostrar*/
 begin
-Select idDpto ,NombreDpto,SueldoBase from Departamentos;
+Select ID ,Nombre,SueldoBase from vw_Departamentos;
 end
 if (@Opc = 5) /*Cargar*/
 begin

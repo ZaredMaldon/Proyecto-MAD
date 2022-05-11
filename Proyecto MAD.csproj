@@ -90,6 +90,12 @@
     <Compile Include="DAO\DAO_Departamentos.cs" />
     <Compile Include="DAO\DAO_Empleado.cs" />
     <Compile Include="DAO\DAO_Puestos.cs" />
+    <Compile Include="Empleados\CambiarContra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleados\CambiarContra.Designer.cs">
+      <DependentUpon>CambiarContra.cs</DependentUpon>
+    </Compile>
     <Compile Include="EnlaceDB.cs" />
     <Compile Include="Departamentos\Departamentos.cs">
       <SubType>Form</SubType>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calculo\Puestos.resx">
       <DependentUpon>Puestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleados\CambiarContra.resx">
+      <DependentUpon>CambiarContra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gerente\Empresa.resx">
       <DependentUpon>Empresa.cs</DependentUpon>

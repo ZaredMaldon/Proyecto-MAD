@@ -61,7 +61,10 @@ namespace Proyecto_MAD.Empleados
         {
             AbrirFormHija(new ConsultaRecibo());
         }
-
+        private void Btn_CambioContra_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new CambiarContra());
+        }
 
 
 
@@ -84,5 +87,7 @@ namespace Proyecto_MAD.Empleados
             form.Show();
             this.Close();
         }
+
+       
     }
 }

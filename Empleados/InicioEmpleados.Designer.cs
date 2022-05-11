@@ -36,12 +36,13 @@ namespace Proyecto_MAD.Empleados
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_Desconectar = new FontAwesome.Sharp.IconButton();
             this.Panel_Contenedor = new System.Windows.Forms.Panel();
             this.Inicio_Btn = new FontAwesome.Sharp.IconButton();
             this.Recibo_Btn = new FontAwesome.Sharp.IconButton();
             this.DatosPer_Btn = new FontAwesome.Sharp.IconButton();
             this.Panel_Conten = new System.Windows.Forms.Panel();
-            this.Btn_Desconectar = new FontAwesome.Sharp.IconButton();
+            this.Btn_CambioContra = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -113,6 +114,7 @@ namespace Proyecto_MAD.Empleados
             // 
             this.panel2.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(44)))), ((int)(((byte)(58)))));
+            this.panel2.Controls.Add(this.Btn_CambioContra);
             this.panel2.Controls.Add(this.Btn_Desconectar);
             this.panel2.Controls.Add(this.Panel_Contenedor);
             this.panel2.Controls.Add(this.Inicio_Btn);
@@ -124,92 +126,6 @@ namespace Proyecto_MAD.Empleados
             this.panel2.Size = new System.Drawing.Size(220, 620);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // Panel_Contenedor
-            // 
-            this.Panel_Contenedor.Location = new System.Drawing.Point(221, 0);
-            this.Panel_Contenedor.Name = "Panel_Contenedor";
-            this.Panel_Contenedor.Size = new System.Drawing.Size(732, 621);
-            this.Panel_Contenedor.TabIndex = 2;
-            this.Panel_Contenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Contenedor_Paint);
-            // 
-            // Inicio_Btn
-            // 
-            this.Inicio_Btn.FlatAppearance.BorderSize = 0;
-            this.Inicio_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
-            this.Inicio_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Inicio_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Inicio_Btn.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Inicio_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.Inicio_Btn.IconChar = FontAwesome.Sharp.IconChar.Home;
-            this.Inicio_Btn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.Inicio_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Inicio_Btn.IconSize = 55;
-            this.Inicio_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Inicio_Btn.Location = new System.Drawing.Point(0, 144);
-            this.Inicio_Btn.Name = "Inicio_Btn";
-            this.Inicio_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.Inicio_Btn.Size = new System.Drawing.Size(217, 83);
-            this.Inicio_Btn.TabIndex = 1;
-            this.Inicio_Btn.Text = "Inicio";
-            this.Inicio_Btn.UseVisualStyleBackColor = true;
-            this.Inicio_Btn.Click += new System.EventHandler(this.Inicio_Btn_Click);
-            // 
-            // Recibo_Btn
-            // 
-            this.Recibo_Btn.FlatAppearance.BorderSize = 0;
-            this.Recibo_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
-            this.Recibo_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Recibo_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Recibo_Btn.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Recibo_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.Recibo_Btn.IconChar = FontAwesome.Sharp.IconChar.Barcode;
-            this.Recibo_Btn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.Recibo_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Recibo_Btn.IconSize = 55;
-            this.Recibo_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Recibo_Btn.Location = new System.Drawing.Point(0, 322);
-            this.Recibo_Btn.Name = "Recibo_Btn";
-            this.Recibo_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.Recibo_Btn.Size = new System.Drawing.Size(217, 83);
-            this.Recibo_Btn.TabIndex = 3;
-            this.Recibo_Btn.Text = "Consulta Recibo";
-            this.Recibo_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Recibo_Btn.UseCompatibleTextRendering = true;
-            this.Recibo_Btn.UseVisualStyleBackColor = true;
-            this.Recibo_Btn.Click += new System.EventHandler(this.Recibo_Btn_Click);
-            // 
-            // DatosPer_Btn
-            // 
-            this.DatosPer_Btn.FlatAppearance.BorderSize = 0;
-            this.DatosPer_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
-            this.DatosPer_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.DatosPer_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DatosPer_Btn.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DatosPer_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.DatosPer_Btn.IconChar = FontAwesome.Sharp.IconChar.AddressCard;
-            this.DatosPer_Btn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.DatosPer_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.DatosPer_Btn.IconSize = 55;
-            this.DatosPer_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DatosPer_Btn.Location = new System.Drawing.Point(0, 233);
-            this.DatosPer_Btn.Name = "DatosPer_Btn";
-            this.DatosPer_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.DatosPer_Btn.Size = new System.Drawing.Size(217, 83);
-            this.DatosPer_Btn.TabIndex = 2;
-            this.DatosPer_Btn.Text = "Datos Personales";
-            this.DatosPer_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.DatosPer_Btn.UseVisualStyleBackColor = true;
-            this.DatosPer_Btn.Click += new System.EventHandler(this.DatosPer_Btn_Click);
-            // 
-            // Panel_Conten
-            // 
-            this.Panel_Conten.BackColor = System.Drawing.Color.Black;
-            this.Panel_Conten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel_Conten.Location = new System.Drawing.Point(220, 55);
-            this.Panel_Conten.Name = "Panel_Conten";
-            this.Panel_Conten.Size = new System.Drawing.Size(730, 620);
-            this.Panel_Conten.TabIndex = 2;
             // 
             // Btn_Desconectar
             // 
@@ -234,6 +150,116 @@ namespace Proyecto_MAD.Empleados
             this.Btn_Desconectar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_Desconectar.UseVisualStyleBackColor = false;
             this.Btn_Desconectar.Click += new System.EventHandler(this.Btn_Desconectar_Click);
+            // 
+            // Panel_Contenedor
+            // 
+            this.Panel_Contenedor.Location = new System.Drawing.Point(221, 0);
+            this.Panel_Contenedor.Name = "Panel_Contenedor";
+            this.Panel_Contenedor.Size = new System.Drawing.Size(732, 621);
+            this.Panel_Contenedor.TabIndex = 2;
+            this.Panel_Contenedor.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Contenedor_Paint);
+            // 
+            // Inicio_Btn
+            // 
+            this.Inicio_Btn.FlatAppearance.BorderSize = 0;
+            this.Inicio_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
+            this.Inicio_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Inicio_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Inicio_Btn.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Inicio_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Inicio_Btn.IconChar = FontAwesome.Sharp.IconChar.Home;
+            this.Inicio_Btn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Inicio_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Inicio_Btn.IconSize = 55;
+            this.Inicio_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Inicio_Btn.Location = new System.Drawing.Point(0, 102);
+            this.Inicio_Btn.Name = "Inicio_Btn";
+            this.Inicio_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.Inicio_Btn.Size = new System.Drawing.Size(217, 83);
+            this.Inicio_Btn.TabIndex = 1;
+            this.Inicio_Btn.Text = "Inicio";
+            this.Inicio_Btn.UseVisualStyleBackColor = true;
+            this.Inicio_Btn.Click += new System.EventHandler(this.Inicio_Btn_Click);
+            // 
+            // Recibo_Btn
+            // 
+            this.Recibo_Btn.FlatAppearance.BorderSize = 0;
+            this.Recibo_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
+            this.Recibo_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Recibo_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Recibo_Btn.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Recibo_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Recibo_Btn.IconChar = FontAwesome.Sharp.IconChar.Barcode;
+            this.Recibo_Btn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Recibo_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Recibo_Btn.IconSize = 55;
+            this.Recibo_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Recibo_Btn.Location = new System.Drawing.Point(0, 280);
+            this.Recibo_Btn.Name = "Recibo_Btn";
+            this.Recibo_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.Recibo_Btn.Size = new System.Drawing.Size(217, 83);
+            this.Recibo_Btn.TabIndex = 3;
+            this.Recibo_Btn.Text = "Consulta Recibo";
+            this.Recibo_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Recibo_Btn.UseCompatibleTextRendering = true;
+            this.Recibo_Btn.UseVisualStyleBackColor = true;
+            this.Recibo_Btn.Click += new System.EventHandler(this.Recibo_Btn_Click);
+            // 
+            // DatosPer_Btn
+            // 
+            this.DatosPer_Btn.FlatAppearance.BorderSize = 0;
+            this.DatosPer_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
+            this.DatosPer_Btn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.DatosPer_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DatosPer_Btn.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DatosPer_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.DatosPer_Btn.IconChar = FontAwesome.Sharp.IconChar.AddressCard;
+            this.DatosPer_Btn.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.DatosPer_Btn.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.DatosPer_Btn.IconSize = 55;
+            this.DatosPer_Btn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.DatosPer_Btn.Location = new System.Drawing.Point(0, 191);
+            this.DatosPer_Btn.Name = "DatosPer_Btn";
+            this.DatosPer_Btn.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.DatosPer_Btn.Size = new System.Drawing.Size(217, 83);
+            this.DatosPer_Btn.TabIndex = 2;
+            this.DatosPer_Btn.Text = "Datos Personales";
+            this.DatosPer_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.DatosPer_Btn.UseVisualStyleBackColor = true;
+            this.DatosPer_Btn.Click += new System.EventHandler(this.DatosPer_Btn_Click);
+            // 
+            // Panel_Conten
+            // 
+            this.Panel_Conten.BackColor = System.Drawing.Color.Black;
+            this.Panel_Conten.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel_Conten.Location = new System.Drawing.Point(220, 55);
+            this.Panel_Conten.Name = "Panel_Conten";
+            this.Panel_Conten.Size = new System.Drawing.Size(730, 620);
+            this.Panel_Conten.TabIndex = 2;
+            // 
+            // Btn_CambioContra
+            // 
+            this.Btn_CambioContra.FlatAppearance.BorderSize = 0;
+            this.Btn_CambioContra.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
+            this.Btn_CambioContra.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_CambioContra.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_CambioContra.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_CambioContra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Btn_CambioContra.IconChar = FontAwesome.Sharp.IconChar.CaretSquareRight;
+            this.Btn_CambioContra.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Btn_CambioContra.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_CambioContra.IconSize = 55;
+            this.Btn_CambioContra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_CambioContra.Location = new System.Drawing.Point(3, 369);
+            this.Btn_CambioContra.Name = "Btn_CambioContra";
+            this.Btn_CambioContra.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.Btn_CambioContra.Size = new System.Drawing.Size(217, 83);
+            this.Btn_CambioContra.TabIndex = 36;
+            this.Btn_CambioContra.Text = "Cambiar Contraseña";
+            this.Btn_CambioContra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_CambioContra.UseCompatibleTextRendering = true;
+            this.Btn_CambioContra.UseVisualStyleBackColor = true;
+            this.Btn_CambioContra.Click += new System.EventHandler(this.Btn_CambioContra_Click);
             // 
             // InicioEmpleados
             // 
@@ -273,5 +299,6 @@ namespace Proyecto_MAD.Empleados
         private System.Windows.Forms.Panel Panel_Contenedor;
         private System.Windows.Forms.Panel Panel_Conten;
         private FontAwesome.Sharp.IconButton Btn_Desconectar;
+        private FontAwesome.Sharp.IconButton Btn_CambioContra;
     }
 }

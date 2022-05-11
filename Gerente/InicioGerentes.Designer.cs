@@ -49,6 +49,7 @@ namespace Proyecto_MAD.Gerente
             this.Btn_Inicio = new FontAwesome.Sharp.IconButton();
             this.Btn_Recibo = new FontAwesome.Sharp.IconButton();
             this.Btn_Empleados = new FontAwesome.Sharp.IconButton();
+            this.Btn_Asignación = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -137,6 +138,7 @@ namespace Proyecto_MAD.Gerente
             // 
             this.panel2.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuBar;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(44)))), ((int)(((byte)(58)))));
+            this.panel2.Controls.Add(this.Btn_Asignación);
             this.panel2.Controls.Add(this.Btn_Desconectar);
             this.panel2.Controls.Add(this.panel5);
             this.panel2.Controls.Add(this.Panel_submenu);
@@ -310,7 +312,7 @@ namespace Proyecto_MAD.Gerente
             this.Btn_Inicio.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.Btn_Inicio.IconSize = 55;
             this.Btn_Inicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Inicio.Location = new System.Drawing.Point(0, 77);
+            this.Btn_Inicio.Location = new System.Drawing.Point(0, 6);
             this.Btn_Inicio.Name = "Btn_Inicio";
             this.Btn_Inicio.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.Btn_Inicio.Size = new System.Drawing.Size(217, 83);
@@ -369,6 +371,30 @@ namespace Proyecto_MAD.Gerente
             this.Btn_Empleados.UseVisualStyleBackColor = true;
             this.Btn_Empleados.Click += new System.EventHandler(this.Btn_Empleados_Click);
             // 
+            // Btn_Asignación
+            // 
+            this.Btn_Asignación.FlatAppearance.BorderSize = 0;
+            this.Btn_Asignación.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
+            this.Btn_Asignación.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_Asignación.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Asignación.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Asignación.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Btn_Asignación.IconChar = FontAwesome.Sharp.IconChar.ChalkboardTeacher;
+            this.Btn_Asignación.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Btn_Asignación.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_Asignación.IconSize = 55;
+            this.Btn_Asignación.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Asignación.Location = new System.Drawing.Point(0, 95);
+            this.Btn_Asignación.Name = "Btn_Asignación";
+            this.Btn_Asignación.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.Btn_Asignación.Size = new System.Drawing.Size(217, 65);
+            this.Btn_Asignación.TabIndex = 35;
+            this.Btn_Asignación.Text = "Asignación";
+            this.Btn_Asignación.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Asignación.UseCompatibleTextRendering = true;
+            this.Btn_Asignación.UseVisualStyleBackColor = true;
+            this.Btn_Asignación.Click += new System.EventHandler(this.Btn_Asignación_Click);
+            // 
             // InicioGerentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,5 +439,6 @@ namespace Proyecto_MAD.Gerente
         private FontAwesome.Sharp.IconButton Btn_Empleados;
         private FontAwesome.Sharp.IconButton Btn_Desconectar;
         public System.Windows.Forms.Panel Panel_Conten;
+        private FontAwesome.Sharp.IconButton Btn_Asignación;
     }
 }

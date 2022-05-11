@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_MAD.Recibo;
 
 namespace Proyecto_MAD.Gerente
 {
@@ -52,6 +53,10 @@ namespace Proyecto_MAD.Gerente
         private void Btn_Inicio_Click(object sender, EventArgs e)
         {
             AbrirFormHija(new Empresa());
+        }
+        private void Btn_Asignación_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new PEDE_Empleado());
         }
         private void Btn_Reportes_Click_1(object sender, EventArgs e)
         {
@@ -99,5 +104,7 @@ namespace Proyecto_MAD.Gerente
             form.Show();
             this.Close();
         }
+
+       
     }
 }

@@ -168,3 +168,4 @@ C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de dato
 C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\obj\Debug\Proyecto MAD.csproj.CoreCompileInputs.cache
 C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\obj\Debug\Proyecto MAD.exe
 C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\obj\Debug\Proyecto MAD.pdb
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Recibo.PEDE_Empleado.resources

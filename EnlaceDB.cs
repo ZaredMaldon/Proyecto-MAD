@@ -891,7 +891,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         #region ControlDeptos
 
-        public bool ControlDepto(int Op, int idDepto, string Nombre, int sueldoBase)
+        public bool ControlDepto(int Op, int idDepto, string Nombre, float sueldoBase)
         {
             var msg = "";
             var add = true;
@@ -908,8 +908,10 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro1.Value = Op;
                 var parametro2 = _comandosql.Parameters.Add("@NombreDepto", SqlDbType.VarChar, 25);
                 parametro2.Value = Nombre;
-                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Int);
+                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Money);
                 parametro3.Value = sueldoBase;
+                var parametro4 = _comandosql.Parameters.Add("@idDepto", SqlDbType.Money);
+                parametro4.Value = idDepto;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();
@@ -1030,8 +1032,7 @@ namespace Proyecto_MAD.EnlaceDB
                 {
                     DAO_Departamentos.id = dr.GetInt32(0);
                     DAO_Departamentos.Nombre = dr.GetString(1);
-
-                    DAO_Departamentos.Sueldo_Base = dr.GetSqlString(2).ToString();
+                    DAO_Departamentos.Sueldo_Base = (decimal)dr.GetSqlMoney(2);
 
                 }
             }
@@ -1075,7 +1076,7 @@ namespace Proyecto_MAD.EnlaceDB
                 var parametro4 = _comandosql.Parameters.Add("@Departamento", SqlDbType.VarChar,20);
                 parametro4.Value = Departamento;
                 var parametro6 = _comandosql.Parameters.Add("@IdDepto", SqlDbType.Int);
-                parametro5.Value = idDepto;
+                parametro6.Value = idDepto;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();

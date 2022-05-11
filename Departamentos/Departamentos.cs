@@ -55,7 +55,22 @@ namespace Proyecto_MAD.Calculo
 
         private void Btn_ModificarDpto_Click(object sender, EventArgs e)
         {
+            if (!use)
+            {
+                MessageBox.Show("Seleccione un Departamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                //db.Toma_Datos_Puestos(5, id);
+                if (Validaciones())
+                {
+                    float a = float.Parse(TB_SueldoBase.Text);
+                    //modifica
+                    db.ControlDepto(3, id, TB_Nombre.Text, a);
+                    MessageBox.Show("Se ha modificado el Departamento correctamente", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                }
+            }
 
         }
 
@@ -132,7 +147,7 @@ namespace Proyecto_MAD.Calculo
             //cargar los datos de Dao_Departamento
 
             TB_Nombre.Text = DAO_Departamentos.Nombre;
-            TB_SueldoBase.Text = DAO_Departamentos.Sueldo_Base;
+            TB_SueldoBase.Text = DAO_Departamentos.Sueldo_Base.ToString();
             
         }
 

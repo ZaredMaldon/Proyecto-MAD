@@ -32,21 +32,14 @@ namespace Proyecto_MAD.Recibo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarRecibo));
             this.Panel_Background = new System.Windows.Forms.Panel();
             this.Dgv_EmpDep = new System.Windows.Forms.DataGridView();
-            this.CB_Modo = new System.Windows.Forms.ComboBox();
-            this.Lbl_Modo = new System.Windows.Forms.Label();
-            this.Cb_Percepciones = new System.Windows.Forms.ComboBox();
-            this.Lbl_Percepciones = new System.Windows.Forms.Label();
-            this.Cb_Deducciones = new System.Windows.Forms.ComboBox();
-            this.Lbl_Deducciones = new System.Windows.Forms.Label();
             this.Btn_CSV = new FontAwesome.Sharp.IconButton();
-            this.LB_Deducciones = new System.Windows.Forms.ListBox();
-            this.LB_Percepciones = new System.Windows.Forms.ListBox();
             this.CB_Year = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_Filtrar = new FontAwesome.Sharp.IconButton();
             this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EmpDep)).BeginInit();
             this.SuspendLayout();
@@ -54,16 +47,9 @@ namespace Proyecto_MAD.Recibo
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.label2);
             this.Panel_Background.Controls.Add(this.Dgv_EmpDep);
-            this.Panel_Background.Controls.Add(this.CB_Modo);
-            this.Panel_Background.Controls.Add(this.Lbl_Modo);
-            this.Panel_Background.Controls.Add(this.Cb_Percepciones);
-            this.Panel_Background.Controls.Add(this.Lbl_Percepciones);
-            this.Panel_Background.Controls.Add(this.Cb_Deducciones);
-            this.Panel_Background.Controls.Add(this.Lbl_Deducciones);
             this.Panel_Background.Controls.Add(this.Btn_CSV);
-            this.Panel_Background.Controls.Add(this.LB_Deducciones);
-            this.Panel_Background.Controls.Add(this.LB_Percepciones);
             this.Panel_Background.Controls.Add(this.CB_Year);
             this.Panel_Background.Controls.Add(this.label1);
             this.Panel_Background.Controls.Add(this.Btn_Filtrar);
@@ -79,77 +65,14 @@ namespace Proyecto_MAD.Recibo
             // 
             this.Dgv_EmpDep.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
             this.Dgv_EmpDep.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_EmpDep.Location = new System.Drawing.Point(26, 357);
+            this.Dgv_EmpDep.Location = new System.Drawing.Point(26, 157);
             this.Dgv_EmpDep.MultiSelect = false;
             this.Dgv_EmpDep.Name = "Dgv_EmpDep";
             this.Dgv_EmpDep.ReadOnly = true;
             this.Dgv_EmpDep.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.Dgv_EmpDep.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dgv_EmpDep.Size = new System.Drawing.Size(623, 134);
+            this.Dgv_EmpDep.Size = new System.Drawing.Size(623, 334);
             this.Dgv_EmpDep.TabIndex = 8;
-            // 
-            // CB_Modo
-            // 
-            this.CB_Modo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.CB_Modo.FormattingEnabled = true;
-            this.CB_Modo.Items.AddRange(new object[] {
-            "Departamento",
-            "Empleado"});
-            this.CB_Modo.Location = new System.Drawing.Point(220, 78);
-            this.CB_Modo.Name = "CB_Modo";
-            this.CB_Modo.Size = new System.Drawing.Size(209, 23);
-            this.CB_Modo.TabIndex = 1;
-            // 
-            // Lbl_Modo
-            // 
-            this.Lbl_Modo.AutoSize = true;
-            this.Lbl_Modo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Modo.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Modo.Location = new System.Drawing.Point(216, 54);
-            this.Lbl_Modo.Name = "Lbl_Modo";
-            this.Lbl_Modo.Size = new System.Drawing.Size(195, 21);
-            this.Lbl_Modo.TabIndex = 38;
-            this.Lbl_Modo.Text = "Generar nómina por:";
-            // 
-            // Cb_Percepciones
-            // 
-            this.Cb_Percepciones.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.Cb_Percepciones.FormattingEnabled = true;
-            this.Cb_Percepciones.Location = new System.Drawing.Point(90, 210);
-            this.Cb_Percepciones.Name = "Cb_Percepciones";
-            this.Cb_Percepciones.Size = new System.Drawing.Size(156, 23);
-            this.Cb_Percepciones.TabIndex = 4;
-            // 
-            // Lbl_Percepciones
-            // 
-            this.Lbl_Percepciones.AutoSize = true;
-            this.Lbl_Percepciones.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Percepciones.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Percepciones.Location = new System.Drawing.Point(102, 186);
-            this.Lbl_Percepciones.Name = "Lbl_Percepciones";
-            this.Lbl_Percepciones.Size = new System.Drawing.Size(133, 21);
-            this.Lbl_Percepciones.TabIndex = 36;
-            this.Lbl_Percepciones.Text = "Percepciones";
-            // 
-            // Cb_Deducciones
-            // 
-            this.Cb_Deducciones.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.Cb_Deducciones.FormattingEnabled = true;
-            this.Cb_Deducciones.Location = new System.Drawing.Point(402, 210);
-            this.Cb_Deducciones.Name = "Cb_Deducciones";
-            this.Cb_Deducciones.Size = new System.Drawing.Size(156, 23);
-            this.Cb_Deducciones.TabIndex = 5;
-            // 
-            // Lbl_Deducciones
-            // 
-            this.Lbl_Deducciones.AutoSize = true;
-            this.Lbl_Deducciones.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Deducciones.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Deducciones.Location = new System.Drawing.Point(411, 186);
-            this.Lbl_Deducciones.Name = "Lbl_Deducciones";
-            this.Lbl_Deducciones.Size = new System.Drawing.Size(126, 21);
-            this.Lbl_Deducciones.TabIndex = 34;
-            this.Lbl_Deducciones.Text = "Deducciones";
             // 
             // Btn_CSV
             // 
@@ -176,29 +99,13 @@ namespace Proyecto_MAD.Recibo
             this.Btn_CSV.UseVisualStyleBackColor = false;
             this.Btn_CSV.Click += new System.EventHandler(this.Btn_CSV_Click);
             // 
-            // LB_Deducciones
-            // 
-            this.LB_Deducciones.FormattingEnabled = true;
-            this.LB_Deducciones.Location = new System.Drawing.Point(26, 256);
-            this.LB_Deducciones.Name = "LB_Deducciones";
-            this.LB_Deducciones.Size = new System.Drawing.Size(303, 95);
-            this.LB_Deducciones.TabIndex = 6;
-            // 
-            // LB_Percepciones
-            // 
-            this.LB_Percepciones.FormattingEnabled = true;
-            this.LB_Percepciones.Location = new System.Drawing.Point(346, 256);
-            this.LB_Percepciones.Name = "LB_Percepciones";
-            this.LB_Percepciones.Size = new System.Drawing.Size(303, 95);
-            this.LB_Percepciones.TabIndex = 7;
-            // 
             // CB_Year
             // 
             this.CB_Year.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.CB_Year.FormattingEnabled = true;
             this.CB_Year.Items.AddRange(new object[] {
             ""});
-            this.CB_Year.Location = new System.Drawing.Point(221, 135);
+            this.CB_Year.Location = new System.Drawing.Point(231, 71);
             this.CB_Year.Name = "CB_Year";
             this.CB_Year.Size = new System.Drawing.Size(94, 23);
             this.CB_Year.TabIndex = 2;
@@ -208,7 +115,7 @@ namespace Proyecto_MAD.Recibo
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(245, 111);
+            this.label1.Location = new System.Drawing.Point(255, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 21);
             this.label1.TabIndex = 25;
@@ -255,7 +162,7 @@ namespace Proyecto_MAD.Recibo
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.CB_Mes.Location = new System.Drawing.Point(336, 135);
+            this.CB_Mes.Location = new System.Drawing.Point(346, 71);
             this.CB_Mes.Name = "CB_Mes";
             this.CB_Mes.Size = new System.Drawing.Size(94, 23);
             this.CB_Mes.TabIndex = 3;
@@ -276,11 +183,22 @@ namespace Proyecto_MAD.Recibo
             this.LBL_Mes.AutoSize = true;
             this.LBL_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Mes.ForeColor = System.Drawing.Color.White;
-            this.LBL_Mes.Location = new System.Drawing.Point(358, 111);
+            this.LBL_Mes.Location = new System.Drawing.Point(368, 47);
             this.LBL_Mes.Name = "LBL_Mes";
             this.LBL_Mes.Size = new System.Drawing.Size(46, 21);
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Mes";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(22, 121);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(266, 21);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Lista de Nóminas Generadas";
             // 
             // GenerarRecibo
             // 
@@ -308,15 +226,8 @@ namespace Proyecto_MAD.Recibo
         private System.Windows.Forms.ComboBox CB_Mes;
         private System.Windows.Forms.Label LBL_Title;
         private System.Windows.Forms.Label LBL_Mes;
-        private System.Windows.Forms.ComboBox Cb_Percepciones;
-        private System.Windows.Forms.Label Lbl_Percepciones;
-        private System.Windows.Forms.ComboBox Cb_Deducciones;
-        private System.Windows.Forms.Label Lbl_Deducciones;
         private FontAwesome.Sharp.IconButton Btn_CSV;
-        private System.Windows.Forms.ListBox LB_Deducciones;
-        private System.Windows.Forms.ListBox LB_Percepciones;
-        private System.Windows.Forms.ComboBox CB_Modo;
-        private System.Windows.Forms.Label Lbl_Modo;
         private System.Windows.Forms.DataGridView Dgv_EmpDep;
+        private System.Windows.Forms.Label label2;
     }
 }

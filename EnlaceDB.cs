@@ -1450,5 +1450,62 @@ namespace Proyecto_MAD.EnlaceDB
         }
         #endregion
 
+        //------------------------------------------------Empresa-----------------------------------------------------------------------//
+
+        #region Carga de datos
+
+        public void Toma_Datos_Empresa(int Opc, int idEmpresa)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_Empresa";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@IdEmpresa", SqlDbType.Int);
+                parametro2.Value = idEmpresa;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_Empresa.idEmp = dr.GetInt32(0);
+                    DAO_Empresa.RazonSocial = dr.GetString(1);
+                    DAO_Empresa.Direccion = dr.GetString(2);
+                    DAO_Empresa.Telefono = dr.GetInt32(3);
+                    DAO_Empresa.email = dr.GetString(4);
+                    DAO_Empresa.RegistroPatronal = dr.GetString(5);
+                    DAO_Empresa.RFC = dr.GetInt32(6);
+                    DAO_Empresa.FechaIniOp = dr.GetDateTime(7);
+
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        #endregion
+
     }
 }

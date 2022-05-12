@@ -47,6 +47,7 @@ namespace Proyecto_MAD.Gerente
             this.Panel_Conten.Name = "Panel_Conten";
             this.Panel_Conten.Size = new System.Drawing.Size(671, 385);
             this.Panel_Conten.TabIndex = 23;
+            this.Panel_Conten.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Conten_Paint);
             // 
             // panel1
             // 

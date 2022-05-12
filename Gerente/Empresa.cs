@@ -69,6 +69,9 @@ namespace Proyecto_MAD.Gerente
             Btn_Home_Click(null, e);
         }
 
-        
+        private void Panel_Conten_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

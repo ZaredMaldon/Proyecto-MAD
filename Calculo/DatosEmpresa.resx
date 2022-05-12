@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="TB_Info.Text" xml:space="preserve">
-    <value>Nosotros somos una empresa dedicada a la elaboración de videojuegos llamada Bublogs.
-Mision:
-Nuestra misión es alcanzar ventas en todas las áreas del estado de Nuevo León
-Visión:
-Nuestra visión a 10 años es lograr llegar a toda la republica Méxicana y gran parte del
-continente.</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -38,6 +38,7 @@ namespace Proyecto_MAD.Gerente
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.Btn_Asignación = new FontAwesome.Sharp.IconButton();
             this.Btn_Desconectar = new FontAwesome.Sharp.IconButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.Panel_submenu = new System.Windows.Forms.Panel();
@@ -49,7 +50,6 @@ namespace Proyecto_MAD.Gerente
             this.Btn_Inicio = new FontAwesome.Sharp.IconButton();
             this.Btn_Recibo = new FontAwesome.Sharp.IconButton();
             this.Btn_Empleados = new FontAwesome.Sharp.IconButton();
-            this.Btn_Asignación = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -82,6 +82,7 @@ namespace Proyecto_MAD.Gerente
             this.Panel_Conten.Name = "Panel_Conten";
             this.Panel_Conten.Size = new System.Drawing.Size(734, 625);
             this.Panel_Conten.TabIndex = 4;
+            this.Panel_Conten.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel_Conten_Paint);
             // 
             // panel1
             // 
@@ -152,6 +153,30 @@ namespace Proyecto_MAD.Gerente
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(226, 620);
             this.panel2.TabIndex = 6;
+            // 
+            // Btn_Asignación
+            // 
+            this.Btn_Asignación.FlatAppearance.BorderSize = 0;
+            this.Btn_Asignación.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
+            this.Btn_Asignación.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_Asignación.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Asignación.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Asignación.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Btn_Asignación.IconChar = FontAwesome.Sharp.IconChar.ChalkboardTeacher;
+            this.Btn_Asignación.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
+            this.Btn_Asignación.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_Asignación.IconSize = 55;
+            this.Btn_Asignación.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Asignación.Location = new System.Drawing.Point(0, 95);
+            this.Btn_Asignación.Name = "Btn_Asignación";
+            this.Btn_Asignación.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
+            this.Btn_Asignación.Size = new System.Drawing.Size(217, 65);
+            this.Btn_Asignación.TabIndex = 35;
+            this.Btn_Asignación.Text = "Asignación";
+            this.Btn_Asignación.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Btn_Asignación.UseCompatibleTextRendering = true;
+            this.Btn_Asignación.UseVisualStyleBackColor = true;
+            this.Btn_Asignación.Click += new System.EventHandler(this.Btn_Asignación_Click);
             // 
             // Btn_Desconectar
             // 
@@ -370,30 +395,6 @@ namespace Proyecto_MAD.Gerente
             this.Btn_Empleados.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Btn_Empleados.UseVisualStyleBackColor = true;
             this.Btn_Empleados.Click += new System.EventHandler(this.Btn_Empleados_Click);
-            // 
-            // Btn_Asignación
-            // 
-            this.Btn_Asignación.FlatAppearance.BorderSize = 0;
-            this.Btn_Asignación.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(43)))));
-            this.Btn_Asignación.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Btn_Asignación.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Asignación.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Asignación.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.Btn_Asignación.IconChar = FontAwesome.Sharp.IconChar.ChalkboardTeacher;
-            this.Btn_Asignación.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(64)))), ((int)(((byte)(102)))));
-            this.Btn_Asignación.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Btn_Asignación.IconSize = 55;
-            this.Btn_Asignación.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Asignación.Location = new System.Drawing.Point(0, 95);
-            this.Btn_Asignación.Name = "Btn_Asignación";
-            this.Btn_Asignación.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.Btn_Asignación.Size = new System.Drawing.Size(217, 65);
-            this.Btn_Asignación.TabIndex = 35;
-            this.Btn_Asignación.Text = "Asignación";
-            this.Btn_Asignación.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Btn_Asignación.UseCompatibleTextRendering = true;
-            this.Btn_Asignación.UseVisualStyleBackColor = true;
-            this.Btn_Asignación.Click += new System.EventHandler(this.Btn_Asignación_Click);
             // 
             // InicioGerentes
             // 

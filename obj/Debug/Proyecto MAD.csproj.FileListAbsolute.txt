@@ -170,3 +170,5 @@ C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de dato
 C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\obj\Debug\Proyecto MAD.pdb
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Recibo.PEDE_Empleado.resources
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.CambiarContra.resources
+C:\Users\eli75\OneDrive\Documentos\00Sam\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.CambiarContra.resources
+C:\Users\eli75\OneDrive\Documentos\00Sam\Proyecto-MAD\obj\Debug\Proyecto_MAD.Recibo.PEDE_Empleado.resources

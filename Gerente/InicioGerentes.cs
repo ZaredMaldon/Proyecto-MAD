@@ -105,6 +105,9 @@ namespace Proyecto_MAD.Gerente
             this.Close();
         }
 
-       
+        private void Panel_Conten_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

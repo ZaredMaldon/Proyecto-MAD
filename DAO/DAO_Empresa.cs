@@ -14,7 +14,7 @@ namespace Proyecto_MAD.DAO
         public static int Telefono { get; set; }
         public static string email { get; set; }
         public static string RegistroPatronal { get; set; }
-        public static int RFC { get; set; }
+        public static string RFC { get; set; }
         public static DateTime FechaIniOp { get; set; }
 
     }

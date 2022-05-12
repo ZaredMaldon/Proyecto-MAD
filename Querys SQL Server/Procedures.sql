@@ -342,13 +342,23 @@ BEGIN
 	end
 	if(@Opc=3)
 	begin
-		set @Contador=1
 	
-		Select @Cantidad=COUNT(idEmp) from vw_Asignaciones
-		WHILE @Contador<=@Cantidad
-		BEGIN
-			Select @Empleadofk=idEmp,@Deduccionfk=idDeduccion from vw_Asignaciones where 
-			Set @Contador=@Contador+1
+		declare @tabla table(idEmpleado int)
+			insert into @tabla(idEmpleado) select idEmp from vw_Asignaciones where idDpto=@Departamentofk
+			declare @count int=(select count(idEmpleado) from @tabla)
+
+			declare @tabla2 table(idDeduccion int)
+			insert into @tabla2(idDeduccion) select * from Deducciones
+
+			while @count>0
+			begin
+				declare @idEmp int=(select top(1) idEmpleado from @tabla order by idEmpleado)
+
+				Insert into Deducciones_Empleado(Empleadofk,Deduccionfk) values(@idEmp,@Deduccionfk);
+
+				delete @tabla where idEmpleado=@idEmp
+				set @count = (select count(idEmpleado) from @tabla)
+		end
 		END
 
 		while 
@@ -359,7 +369,7 @@ END
 /*----------------------------------------------------------------------------------Empresa------------------------------------------------------------------------------------*/
 
 go
-create procedure SP_Empresa
+alter procedure SP_Empresa
 @Opc int,
 @idEmpresa int = null,
 @RazonSocial varchar(30) = null,
@@ -376,7 +386,9 @@ begin
 /*f(@Opc = 2) Mostrar datos de empresa*/
 if(@Opc = 1) /*Mostrar datos de empresa*/
 begin
-SELECT RazonSocial, Direccionfk, Telefono, Email, RegistroPatronal,RFC, FechaInicioOp from Empresa
+SELECT idEmpresa,RazonSocial,CONCAT(m.NombreMunicipio,' ',d.Colonia,' ',d.Calle,' #',d.NoExt) as Direccion, Telefono, Email, RegistroPatronal,RFC, FechaInicioOp from Empresa
+inner join Direcciones d on d.idDireccion=Empresa.Direccionfk
+inner join Municipios m on m.idMunicipio=d.MunicipioFk
 /*SELECT @idEmpresa as ID,@RazonSocial as RazonSocial , @Direccionfk as Direccionfk,  from Departamentos;*/
 end
 if (@Opc = 2) /*Cargar*/

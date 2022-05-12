@@ -16,8 +16,7 @@ namespace Proyecto_MAD.Calculo
     {
 
         EnlaceDB.EnlaceDB db = new EnlaceDB.EnlaceDB();
-        private bool use = false;
-        private int id;
+       
         public DatosEmpresa()
         {
             InitializeComponent();
@@ -31,14 +30,14 @@ namespace Proyecto_MAD.Calculo
         private void DatosEmpresa_Load(object sender, EventArgs e)
         {
             // cargar datos
-           db.Toma_Datos_Empresa(1, id);
+            db.Toma_Datos_Empresa(1, 1);
             TB_RazonSocial.Text= DAO_Empresa.RazonSocial;
             TB_Direccion.Text= DAO_Empresa.Direccion;
             TB_Email.Text = DAO_Empresa.email;
-            TB_Telefono.Text = DAO_Empresa.Telefono.ToString();
+            TB_Telefono.Text = "81"+DAO_Empresa.Telefono.ToString();
             TB_RegistroPatronal.Text = DAO_Empresa.RegistroPatronal;
-            TB_RFC.Text = DAO_Empresa.RFC.ToString();
-            TB_Fecha.Text = DAO_Empresa.FechaIniOp.ToString();
+            TB_RFC.Text = DAO_Empresa.RFC;
+            TB_Fecha.Text = DAO_Empresa.FechaIniOp.ToShortDateString();
             //comentario para commit
         }
 

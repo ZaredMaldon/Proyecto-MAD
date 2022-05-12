@@ -1469,7 +1469,7 @@ namespace Proyecto_MAD.EnlaceDB
 
                 var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
                 parametro1.Value = Opc;
-                var parametro2 = _comandosql.Parameters.Add("@IdEmpresa", SqlDbType.Int);
+                var parametro2 = _comandosql.Parameters.Add("@idEmpresa", SqlDbType.Int);
                 parametro2.Value = idEmpresa;
 
 
@@ -1485,7 +1485,7 @@ namespace Proyecto_MAD.EnlaceDB
                     DAO_Empresa.Telefono = dr.GetInt32(3);
                     DAO_Empresa.email = dr.GetString(4);
                     DAO_Empresa.RegistroPatronal = dr.GetString(5);
-                    DAO_Empresa.RFC = dr.GetInt32(6);
+                    DAO_Empresa.RFC = dr.GetString(6);
                     DAO_Empresa.FechaIniOp = dr.GetDateTime(7);
 
                 }

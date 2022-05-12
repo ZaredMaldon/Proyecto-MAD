@@ -31,5 +31,10 @@ namespace Proyecto_MAD.Empleados
         {
 
         }
+
+        private void Btn_Cambiar_Click(object sender, EventArgs e) // UPDATE A TABLA EMPLEADO SOLO US Y CONTRA
+        {
+
+        }
     }
 }

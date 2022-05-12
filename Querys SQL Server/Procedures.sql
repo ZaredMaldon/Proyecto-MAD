@@ -142,7 +142,13 @@ inner join PuestoDepartamento  pd on pd.Departamentofk=a.PuestoDptofk
 inner join Puestos p on p.IdPuesto=pd.Puestofk
 inner join Departamentos de on de.idDpto=pd.Departamentofk
 where NoEmpleado=@IdEmpleado;
-
+end
+if(@Opc = 6) /*cambiar solo contra y us*/
+begin
+UPDATE Usuarios SET Usuario=@Usuario,Contraseña=@Contraseña 
+			from Empleados e join Usuarios u
+			on e.Usuariofk=u.idUsuario
+			where e.NoEmpleado=@IdEmpleado;
 end
 
 end
@@ -349,3 +355,24 @@ BEGIN
 	end
 
 END
+
+/*----------------------------------------------------------------------------------Empresa------------------------------------------------------------------------------------*/
+
+create procedure SP_Empresa
+@Opc
+@idEmpresa
+@RazonSocial
+@Direccionfk
+@Telefonn
+@Email
+@RegistroPatronal
+@RFC
+@FechaInicioOp
+
+as
+begin
+
+if(@Opc = 1) /*Mostrar datos de empresa*/
+
+
+end

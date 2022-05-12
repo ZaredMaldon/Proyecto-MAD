@@ -132,6 +132,7 @@ namespace Proyecto_MAD.Empleados
             this.Btn_Cambiar.Text = "Cambiar";
             this.Btn_Cambiar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_Cambiar.UseVisualStyleBackColor = false;
+            this.Btn_Cambiar.Click += new System.EventHandler(this.Btn_Cambiar_Click);
             // 
             // LBL_Title
             // 

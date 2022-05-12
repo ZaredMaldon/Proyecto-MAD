@@ -89,6 +89,7 @@
     </Compile>
     <Compile Include="DAO\DAO_Departamentos.cs" />
     <Compile Include="DAO\DAO_Empleado.cs" />
+    <Compile Include="DAO\DAO_Empresa.cs" />
     <Compile Include="DAO\DAO_Puestos.cs" />
     <Compile Include="Empleados\CambiarContra.cs">
       <SubType>Form</SubType>

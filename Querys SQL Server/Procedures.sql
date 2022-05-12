@@ -358,21 +358,31 @@ END
 
 /*----------------------------------------------------------------------------------Empresa------------------------------------------------------------------------------------*/
 
+go
 create procedure SP_Empresa
-@Opc
-@idEmpresa
-@RazonSocial
-@Direccionfk
-@Telefonn
-@Email
-@RegistroPatronal
-@RFC
-@FechaInicioOp
+@Opc int,
+@idEmpresa int = null,
+@RazonSocial varchar(30) = null,
+@Direccionfk varchar (50) = null,
+@Telefono int = null,
+@Email varchar(30) = null,
+@RegistroPatronal  varchar(30) = null,
+@RFC varchar(20) = null,
+@FechaInicioOp date = null
 
 as
 begin
 
+/*f(@Opc = 2) Mostrar datos de empresa*/
 if(@Opc = 1) /*Mostrar datos de empresa*/
-
+begin
+SELECT RazonSocial, Direccionfk, Telefono, Email, RegistroPatronal,RFC, FechaInicioOp from Empresa
+/*SELECT @idEmpresa as ID,@RazonSocial as RazonSocial , @Direccionfk as Direccionfk,  from Departamentos;*/
+end
+if (@Opc = 2) /*Cargar*/
+begin
+SELECT RazonSocial, Direccionfk, Telefono, Email, RegistroPatronal,RFC, FechaInicioOp from Empresa
+WHERE idEmpresa = @idEmpresa;
+end
 
 end

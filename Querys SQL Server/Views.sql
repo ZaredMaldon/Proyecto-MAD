@@ -38,15 +38,12 @@ join Puestos p on pd.Puestofk=p.IdPuesto;
 go
 alter view vw_Asignaciones
 as
-Select CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,p.NombrePuesto,d.NombreDpto,d.idDpto as idDpto,p.IdPuesto as idPuesto,e.NoCuenta as idEmp, from Asiganciones a
+Select CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,p.NombrePuesto,d.NombreDpto,d.idDpto as idDpto,p.IdPuesto as idPuesto,e.NoEmpleado as idEmp from Asiganciones a
 join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
 join Empleados e on e.NoEmpleado=a.Empleadofk
 join Departamentos d on d.idDpto=pd.Departamentofk
 join Puestos p on p.IdPuesto=pd.Puestofk
-join Deducciones_Empleado de on de.Empleadofk=e.NoEmpleado
-join Percepciones_Empleado pe on pe.Empleadofk=e.NoEmpleado
-join Deducciones du on du.IdDeduccion=de.Deduccionfk
-join Percepciones pu on pu.IdPercepcion=pe.Percepcionfk
+
 
 /*----------------------------------------------------------- View de PuestoDepartamento -----------------------------------------------------------------------------------*/
 go

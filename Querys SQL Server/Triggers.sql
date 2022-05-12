@@ -77,3 +77,13 @@ Declare @Direccionfk int
 
 Select @Direccionfk=d.Direccionfk from deleted d
 Delete from Direcciones where idDireccion=@Direccionfk; 
+/*--------------------------------------------------------------------Eliminar Asignacion por dpto- -----------------------------------------------------*/
+go
+create trigger TR_EliminarAsignacionD
+on PuestoDepartamento
+after delete
+as
+Declare @PuestoDep int
+
+Select @PuestoDep=d.IdPD from deleted d
+Delete from Asiganciones where PuestoDptofk=@PuestoDep; 

@@ -17,7 +17,7 @@ namespace Proyecto_MAD.Gerente
     {
         EnlaceDB.EnlaceDB dB=new EnlaceDB.EnlaceDB();
         DataTable dt = new DataTable();
-        private int idEmp;
+        private int idEmp,cambiado=0;
         private bool use = false;
         
         public GestionEmpleado()
@@ -80,7 +80,8 @@ namespace Proyecto_MAD.Gerente
                 if (dR == DialogResult.Yes)
                 {
                    //Aqui va la de eliminar
-
+                   dB.ControldeEmpleados(3, idEmp);
+                   MessageBox.Show("Empleado No."+ idEmp+" Eliminado con exito", "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
             }
@@ -144,22 +145,29 @@ namespace Proyecto_MAD.Gerente
                 if (TB_Telefono2.Text == "" && TB_NoInt.Text == "")
                 {
                     realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, DTP_Contratacion.Value, TB_Banco.Text, int.Parse(TB_NoCuenta.Text),
-                        TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoExt.Text),idEmp);
+                        TB_Usuario.Text, TB_Password.Text, "Empleado", CB_Municipio.SelectedIndex, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoExt.Text),
+                        idEmp, CB_Dpto.Text, CB_Puesto.Text);
 
                 }
                 else if (TB_Telefono2.Text == "")
                 {
-                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, DTP_Contratacion.Value,TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text), idEmp);
+                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text,
+                        DTP_Contratacion.Value,TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", CB_Municipio.SelectedIndex, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text),
+                        idEmp,CB_Dpto.Text, CB_Puesto.Text);
 
                 }
                 else if (TB_NoInt.Text == "")
                 {
-                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value, TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoExt.Text),idEmp);
+                    realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value,
+                        TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", CB_Municipio.SelectedIndex, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoExt.Text),
+                        idEmp, CB_Dpto.Text, CB_Puesto.Text);
                 }
             }
             else//Si estan todos los datos
             {
-                realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value,TB_Banco.Text, int.Parse(TB_NoCuenta.Text), TB_Usuario.Text, TB_Password.Text, "Empleado", 1/*Este es el municipio,despues lo inserto*/, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text), idEmp);
+                realizacion = dB.ControldeEmpleados(Opc, TB_Nombre.Text, TB_ApPat.Text, TB_ApMat.Text, DTP_FechaNacimiento.Value, TB_CURP.Text, TB_NSS.Text, TB_RFC.Text, TB_Email.Text, TB_Telefono.Text, TB_Telefono2.Text, DTP_Contratacion.Value,TB_Banco.Text, int.Parse(TB_NoCuenta.Text),
+                    TB_Usuario.Text, TB_Password.Text, "Empleado", CB_Municipio.SelectedIndex, TB_Cp.Text, TB_Colonia.Text, TB_Calle.Text, short.Parse(TB_NoInt.Text), short.Parse(TB_NoExt.Text),
+                    idEmp, CB_Dpto.Text, CB_Puesto.Text);
 
             }
 
@@ -184,12 +192,14 @@ namespace Proyecto_MAD.Gerente
             string aux = this.Dgv_GestionEmpleados.SelectedRows[0].Cells[0].Value.ToString();
             if (aux != "")
             {
+                cambiado = 1;
                 use = true;
                 idEmp = Convert.ToInt32(this.Dgv_GestionEmpleados.SelectedRows[0].Cells[0].Value);
                 DialogResult dR=MessageBox.Show("¿Quieres cargar los datos de este empleado?", "Cuestionamiento", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if(dR == DialogResult.Yes)
                 {
                     CargarDatos();
+                    cambiado=0;
 
                 }
               
@@ -201,8 +211,7 @@ namespace Proyecto_MAD.Gerente
            
             dB.Toma_Datos_Empleado(5,idEmp);
             //cargar los datos de Dao_Empleados
-            if (TB_Nombre.Text !="")
-            {
+           
                 TB_Nombre.Text = DAO_Empleado.Nombre;
                 TB_ApPat.Text = DAO_Empleado.ApPaterno;
                 TB_ApMat.Text = DAO_Empleado.ApMaterno;
@@ -227,14 +236,10 @@ namespace Proyecto_MAD.Gerente
                 TB_Usuario.Text = DAO_Empleado.Usuario;
                 TB_Password.Text = DAO_Empleado.Contraseña;
                 Tb_Password2.Text = DAO_Empleado.Contraseña;
-            }
+            
         }
 
-        private void CB_Dpto_DropDownClosed(object sender, EventArgs e)
-        {
-            dB.Cargar_DatosPUESTOS_CB(3, CB_Dpto.Text, CB_Puesto);
-        }
-
+        #region KeyPress
         private void TB_Nombre_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
@@ -353,6 +358,13 @@ namespace Proyecto_MAD.Gerente
                 e.Handled = true;
                 return;
             }
+        }
+        #endregion
+
+        private void CB_Dpto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cambiado==0)
+            dB.Cargar_DatosPUESTOS_CB(3, CB_Dpto.Text, CB_Puesto);
         }
     }
 }

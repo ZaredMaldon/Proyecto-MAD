@@ -18,7 +18,7 @@ Declare @SalarioDiario money
 Select @SalarioDiario=dbo.fn_SalarioDiario(@SueldoBase,@NivelSalarial);
 Update PuestoDepartamento set SalarioDiario=@SalarioDiario where Departamentofk=@idD and Puestofk=@idP;
 
-
+/*---------------------------------------------------------------------Modificar a tabla Puesto departamento el salario diario------------------------------------------------------------------*/
 go
 create trigger TR_SalarioDiario_update
 on Puestos
@@ -37,7 +37,7 @@ Declare @SalarioDiario money
 Select @SalarioDiario=dbo.fn_SalarioDiario(@SueldoBase,@NivelSalarial);
 Update PuestoDepartamento set SalarioDiario=@SalarioDiario where Departamentofk=@idD and Puestofk=@idP;
 
-
+/*---------------------------------------------------------------------Modificar a tabla Puesto departamento el salario diario 2------------------------------------------------------------------*/
 go
 create trigger TR_SalarioDiario_update2
 on Departamentos
@@ -55,3 +55,25 @@ join Puestos p on p.IdPuesto = pd.Puestofk
 Declare @SalarioDiario money
 Select @SalarioDiario=dbo.fn_SalarioDiario(@SueldoBase,@NivelSalarial);
 Update PuestoDepartamento set SalarioDiario=@SalarioDiario where Departamentofk=@idD and Puestofk=@idP;
+
+/*---------------------------------------------------------------------Eliminar usuario------------------------------------------------------------------*/
+go
+create trigger TR_EliminarUsuario
+on Empleados
+after delete
+as
+Declare @Usuariofk int
+
+Select @Usuariofk=d.Usuariofk from deleted d
+Delete from Usuarios where idUsuario=@Usuariofk; 
+
+/*---------------------------------------------------------------------Eliminar direccion------------------------------------------------------------------*/
+go
+create trigger TR_EliminarDireccion
+on Empleados
+after delete
+as
+Declare @Direccionfk int
+
+Select @Direccionfk=d.Direccionfk from deleted d
+Delete from Direcciones where idDireccion=@Direccionfk; 

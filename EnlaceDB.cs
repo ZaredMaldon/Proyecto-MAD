@@ -95,13 +95,11 @@ namespace Proyecto_MAD.EnlaceDB
         //Abstraccion Control Empleados
         //sin telefono 2
         public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1, DateTime Contratacion,
-            string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short Nointerior, short NoExt, int idEmp)
+            string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short Nointerior, short NoExt, int idEmp,
+            string Dpto, string Puesto)
         {
             var msg = "";
-            var add = true;
-
-            /*Al momento de hacer un insert, agregar a la tabla el el dia y la hora en el que se realizo la accion*/
-
+            var add = true; 
 
             try
             {
@@ -160,10 +158,10 @@ namespace Proyecto_MAD.EnlaceDB
                     var parametro25 = _comandosql.Parameters.Add("@IdEmpleado", SqlDbType.Int);
                     parametro25.Value = idEmp;
                 }
-
-
-
-
+                var parametro26 = _comandosql.Parameters.Add("@Dpto", SqlDbType.VarChar, 20);
+                parametro26.Value = Dpto;
+                var parametro27 = _comandosql.Parameters.Add("@Puesto", SqlDbType.VarChar, 20);
+                parametro27.Value = Puesto;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();
@@ -184,7 +182,7 @@ namespace Proyecto_MAD.EnlaceDB
         }
         //Sin numero interior
         public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1,string Telefono2, DateTime Contratacion,
-            string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short NoExt, int idEmp)
+            string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short NoExt, int idEmp, string Dpto, string Puesto)
         {
             var msg = "";
             var add = true;
@@ -249,7 +247,10 @@ namespace Proyecto_MAD.EnlaceDB
                     var parametro25 = _comandosql.Parameters.Add("@IdEmpleado", SqlDbType.Int);
                     parametro25.Value = idEmp;
                 }
-
+                var parametro26 = _comandosql.Parameters.Add("@Dpto", SqlDbType.VarChar, 20);
+                parametro26.Value = Dpto;
+                var parametro27 = _comandosql.Parameters.Add("@Puesto", SqlDbType.VarChar, 20);
+                parametro27.Value = Puesto;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();
@@ -271,7 +272,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         //Sin num interior y sin telefono 2 
         public bool ControldeEmpleados(int Opc,string Nombre, string AP, string AM, DateTime Nacimiento, string CURP, string NSS, string RFC, string Email, string Telefono1,DateTime Contratacion,
-            string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short NoExt,int idEmp)
+            string Banco, int NoCuenta, string Usuario, string Password, string Tipo, int Municipio, string Cp, string Colonia, string Calle, short NoExt,int idEmp, string Dpto, string Puesto)
         {
             var msg = "";
             var add = true;
@@ -334,7 +335,10 @@ namespace Proyecto_MAD.EnlaceDB
                     var parametro25 = _comandosql.Parameters.Add("@IdEmpleado", SqlDbType.Int);
                     parametro25.Value = idEmp;
                 }
-
+                var parametro26 = _comandosql.Parameters.Add("@Dpto", SqlDbType.VarChar, 20);
+                parametro26.Value = Dpto;
+                var parametro27 = _comandosql.Parameters.Add("@Puesto", SqlDbType.VarChar, 20);
+                parametro27.Value = Puesto;
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();
@@ -355,7 +359,7 @@ namespace Proyecto_MAD.EnlaceDB
         }
         //Con todos los datos
         public bool ControldeEmpleados(int Opc, string Nombre,string AP,string AM, DateTime Nacimiento,string CURP,string NSS,string RFC,string Email,string Telefono1,string Telefono2,DateTime Contratacion,
-            string Banco,int NoCuenta,string Usuario,string Password,string Tipo,int Municipio,string Cp,string Colonia,string Calle,short Nointerior,short NoExt,int idEmp)
+            string Banco,int NoCuenta,string Usuario,string Password,string Tipo,int Municipio,string Cp,string Colonia,string Calle,short Nointerior,short NoExt,int idEmp, string Dpto, string Puesto)
         {
             var msg = "";
             var add = true;
@@ -422,8 +426,55 @@ namespace Proyecto_MAD.EnlaceDB
                     var parametro25 = _comandosql.Parameters.Add("@IdEmpleado", SqlDbType.Int);
                     parametro25.Value = idEmp;
                 }
-               
+                var parametro26 = _comandosql.Parameters.Add("@Dpto", SqlDbType.VarChar,20);
+                parametro26.Value = Dpto;
+                var parametro27 = _comandosql.Parameters.Add("@Puesto", SqlDbType.VarChar,20);
+                parametro27.Value = Puesto;
 
+
+
+                _adaptador.InsertCommand = _comandosql;
+                _comandosql.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                add = false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return add;
+        }
+
+        public bool ControldeEmpleados(int Opc,int idEmp)
+        {
+            var msg = "";
+            var add = true;
+
+            /*Al momento de hacer un insert, agregar a la tabla el el dia y la hora en el que se realizo la accion*/
+
+
+            try
+            {
+                conectar();
+                string qry = "ControlEmpleados";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+               
+                if (idEmp != 0)
+                {
+                    var parametro25 = _comandosql.Parameters.Add("@IdEmpleado", SqlDbType.Int);
+                    parametro25.Value = idEmp;
+                }
 
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();

@@ -31,6 +31,8 @@ namespace Proyecto_MAD.Recibo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PEDE_Empleado));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.Btn_ElimPercep = new FontAwesome.Sharp.IconButton();
+            this.Btn_ElimDeduc = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.BTN_ADed = new FontAwesome.Sharp.IconButton();
@@ -51,8 +53,6 @@ namespace Proyecto_MAD.Recibo
             this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
-            this.Btn_ElimDeduc = new FontAwesome.Sharp.IconButton();
-            this.Btn_ElimPercep = new FontAwesome.Sharp.IconButton();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EmpDep)).BeginInit();
             this.SuspendLayout();
@@ -86,6 +86,52 @@ namespace Proyecto_MAD.Recibo
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 24;
+            // 
+            // Btn_ElimPercep
+            // 
+            this.Btn_ElimPercep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_ElimPercep.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_ElimPercep.FlatAppearance.BorderSize = 2;
+            this.Btn_ElimPercep.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_ElimPercep.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_ElimPercep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ElimPercep.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ElimPercep.ForeColor = System.Drawing.Color.White;
+            this.Btn_ElimPercep.IconChar = FontAwesome.Sharp.IconChar.Backspace;
+            this.Btn_ElimPercep.IconColor = System.Drawing.Color.White;
+            this.Btn_ElimPercep.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_ElimPercep.IconSize = 25;
+            this.Btn_ElimPercep.Location = new System.Drawing.Point(615, 328);
+            this.Btn_ElimPercep.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_ElimPercep.Name = "Btn_ElimPercep";
+            this.Btn_ElimPercep.Size = new System.Drawing.Size(34, 23);
+            this.Btn_ElimPercep.TabIndex = 45;
+            this.Btn_ElimPercep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_ElimPercep.UseVisualStyleBackColor = false;
+            this.Btn_ElimPercep.Click += new System.EventHandler(this.Btn_ElimPercep_Click);
+            // 
+            // Btn_ElimDeduc
+            // 
+            this.Btn_ElimDeduc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_ElimDeduc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_ElimDeduc.FlatAppearance.BorderSize = 2;
+            this.Btn_ElimDeduc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_ElimDeduc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_ElimDeduc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_ElimDeduc.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ElimDeduc.ForeColor = System.Drawing.Color.White;
+            this.Btn_ElimDeduc.IconChar = FontAwesome.Sharp.IconChar.Backspace;
+            this.Btn_ElimDeduc.IconColor = System.Drawing.Color.White;
+            this.Btn_ElimDeduc.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_ElimDeduc.IconSize = 25;
+            this.Btn_ElimDeduc.Location = new System.Drawing.Point(295, 328);
+            this.Btn_ElimDeduc.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_ElimDeduc.Name = "Btn_ElimDeduc";
+            this.Btn_ElimDeduc.Size = new System.Drawing.Size(34, 23);
+            this.Btn_ElimDeduc.TabIndex = 44;
+            this.Btn_ElimDeduc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_ElimDeduc.UseVisualStyleBackColor = false;
+            this.Btn_ElimDeduc.Click += new System.EventHandler(this.Btn_ElimDeduc_Click);
             // 
             // label3
             // 
@@ -354,52 +400,6 @@ namespace Proyecto_MAD.Recibo
             this.LBL_Mes.Size = new System.Drawing.Size(46, 21);
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Mes";
-            // 
-            // Btn_ElimDeduc
-            // 
-            this.Btn_ElimDeduc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
-            this.Btn_ElimDeduc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.Btn_ElimDeduc.FlatAppearance.BorderSize = 2;
-            this.Btn_ElimDeduc.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.Btn_ElimDeduc.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Btn_ElimDeduc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_ElimDeduc.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ElimDeduc.ForeColor = System.Drawing.Color.White;
-            this.Btn_ElimDeduc.IconChar = FontAwesome.Sharp.IconChar.Backspace;
-            this.Btn_ElimDeduc.IconColor = System.Drawing.Color.White;
-            this.Btn_ElimDeduc.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Btn_ElimDeduc.IconSize = 25;
-            this.Btn_ElimDeduc.Location = new System.Drawing.Point(295, 328);
-            this.Btn_ElimDeduc.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.Btn_ElimDeduc.Name = "Btn_ElimDeduc";
-            this.Btn_ElimDeduc.Size = new System.Drawing.Size(34, 23);
-            this.Btn_ElimDeduc.TabIndex = 44;
-            this.Btn_ElimDeduc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_ElimDeduc.UseVisualStyleBackColor = false;
-            this.Btn_ElimDeduc.Click += new System.EventHandler(this.Btn_ElimDeduc_Click);
-            // 
-            // Btn_ElimPercep
-            // 
-            this.Btn_ElimPercep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
-            this.Btn_ElimPercep.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.Btn_ElimPercep.FlatAppearance.BorderSize = 2;
-            this.Btn_ElimPercep.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.Btn_ElimPercep.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Btn_ElimPercep.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_ElimPercep.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_ElimPercep.ForeColor = System.Drawing.Color.White;
-            this.Btn_ElimPercep.IconChar = FontAwesome.Sharp.IconChar.Backspace;
-            this.Btn_ElimPercep.IconColor = System.Drawing.Color.White;
-            this.Btn_ElimPercep.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Btn_ElimPercep.IconSize = 25;
-            this.Btn_ElimPercep.Location = new System.Drawing.Point(615, 328);
-            this.Btn_ElimPercep.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.Btn_ElimPercep.Name = "Btn_ElimPercep";
-            this.Btn_ElimPercep.Size = new System.Drawing.Size(34, 23);
-            this.Btn_ElimPercep.TabIndex = 45;
-            this.Btn_ElimPercep.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Btn_ElimPercep.UseVisualStyleBackColor = false;
-            this.Btn_ElimPercep.Click += new System.EventHandler(this.Btn_ElimPercep_Click);
             // 
             // PEDE_Empleado
             // 

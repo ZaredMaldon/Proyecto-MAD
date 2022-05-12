@@ -20,7 +20,7 @@ end
 end
 /*-----------------------------------------------------------------Agregar,Eliminar y Modificar Empleado---------------------------------------------------------------------------------------------------------*/
 go
-create procedure ControlEmpleados
+Alter procedure ControlEmpleados
 @Opc					int,
 @Nombre				varchar(25)=null,
 @AP						varchar(25)=null,
@@ -46,13 +46,16 @@ create procedure ControlEmpleados
 @NoExt					smallint= null,
 @IdUsuario			int = null,
 @IdDireccion			int = null,
-@IdEmpleado		int = null
+@IdEmpleado		int = null,
+@Dpto					varchar(20)=null,
+@Puesto				varchar(20)=null,
+@IdPD					int=null
 as
 begin
 
 if(@Opc=1)/*Agregar Empleado*/
 begin
-	Begin try
+		Begin try
 			Begin Tran
 				Insert into Usuarios (Usuario,Contraseña,Tipo) values(@Usuario,@Contraseña,@Tipo);
 				SET  @IdUsuario=(SELECT @@IDENTITY);
@@ -62,6 +65,13 @@ begin
 
 				Insert into Empleados(Nombre,APaterno,AMaterno,FechaNacimiento,CURP,NSS,RFC,Email,Telefono1,Telefono2,Contratacion,Direccionfk,Usuariofk,Banco,NoCuenta)
 				values (@Nombre,@AP,@AM,@FechaNac,@CURP,@NSS,@RFC,@Email,@Telefono1,@Telefono2,@FContratacion,@IdDireccion,@IdUsuario,@Banco,@NoCuenta);
+				SET @IdEmpleado=(Select @@IDENTITY);
+
+
+				SELECT @IdPD=IdPD from vw_PuesDep where Puesto=@Puesto and Departamento=@Dpto;
+
+				Insert into Asiganciones(Empleadofk,PuestoDptofk) values (@IdEmpleado,@IdPD);
+
 			commit tran
 	End try
 	Begin catch
@@ -90,6 +100,9 @@ begin
 			join Empleados e on e.Direccionfk=d.idDireccion
 			join Usuarios u on e.Usuariofk=u.idUsuario
 			where e.NoEmpleado=@IdEmpleado;
+			
+			SELECT @IdPD=IdPD from vw_PuesDep where Puesto=@Puesto and Departamento=@Dpto;
+			UPDATE Asiganciones set PuestoDptofk=@IdPD where Empleadofk=@IdEmpleado
 		commit tran
   End try
 	Begin catch
@@ -101,10 +114,11 @@ if(@Opc=3)/*Eliminar Empleado*/
 begin
 	Begin try
 			Begin Tran
-					Delete from Usuarios where idUsuario=@IdUsuario;
-					Delete from Direcciones where idDireccion=@IdDireccion;
-					Delete from Empleados where NoEmpleado=@IdEmpleado;
 					Delete from Asiganciones where Empleadofk=@IdEmpleado;
+					Delete from NOMINA where Empleadofk=@IdEmpleado;
+					Delete from Percepciones_Empleado where Empleadofk=@IdEmpleado;
+					Delete from Deducciones_Empleado where Empleadofk=@IdEmpleado;
+					Delete from Empleados where NoEmpleado=@IdEmpleado;
 			Commit tran
 	End try
 	Begin catch
@@ -114,7 +128,7 @@ begin
 end
 if(@Opc=4)/*Muestra estos datos al Dgv de Empleados desde la vista vw_Empleados*/
 begin
-Select Número,Nombre,Usuario,Ingreso,Direccion,Telefono1,Telefono2 from vw_Empleados;
+Select Número,Nombre,Usuario,Ingreso,Municipio,Direccion,Telefono1,Telefono2 from vw_Empleados;
 end
 if(@Opc=5)/*se hace select para pasar los datos al c#*/
 begin

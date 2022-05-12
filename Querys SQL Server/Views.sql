@@ -1,12 +1,13 @@
 use BD_MAD_1
 go
 /***********************************************************View de Empleados para Gerentes********************************************************************************/
-create view vw_Empleados with encryption
+alter view vw_Empleados with encryption
 as 
-Select e.NoEmpleado as Número,CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,e.Contratacion as Ingreso,u.Usuario,CONCAT(d.Colonia,' ',d.Calle,' Int.',d.NoInterior,' Ext.',d.NoExt) as Direccion, e.Telefono1,e.Telefono2
+Select e.NoEmpleado as Número,CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,e.Contratacion as Ingreso,u.Usuario,m.NombreMunicipio as Municipio,CONCAT(d.Colonia,' ',d.Calle,' Int.',d.NoInterior,' Ext.',d.NoExt) as Direccion, e.Telefono1,e.Telefono2
  from Empleados e
 Inner join Usuarios u on e.Usuariofk=u.idUsuario
 Inner join Direcciones d on e.Direccionfk=d.idDireccion 
+Inner join Municipios m on m.idMunicipio=d.MunicipioFk
 /*-------------------------------------------------------------- View de Percepciones ----------------------------------------------------------------------------------------*/
 go
 create view vw_Percepciones
@@ -47,4 +48,10 @@ join Percepciones_Empleado pe on pe.Empleadofk=e.NoEmpleado
 join Deducciones du on du.IdDeduccion=de.Deduccionfk
 join Percepciones pu on pu.IdPercepcion=pe.Percepcionfk
 
-
+/*----------------------------------------------------------- View de PuestoDepartamento -----------------------------------------------------------------------------------*/
+go
+create view vw_PuesDep
+as
+SELECT pd.IdPD as IdPD,d.idDpto as idDepartamento,d.NombreDpto as Departamento,p.IdPuesto as idPuesto, p.NombrePuesto as Puesto from  PuestoDepartamento pd
+join Departamentos d on pd.Departamentofk=d.idDpto
+join Puestos p on pd.Puestofk=p.IdPuesto;

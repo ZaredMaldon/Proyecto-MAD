@@ -121,6 +121,7 @@ namespace Proyecto_MAD.Recibo
                 {
 
 
+
                 }
                 else if (CB_Modo.SelectedIndex == 1)//Empleado
                 {

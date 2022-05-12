@@ -39,6 +39,7 @@ namespace Proyecto_MAD.Calculo
             TB_RegistroPatronal.Text = DAO_Empresa.RegistroPatronal;
             TB_RFC.Text = DAO_Empresa.RFC.ToString();
             TB_Fecha.Text = DAO_Empresa.FechaIniOp.ToString();
+            //comentario para commit
         }
 
         private void LBL_ApMat_Click(object sender, EventArgs e)

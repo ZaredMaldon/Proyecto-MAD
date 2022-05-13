@@ -31,13 +31,9 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Percepciones));
             this.Panel_Background = new System.Windows.Forms.Panel();
-            this.CB_Mes = new System.Windows.Forms.ComboBox();
-            this.Lbl_Año = new System.Windows.Forms.Label();
             this.btn_CargarExcel = new FontAwesome.Sharp.IconButton();
             this.Btn_EliminarPercepcion = new FontAwesome.Sharp.IconButton();
             this.Dgv_Percepciones = new System.Windows.Forms.DataGridView();
-            this.Cb_Año = new System.Windows.Forms.ComboBox();
-            this.Lbl_SalarioDiario = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.TB_Porcentaje = new System.Windows.Forms.TextBox();
             this.TB_Bono = new System.Windows.Forms.TextBox();
@@ -53,13 +49,9 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
-            this.Panel_Background.Controls.Add(this.CB_Mes);
-            this.Panel_Background.Controls.Add(this.Lbl_Año);
             this.Panel_Background.Controls.Add(this.btn_CargarExcel);
             this.Panel_Background.Controls.Add(this.Btn_EliminarPercepcion);
             this.Panel_Background.Controls.Add(this.Dgv_Percepciones);
-            this.Panel_Background.Controls.Add(this.Cb_Año);
-            this.Panel_Background.Controls.Add(this.Lbl_SalarioDiario);
             this.Panel_Background.Controls.Add(this.label1);
             this.Panel_Background.Controls.Add(this.TB_Porcentaje);
             this.Panel_Background.Controls.Add(this.TB_Bono);
@@ -72,39 +64,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(647, 364);
             this.Panel_Background.TabIndex = 26;
-            // 
-            // CB_Mes
-            // 
-            this.CB_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.CB_Mes.FormattingEnabled = true;
-            this.CB_Mes.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
-            this.CB_Mes.Location = new System.Drawing.Point(177, 104);
-            this.CB_Mes.Name = "CB_Mes";
-            this.CB_Mes.Size = new System.Drawing.Size(94, 23);
-            this.CB_Mes.TabIndex = 64;
-            // 
-            // Lbl_Año
-            // 
-            this.Lbl_Año.AutoSize = true;
-            this.Lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_Año.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Año.Location = new System.Drawing.Point(378, 85);
-            this.Lbl_Año.Name = "Lbl_Año";
-            this.Lbl_Año.Size = new System.Drawing.Size(103, 16);
-            this.Lbl_Año.TabIndex = 63;
-            this.Lbl_Año.Text = "Año Aplicado*";
             // 
             // btn_CargarExcel
             // 
@@ -169,31 +128,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Dgv_Percepciones.Size = new System.Drawing.Size(615, 150);
             this.Dgv_Percepciones.TabIndex = 42;
             this.Dgv_Percepciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Percepciones_CellClick);
-            // 
-            // Cb_Año
-            // 
-            this.Cb_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.Cb_Año.FormattingEnabled = true;
-            this.Cb_Año.Items.AddRange(new object[] {
-            "2022",
-            "2021",
-            "2020",
-            "2019"});
-            this.Cb_Año.Location = new System.Drawing.Point(381, 104);
-            this.Cb_Año.Name = "Cb_Año";
-            this.Cb_Año.Size = new System.Drawing.Size(94, 23);
-            this.Cb_Año.TabIndex = 41;
-            // 
-            // Lbl_SalarioDiario
-            // 
-            this.Lbl_SalarioDiario.AutoSize = true;
-            this.Lbl_SalarioDiario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_SalarioDiario.ForeColor = System.Drawing.Color.White;
-            this.Lbl_SalarioDiario.Location = new System.Drawing.Point(174, 85);
-            this.Lbl_SalarioDiario.Name = "Lbl_SalarioDiario";
-            this.Lbl_SalarioDiario.Size = new System.Drawing.Size(105, 16);
-            this.Lbl_SalarioDiario.TabIndex = 39;
-            this.Lbl_SalarioDiario.Text = "Mes Aplicado*";
             // 
             // label1
             // 
@@ -315,8 +249,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         private System.Windows.Forms.Panel Panel_Background;
         private FontAwesome.Sharp.IconButton Btn_AgregarPercepcion;
         private System.Windows.Forms.Label LBL_Title;
-        private System.Windows.Forms.ComboBox Cb_Año;
-        private System.Windows.Forms.Label Lbl_SalarioDiario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox TB_Porcentaje;
         private System.Windows.Forms.TextBox TB_Bono;
@@ -326,7 +258,5 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         private System.Windows.Forms.DataGridView Dgv_Percepciones;
         private FontAwesome.Sharp.IconButton Btn_EliminarPercepcion;
         private FontAwesome.Sharp.IconButton btn_CargarExcel;
-        private System.Windows.Forms.ComboBox CB_Mes;
-        private System.Windows.Forms.Label Lbl_Año;
     }
 }

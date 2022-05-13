@@ -535,7 +535,7 @@ namespace Proyecto_MAD.EnlaceDB
 
         #region Control Percepciones
         //Agregar
-        public bool ControldePercepciones(int Opc,int idPer,string Nombre, DateTime fechaAplicada, float Bono, float BonoPorcentaje)
+        public bool ControldePercepciones(int Opc,int idPer,string Nombre, float Bono, float BonoPorcentaje)
         {
             var msg = "";
             var add = true;
@@ -552,8 +552,6 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro1.Value = Opc;
                 var parametro2 = _comandosql.Parameters.Add("@NombrePer", SqlDbType.VarChar, 25);
                 parametro2.Value = Nombre;
-                var parametro3 = _comandosql.Parameters.Add("@FechaAplicada ", SqlDbType.Date);
-                parametro3.Value = fechaAplicada;
                 var parametro4 = _comandosql.Parameters.Add("@Bono", SqlDbType.Money);
                 parametro4.Value = Bono;
                 var parametro5 = _comandosql.Parameters.Add("@BonoPorcentaje", SqlDbType.Float);
@@ -655,7 +653,7 @@ namespace Proyecto_MAD.EnlaceDB
         #endregion
 
         #region ControlDeducciones
-        public bool ControlDeducciones(int Opc,int idDeduc,string Nombre,DateTime fechaAplicada,float Descuento,float Porcentaje)
+        public bool ControlDeducciones(int Opc,int idDeduc,string Nombre,float Descuento,float Porcentaje)
         {
             var msg = "";
             var add = true;
@@ -672,8 +670,6 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro1.Value = Opc;
                 var parametro2 = _comandosql.Parameters.Add("@NombreDeduc", SqlDbType.VarChar, 25);
                 parametro2.Value = Nombre;
-                var parametro3 = _comandosql.Parameters.Add("@FechaAplicada", SqlDbType.Date);
-                parametro3.Value = fechaAplicada;
                 var parametro4 = _comandosql.Parameters.Add("@Descuento", SqlDbType.Money);
                 parametro4.Value = Descuento;
                 var parametro5 = _comandosql.Parameters.Add("@Porcentaje", SqlDbType.Float);
@@ -775,11 +771,11 @@ namespace Proyecto_MAD.EnlaceDB
 
         #region Control PEDE_Empleado
         //Asignaciones de percepciones y deducciones a cada empleado
-        public bool ControlPEDE_Empleado(int Opc, int idDepto, string Nombre, float sueldoBase)
+        public bool ControlPEDE_Empleado(int Opc, int idEmpleado,string Percepcion,string Deduccion,int idDpto,DateTime Fecha)
         {
             var msg = "";
             var add = true;
-
+            
             try
             {
                 conectar();
@@ -790,13 +786,16 @@ namespace Proyecto_MAD.EnlaceDB
 
                 var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
                 parametro1.Value = Opc;
-                var parametro2 = _comandosql.Parameters.Add("@NombreDepto", SqlDbType.VarChar, 25);
-                parametro2.Value = Nombre;
-                var parametro3 = _comandosql.Parameters.Add("@sueldoBase", SqlDbType.Money);
-                parametro3.Value = sueldoBase;
-                var parametro4 = _comandosql.Parameters.Add("@idDepto", SqlDbType.Money);
-                parametro4.Value = idDepto;
-
+                var parametro2 = _comandosql.Parameters.Add("@Empleadofk", SqlDbType.Int);
+                parametro2.Value = idEmpleado;
+                var parametro3 = _comandosql.Parameters.Add("@Percepcion", SqlDbType.VarChar,(25));
+                parametro3.Value = Percepcion;
+                var parametro4 = _comandosql.Parameters.Add("@Deduccion", SqlDbType.VarChar, (25));
+                parametro4.Value = Deduccion;
+                var parametro5 = _comandosql.Parameters.Add("@Departamentofk", SqlDbType.Int);
+                parametro5.Value = idDpto;
+                var parametro6 = _comandosql.Parameters.Add("@Fecha", SqlDbType.Date);
+                parametro6.Value = Fecha;
                 _adaptador.InsertCommand = _comandosql;
                 _comandosql.ExecuteNonQuery();
 
@@ -1506,6 +1505,7 @@ namespace Proyecto_MAD.EnlaceDB
         }
 
         #endregion
+
 
     }
 }

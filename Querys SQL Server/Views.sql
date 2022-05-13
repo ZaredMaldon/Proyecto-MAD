@@ -10,15 +10,15 @@ Inner join Direcciones d on e.Direccionfk=d.idDireccion
 Inner join Municipios m on m.idMunicipio=d.MunicipioFk
 /*-------------------------------------------------------------- View de Percepciones ----------------------------------------------------------------------------------------*/
 go
-create view vw_Percepciones
+ALTER view vw_Percepciones
 as
-SELECT IdPercepcion as ID,NombrePercepcion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,CONCAT('$ ',Bono)AS Bono,BonoPorcentaje as Porcentaje from Percepciones;
-
+SELECT IdPercepcion as ID,NombrePercepcion as Nombre ,CONCAT('$ ',Bono)AS Bono,BonoPorcentaje as Porcentaje from Percepciones;
+/*DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año*/
 /*-------------------------------------------------------------- View de Deducciones ----------------------------------------------------------------------------------------*/
 go
-create view vw_Deducciones
+ALTER view vw_Deducciones
 as
-SELECT IdDeduccion as ID,NombreDeduccion as Nombre,DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año ,CONCAT('$ ',Descuento)AS Descuento,DescuentoPorcentaje as Porcentaje from Deducciones;
+SELECT IdDeduccion as ID,NombreDeduccion as Nombre ,CONCAT('$ ',Descuento)AS Descuento,DescuentoPorcentaje as Porcentaje from Deducciones;
 
 /*-------------------------------------------------------------- View de Departamentos ----------------------------------------------------------------------------------------*/
 go

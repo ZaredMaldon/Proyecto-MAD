@@ -184,18 +184,17 @@ END
 
 /*-------------------------------------------------------------------------------------- Percepciones------------------------------------------------------------------------------------------------------------------------------------------------*/
 go
-create procedure SP_ControlPercepciones
+ALTER procedure SP_ControlPercepciones
 @Opc int,
 @idPer int =null,
 @NombrePer varchar(25) =null,
-@FechaAplicada date =null,
 @Bono money= null,
 @BonoPorcentaje float =null
 as
 begin
 if(@Opc =1)/*Agregar*/
 begin
-Insert into Percepciones (NombrePercepcion,FechaAplicada,Bono,BonoPorcentaje) values (@NombrePer,@FechaAplicada,@Bono,@BonoPorcentaje);
+Insert into Percepciones (NombrePercepcion,Bono,BonoPorcentaje) values (@NombrePer,@Bono,@BonoPorcentaje);
 end
 if(@Opc = 2)/*Eliminar*/
 begin
@@ -203,7 +202,7 @@ Delete from Percepciones where IdPercepcion=@idPer;
 end
 if(@Opc = 3)/*Tabla(view)*/
 begin
-Select ID,Nombre,Mes,Año,Bono,Porcentaje from vw_Percepciones;
+Select ID,Nombre,Bono,Porcentaje from vw_Percepciones;
 end
 end
 
@@ -213,7 +212,6 @@ alter procedure SP_ControlDeducciones
 @Opc int,
 @idDeduc int = null,
 @NombreDeduc varchar(25) = null,
-@FechaAplicada date = null,
 @Descuento money=null,
 @Porcentaje float = null
 as
@@ -221,7 +219,7 @@ begin
 
 if(@Opc =1)/*Agregar*/
 begin
-Insert into Deducciones(NombreDeduccion,FechaAplicada,Descuento,DescuentoPorcentaje) values (@NombreDeduc,@FechaAplicada,@Descuento,@Porcentaje);
+Insert into Deducciones(NombreDeduccion,Descuento,DescuentoPorcentaje) values (@NombreDeduc,@Descuento,@Porcentaje);
 end
 if(@Opc = 2)/*Eliminar*/
 begin
@@ -229,7 +227,7 @@ Delete from Deducciones where IdDeduccion=@idDeduc;
 end
 if(@Opc = 3)/*Tabla(view)*/
 begin
-Select ID,Nombre,Mes,Año,Descuento,Porcentaje from vw_Deducciones;
+Select ID,Nombre,Descuento,Porcentaje from vw_Deducciones;
 end
 end
 
@@ -320,12 +318,16 @@ WHERE ID = @IdPuestos;
 end
 end
 /*---------------------------------------------------------------------------------------PEDE_Empleado------------------------------------------------------------------------------------*/
-Create procedure SP_ControlPEDE_Empleado
+go
+alter procedure SP_ControlPEDE_Empleado
 @Opc					 int,
 @Empleadofk		 int	 = null,
-@Percepcionfk		 int	 = null,
-@Deduccionfk		 int	 = null,
-@Departamentofk  int	 = null	
+@Percepcion			 varchar(25)	 = null,
+@Deduccion			 varchar(25)	 = null,
+@Departamentofk  int	 = null,
+@Deduccionfk		int		=null,
+@Percepcionfk		int		=null,
+@Fecha					date	=null
 
 as
 BEGIN
@@ -334,36 +336,51 @@ BEGIN
 
 	if(@Opc=1)--Agregar Deduccion a Empleado individual
 	begin
-		Insert into Deducciones_Empleado(Empleadofk,Deduccionfk) values(@Empleadofk,@Deduccionfk);
+		Select @Deduccionfk=IdDeduccion from Deducciones where NombreDeduccion=@Deduccion;
+		Insert into Deducciones_Empleado(Empleadofk,Deduccionfk,FechaAplicada) values(@Empleadofk,@Deduccionfk,@Fecha);
 	end
 	if(@Opc=2)--Agregar Percepcion a Empleado individual
 	begin
-		Insert into Percepciones_Empleado(Empleadofk,Percepcionfk) values(@Empleadofk,@Percepcionfk);
+		Select @Percepcionfk=IdPercepcion from Percepciones where NombrePercepcion=@Percepcion;
+		Insert into Percepciones_Empleado(Empleadofk,Percepcionfk,FechaAplicada) values(@Empleadofk,@Percepcionfk,@Fecha);
 	end
-	if(@Opc=3)
+	if(@Opc=3)--Agregar Deducion a empleados de departamento
 	begin
-	
 		declare @tabla table(idEmpleado int)
-			insert into @tabla(idEmpleado) select idEmp from vw_Asignaciones where idDpto=@Departamentofk
-			declare @count int=(select count(idEmpleado) from @tabla)
+		insert into @tabla(idEmpleado) select idEmp from vw_Asignaciones where idDpto=@Departamentofk
+		declare @count int=(select count(idEmpleado) from @tabla)
 
-			declare @tabla2 table(idDeduccion int)
-			insert into @tabla2(idDeduccion) select * from Deducciones
+		while @count>0
+		begin
+			declare @idEmp int=(select top(1) idEmpleado from @tabla order by idEmpleado)
 
-			while @count>0
-			begin
-				declare @idEmp int=(select top(1) idEmpleado from @tabla order by idEmpleado)
+			Select @Deduccionfk=IdDeduccion from Deducciones where NombreDeduccion=@Deduccion;
+			Insert into Deducciones_Empleado(Empleadofk,Deduccionfk,FechaAplicada) values(@Empleadofk,@Deduccionfk,@Fecha);
 
-				Insert into Deducciones_Empleado(Empleadofk,Deduccionfk) values(@idEmp,@Deduccionfk);
-
-				delete @tabla where idEmpleado=@idEmp
-				set @count = (select count(idEmpleado) from @tabla)
+			delete @tabla where idEmpleado=@idEmp
+			set @count = (select count(idEmpleado) from @tabla)
 		end
-		END
 
-		while 
 	end
+	if(@Opc=4)--Agregar Percepcion a empleados por departamento
+	begin
 
+		declare @tabla2 table(idEmpleado int)
+		insert into @tabla(idEmpleado) select idEmp from vw_Asignaciones where idDpto=@Departamentofk
+		declare @count2 int=(select count(idEmpleado) from @tabla2)
+
+		while @count2>0
+		begin
+			declare @idEmp2 int=(select top(1) idEmpleado from @tabla2 order by idEmpleado)
+
+			Select @Percepcionfk=IdPercepcion from Percepciones where NombrePercepcion=@Percepcion;
+			Insert into Percepciones_Empleado(Empleadofk,Percepcionfk,FechaAplicada) values(@Empleadofk,@Percepcionfk,@Fecha);
+
+			delete @tabla2 where idEmpleado=@idEmp
+			set @count2 = (select count(idEmpleado) from @tabla2)
+		end
+		
+	end
 END
 
 /*----------------------------------------------------------------------------------Empresa------------------------------------------------------------------------------------*/

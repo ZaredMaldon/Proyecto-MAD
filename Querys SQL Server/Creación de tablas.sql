@@ -120,17 +120,19 @@ constraint UQ_Percepciones_Nombre UNIQUE (NombrePercepcion)
 )
 
 CREATE TABLE Percepciones_Empleado(
-Empleadofk        int			NOT NULL,
+Empleadofk       int				NOT NULL,
 Percepcionfk      int			NOT NULL,
-CONSTRAINT PK_PEmp PRIMARY KEY(Empleadofk,Percepcionfk),
+FechaAplicada	date			NOT NULL,
+CONSTRAINT PK_PEmp PRIMARY KEY(Empleadofk,Percepcionfk,FechaAplicada),
 CONSTRAINT FK_Empleado FOREIGN KEY (Empleadofk) REFERENCES Empleados(NoEmpleado),
 CONSTRAINT FK_Percepciones FOREIGN KEY(Percepcionfk) REFERENCES Percepciones(IdPercepcion)
 )
 
 CREATE TABLE Deducciones_Empleado(
 Empleadofk        int			NOT NULL,
-Deduccionfk		  int			NOT NULL,	
-CONSTRAINT PK_DEmp PRIMARY KEY(Empleadofk,Deduccionfk),
+Deduccionfk		  int			NOT NULL,
+FechaAplicada	date			NOT NULL,	
+CONSTRAINT PK_DEmp PRIMARY KEY(Empleadofk,Deduccionfk,FechaAplicada),
 CONSTRAINT FK_Empleado2 FOREIGN KEY (Empleadofk) REFERENCES Empleados(NoEmpleado),
 CONSTRAINT FK_Deducciones FOREIGN KEY(Deduccionfk) REFERENCES Deducciones(IdDeduccion) 
 )

@@ -60,15 +60,14 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
                 {
                     float Bn=0, Bpor=0;
                     string nombre = sL.GetCellValueAsString("A" + i);
-                    DateTime Fecha  = sL.GetCellValueAsDateTime("B" + i);
-                    string Bono   = sL.GetCellValueAsString("C" + i);
-                    string BPorc  = sL.GetCellValueAsString("D" + i);
+                    string Bono   = sL.GetCellValueAsString("B" + i);
+                    string BPorc  = sL.GetCellValueAsString("C" + i);
                     if (Bono != "" && BPorc != "")
                     {
                         Bn = float.Parse(Bono);
                         Bpor = float.Parse(BPorc);
                     }
-                    bool realizado=db.ControldePercepciones(1, 0, nombre,Fecha,Bn,Bpor);
+                    bool realizado=db.ControldePercepciones(1, 0, nombre,Bn,Bpor);
                     if (realizado)
                         registro++;
                 }
@@ -83,7 +82,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             if (Validaciones())
             {
-                bool realizada=db.ControldePercepciones(1, 0, TB_Nombre.Text, Tools_z.ConvertirStringFechas(Cb_Año.Text, CB_Mes.Text), float.Parse(TB_Bono.Text), float.Parse(TB_Porcentaje.Text));
+                bool realizada=db.ControldePercepciones(1, 0, TB_Nombre.Text, float.Parse(TB_Bono.Text), float.Parse(TB_Porcentaje.Text));
                 if (realizada)
                 {
                     MessageBox.Show("Registro Completado", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,13 +122,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             if(TB_Nombre.Text == "" || TB_Bono.Text == "" || TB_Porcentaje.Text == "")
             {
                 MessageBox.Show("Llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                validaciones = false;
-            }
-
-
-            if (CB_Mes.Text == "" || Cb_Año.Text == "")
-            {
-                MessageBox.Show("Falta seleccionar opciones", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 validaciones = false;
             }
 

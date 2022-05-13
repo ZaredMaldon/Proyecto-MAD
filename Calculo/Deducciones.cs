@@ -56,16 +56,15 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
                 for (int i = 2; i <= ultimaFila; i++)
                 {
                     float des = 0, Dpor = 0;
-                    string nombre = sL.GetCellValueAsString("A" + i);
-                    DateTime Fecha = sL.GetCellValueAsDateTime("B" + i);
-                    string Descuento = sL.GetCellValueAsString("C" + i);
-                    string DPorc = sL.GetCellValueAsString("D" + i);
+                    string nombre = sL.GetCellValueAsString("A" + i);         
+                    string Descuento = sL.GetCellValueAsString("B" + i);
+                    string DPorc = sL.GetCellValueAsString("C" + i);
                     if (Descuento != "" && DPorc != "")
                     {
                         des = float.Parse(Descuento);
                         Dpor = float.Parse(DPorc);
                     }
-                    bool realizado = db.ControlDeducciones(1, 0, nombre, Fecha, des, Dpor);
+                    bool realizado = db.ControlDeducciones(1, 0, nombre, des, Dpor);
                     if (realizado)
                         registro++;
                 }
@@ -80,7 +79,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             if (Validaciones())
             {
-                bool realizada = db.ControlDeducciones(1, 0, TB_Nombre.Text, Tools_z.ConvertirStringFechas(Cb_Año.Text, Cb_Mes.Text), float.Parse(TB_Descuento.Text), float.Parse(TB_Porcentaje.Text));
+                bool realizada = db.ControlDeducciones(1, 0, TB_Nombre.Text, float.Parse(TB_Descuento.Text), float.Parse(TB_Porcentaje.Text));
                 if (realizada)
                 {
                     MessageBox.Show("Registro Completado", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,12 +122,6 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
                 validaciones = false;
             }
 
-
-            if (Cb_Mes.Text == "" || Cb_Año.Text == "")
-            {
-                MessageBox.Show("Falta seleccionar opciones", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                validaciones = false;
-            }
 
             return validaciones;
         }

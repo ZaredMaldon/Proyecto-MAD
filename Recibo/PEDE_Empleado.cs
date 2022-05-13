@@ -80,6 +80,7 @@ namespace Proyecto_MAD.Recibo
             }
             
         }
+
         //Elimina los valores agregados de la lista deducciones
         private void Btn_ElimDeduc_Click(object sender, EventArgs e)
         {
@@ -90,6 +91,7 @@ namespace Proyecto_MAD.Recibo
             }
 
         }
+
         //Elimina los valores agregados de la lista percepciones
         private void Btn_ElimPercep_Click(object sender, EventArgs e)
         {
@@ -99,35 +101,65 @@ namespace Proyecto_MAD.Recibo
                 LB_Percepciones.Items.RemoveAt(indice);
             }
         }
+
         //Agrega las percepciones y deducciones que tendra el empleado del mes correspondiente
         private void Btn_Agregar_Click(object sender, EventArgs e)
         {
-            if (!use)
+            if (Validaciones())
             {
-                if (CB_Modo.SelectedIndex == 0)//Departamento
+                bool acces = true;// true=Hay datos en lb_deducciones
+                bool acces2 = true;//true= Hay datos en lb_percepciones
+
+                if (LB_Deducciones.Items.Count <= 0)
                 {
-                    MessageBox.Show("Seleccione un Departamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    acces = false;
+                }
+                if (LB_Percepciones.Items.Count <= 0)
+                {
+                    acces2 = false;
+                }
+
+                if (!use)
+                {
+                    if (CB_Modo.SelectedIndex == 0)//Departamento
+                    {
+                        MessageBox.Show("Seleccione un Departamento", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    else if (CB_Modo.SelectedIndex == 1)//Empleado
+                    {
+                        MessageBox.Show("Seleccione un Empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
                 }
-                else if (CB_Modo.SelectedIndex == 1)//Empleado
+                else
                 {
-                    MessageBox.Show("Seleccione un Empleado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                    if (CB_Modo.SelectedIndex == 0)//Departamento
+                    {
+                        if (acces)
+                        {
+                            Agregar_DeduccionesPercepciones(3, LB_Deducciones);
+                        }
+                        if (acces2)
+                        {
+                            Agregar_DeduccionesPercepciones(4, LB_Percepciones);
+                        }
+                    }
+                    else if (CB_Modo.SelectedIndex == 1)//Empleado
+                    {
+                        if (acces)
+                        {
+                            Agregar_DeduccionesPercepciones(1, LB_Deducciones);
+                        }
+                        if (acces2)
+                        {
+                            Agregar_DeduccionesPercepciones(2, LB_Percepciones);
+                        }
 
+                    }
+                }
             }
-            else
-            {
-                if (CB_Modo.SelectedIndex == 0)//Departamento
-                {
-
-
-
-                }
-                else if (CB_Modo.SelectedIndex == 1)//Empleado
-                {
-
-                }
-            }
+            
             
         }
         
@@ -157,6 +189,57 @@ namespace Proyecto_MAD.Recibo
                 use = true;
                 id = Convert.ToInt32(this.Dgv_EmpDep.SelectedRows[0].Cells[0].Value);       
             }
+        }
+
+        private void Agregar_DeduccionesPercepciones(int Opc,ListBox listbox)
+        {
+            switch (Opc)
+            {
+                case 1://por empleado deducciones
+                    foreach (string deducciones in listbox.Items)
+                    {
+                        dB.ControlPEDE_Empleado(1, id, "", deducciones, 0, Tools_z.ConvertirStringFechas(CB_Year.Text, CB_Mes.Text));
+                    }
+
+                    break;
+                case 2://por empleado percepciones
+                    foreach (string percepciones in listbox.Items)
+                    {
+                        dB.ControlPEDE_Empleado(2, id, percepciones, "", 0, Tools_z.ConvertirStringFechas(CB_Year.Text, CB_Mes.Text));
+                    }
+                    break;
+                case 3://por Departamento deducciones
+                    foreach (string deducciones in listbox.Items)
+                    {
+                        dB.ControlPEDE_Empleado(3, 0, "", deducciones, id, Tools_z.ConvertirStringFechas(CB_Year.Text, CB_Mes.Text));
+                    }
+                    break;
+                case 4://por Departamento percepciones
+                    foreach (string percepciones in listbox.Items)
+                    {
+                        dB.ControlPEDE_Empleado(4, id, percepciones, "", 0, Tools_z.ConvertirStringFechas(CB_Year.Text, CB_Mes.Text));
+                    }
+                    break;
+            }
+            
+           
+        }
+
+        private bool Validaciones()
+        {
+            bool validaciones = true;
+            if (CB_Mes.Text == "" || CB_Year.Text == ""||CB_Modo.Text=="")
+            {
+                MessageBox.Show("Falta seleccionar opciones", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                validaciones = false;
+            }
+            if (LB_Deducciones.Items.Count <= 0&& LB_Percepciones.Items.Count <= 0)
+            {
+                MessageBox.Show("Ambas Listas estan vacias\n Por favor, agrega desde el catálogo...", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                validaciones =false;
+            }
+            
+            return validaciones;
         }
     }
 }

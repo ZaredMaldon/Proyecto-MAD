@@ -355,7 +355,7 @@ BEGIN
 			declare @idEmp int=(select top(1) idEmpleado from @tabla order by idEmpleado)
 
 			Select @Deduccionfk=IdDeduccion from Deducciones where NombreDeduccion=@Deduccion;
-			Insert into Deducciones_Empleado(Empleadofk,Deduccionfk,FechaAplicada) values(@Empleadofk,@Deduccionfk,@Fecha);
+			Insert into Deducciones_Empleado(Empleadofk,Deduccionfk,FechaAplicada) values(@idEmp,@Deduccionfk,@Fecha);
 
 			delete @tabla where idEmpleado=@idEmp
 			set @count = (select count(idEmpleado) from @tabla)
@@ -366,7 +366,7 @@ BEGIN
 	begin
 
 		declare @tabla2 table(idEmpleado int)
-		insert into @tabla(idEmpleado) select idEmp from vw_Asignaciones where idDpto=@Departamentofk
+		insert into @tabla2(idEmpleado) select idEmp from vw_Asignaciones where idDpto=@Departamentofk
 		declare @count2 int=(select count(idEmpleado) from @tabla2)
 
 		while @count2>0
@@ -374,9 +374,9 @@ BEGIN
 			declare @idEmp2 int=(select top(1) idEmpleado from @tabla2 order by idEmpleado)
 
 			Select @Percepcionfk=IdPercepcion from Percepciones where NombrePercepcion=@Percepcion;
-			Insert into Percepciones_Empleado(Empleadofk,Percepcionfk,FechaAplicada) values(@Empleadofk,@Percepcionfk,@Fecha);
+		Insert into Percepciones_Empleado(Empleadofk,Percepcionfk,FechaAplicada) values(@idEmp2,@Percepcionfk,@Fecha);
 
-			delete @tabla2 where idEmpleado=@idEmp
+			delete @tabla2 where idEmpleado=@idEmp2
 			set @count2 = (select count(idEmpleado) from @tabla2)
 		end
 		

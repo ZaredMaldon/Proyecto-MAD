@@ -35,11 +35,13 @@ namespace Proyecto_MAD.Recibo
 
             if(CB_Modo.SelectedIndex == 0)//Departamento
             {
+                use = false;
                 LBL_Datagrid.Text = "Lista de Departamentos";
                 Dgv_EmpDep.DataSource= dB.DataTable_MostrarDeptos(4);
 
             }else if(CB_Modo.SelectedIndex == 1)//Empleado
             {
+                use = false;
                 LBL_Datagrid.Text = "Lista de Empleados";
                 Dgv_EmpDep.DataSource = dB.DataTable_MostrarEmpleado(4);
             }
@@ -157,6 +159,7 @@ namespace Proyecto_MAD.Recibo
                         }
 
                     }
+                    MessageBox.Show("Completado con exito", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             
@@ -199,6 +202,7 @@ namespace Proyecto_MAD.Recibo
                     foreach (string deducciones in listbox.Items)
                     {
                         dB.ControlPEDE_Empleado(1, id, "", deducciones, 0, Tools_z.ConvertirStringFechas(CB_Year.Text, CB_Mes.Text));
+                        
                     }
 
                     break;
@@ -217,7 +221,7 @@ namespace Proyecto_MAD.Recibo
                 case 4://por Departamento percepciones
                     foreach (string percepciones in listbox.Items)
                     {
-                        dB.ControlPEDE_Empleado(4, id, percepciones, "", 0, Tools_z.ConvertirStringFechas(CB_Year.Text, CB_Mes.Text));
+                        dB.ControlPEDE_Empleado(4, 0, percepciones, "", id, Tools_z.ConvertirStringFechas(CB_Year.Text, CB_Mes.Text));
                     }
                     break;
             }

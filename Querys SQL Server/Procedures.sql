@@ -415,3 +415,30 @@ WHERE idEmpresa = @idEmpresa;
 end
 
 end
+
+/*-------------------------------------------------------------------------------------Calculo------------------------------------------------------------------------------------------*/
+go
+create procedure SP_Calculo
+@Opc int,
+@FechaNomina date = null,
+@FechaIngreso date = null
+
+as
+BEGIN
+Declare @SueldoMensualBruto money,@SueldoBruto money
+/*Les falta un where para elegir el empleado*/
+Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from PuestoDepartamento --Sueldo mensual bruto con todos los dias
+Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from PuestoDepartamento--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
+Select SUM(per.Bono),SUM(ded.Descuento) from PuestoDepartamento pd--checar porque sale muchas cosas repetidas 3 veces, pero esto es para sumar solo la columna de Percepciones y deducciones utilizando un where
+join Puestos pu on pu.IdPuesto=pd.Puestofk
+join Departamentos Dp on Dp.idDpto=pd.Departamentofk
+join Asiganciones a on a.PuestoDptofk=pd.IdPD
+join Empleados e on  e.NoEmpleado= a.Empleadofk
+join Percepciones_Empleado Pee on pee.Empleadofk=e.NoEmpleado
+join Deducciones_Empleado Dee on dee.Empleadofk=e.NoEmpleado
+join Percepciones per on per.IdPercepcion=Pee.Percepcionfk
+join Deducciones ded on ded.IdDeduccion=dee.Deduccionfk
+
+select*from Percepciones
+
+END

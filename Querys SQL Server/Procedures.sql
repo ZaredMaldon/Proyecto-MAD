@@ -424,20 +424,44 @@ create procedure SP_Calculo
 
 as
 BEGIN
-Declare @SueldoMensualBruto money,@SueldoBruto money
-/*Les falta un where para elegir el empleado*/
-Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from PuestoDepartamento --Sueldo mensual bruto con todos los dias
-Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from PuestoDepartamento--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
-Select SUM(per.Bono),SUM(ded.Descuento) from PuestoDepartamento pd--checar porque sale muchas cosas repetidas 3 veces, pero esto es para sumar solo la columna de Percepciones y deducciones utilizando un where
-join Puestos pu on pu.IdPuesto=pd.Puestofk
-join Departamentos Dp on Dp.idDpto=pd.Departamentofk
-join Asiganciones a on a.PuestoDptofk=pd.IdPD
-join Empleados e on  e.NoEmpleado= a.Empleadofk
-join Percepciones_Empleado Pee on pee.Empleadofk=e.NoEmpleado
-join Deducciones_Empleado Dee on dee.Empleadofk=e.NoEmpleado
-join Percepciones per on per.IdPercepcion=Pee.Percepcionfk
-join Deducciones ded on ded.IdDeduccion=dee.Deduccionfk
 
-select*from Percepciones
+Declare @SueldoMensualBruto money,@SueldoBruto money
+Declare @TotalPercepciones money,@TotalDeducciones money
+Declare @SueldoNeto money
+Declare @banco varchar(30),@noCuenta int
+
+/*while para recorrer los empleados que ya tengan asignado un puesto y un departamento*/
+		declare @tabla table(idEmpleado int)
+		insert into @tabla(idEmpleado) select idEmp from vw_Asignaciones 
+		declare @count int=(select count(idEmpleado) from @tabla)
+
+		while @count>0
+		begin
+			declare @idEmp int=(select top(1) idEmpleado from @tabla order by idEmpleado)
+
+			Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from  vw_Asignaciones  where idEmp=@idEmp--Sueldo mensual bruto con todos los dias
+			Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from PuestoDepartamento--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
+
+			Select @TotalPercepciones=SUM(p.Bono) from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
+			join Percepciones p on p.IdPercepcion=pe.Percepcionfk
+			join Empleados e on e.NoEmpleado=pe.Empleadofk
+			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
+
+			Select @TotalDeducciones=SUM(ded.Descuento)  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
+			join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
+			join Empleados e on e.NoEmpleado=de.Empleadofk
+			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
+
+			Select @SueldoNeto=@SueldoMensualBruto+@TotalPercepciones
+			Select @SueldoNeto=@SueldoNeto-@TotalDeducciones
+
+			Select @banco=Banco,@noCuenta=NoCuenta from Empleados where NoEmpleado=@idEmp
+
+			insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina)values(@idEmp,@SueldoMensualBruto,@SueldoNeto,@banco,@noCuenta,@FechaNomina)
+
+			delete @tabla where idEmpleado=@idEmp
+			set @count = (select count(idEmpleado) from @tabla)
+		end
+
 
 END

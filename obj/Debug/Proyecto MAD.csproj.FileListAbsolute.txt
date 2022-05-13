@@ -172,3 +172,5 @@ H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MA
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.CambiarContra.resources
 C:\Users\eli75\OneDrive\Documentos\00Sam\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.CambiarContra.resources
 C:\Users\eli75\OneDrive\Documentos\00Sam\Proyecto-MAD\obj\Debug\Proyecto_MAD.Recibo.PEDE_Empleado.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Aspose.PDF.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Aspose.PDF.xml

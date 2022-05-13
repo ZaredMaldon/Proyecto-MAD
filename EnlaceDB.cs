@@ -1406,7 +1406,7 @@ namespace Proyecto_MAD.EnlaceDB
         #endregion
 
         #region calculo
-        public void Calculo_de_Nomina(DateTime date)
+        public void Calculo_de_Nomina(DateTime date,DateTime ingreso)
         {
             var msg = "";
 
@@ -1421,7 +1421,8 @@ namespace Proyecto_MAD.EnlaceDB
 
                 var parametro1 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Date);
                 parametro1.Value = date;
-
+                var parametro2 = _comandosql.Parameters.Add("@FechaIngreso", SqlDbType.Date);
+                parametro2.Value = ingreso;
 
 
                 _adaptador.InsertCommand = _comandosql;

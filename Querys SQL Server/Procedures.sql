@@ -418,28 +418,39 @@ end
 
 /*-------------------------------------------------------------------------------------Calculo------------------------------------------------------------------------------------------*/
 go
-create procedure SP_Calculo
-@FechaNomina date = null,
-@FechaIngreso date = null
+alter procedure SP_Calculo
+@FechaNomina date = null
 
 as
 BEGIN
-
+declare @nomina int
+set @nomina=(select top(1)IdNomina from NOMINA where MONTH(FechaNomina)=MONTH(@FechaNomina) and YEAR(FechaNomina)=YEAR(@FechaNomina))
+if(@nomina is null)
+begin
+declare @error int,@mensaje varchar(150)
 Declare @SueldoMensualBruto money,@SueldoBruto money
 Declare @TotalPercepciones money,@TotalDeducciones money
 Declare @SueldoNeto money
 Declare @banco varchar(30),@noCuenta int
 
 /*while para recorrer los empleados que ya tengan asignado un puesto y un departamento*/
-		declare @tabla table(idEmpleado int)
-		insert into @tabla(idEmpleado) select idEmp from vw_Asignaciones 
+		declare @tabla table(idEmpleado int,Ingreso date)
+		insert into @tabla(idEmpleado,Ingreso) select idEmp,Contratacion from vw_Asignaciones 
 		declare @count int=(select count(idEmpleado) from @tabla)
-
+		
 		while @count>0
 		begin
 			declare @idEmp int=(select top(1) idEmpleado from @tabla order by idEmpleado)
+			declare @FechaIngreso date=(Select top(1) Ingreso from @tabla order by idEmpleado)
+			declare @Diferencia int, @nombre varchar(50)
 
-			Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from  vw_Asignaciones  where idEmp=@idEmp--Sueldo mensual bruto con todos los dias
+			Select @nombre=Nombre from vw_Asignaciones where idEmp=@idEmp
+
+			Select @Diferencia= DATEDIFF(MONTH,@FechaIngreso,@FechaNomina);
+			if(@Diferencia>=0)
+			begin
+
+			--Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from  vw_Asignaciones  where idEmp=@idEmp--Sueldo mensual bruto con todos los dias
 			Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from PuestoDepartamento--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
 
 			Select @TotalPercepciones=SUM(p.Bono) from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
@@ -452,16 +463,55 @@ Declare @banco varchar(30),@noCuenta int
 			join Empleados e on e.NoEmpleado=de.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
 
-			Select @SueldoNeto=@SueldoMensualBruto+@TotalPercepciones
+			if(@TotalPercepciones is not null)
+			begin
+			Select @SueldoNeto=@SueldoBruto+@TotalPercepciones
+			end
+			else
+			begin
+			Select @SueldoNeto=@SueldoBruto;
+			end
 			Select @SueldoNeto=@SueldoNeto-@TotalDeducciones
 
 			Select @banco=Banco,@noCuenta=NoCuenta from Empleados where NoEmpleado=@idEmp
 
-			insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina)values(@idEmp,@SueldoMensualBruto,@SueldoNeto,@banco,@noCuenta,@FechaNomina)
+			if(@TotalPercepciones is null and @TotalDeducciones is null)
+			begin
+				insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina)values(@idEmp,@SueldoBruto,@SueldoBruto,@banco,@noCuenta,@FechaNomina)
+			end
+			else if(@TotalDeducciones is not null or @TotalPercepciones is not null)
+			begin
+				insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina)values(@idEmp,@SueldoBruto,@SueldoNeto,@banco,@noCuenta,@FechaNomina)
+			end
+
+			end else
+			begin
+			Set @error=1
+			end
 
 			delete @tabla where idEmpleado=@idEmp
 			set @count = (select count(idEmpleado) from @tabla)
 		end
+		if(@error=1)
+		begin
+		Set @mensaje='No todos los empleados tienen la nomina de este mes porque aun no han sido contratados'
+		Raiserror(@mensaje,16,1);
+		end
 
+end
+else
+begin
+Raiserror('Esta nomina ya ha sido calculada',16,1);
+end
+END
+/*-------------------------------------------------------------------------------------Mostrar nomina------------------------------------------------------------------------------------------*/
+Create procedure Sp_MostrarNomina
+@Opc int
 
+as
+BEGIN
+if(@Opc=1)
+begin
+	Select [No.Nómina],[No.Empleado],[Nombre Completo],Fecha,Sueldo,Banco,[No.Cuenta] from vw_Nomina
+end
 END

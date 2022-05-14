@@ -38,7 +38,7 @@ join Puestos p on pd.Puestofk=p.IdPuesto;
 go
 alter view vw_Asignaciones
 as
-Select CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,p.NombrePuesto,d.NombreDpto,d.idDpto as idDpto,p.IdPuesto as idPuesto,e.NoEmpleado as idEmp from Asiganciones a
+Select CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,p.NombrePuesto,d.NombreDpto,d.idDpto as idDpto,p.IdPuesto as idPuesto,e.NoEmpleado as idEmp , pd.SalarioDiario,e.Contratacion from Asiganciones a
 join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
 join Empleados e on e.NoEmpleado=a.Empleadofk
 join Departamentos d on d.idDpto=pd.Departamentofk
@@ -52,3 +52,10 @@ as
 SELECT pd.IdPD as IdPD,d.idDpto as idDepartamento,d.NombreDpto as Departamento,p.IdPuesto as idPuesto, p.NombrePuesto as Puesto from  PuestoDepartamento pd
 join Departamentos d on pd.Departamentofk=d.idDpto
 join Puestos p on pd.Puestofk=p.IdPuesto;
+
+/*------------------------------------------------------------View de Nomina---------------------------------------------------------------------------------------------------*/
+go
+create view vw_Nomina
+as
+Select n.IdNomina as [No.Nómina],e.NoEmpleado as [No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as Sueldo,e.Banco,e.NoCuenta as [No.Cuenta] from NOMINA n
+join Empleados e on e.NoEmpleado=n.Empleadofk

@@ -31,15 +31,15 @@ namespace Proyecto_MAD.Recibo
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarRecibo));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Dgv_Nominas = new System.Windows.Forms.DataGridView();
             this.Btn_CSV = new FontAwesome.Sharp.IconButton();
             this.CB_Year = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.Btn_Filtrar = new FontAwesome.Sharp.IconButton();
+            this.Btn_Calculo = new FontAwesome.Sharp.IconButton();
             this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
-            this.Dgv_Nominas = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Nominas)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +52,7 @@ namespace Proyecto_MAD.Recibo
             this.Panel_Background.Controls.Add(this.Btn_CSV);
             this.Panel_Background.Controls.Add(this.CB_Year);
             this.Panel_Background.Controls.Add(this.label1);
-            this.Panel_Background.Controls.Add(this.Btn_Filtrar);
+            this.Panel_Background.Controls.Add(this.Btn_Calculo);
             this.Panel_Background.Controls.Add(this.CB_Mes);
             this.Panel_Background.Controls.Add(this.LBL_Title);
             this.Panel_Background.Controls.Add(this.LBL_Mes);
@@ -60,6 +60,30 @@ namespace Proyecto_MAD.Recibo
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(22, 195);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(266, 21);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Lista de Nóminas Generadas";
+            // 
+            // Dgv_Nominas
+            // 
+            this.Dgv_Nominas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Dgv_Nominas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_Nominas.Location = new System.Drawing.Point(26, 231);
+            this.Dgv_Nominas.MultiSelect = false;
+            this.Dgv_Nominas.Name = "Dgv_Nominas";
+            this.Dgv_Nominas.ReadOnly = true;
+            this.Dgv_Nominas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.Dgv_Nominas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Dgv_Nominas.Size = new System.Drawing.Size(623, 260);
+            this.Dgv_Nominas.TabIndex = 8;
             // 
             // Btn_CSV
             // 
@@ -109,28 +133,29 @@ namespace Proyecto_MAD.Recibo
             this.label1.TabIndex = 25;
             this.label1.Text = "Año";
             // 
-            // Btn_Filtrar
+            // Btn_Calculo
             // 
-            this.Btn_Filtrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
-            this.Btn_Filtrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.Btn_Filtrar.FlatAppearance.BorderSize = 2;
-            this.Btn_Filtrar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.Btn_Filtrar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.Btn_Filtrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_Filtrar.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_Filtrar.ForeColor = System.Drawing.Color.White;
-            this.Btn_Filtrar.IconChar = FontAwesome.Sharp.IconChar.Calculator;
-            this.Btn_Filtrar.IconColor = System.Drawing.Color.White;
-            this.Btn_Filtrar.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.Btn_Filtrar.IconSize = 45;
-            this.Btn_Filtrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Btn_Filtrar.Location = new System.Drawing.Point(218, 124);
-            this.Btn_Filtrar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.Btn_Filtrar.Name = "Btn_Filtrar";
-            this.Btn_Filtrar.Size = new System.Drawing.Size(260, 51);
-            this.Btn_Filtrar.TabIndex = 10;
-            this.Btn_Filtrar.Text = "Cálculo";
-            this.Btn_Filtrar.UseVisualStyleBackColor = false;
+            this.Btn_Calculo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_Calculo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_Calculo.FlatAppearance.BorderSize = 2;
+            this.Btn_Calculo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_Calculo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_Calculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Calculo.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Calculo.ForeColor = System.Drawing.Color.White;
+            this.Btn_Calculo.IconChar = FontAwesome.Sharp.IconChar.Calculator;
+            this.Btn_Calculo.IconColor = System.Drawing.Color.White;
+            this.Btn_Calculo.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_Calculo.IconSize = 45;
+            this.Btn_Calculo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Calculo.Location = new System.Drawing.Point(218, 124);
+            this.Btn_Calculo.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_Calculo.Name = "Btn_Calculo";
+            this.Btn_Calculo.Size = new System.Drawing.Size(260, 51);
+            this.Btn_Calculo.TabIndex = 10;
+            this.Btn_Calculo.Text = "Cálculo";
+            this.Btn_Calculo.UseVisualStyleBackColor = false;
+            this.Btn_Calculo.Click += new System.EventHandler(this.Btn_Calculo_Click);
             // 
             // CB_Mes
             // 
@@ -176,30 +201,6 @@ namespace Proyecto_MAD.Recibo
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Mes";
             // 
-            // Dgv_Nominas
-            // 
-            this.Dgv_Nominas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
-            this.Dgv_Nominas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_Nominas.Location = new System.Drawing.Point(26, 231);
-            this.Dgv_Nominas.MultiSelect = false;
-            this.Dgv_Nominas.Name = "Dgv_Nominas";
-            this.Dgv_Nominas.ReadOnly = true;
-            this.Dgv_Nominas.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.Dgv_Nominas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dgv_Nominas.Size = new System.Drawing.Size(623, 260);
-            this.Dgv_Nominas.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(22, 195);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(266, 21);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Lista de Nóminas Generadas";
-            // 
             // GenerarRecibo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +211,7 @@ namespace Proyecto_MAD.Recibo
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GenerarRecibo";
             this.Text = "GenerarRecibo";
+            this.Load += new System.EventHandler(this.GenerarRecibo_Load);
             this.Panel_Background.ResumeLayout(false);
             this.Panel_Background.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_Nominas)).EndInit();
@@ -222,7 +224,7 @@ namespace Proyecto_MAD.Recibo
         private System.Windows.Forms.Panel Panel_Background;
         private System.Windows.Forms.ComboBox CB_Year;
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton Btn_Filtrar;
+        private FontAwesome.Sharp.IconButton Btn_Calculo;
         private System.Windows.Forms.ComboBox CB_Mes;
         private System.Windows.Forms.Label LBL_Title;
         private System.Windows.Forms.Label LBL_Mes;

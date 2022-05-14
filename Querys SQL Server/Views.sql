@@ -59,3 +59,15 @@ create view vw_Nomina
 as
 Select n.IdNomina as [No.Nómina],e.NoEmpleado as [No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as Sueldo,e.Banco,e.NoCuenta as [No.Cuenta] from NOMINA n
 join Empleados e on e.NoEmpleado=n.Empleadofk
+
+/*-------------------------------------------------------------View Reporte General de Nómina------------------------------------------------------------------------------*/
+go
+create view vw_ReporteGeneralNomina
+as
+Select d.NombreDpto as Departamento,p.NombrePuesto as Puesto,CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,e.Contratacion as [Fecha de Ingreso],dbo.fn_Edad(e.FechaNacimiento) as Edad,pd.SalarioDiario as [Salario Diario] from Empleados e
+join Asiganciones a on a.Empleadofk=e.NoEmpleado
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Puestos p on p.IdPuesto=pd.Puestofk
+join Departamentos d on d.idDpto=pd.Departamentofk
+
+ 

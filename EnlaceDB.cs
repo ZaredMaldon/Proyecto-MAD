@@ -1539,6 +1539,46 @@ namespace Proyecto_MAD.EnlaceDB
 
         #endregion
 
+        #region Reportes
+        public DataTable DataTable_ReporteGeneralNomina(int Opc,int Mes,int Año)//Filtrado
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "Sp_ReporteGeneralNomina";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@Mes", SqlDbType.Int);
+                parametro2.Value = Mes;
+                var parametro3 = _comandosql.Parameters.Add("@Año", SqlDbType.Int);
+                parametro3.Value = Año ;
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
+        }
+        #endregion
 
     }
 }

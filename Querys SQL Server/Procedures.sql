@@ -10,11 +10,11 @@ as
 begin
 if(@Opc=1)
 begin
-Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo like 'Gerente');
+Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo = 'Gerente') 
 end
 else if(@Opc=2)
 begin 
-Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo like 'Empleado');
+Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo = 'Empleado')
 end
 
 end

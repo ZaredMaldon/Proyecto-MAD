@@ -123,7 +123,8 @@ namespace Proyecto_MAD
             this.User_TB.Name = "User_TB";
             this.User_TB.Size = new System.Drawing.Size(221, 21);
             this.User_TB.TabIndex = 1;
-            this.User_TB.TextChanged += new System.EventHandler(this.User_TB_TextChanged);
+            this.User_TB.Enter += new System.EventHandler(this.User_TB_Enter);
+            this.User_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.User_TB_KeyPress);
             // 
             // Password_TB
             // 
@@ -135,7 +136,8 @@ namespace Proyecto_MAD
             this.Password_TB.PasswordChar = '*';
             this.Password_TB.Size = new System.Drawing.Size(221, 21);
             this.Password_TB.TabIndex = 2;
-            this.Password_TB.TextChanged += new System.EventHandler(this.Password_TB_TextChanged);
+            this.Password_TB.Enter += new System.EventHandler(this.Password_TB_Enter);
+            this.Password_TB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Password_TB_KeyPress);
             // 
             // Titulo_LB
             // 
@@ -163,6 +165,7 @@ namespace Proyecto_MAD
             this.Login_btn.Text = "Entrar";
             this.Login_btn.UseVisualStyleBackColor = false;
             this.Login_btn.Click += new System.EventHandler(this.Login_btn_Click);
+           
             // 
             // pictureBox1
             // 
@@ -226,6 +229,7 @@ namespace Proyecto_MAD
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
+           
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

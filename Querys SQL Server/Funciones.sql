@@ -198,3 +198,34 @@ end
 
 return @Cuenta
 END
+
+/*-------------------------------------------------------Sumatoria de sueldo bruto y neto-----------------------------------------------------------*/
+go
+create function fn_SumatoriaSBSN(@Opc int,@idDpto int) returns money
+as
+BEGIN
+Declare @SueldoNetoT money
+Declare @SueldoBrutoT money
+Declare @retorno money
+
+if(@Opc=1)--Sueldo Bruto
+begin
+Select @SueldoBrutoT =Sum(n.Sueldo_bruto) from NOMINA n
+join Asiganciones a on a.Empleadofk=n.Empleadofk
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+where pd.Departamentofk=@idDpto
+
+set @retorno=@SueldoBrutoT
+end
+
+if(@Opc=2)--Sueldo Neto
+begin
+Select @SueldoNetoT=Sum(n.Sueldo_neto) from NOMINA n
+join Asiganciones a on a.Empleadofk=n.Empleadofk
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+where pd.Departamentofk=@idDpto
+
+set @retorno= @SueldoNetoT
+end
+return @retorno
+END

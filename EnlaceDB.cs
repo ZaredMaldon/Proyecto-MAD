@@ -1621,7 +1621,41 @@ namespace Proyecto_MAD.EnlaceDB
             return tabla;
         }
 
-        
+        public DataTable DataTable_ReporteNomina(int Año)//Filtrado
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "SP_ReporteNomina";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+               
+                var parametro3 = _comandosql.Parameters.Add("@Año", SqlDbType.Int);
+                parametro3.Value = Año;
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
+        }
         #endregion
 
     }

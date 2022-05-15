@@ -34,19 +34,21 @@ namespace Proyecto_MAD.Reportes
             this.CB_Year = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Btn_Filtrar = new FontAwesome.Sharp.IconButton();
-            this.DGV_Recibos = new System.Windows.Forms.DataGridView();
+            this.DGV_ReporteNomina = new System.Windows.Forms.DataGridView();
             this.LBL_Title = new System.Windows.Forms.Label();
+            this.Btn_Reinicio = new FontAwesome.Sharp.IconButton();
             this.Panel_Background.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Recibos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_ReporteNomina)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.Btn_Reinicio);
             this.Panel_Background.Controls.Add(this.CB_Year);
             this.Panel_Background.Controls.Add(this.label1);
             this.Panel_Background.Controls.Add(this.Btn_Filtrar);
-            this.Panel_Background.Controls.Add(this.DGV_Recibos);
+            this.Panel_Background.Controls.Add(this.DGV_ReporteNomina);
             this.Panel_Background.Controls.Add(this.LBL_Title);
             this.Panel_Background.Location = new System.Drawing.Point(31, 27);
             this.Panel_Background.Name = "Panel_Background";
@@ -58,18 +60,10 @@ namespace Proyecto_MAD.Reportes
             this.CB_Year.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.CB_Year.FormattingEnabled = true;
             this.CB_Year.Items.AddRange(new object[] {
-            "Enero",
-            "Febrero",
-            "Marzo",
-            "Abril",
-            "Mayo",
-            "Junio",
-            "Julio",
-            "Agosto",
-            "Septiembre",
-            "Octubre",
-            "Noviembre",
-            "Diciembre"});
+            "Todos",
+            "2022",
+            "2021",
+            "2020"});
             this.CB_Year.Location = new System.Drawing.Point(260, 90);
             this.CB_Year.Name = "CB_Year";
             this.CB_Year.Size = new System.Drawing.Size(156, 23);
@@ -109,15 +103,21 @@ namespace Proyecto_MAD.Reportes
             this.Btn_Filtrar.Text = "Filtrar";
             this.Btn_Filtrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Btn_Filtrar.UseVisualStyleBackColor = false;
+            this.Btn_Filtrar.Click += new System.EventHandler(this.Btn_Filtrar_Click);
             // 
-            // DGV_Recibos
+            // DGV_ReporteNomina
             // 
-            this.DGV_Recibos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
-            this.DGV_Recibos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_Recibos.Location = new System.Drawing.Point(26, 176);
-            this.DGV_Recibos.Name = "DGV_Recibos";
-            this.DGV_Recibos.Size = new System.Drawing.Size(623, 324);
-            this.DGV_Recibos.TabIndex = 22;
+            this.DGV_ReporteNomina.AllowUserToAddRows = false;
+            this.DGV_ReporteNomina.AllowUserToDeleteRows = false;
+            this.DGV_ReporteNomina.AllowUserToResizeColumns = false;
+            this.DGV_ReporteNomina.AllowUserToResizeRows = false;
+            this.DGV_ReporteNomina.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGV_ReporteNomina.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.DGV_ReporteNomina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_ReporteNomina.Location = new System.Drawing.Point(26, 176);
+            this.DGV_ReporteNomina.Name = "DGV_ReporteNomina";
+            this.DGV_ReporteNomina.Size = new System.Drawing.Size(623, 324);
+            this.DGV_ReporteNomina.TabIndex = 22;
             // 
             // LBL_Title
             // 
@@ -130,6 +130,28 @@ namespace Proyecto_MAD.Reportes
             this.LBL_Title.TabIndex = 20;
             this.LBL_Title.Text = "Reporte Nómina";
             // 
+            // Btn_Reinicio
+            // 
+            this.Btn_Reinicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_Reinicio.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_Reinicio.FlatAppearance.BorderSize = 2;
+            this.Btn_Reinicio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_Reinicio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_Reinicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Reinicio.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Reinicio.ForeColor = System.Drawing.Color.White;
+            this.Btn_Reinicio.IconChar = FontAwesome.Sharp.IconChar.Redo;
+            this.Btn_Reinicio.IconColor = System.Drawing.Color.White;
+            this.Btn_Reinicio.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_Reinicio.IconSize = 19;
+            this.Btn_Reinicio.Location = new System.Drawing.Point(422, 90);
+            this.Btn_Reinicio.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_Reinicio.Name = "Btn_Reinicio";
+            this.Btn_Reinicio.Size = new System.Drawing.Size(28, 23);
+            this.Btn_Reinicio.TabIndex = 32;
+            this.Btn_Reinicio.UseVisualStyleBackColor = false;
+            this.Btn_Reinicio.Click += new System.EventHandler(this.Btn_Reinicio_Click);
+            // 
             // ReporteNómina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,9 +162,10 @@ namespace Proyecto_MAD.Reportes
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReporteNómina";
             this.Text = "ReporteNómina";
+            this.Load += new System.EventHandler(this.ReporteNómina_Load);
             this.Panel_Background.ResumeLayout(false);
             this.Panel_Background.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_Recibos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_ReporteNomina)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,7 +176,8 @@ namespace Proyecto_MAD.Reportes
         private System.Windows.Forms.ComboBox CB_Year;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton Btn_Filtrar;
-        private System.Windows.Forms.DataGridView DGV_Recibos;
+        private System.Windows.Forms.DataGridView DGV_ReporteNomina;
         private System.Windows.Forms.Label LBL_Title;
+        private FontAwesome.Sharp.IconButton Btn_Reinicio;
     }
 }

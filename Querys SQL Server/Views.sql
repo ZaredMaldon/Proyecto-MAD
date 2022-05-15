@@ -71,9 +71,16 @@ join Puestos p on p.IdPuesto=pd.Puestofk
 join Departamentos d on d.idDpto=pd.Departamentofk
 
 /*-------------------------------------------------------------View Reporte Headcounter parte 2------------------------------------------------------------------------------*/
+go
 alter view vw_ReporteHeadcounterp2
 as
 Select d.NombreDpto as Departamento,dbo.fn_ContarEmpleados(d.idDpto) as [Cantidad de Empleados] from Departamentos d
-
-
+/*-------------------------------------------------------------View ReporteNomina----------------------------------------------------------------------------------------------*/
+go
+alter view vw_ReporteNomina
+as
+Select d.NombreDpto as Departamento,DATEPART(YEAR,n.FechaNomina) as Año,DATEPART(MONTH,n.FechaNomina) as Mes,DBO.fn_SumatoriaSBSN(1,d.idDpto) as [Sueldo Bruto Dpto.],DBO.fn_SumatoriaSBSN(2,d.idDpto) as [Sueldo Neto Dpto.] from NOMINA n
+join Asiganciones a on a.Empleadofk=n.Empleadofk
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Departamentos d on d.idDpto=pd.Departamentofk
 

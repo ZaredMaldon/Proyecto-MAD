@@ -109,7 +109,7 @@ cast(convert(varchar(8),@FechaNacimiento,112) as int) ) / 10000)
 return @Edad
 END
 
-/*------------------------------------------------------------------------------------Contar empleados en departamentos con filtro de a;os y meses -----------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------Contar empleados en departamentos con filtro de a;os y meses parte 1 -----------------------------------------------------------------------------------------*/
 --Parte1
 go
 alter function fn_ContarEDep(@Opc int,@idDpto int,@idPuesto int,@Año int,@Mes int) returns int
@@ -136,6 +136,13 @@ Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
 join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
 join Empleados e on e.NoEmpleado=a.Empleadofk
 where (pd.Departamentofk=@idDpto and pd.Puestofk=@idPuesto) and (YEAR(e.Contratacion)=@Año)
+end
+if(@Opc=4)--si no tiene mes o anio
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where (pd.Departamentofk=@idDpto and pd.Puestofk=@idPuesto)
 end
 
 return @Cuenta
@@ -170,7 +177,7 @@ return @Cuenta
 END
 
 go
-create function fn_ContarEmpleados2(@Opc int,@idDpto int,@Año int,@Mes int) returns int
+alter function fn_ContarEmpleados2(@Opc int,@idDpto int,@Año int,@Mes int) returns int
 as
 BEGIN
 Declare @Cuenta int
@@ -194,6 +201,13 @@ Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
 join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
 join Empleados e on e.NoEmpleado=a.Empleadofk
 where (pd.Departamentofk=@idDpto) and (YEAR(e.Contratacion)=@Año)
+end
+if(@Opc=4)--si no tiene ni mes ni anio
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where pd.Departamentofk=@idDpto 
 end
 
 return @Cuenta

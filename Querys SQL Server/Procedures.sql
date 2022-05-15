@@ -615,6 +615,23 @@ Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(3,idDpto,@Year,@Month)
 where NombreDpto=@Departamento
 order by Departamento
 end
+-----------------------------------------------------------Solo departamento---------------------------------------------------------------------------------------
+if(@Opc=15)--Mostrar solo con Departamento parte 1
+begin
+
+Select Departamento,Puesto,dbo.fn_ContarEDep(4,pd.idDepartamento,pd.idPuesto,0,0) as [Cantidad Empleados] from vw_PuesDep pd
+	where Departamento=@Departamento
+	order by Departamento,Puesto
+
+end
+
+if(@Opc=16)--Mostrar solo con Departamento parte 2
+begin
+
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(4,idDpto,0,0) as [Cantidad de Empleados] from Departamentos 
+where NombreDpto=@Departamento
+order by Departamento
+end
 
 end else /*Si es null Departamento*/
 begin

@@ -80,6 +80,12 @@ namespace Proyecto_MAD.Reportes
                 mes = 0;
                 anio = 0;
                 DGV_Parte1.DataSource = dB.DataTable_ReporteHeadcounter(1, mes, anio, Departamento);
+
+            }else if ((CB_Mes.SelectedIndex == 0 && CB_Year.SelectedIndex == 0) && Departamento != null)
+            {
+                mes = 0;
+                anio = 0;
+                DGV_Parte1.DataSource = dB.DataTable_ReporteHeadcounter(15, mes, anio, Departamento);
             }
             else
             {
@@ -154,6 +160,12 @@ namespace Proyecto_MAD.Reportes
                 mes = 0;
                 anio = 0;
                 DGV_Parte2.DataSource = dB.DataTable_ReporteHeadcounter(5, mes, anio, Departamento);
+            }
+            else if ((CB_Mes.SelectedIndex == 0 && CB_Year.SelectedIndex == 0) && Departamento != null)
+            {
+                mes = 0;
+                anio = 0;
+                DGV_Parte2.DataSource = dB.DataTable_ReporteHeadcounter(16, mes, anio, Departamento);
             }
             else
             {

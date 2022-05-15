@@ -10,11 +10,11 @@ as
 begin
 if(@Opc=1)
 begin
-Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo like 'Gerente');
+Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo = 'Gerente') 
 end
 else if(@Opc=2)
 begin 
-Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo like 'Empleado');
+Select Usuario,Contraseña from Usuarios where (Usuario=@u and Contraseña=@p)and(Tipo = 'Empleado')
 end
 
 end
@@ -612,6 +612,23 @@ end
 if(@Opc=8)/*Solo año y depa*/
 begin
 Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(3,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 
+where NombreDpto=@Departamento
+order by Departamento
+end
+-----------------------------------------------------------Solo departamento---------------------------------------------------------------------------------------
+if(@Opc=15)--Mostrar solo con Departamento parte 1
+begin
+
+Select Departamento,Puesto,dbo.fn_ContarEDep(4,pd.idDepartamento,pd.idPuesto,0,0) as [Cantidad Empleados] from vw_PuesDep pd
+	where Departamento=@Departamento
+	order by Departamento,Puesto
+
+end
+
+if(@Opc=16)--Mostrar solo con Departamento parte 2
+begin
+
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(4,idDpto,0,0) as [Cantidad de Empleados] from Departamentos 
 where NombreDpto=@Departamento
 order by Departamento
 end

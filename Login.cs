@@ -120,14 +120,33 @@ namespace Proyecto_MAD
             }
         }
 
-        private void Password_TB_TextChanged(object sender, EventArgs e)
+        private void User_TB_Enter(object sender, EventArgs e)
         {
+            User_TB.Text = "";
+        }
+
+        private void Password_TB_Enter(object sender, EventArgs e)
+        {
+            Password_TB.Text = "";
+        }
+
+     
+
+        private void User_TB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))//para entrar al presionar enter
+            {
+                Login_btn_Click(this, e);
+            }
 
         }
 
-        private void User_TB_TextChanged(object sender, EventArgs e)
+        private void Password_TB_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))//para entrar al presionar enter
+            {
+                Login_btn_Click(this, e);
+            }
         }
     }
 }

@@ -96,3 +96,105 @@ end
 
 return @Diastrabajados
 END
+/*------------------------------------------------------------------------------------ Calcular edad -----------------------------------------------------------------------------------------*/
+go
+CREATE FUNCTION fn_Edad(@FechaNacimiento date) Returns int
+as
+BEGIN
+Declare @Edad int;
+Select @Edad=floor(
+(cast(convert(varchar(8),getdate(),112) as int)-
+cast(convert(varchar(8),@FechaNacimiento,112) as int) ) / 10000)  
+
+return @Edad
+END
+
+/*------------------------------------------------------------------------------------Contar empleados en departamentos con filtro de a;os y meses -----------------------------------------------------------------------------------------*/
+--Parte1
+go
+alter function fn_ContarEDep(@Opc int,@idDpto int,@idPuesto int,@Año int,@Mes int) returns int
+as
+BEGIN
+Declare @Cuenta int
+if(@Opc=1)--Si tiene tanto meses y años
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where (pd.Departamentofk=@idDpto and pd.Puestofk=@idPuesto) and (MONTH(e.Contratacion)=@Mes and YEAR(e.Contratacion)=@Año)
+end
+if (@Opc=2)--Si tiene solo meses
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where (pd.Departamentofk=@idDpto and pd.Puestofk=@idPuesto) and (MONTH(e.Contratacion)=@Mes )
+end
+if(@Opc=3)--Si tiene solo años
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where (pd.Departamentofk=@idDpto and pd.Puestofk=@idPuesto) and (YEAR(e.Contratacion)=@Año)
+end
+
+return @Cuenta
+END
+
+/*------------------------------------------------------------------------------------Contar empleados en departamentos sin filtro-----------------------------------------------------------------------------------------*/
+go
+Alter function fn_ContarEDep2(@idDpto int,@idPuesto int ) returns int--Todos 
+as
+BEGIN
+Declare @Cuenta int
+
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+where pd.Departamentofk=@idDpto and pd.Puestofk=@idPuesto
+
+return @Cuenta
+END
+
+/*------------------------------------------------------------------------------------Contar empleados en departamentos Parte 2-----------------------------------------------------------------------------------------*/
+go
+Create function fn_ContarEmpleados(@idDpto int ) returns int--Todos 
+as
+BEGIN
+Declare @Cuenta int
+
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+where pd.Departamentofk=@idDpto
+
+return @Cuenta
+END
+
+go
+create function fn_ContarEmpleados2(@Opc int,@idDpto int,@Año int,@Mes int) returns int
+as
+BEGIN
+Declare @Cuenta int
+if(@Opc=1)--Si tiene tanto meses y años
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where (pd.Departamentofk=@idDpto) and (MONTH(e.Contratacion)=@Mes and YEAR(e.Contratacion)=@Año)
+end
+if (@Opc=2)--Si tiene solo meses
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where (pd.Departamentofk=@idDpto) and (MONTH(e.Contratacion)=@Mes )
+end
+if(@Opc=3)--Si tiene solo años
+begin
+Select @Cuenta=Count(a.Empleadofk) from Asiganciones a
+join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+join Empleados e on e.NoEmpleado=a.Empleadofk
+where (pd.Departamentofk=@idDpto) and (YEAR(e.Contratacion)=@Año)
+end
+
+return @Cuenta
+END

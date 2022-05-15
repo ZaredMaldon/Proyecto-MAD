@@ -44,7 +44,6 @@ namespace Proyecto_MAD.EnlaceDB
 
         #endregion
 
-        //----------------------------------------------Login------------------------------------------------------------------------------------//
         #region Login
         public bool Autentificar(string us, string ps,int Opc)
         {
@@ -87,9 +86,7 @@ namespace Proyecto_MAD.EnlaceDB
 
             return isValid;
         }
-        #endregion
-
-        //----------------------------------------------Empleado------------------------------------------------------------------------------------//
+        #endregion       
 
         #region Control Empleado
         //Abstraccion Control Empleados
@@ -1077,10 +1074,99 @@ namespace Proyecto_MAD.EnlaceDB
             }
         }
 
+        public void Toma_Datos_Departamentos(int Opc, int idDepto)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlDepto";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@idDepto", SqlDbType.Int);
+                parametro2.Value = idDepto;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_Departamentos.id = dr.GetInt32(0);
+                    DAO_Departamentos.Nombre = dr.GetString(1);
+                    DAO_Departamentos.Sueldo_Base = (decimal)dr.GetSqlMoney(2);
+
+                }
+            }
+            catch (SqlException e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
+        public void Toma_Datos_Puestos(int Opc, int idPuesto)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_ControlPuestos";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@IdPuestos", SqlDbType.Int);
+                parametro2.Value = idPuesto;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_Puestos.id = dr.GetInt32(0);
+                    DAO_Puestos.Puesto = dr.GetString(1);
+                    DAO_Puestos.Nivel_Salarial = (float)dr.GetDouble(2);
+                    DAO_Puestos.Departamento = dr.GetString(3);
+                    DAO_Puestos.Salario_Diario = (decimal)dr.GetSqlMoney(4);
+
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+
         #endregion
-
-        //----------------------------------------------------------Departamento----------------------------------------------------------------//
-
+     
         #region ControlDeptos
 
         public bool ControlDepto(int Op, int idDepto, string Nombre, float sueldoBase)
@@ -1196,51 +1282,6 @@ namespace Proyecto_MAD.EnlaceDB
         }
 
         #endregion
-
-        public void Toma_Datos_Departamentos(int Opc, int idDepto)
-        {
-            var msg = "";
-
-
-            try
-            {
-                conectar();
-                string qry = "SP_ControlDepto";
-                _comandosql = new SqlCommand(qry, _conexion);
-                _comandosql.CommandType = CommandType.StoredProcedure;
-                _comandosql.CommandTimeout = 1200;
-
-                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
-                parametro1.Value = Opc;
-                var parametro2 = _comandosql.Parameters.Add("@idDepto", SqlDbType.Int);
-                parametro2.Value = idDepto;
-
-
-                _adaptador.InsertCommand = _comandosql;
-
-                SqlDataReader dr = _comandosql.ExecuteReader();
-
-                while (dr.Read())//si no pasa este es porque no hay nada en el query
-                {
-                    DAO_Departamentos.id = dr.GetInt32(0);
-                    DAO_Departamentos.Nombre = dr.GetString(1);
-                    DAO_Departamentos.Sueldo_Base = (decimal)dr.GetSqlMoney(2);
-
-                }
-            }
-            catch (SqlException e)
-            {
-                msg = "Excepción de base de datos: \n";
-                msg += e.Message;
-                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            finally
-            {
-                desconectar();
-            }
-        }
-
-        //----------------------------------------------------Puesto---------------------------------------------------------------------//
 
         #region ControlPuestos
 
@@ -1364,58 +1405,12 @@ namespace Proyecto_MAD.EnlaceDB
 
         #endregion
 
-        public void Toma_Datos_Puestos(int Opc, int idPuesto)
+        #region cálculo
+        
+        public bool Calculo_de_Nomina(DateTime date)
         {
             var msg = "";
-
-
-            try
-            {
-                conectar();
-                string qry = "SP_ControlPuestos";
-                _comandosql = new SqlCommand(qry, _conexion);
-                _comandosql.CommandType = CommandType.StoredProcedure;
-                _comandosql.CommandTimeout = 1200;
-
-                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
-                parametro1.Value = Opc;
-                var parametro2 = _comandosql.Parameters.Add("@IdPuestos", SqlDbType.Int);
-                parametro2.Value = idPuesto;
-
-
-                _adaptador.InsertCommand = _comandosql;
-
-                SqlDataReader dr = _comandosql.ExecuteReader();
-
-                while (dr.Read())//si no pasa este es porque no hay nada en el query
-                {
-                    DAO_Puestos.id = dr.GetInt32(0);
-                    DAO_Puestos.Puesto = dr.GetString(1);
-                    DAO_Puestos.Nivel_Salarial = (float)dr.GetDouble(2);
-                    DAO_Puestos.Departamento = dr.GetString(3);
-                    DAO_Puestos.Salario_Diario = (decimal)dr.GetSqlMoney(4);
-                    
-                }
-
-
-            }
-            catch (SqlException e)
-            {
-
-                msg = "Excepción de base de datos: \n";
-                msg += e.Message;
-                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            finally
-            {
-                desconectar();
-            }
-        }
-
-        #region calculo
-        public void Calculo_de_Nomina(DateTime date)
-        {
-            var msg = "";
+            var add = true;
 
             try
             {
@@ -1428,7 +1423,7 @@ namespace Proyecto_MAD.EnlaceDB
 
                 var parametro1 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Date);
                 parametro1.Value = date;
-
+               
 
 
                 _adaptador.InsertCommand = _comandosql;
@@ -1436,6 +1431,44 @@ namespace Proyecto_MAD.EnlaceDB
 
             }
             catch (SqlException e)
+            {
+                add= false;
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return add;
+        }
+
+        public DataTable DataTable_MostrarNomina(int Opc)
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "Sp_MostrarNomina";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+
+
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
             {
                 msg = "Excepción de base de datos: \n";
                 msg += e.Message;
@@ -1445,13 +1478,13 @@ namespace Proyecto_MAD.EnlaceDB
             {
                 desconectar();
             }
-
+            return tabla;
         }
+
+
         #endregion
 
-        //------------------------------------------------Empresa-----------------------------------------------------------------------//
-
-        #region Carga de datos
+        #region Empresa
 
         public void Toma_Datos_Empresa(int Opc, int idEmpresa)
         {
@@ -1506,6 +1539,90 @@ namespace Proyecto_MAD.EnlaceDB
 
         #endregion
 
+        #region Reportes
+        public DataTable DataTable_ReporteGeneralNomina(int Opc,int Mes,int Año)//Filtrado
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "Sp_ReporteGeneralNomina";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@Mes", SqlDbType.Int);
+                parametro2.Value = Mes;
+                var parametro3 = _comandosql.Parameters.Add("@Año", SqlDbType.Int);
+                parametro3.Value = Año ;
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
+        }
+
+        public DataTable DataTable_ReporteHeadcounter(int Opc, int Mes, int Año, string Departamento)//Filtrado
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "SP_ReporteHeadcounter";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@Month", SqlDbType.Int);
+                parametro2.Value = Mes;
+                var parametro3 = _comandosql.Parameters.Add("@Year", SqlDbType.Int);
+                parametro3.Value = Año;
+                var parametro4 = _comandosql.Parameters.Add("@Departamento", SqlDbType.VarChar, 20);
+                parametro4.Value = Departamento;
+             
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
+        }
+
+        
+        #endregion
 
     }
 }

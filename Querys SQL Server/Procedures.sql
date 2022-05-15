@@ -654,3 +654,27 @@ end
 
 end
 END
+
+/*----------------------------------------------------------------------------------Reporte de Nómina----------------------------------------------------------------------------------*/
+go
+alter procedure SP_ReporteNomina
+@Año int = null
+as
+begin
+Declare @SueldoNetoTotal money
+Declare @SueldoBrutoTotal money
+if(@Año = 0)
+begin
+set @SueldoBrutoTotal =(Select Sum([Sueldo Bruto Dpto.]) from vw_ReporteNomina) 
+set @SueldoNetoTotal=(Select Sum([Sueldo Neto Dpto.]) from vw_ReporteNomina)
+select Departamento,Año,Mes,Concat('$',[Sueldo Bruto Dpto.]) as [Sueldo Bruto Dpto.],Concat('$',[Sueldo Neto Dpto.]) as [Sueldo Neto Dpto.],Concat('$',@SueldoBrutoTotal) as [SueldoBrutoTotal] ,Concat('$',@SueldoNetoTotal) as [SueldoNetoTotal] from vw_ReporteNomina
+order by Departamento,Año,Mes
+end else
+begin
+set @SueldoBrutoTotal  =(Select Sum([Sueldo Bruto Dpto.]) from vw_ReporteNomina) 
+set @SueldoNetoTotal =(Select Sum([Sueldo Neto Dpto.]) from vw_ReporteNomina)
+select Departamento,Año,Mes,Concat('$',[Sueldo Bruto Dpto.]) as [Sueldo Bruto Dpto.],Concat('$',[Sueldo Neto Dpto.]) as [Sueldo Neto Dpto.],Concat('$',@SueldoBrutoTotal) as [SueldoBrutoTotal] ,Concat('$',@SueldoNetoTotal) as [SueldoNetoTotal] from vw_ReporteNomina
+where Año<=@Año
+order by Departamento,Año,Mes
+end
+end

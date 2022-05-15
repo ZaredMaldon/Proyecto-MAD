@@ -559,15 +559,24 @@ alter procedure SP_ReporteHeadcounter
 @Departamento varchar(20)=null
 as
 BEGIN
-if(@Departamento is not null)
-begin
-
-------------------------------------------------------------Parte 1---------------------------------------------------------------------------------------------------
+--Parte1
 if(@Opc=1)/*Todos*/
 begin
 	Select Departamento,Puesto,dbo.fn_ContarEDep2(pd.idDepartamento,pd.idPuesto) as [Cantidad Empleados] from vw_PuesDep pd
 	order by Departamento,Puesto
 end
+--Parte2
+if(@Opc=5)/*Todos*/
+begin
+Select Departamento,[Cantidad de Empleados] from vw_ReporteHeadcounterp2
+order by Departamento
+end
+
+if(@Departamento is not null)
+begin
+
+------------------------------------------------------------Parte 1---------------------------------------------------------------------------------------------------
+
 if(@Opc=2)/* Si tiene meses y años y depa*/
 begin
 	Select Departamento,Puesto,dbo.fn_ContarEDep(1,pd.idDepartamento,pd.idPuesto,@Year,@Month) as [Cantidad Empleados] from vw_PuesDep pd
@@ -587,11 +596,7 @@ begin
 	order by Departamento,Puesto
 end
 ------------------------------------------------------------Parte 2---------------------------------------------------------------------------------------------------
-if(@Opc=5)/*Todos*/
-begin
-Select Departamento,[Cantidad de Empleados] from vw_ReporteHeadcounterp2
-order by Departamento
-end
+
 if(@Opc=6)/*Si tiene tanto meses y años y depa*/
 begin
 Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(1,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 

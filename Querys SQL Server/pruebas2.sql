@@ -15,3 +15,7 @@ if(@e like ' ')
 begin
 print 'Nulo'
 end
+
+Select Departamento,Puesto,dbo.fn_ContarEDep(1,pd.idDepartamento,pd.idPuesto,2021,1) as [Cantidad Empleados] from vw_PuesDep pd
+	where Departamento='Electronica'
+	order by Departamento,Puesto

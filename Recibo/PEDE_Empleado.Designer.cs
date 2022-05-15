@@ -214,6 +214,13 @@ namespace Proyecto_MAD.Recibo
             // 
             // Dgv_EmpDep
             // 
+            this.Dgv_EmpDep.AllowUserToAddRows = false;
+            this.Dgv_EmpDep.AllowUserToDeleteRows = false;
+            this.Dgv_EmpDep.AllowUserToResizeColumns = false;
+            this.Dgv_EmpDep.AllowUserToResizeRows = false;
+            this.Dgv_EmpDep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.Dgv_EmpDep.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_EmpDep.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
             this.Dgv_EmpDep.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_EmpDep.Location = new System.Drawing.Point(26, 382);

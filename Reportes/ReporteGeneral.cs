@@ -61,7 +61,7 @@ namespace Proyecto_MAD.Reportes
         {
             bool validaciones = true;
 
-            if (CB_Mes.Text=="" && CB_Year.Text=="")
+            if (CB_Mes.Text=="" || CB_Year.Text=="")
             {
                 validaciones = false;
                 MessageBox.Show("El combo box no tiene un valor predefinido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);

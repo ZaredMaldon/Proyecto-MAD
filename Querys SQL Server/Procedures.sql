@@ -517,6 +517,7 @@ begin
 end
 END
 /*---------------------------------------------------------------------------------------- Reportes ---------------------------------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------- Reporte General de Nomina ----------------------------------------------------------------------------------------*/
 go
 create procedure Sp_ReporteGeneralNomina
 @Opc int,
@@ -546,5 +547,105 @@ begin
 Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
 where YEAR([Fecha de Ingreso])=@Año and MONTH([Fecha de Ingreso])=@Mes
 order by Departamento,Puesto,Nombre;
+end
+END
+
+/*-----------------------------------------------------------------------------------Reporte Headcounter---------------------------------------------------------------------------------*/
+go
+alter procedure SP_ReporteHeadcounter
+@Opc int,
+@Month int=null,
+@Year int = null,
+@Departamento varchar(20)=null
+as
+BEGIN
+if(@Departamento is not null)
+begin
+
+------------------------------------------------------------Parte 1---------------------------------------------------------------------------------------------------
+if(@Opc=1)/*Todos*/
+begin
+	Select Departamento,Puesto,dbo.fn_ContarEDep2(pd.idDepartamento,pd.idPuesto) as [Cantidad Empleados] from vw_PuesDep pd
+	order by Departamento,Puesto
+end
+if(@Opc=2)/* Si tiene meses y años y depa*/
+begin
+	Select Departamento,Puesto,dbo.fn_ContarEDep(1,pd.idDepartamento,pd.idPuesto,@Year,@Month) as [Cantidad Empleados] from vw_PuesDep pd
+	where Departamento=@Departamento
+	order by Departamento,Puesto
+end
+if(@Opc=3)/*Solo mes y depa*/
+begin
+	Select Departamento,Puesto,dbo.fn_ContarEDep(2,pd.idDepartamento,pd.idPuesto,0,@Month) as [Cantidad Empleados] from vw_PuesDep pd
+	where Departamento=@Departamento
+	order by Departamento,Puesto
+end
+if(@Opc=4)/*Solo año y depa*/
+begin
+	Select Departamento,Puesto,dbo.fn_ContarEDep(3,pd.idDepartamento,pd.idPuesto,@Year,0) as [Cantidad Empleados] from vw_PuesDep pd
+	where Departamento=@Departamento
+	order by Departamento,Puesto
+end
+------------------------------------------------------------Parte 2---------------------------------------------------------------------------------------------------
+if(@Opc=5)/*Todos*/
+begin
+Select Departamento,[Cantidad de Empleados] from vw_ReporteHeadcounterp2
+order by Departamento
+end
+if(@Opc=6)/*Si tiene tanto meses y años y depa*/
+begin
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(1,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 
+where NombreDpto=@Departamento
+order by Departamento
+end
+if(@Opc=7)/*Solo mes y depa*/
+begin
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(2,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 
+where NombreDpto=@Departamento
+order by Departamento
+end
+if(@Opc=8)/*Solo año y depa*/
+begin
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(3,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 
+where NombreDpto=@Departamento
+order by Departamento
+end
+
+end else /*Si es null Departamento*/
+begin
+
+------------------------------------------------------------Parte 1---------------------------------------------------------------------------------------------------
+if(@Opc=9)/* Si tiene meses y años*/
+begin
+	Select Departamento,Puesto,dbo.fn_ContarEDep(1,pd.idDepartamento,pd.idPuesto,@Year,@Month) as [Cantidad Empleados] from vw_PuesDep pd
+	order by Departamento,Puesto
+end
+if(@Opc=10)/*Solo mes*/
+begin
+	Select Departamento,Puesto,dbo.fn_ContarEDep(2,pd.idDepartamento,pd.idPuesto,0,@Month) as [Cantidad Empleados] from vw_PuesDep pd
+	order by Departamento,Puesto
+end
+if(@Opc=11)/*Solo año*/
+begin
+	Select Departamento,Puesto,dbo.fn_ContarEDep(3,pd.idDepartamento,pd.idPuesto,@Year,0) as [Cantidad Empleados] from vw_PuesDep pd
+	order by Departamento,Puesto
+end
+------------------------------------------------------------Parte 2---------------------------------------------------------------------------------------------------
+if(@Opc=12)/*Si tiene tanto meses y años*/
+begin
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(1,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 
+order by Departamento
+end
+if(@Opc=13)/*Solo mes*/
+begin
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(2,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 
+order by Departamento
+end
+if(@Opc=14)/*Solo año*/
+begin
+Select NombreDpto as Departamento,dbo.fn_ContarEmpleados2(3,idDpto,@Year,@Month) as [Cantidad de Empleados] from Departamentos 
+order by Departamento
+end
+
 end
 END

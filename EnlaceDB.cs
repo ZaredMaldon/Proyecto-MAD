@@ -1578,6 +1578,50 @@ namespace Proyecto_MAD.EnlaceDB
             }
             return tabla;
         }
+
+        public DataTable DataTable_ReporteHeadcounter(int Opc, int Mes, int Año, string Departamento)//Filtrado
+        {
+            var msg = "";
+            DataTable tabla = new DataTable();
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                conectar();
+
+                string qry = "SP_ReporteHeadcounter";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@Month", SqlDbType.Int);
+                parametro2.Value = Mes;
+                var parametro3 = _comandosql.Parameters.Add("@Year", SqlDbType.Int);
+                parametro3.Value = Año;
+                var parametro4 = _comandosql.Parameters.Add("@Departamento", SqlDbType.VarChar, 20);
+                parametro4.Value = Departamento;
+             
+
+                _adaptador.SelectCommand = _comandosql;
+                _adaptador.Fill(tabla);
+                _adaptador.Fill(dataSet, "Codigo1");
+            }
+            catch (Exception e)
+            {
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+            return tabla;
+        }
+
+        
         #endregion
 
     }

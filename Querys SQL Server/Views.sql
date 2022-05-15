@@ -70,4 +70,10 @@ join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
 join Puestos p on p.IdPuesto=pd.Puestofk
 join Departamentos d on d.idDpto=pd.Departamentofk
 
- 
+/*-------------------------------------------------------------View Reporte Headcounter parte 2------------------------------------------------------------------------------*/
+alter view vw_ReporteHeadcounterp2
+as
+Select d.NombreDpto as Departamento,dbo.fn_ContarEmpleados(d.idDpto) as [Cantidad de Empleados] from Departamentos d
+
+
+

@@ -519,7 +519,7 @@ END
 /*---------------------------------------------------------------------------------------- Reportes ---------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------- Reporte General de Nomina ----------------------------------------------------------------------------------------*/
 go
-create procedure Sp_ReporteGeneralNomina
+alter procedure Sp_ReporteGeneralNomina
 @Opc int,
 @Mes int = null,
 @Año int = null
@@ -527,24 +527,24 @@ as
 BEGIN
 if(@Opc=1)/*Sin filtro (Año=0,Mes=0)*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 order by Departamento,Puesto,Nombre;
 end
 if(@Opc=2)/*Si solo se envia el mes (Año=0)*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 where MONTH([Fecha de Ingreso])=@Mes
 order by Departamento,Puesto,Nombre;
 end
 if(@Opc=3)/*Si solo se envia el año(Mes=0)*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 where YEAR([Fecha de Ingreso])=@Año
 order by Departamento,Puesto,Nombre;
 end
 if(@Opc=4)/*Si se envian los dos*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 where YEAR([Fecha de Ingreso])=@Año and MONTH([Fecha de Ingreso])=@Mes
 order by Departamento,Puesto,Nombre;
 end

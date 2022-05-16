@@ -13,7 +13,7 @@ namespace Proyecto_MAD
 {
     class GeneracionRecibo
     {
-        string pdfName = "Nomina" + DAO_GenerarRecibo.Nombre + ".pdf";
+        string pdfName = "Nomina.pdf";
 
         public string GenerarRecibo()
         {
@@ -30,11 +30,11 @@ namespace Proyecto_MAD
 
             //Añadir la imagen de fondo a la página
             page1.Artifacts.Add(background);
-
+            pdfDocument.Save("../../Recibos PDF/" + pdfName);
             AgregarDatos1();
 
             //Guardar el documento, solamente con la imagen de fondo
-            pdfDocument.Save("Recibos PDF/" + pdfName);
+            
 
             return pdfName;
         }
@@ -43,24 +43,36 @@ namespace Proyecto_MAD
         private void AgregarDatos1()
         {
 
-            Document pdfDocument = new Document("Recibos PDF/" + pdfName);
+            Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
             Page page = pdfDocument.Pages[1];
 
             //Texto de los apellidos del cliente
-            TextFragment Nombre = new TextFragment("si jala");
-            Nombre.Position = new Position(40, 690);
-            Nombre.TextState.FontSize = 16;
+            TextFragment Nombre = new TextFragment("si jalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            Nombre.Position = new Position(100,100);
+            Nombre.TextState.FontSize = 30;
             Nombre.TextState.Font = FontRepository.FindFont("Century Gothic");
-            Nombre.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            Nombre.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Aqua);
             Nombre.TextState.FontStyle = FontStyles.Bold;
 
             TextBuilder txtBuild = new TextBuilder(page);
             txtBuild.AppendText(Nombre);
 
-            pdfDocument.Save("Recibos PDF/" + pdfName);
+            pdfDocument.Save("../../Recibos PDF/" + pdfName);
 
         }
+        public void prueba()
+        {
+            string dataDir = "../../Recibos PDF/";
 
+            // Initialize document object
+            Document document = new Document();
+            // Add page
+            Page page = document.Pages.Add();
+            // Add text to new page
+            page.Paragraphs.Add(new Aspose.Pdf.Text.TextFragment("Hello World!"));
+            // Save updated PDF
+            document.Save(dataDir + "HelloWorld_out.pdf");
+        }
 
     }
 

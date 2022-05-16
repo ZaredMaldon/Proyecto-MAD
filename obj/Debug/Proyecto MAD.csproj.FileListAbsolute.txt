@@ -178,3 +178,16 @@ C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de dato
 C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\Aspose.PDF.xml
 C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.CambiarContra.resources
 C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\obj\Debug\Proyecto_MAD.Recibo.PEDE_Empleado.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Drawing.Common.xml
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Configuration.ConfigurationManager.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Security.AccessControl.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Security.Permissions.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Security.Principal.Windows.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Configuration.ConfigurationManager.xml
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Security.AccessControl.xml
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Security.Permissions.xml
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\System.Security.Principal.Windows.xml
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MAD.Empleados.VistaPDF.resources
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Apitron.PDF.Controls.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Apitron.PDF.Rasterizer.dll
+H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Apitron.PDF.Controls.xml

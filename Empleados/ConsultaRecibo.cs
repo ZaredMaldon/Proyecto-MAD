@@ -36,8 +36,11 @@ namespace Proyecto_MAD.Empleados
         {
             db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.IdEmp);
 
-            R.GenerarRecibo();
+            VistaPDF vistaPDF=new VistaPDF();
+            vistaPDF.ShowDialog();
+
 
         }
+       
     }
 }

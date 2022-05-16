@@ -223,6 +223,7 @@ Insert into Deducciones(NombreDeduccion,Descuento,DescuentoPorcentaje) values (@
 end
 if(@Opc = 2)/*Eliminar*/
 begin
+Delete from Deducciones_Empleado where Deduccionfk=@idDeduc
 Delete from Deducciones where IdDeduccion=@idDeduc;
 end
 if(@Opc = 3)/*Tabla(view)*/

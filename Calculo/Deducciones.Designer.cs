@@ -31,10 +31,12 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Deducciones));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.lbl_signo = new System.Windows.Forms.Label();
+            this.CHB_Porcentaje = new System.Windows.Forms.CheckBox();
             this.btn_CargarExcel = new FontAwesome.Sharp.IconButton();
             this.Btn_EliminarDeduccion = new FontAwesome.Sharp.IconButton();
             this.Dgv_Deducciones = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Lbl_Porcentaje = new System.Windows.Forms.Label();
             this.TB_Porcentaje = new System.Windows.Forms.TextBox();
             this.TB_Descuento = new System.Windows.Forms.TextBox();
             this.Lbl_Descuento = new System.Windows.Forms.Label();
@@ -49,10 +51,12 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.lbl_signo);
+            this.Panel_Background.Controls.Add(this.CHB_Porcentaje);
             this.Panel_Background.Controls.Add(this.btn_CargarExcel);
             this.Panel_Background.Controls.Add(this.Btn_EliminarDeduccion);
             this.Panel_Background.Controls.Add(this.Dgv_Deducciones);
-            this.Panel_Background.Controls.Add(this.label1);
+            this.Panel_Background.Controls.Add(this.Lbl_Porcentaje);
             this.Panel_Background.Controls.Add(this.TB_Porcentaje);
             this.Panel_Background.Controls.Add(this.TB_Descuento);
             this.Panel_Background.Controls.Add(this.Lbl_Descuento);
@@ -64,6 +68,30 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(647, 364);
             this.Panel_Background.TabIndex = 25;
+            // 
+            // lbl_signo
+            // 
+            this.lbl_signo.AutoSize = true;
+            this.lbl_signo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_signo.ForeColor = System.Drawing.Color.White;
+            this.lbl_signo.Location = new System.Drawing.Point(245, 99);
+            this.lbl_signo.Name = "lbl_signo";
+            this.lbl_signo.Size = new System.Drawing.Size(19, 16);
+            this.lbl_signo.TabIndex = 66;
+            this.lbl_signo.Text = "%";
+            // 
+            // CHB_Porcentaje
+            // 
+            this.CHB_Porcentaje.AutoSize = true;
+            this.CHB_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CHB_Porcentaje.ForeColor = System.Drawing.Color.White;
+            this.CHB_Porcentaje.Location = new System.Drawing.Point(17, 54);
+            this.CHB_Porcentaje.Name = "CHB_Porcentaje";
+            this.CHB_Porcentaje.Size = new System.Drawing.Size(98, 20);
+            this.CHB_Porcentaje.TabIndex = 64;
+            this.CHB_Porcentaje.Text = "Porcentaje";
+            this.CHB_Porcentaje.UseVisualStyleBackColor = true;
+            this.CHB_Porcentaje.CheckedChanged += new System.EventHandler(this.CHB_Porcentaje_CheckedChanged);
             // 
             // btn_CargarExcel
             // 
@@ -117,6 +145,9 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // 
             // Dgv_Deducciones
             // 
+            this.Dgv_Deducciones.AllowUserToResizeColumns = false;
+            this.Dgv_Deducciones.AllowUserToResizeRows = false;
+            this.Dgv_Deducciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_Deducciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
             this.Dgv_Deducciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Deducciones.Location = new System.Drawing.Point(17, 148);
@@ -129,21 +160,21 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Dgv_Deducciones.TabIndex = 59;
             this.Dgv_Deducciones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_Deducciones_CellClick);
             // 
-            // label1
+            // Lbl_Porcentaje
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(520, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 16);
-            this.label1.TabIndex = 56;
-            this.label1.Text = "Porcentaje*";
+            this.Lbl_Porcentaje.AutoSize = true;
+            this.Lbl_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Porcentaje.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Porcentaje.Location = new System.Drawing.Point(520, 77);
+            this.Lbl_Porcentaje.Name = "Lbl_Porcentaje";
+            this.Lbl_Porcentaje.Size = new System.Drawing.Size(85, 16);
+            this.Lbl_Porcentaje.TabIndex = 56;
+            this.Lbl_Porcentaje.Text = "Porcentaje*";
             // 
             // TB_Porcentaje
             // 
             this.TB_Porcentaje.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Porcentaje.Location = new System.Drawing.Point(523, 74);
+            this.TB_Porcentaje.Location = new System.Drawing.Point(523, 96);
             this.TB_Porcentaje.Name = "TB_Porcentaje";
             this.TB_Porcentaje.Size = new System.Drawing.Size(109, 23);
             this.TB_Porcentaje.TabIndex = 55;
@@ -151,7 +182,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // TB_Descuento
             // 
             this.TB_Descuento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Descuento.Location = new System.Drawing.Point(270, 74);
+            this.TB_Descuento.Location = new System.Drawing.Point(270, 96);
             this.TB_Descuento.Name = "TB_Descuento";
             this.TB_Descuento.Size = new System.Drawing.Size(154, 23);
             this.TB_Descuento.TabIndex = 54;
@@ -161,7 +192,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.Lbl_Descuento.AutoSize = true;
             this.Lbl_Descuento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Descuento.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Descuento.Location = new System.Drawing.Point(267, 55);
+            this.Lbl_Descuento.Location = new System.Drawing.Point(267, 77);
             this.Lbl_Descuento.Name = "Lbl_Descuento";
             this.Lbl_Descuento.Size = new System.Drawing.Size(84, 16);
             this.Lbl_Descuento.TabIndex = 53;
@@ -170,7 +201,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // TB_Nombre
             // 
             this.TB_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Nombre.Location = new System.Drawing.Point(17, 74);
+            this.TB_Nombre.Location = new System.Drawing.Point(17, 96);
             this.TB_Nombre.Name = "TB_Nombre";
             this.TB_Nombre.Size = new System.Drawing.Size(154, 23);
             this.TB_Nombre.TabIndex = 52;
@@ -181,7 +212,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             this.LBL_Nombre.AutoSize = true;
             this.LBL_Nombre.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Nombre.ForeColor = System.Drawing.Color.White;
-            this.LBL_Nombre.Location = new System.Drawing.Point(14, 55);
+            this.LBL_Nombre.Location = new System.Drawing.Point(14, 77);
             this.LBL_Nombre.Name = "LBL_Nombre";
             this.LBL_Nombre.Size = new System.Drawing.Size(67, 16);
             this.LBL_Nombre.TabIndex = 51;
@@ -245,7 +276,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
 
         private System.Windows.Forms.Panel Panel_Background;
         private System.Windows.Forms.Label LBL_Title;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Lbl_Porcentaje;
         private System.Windows.Forms.TextBox TB_Porcentaje;
         private System.Windows.Forms.TextBox TB_Descuento;
         private System.Windows.Forms.Label Lbl_Descuento;
@@ -255,5 +286,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         private System.Windows.Forms.DataGridView Dgv_Deducciones;
         private FontAwesome.Sharp.IconButton Btn_EliminarDeduccion;
         private FontAwesome.Sharp.IconButton btn_CargarExcel;
+        private System.Windows.Forms.Label lbl_signo;
+        private System.Windows.Forms.CheckBox CHB_Porcentaje;
     }
 }

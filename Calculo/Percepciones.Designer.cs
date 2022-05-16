@@ -117,6 +117,9 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
             // 
             // Dgv_Percepciones
             // 
+            this.Dgv_Percepciones.AllowUserToResizeColumns = false;
+            this.Dgv_Percepciones.AllowUserToResizeRows = false;
+            this.Dgv_Percepciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_Percepciones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
             this.Dgv_Percepciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Percepciones.Location = new System.Drawing.Point(17, 145);

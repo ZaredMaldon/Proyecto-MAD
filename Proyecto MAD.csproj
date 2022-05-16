@@ -93,6 +93,7 @@
     <Compile Include="DAO\DAO_Departamentos.cs" />
     <Compile Include="DAO\DAO_Empleado.cs" />
     <Compile Include="DAO\DAO_Empresa.cs" />
+    <Compile Include="DAO\DAO_GenerarRecibo.cs" />
     <Compile Include="DAO\DAO_Puestos.cs" />
     <Compile Include="Empleados\CambiarContra.cs">
       <SubType>Form</SubType>
@@ -113,6 +114,7 @@
     <Compile Include="Calculo\Puestos.Designer.cs">
       <DependentUpon>Puestos.cs</DependentUpon>
     </Compile>
+    <Compile Include="GeneracionRecibo.cs" />
     <Compile Include="Gerente\Empresa.cs">
       <SubType>Form</SubType>
     </Compile>

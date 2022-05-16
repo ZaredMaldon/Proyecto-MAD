@@ -105,7 +105,9 @@ namespace Proyecto_MAD
                     {
                         
                         InicioEmpleados form = new InicioEmpleados();
-               
+
+                        query.Toma_Datos_Recibo(1, User_TB.Text, Password_TB.Text);
+
                         form.Show();
                         this.Hide();
 

@@ -57,7 +57,7 @@ join Puestos p on pd.Puestofk=p.IdPuesto;
 go
 create view vw_Nomina
 as
-Select n.IdNomina as [No.Nómina],e.NoEmpleado as [No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as Sueldo,e.Banco,e.NoCuenta as [No.Cuenta] from NOMINA n
+Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as SueldoN, Concat('$',n.Sueldo_bruto) as SueldoB,e.Banco as Banco ,e.NoCuenta as [No.Cuenta] from NOMINA n
 join Empleados e on e.NoEmpleado=n.Empleadofk
 
 /*-------------------------------------------------------------View Reporte General de Nómina------------------------------------------------------------------------------*/
@@ -83,4 +83,5 @@ Select d.NombreDpto as Departamento,DATEPART(YEAR,n.FechaNomina) as Año,DATEPART
 join Asiganciones a on a.Empleadofk=n.Empleadofk
 join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
 join Departamentos d on d.idDpto=pd.Departamentofk
+
 

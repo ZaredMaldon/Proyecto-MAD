@@ -1163,10 +1163,118 @@ namespace Proyecto_MAD.EnlaceDB
             {
                 desconectar();
             }
+
+
+            //Recibo
+
+
+
         }
 
+        public void Toma_Datos_Recibo(int Opc, int idEmp)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_GenerarRecibo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@Empleadofk", SqlDbType.Int);
+                parametro2.Value = idEmp;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                   
+
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+
+            //Recibo
+
+
+
+        }
+
+        public void Toma_Datos_Recibo(int Opc, string Usuario , string Contraseña)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_GenerarRecibo";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@usuario", SqlDbType.VarChar,20);
+                parametro2.Value = Usuario;
+                var parametro3 = _comandosql.Parameters.Add("@contra", SqlDbType.VarChar,20);
+                parametro3.Value = Contraseña;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_GenerarRecibo.IdEmp = dr.GetInt32(0);
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+
+            //Recibo
+
+
+
+        }
+
+
         #endregion
-     
+
         #region ControlDeptos
 
         public bool ControlDepto(int Op, int idDepto, string Nombre, float sueldoBase)

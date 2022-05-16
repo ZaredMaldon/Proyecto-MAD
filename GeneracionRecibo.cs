@@ -248,8 +248,8 @@ namespace Proyecto_MAD
             NombreDed.TextState.FontStyle = FontStyles.Bold;
 
             TextBuilder txtBuild = new TextBuilder(page);
-            txtBuild.AppendText(idPer);
-            txtBuild.AppendText(NombrePer);
+            txtBuild.AppendText(SueldoNeto);
+            txtBuild.AppendText(SueldoBruto);
             txtBuild.AppendText(idDed);
             txtBuild.AppendText(NombreDed);
 

@@ -16,7 +16,8 @@ namespace Proyecto_MAD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            //Application.Run(new Login());
+            Application.Run(new Proyecto_MAD.Empleados.VistaPDF());
         }
     }
 }

@@ -1,7 +1,7 @@
 use BD_MAD_1
 go
 /***********************************************************View de Empleados para Gerentes********************************************************************************/
-alter view vw_Empleados with encryption
+create view vw_Empleados with encryption
 as 
 Select e.NoEmpleado as Número,CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,e.Contratacion as Ingreso,u.Usuario,m.NombreMunicipio as Municipio,CONCAT(d.Colonia,' ',d.Calle,' Int.',d.NoInterior,' Ext.',d.NoExt) as Direccion, e.Telefono1,e.Telefono2
  from Empleados e
@@ -57,7 +57,7 @@ join Puestos p on pd.Puestofk=p.IdPuesto;
 go
 create view vw_Nomina
 as
-Select n.IdNomina as [No.Nómina],e.NoEmpleado as [No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as Sueldo,e.Banco,e.NoCuenta as [No.Cuenta] from NOMINA n
+Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as SueldoN, Concat('$',n.Sueldo_bruto) as SueldoB,e.Banco as Banco ,e.NoCuenta as [No.Cuenta] from NOMINA n
 join Empleados e on e.NoEmpleado=n.Empleadofk
 
 /*-------------------------------------------------------------View Reporte General de Nómina------------------------------------------------------------------------------*/
@@ -72,15 +72,16 @@ join Departamentos d on d.idDpto=pd.Departamentofk
 
 /*-------------------------------------------------------------View Reporte Headcounter parte 2------------------------------------------------------------------------------*/
 go
-alter view vw_ReporteHeadcounterp2
+create view vw_ReporteHeadcounterp2
 as
 Select d.NombreDpto as Departamento,dbo.fn_ContarEmpleados(d.idDpto) as [Cantidad de Empleados] from Departamentos d
 /*-------------------------------------------------------------View ReporteNomina----------------------------------------------------------------------------------------------*/
 go
-alter view vw_ReporteNomina
+create view vw_ReporteNomina
 as
 Select d.NombreDpto as Departamento,DATEPART(YEAR,n.FechaNomina) as Año,DATEPART(MONTH,n.FechaNomina) as Mes,DBO.fn_SumatoriaSBSN(1,d.idDpto) as [Sueldo Bruto Dpto.],DBO.fn_SumatoriaSBSN(2,d.idDpto) as [Sueldo Neto Dpto.] from NOMINA n
 join Asiganciones a on a.Empleadofk=n.Empleadofk
 join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
 join Departamentos d on d.idDpto=pd.Departamentofk
+
 

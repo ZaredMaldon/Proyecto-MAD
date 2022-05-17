@@ -113,6 +113,9 @@ namespace Proyecto_MAD.Calculo
             // 
             // Dgv_Deptos
             // 
+            this.Dgv_Deptos.AllowUserToResizeColumns = false;
+            this.Dgv_Deptos.AllowUserToResizeRows = false;
+            this.Dgv_Deptos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_Deptos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
             this.Dgv_Deptos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Deptos.Location = new System.Drawing.Point(17, 121);

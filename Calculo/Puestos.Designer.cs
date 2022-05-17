@@ -150,6 +150,9 @@ namespace Proyecto_MAD.Calculo
             // 
             // Dgv_Puestos
             // 
+            this.Dgv_Puestos.AllowUserToResizeColumns = false;
+            this.Dgv_Puestos.AllowUserToResizeRows = false;
+            this.Dgv_Puestos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Dgv_Puestos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
             this.Dgv_Puestos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_Puestos.Location = new System.Drawing.Point(17, 118);

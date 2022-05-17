@@ -27,6 +27,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
 
         private void Percepciones_Load(object sender, EventArgs e)
         {
+            CHB_Porcentaje_CheckedChanged(this,e);
             DataTable dt = new DataTable();
             dt=db.DataTable_MostrarPercep(3);
             Dgv_Percepciones.DataSource=dt;
@@ -82,7 +83,15 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             if (Validaciones())
             {
-                bool realizada=db.ControldePercepciones(1, 0, TB_Nombre.Text, float.Parse(TB_Bono.Text), float.Parse(TB_Porcentaje.Text));
+                bool realizada;
+                if (CHB_Porcentaje.Checked == true)
+                {
+                    realizada = db.ControldePercepciones(1, 0, TB_Nombre.Text, 0 , float.Parse(TB_Porcentaje.Text));
+                }
+                else
+                {
+                    realizada = db.ControldePercepciones(1, 0, TB_Nombre.Text, float.Parse(TB_Bono.Text), 0);
+                }
                 if (realizada)
                 {
                     MessageBox.Show("Registro Completado", "Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,7 +128,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
         {
             bool validaciones = true;
 
-            if(TB_Nombre.Text == "" || TB_Bono.Text == "" || TB_Porcentaje.Text == "")
+            if(TB_Nombre.Text == "" || (TB_Bono.Text == "" && TB_Porcentaje.Text == ""))
             {
                 MessageBox.Show("Llene todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 validaciones = false;
@@ -146,6 +155,33 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
                 MessageBox.Show("Ingrese solo letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
                 return;
+            }
+        }
+
+        private void CHB_Porcentaje_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CHB_Porcentaje.Checked == true)
+            { 
+                lbl_signo.Text = "%";
+                TB_Porcentaje.Visible = true;
+                Lbl_Porcentaje.Visible = true;
+
+                Lbl_Bono.Visible = false;
+                TB_Bono.Text = "";
+                TB_Bono.Visible = false;
+
+                TB_Porcentaje.Location = new System.Drawing.Point(269, 91);
+                Lbl_Porcentaje.Location = new System.Drawing.Point(292, 75);
+            }
+            else
+            {
+                lbl_signo.Text = "$";
+                TB_Porcentaje.Visible = false;
+                Lbl_Porcentaje.Visible = false;
+
+                Lbl_Bono.Visible = true;
+                TB_Porcentaje.Text = "";
+                TB_Bono.Visible = true;
             }
         }
     }

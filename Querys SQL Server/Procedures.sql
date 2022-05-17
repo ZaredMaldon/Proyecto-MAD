@@ -1,7 +1,7 @@
 use BD_MAD_1;
 /*--------------------------------------------validacion login ------------------------------------------------*/
 go
-create procedure SP_ValidaUser 
+alter procedure SP_ValidaUser 
 @u varchar(10),
 @p varchar(10),
 @Opc int 
@@ -198,6 +198,7 @@ Insert into Percepciones (NombrePercepcion,Bono,BonoPorcentaje) values (@NombreP
 end
 if(@Opc = 2)/*Eliminar*/
 begin
+Delete from Percepciones_Empleado where Percepcionfk=@idPer;
 Delete from Percepciones where IdPercepcion=@idPer;
 end
 if(@Opc = 3)/*Tabla(view)*/
@@ -223,6 +224,7 @@ Insert into Deducciones(NombreDeduccion,Descuento,DescuentoPorcentaje) values (@
 end
 if(@Opc = 2)/*Eliminar*/
 begin
+Delete from Deducciones_Empleado where Deduccionfk=@idDeduc
 Delete from Deducciones where IdDeduccion=@idDeduc;
 end
 if(@Opc = 3)/*Tabla(view)*/
@@ -250,7 +252,18 @@ Insert into Departamentos(NombreDpto,SueldoBase) values (@NombreDepto,@sueldoBas
 end
 if(@Opc = 2)/*Eliminar*/
 begin
+Declare @CuentaEmpleados int
+Select @CuentaEmpleados = COUNT(idEmp) from vw_Asignaciones
+where idDpto=@idDepto
+if(@CuentaEmpleados=0)/*Para ver si hay empleados y si no hay hacer el delete*/
+begin
+Delete from PuestoDepartamento where Departamentofk=@idDepto
 Delete from Departamentos where idDpto = @idDepto;
+end else
+begin
+raiserror('No se puede borrar Departamento con Empleados en el',16,1);
+end
+
 end
 if(@Opc = 3)/*Editar*/
 begin 
@@ -300,8 +313,17 @@ begin
 end
 if(@Opc = 2)/*Eliminar*/
 begin
-delete from PuestoDepartamento where Puestofk = @IdPuestos;
-Delete from Puestos where IdPuesto = @IdPuestos; /*primero se debe eliminar regristro de la tabla puestodepartamento*/
+	Declare @CuentaEmpleados int
+	Select @CuentaEmpleados = COUNT(idEmp) from vw_Asignaciones
+	where idDpto=@idDepto
+	if(@CuentaEmpleados=0)
+	begin
+	delete from PuestoDepartamento where Puestofk = @IdPuestos;
+	Delete from Puestos where IdPuesto = @IdPuestos; /*primero se debe eliminar regristro de la tabla puestodepartamento*/
+	end else
+	begin
+	raiserror('No se puede borrar Puesto con Empleados en el',16,1);
+	end
 end
 if(@Opc = 3)/*Editar*/
 begin 
@@ -418,7 +440,7 @@ end
 
 /*-------------------------------------------------------------------------------------Calculo------------------------------------------------------------------------------------------*/
 go
-alter procedure SP_Calculo
+create procedure SP_Calculo
 @FechaNomina date = null
 
 as
@@ -453,15 +475,21 @@ Declare @banco varchar(30),@noCuenta int
 			--Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from  vw_Asignaciones  where idEmp=@idEmp--Sueldo mensual bruto con todos los dias
 			Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from PuestoDepartamento--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
 
-			Select @TotalPercepciones=SUM(p.Bono) from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
+
+			Select @TotalPercepciones=SUM(p.Bono) + dbo.fn_SumPeDe(1,@SueldoBruto,@FechaNomina,@idEmp) from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
 			join Percepciones p on p.IdPercepcion=pe.Percepcionfk
 			join Empleados e on e.NoEmpleado=pe.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
 
-			Select @TotalDeducciones=SUM(ded.Descuento)  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
+			declare @Fijos money/*imms e isr*/
+	
+			Select @Fijos=Sum(DescuentoPorcentaje)*@SueldoBruto from Deducciones where NombreDeduccion='IMMS' or NombreDeduccion='ISR'
+
+			Select @TotalDeducciones=SUM(ded.Descuento)+@Fijos+dbo.fn_SumPeDe(2,@SueldoBruto,@FechaNomina,@idEmp)  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
 			join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
 			join Empleados e on e.NoEmpleado=de.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
+
 
 			if(@TotalPercepciones is not null)
 			begin
@@ -506,14 +534,14 @@ end
 END
 /*-------------------------------------------------------------------------------------Mostrar nomina------------------------------------------------------------------------------------------*/
 go
-Create procedure Sp_MostrarNomina
+ALTER procedure Sp_MostrarNomina
 @Opc int
 
 as
 BEGIN
 if(@Opc=1)
 begin
-	Select [No.Nómina],[No.Empleado],[Nombre Completo],Fecha,Sueldo,Banco,[No.Cuenta] from vw_Nomina
+	Select [No.Nómina],[No.Empleado],[Nombre Completo],Fecha,SueldoB as [Sueldo Bruto],SueldoN as [Sueldo Neto],Banco,[No.Cuenta] from vw_Nomina
 end
 END
 /*---------------------------------------------------------------------------------------- Reportes ---------------------------------------------------------------------------------------------------*/
@@ -527,24 +555,24 @@ as
 BEGIN
 if(@Opc=1)/*Sin filtro (Año=0,Mes=0)*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 order by Departamento,Puesto,Nombre;
 end
 if(@Opc=2)/*Si solo se envia el mes (Año=0)*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 where MONTH([Fecha de Ingreso])=@Mes
 order by Departamento,Puesto,Nombre;
 end
 if(@Opc=3)/*Si solo se envia el año(Mes=0)*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 where YEAR([Fecha de Ingreso])=@Año
 order by Departamento,Puesto,Nombre;
 end
 if(@Opc=4)/*Si se envian los dos*/
 begin
-Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,[Salario Diario] from vw_ReporteGeneralNomina
+Select Departamento,Puesto,Nombre,[Fecha de Ingreso],Edad,Concat('$',[Salario Diario]) as [Salario Diario] from vw_ReporteGeneralNomina
 where YEAR([Fecha de Ingreso])=@Año and MONTH([Fecha de Ingreso])=@Mes
 order by Departamento,Puesto,Nombre;
 end
@@ -552,7 +580,7 @@ END
 
 /*-----------------------------------------------------------------------------------Reporte Headcounter---------------------------------------------------------------------------------*/
 go
-alter procedure SP_ReporteHeadcounter
+create procedure SP_ReporteHeadcounter
 @Opc int,
 @Month int=null,
 @Year int = null,
@@ -572,8 +600,8 @@ Select Departamento,[Cantidad de Empleados] from vw_ReporteHeadcounterp2
 order by Departamento
 end
 
-if(@Departamento is not null)
-begin
+/*if(@Departamento is not null)*/
+end
 
 ------------------------------------------------------------Parte 1---------------------------------------------------------------------------------------------------
 
@@ -674,7 +702,7 @@ END
 
 /*----------------------------------------------------------------------------------Reporte de Nómina----------------------------------------------------------------------------------*/
 go
-alter procedure SP_ReporteNomina
+create procedure SP_ReporteNomina
 @Año int = null
 as
 begin
@@ -695,3 +723,4 @@ where Año<=@Año
 order by Departamento,Año,Mes
 end
 end
+

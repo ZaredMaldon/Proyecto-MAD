@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Proyecto_MAD;
 
 namespace Proyecto_MAD.Empleados
 {
     public partial class ConsultaRecibo : Form
     {
+
+        EnlaceDB.EnlaceDB db = new EnlaceDB.EnlaceDB();
+        GeneracionRecibo R = new GeneracionRecibo();
+
         public ConsultaRecibo()
         {
             InitializeComponent();
@@ -26,5 +31,12 @@ namespace Proyecto_MAD.Empleados
         {
 
         }
+
+        private void Inicio_Btn_Click(object sender, EventArgs e)
+        {
+            //VistaPDF vistaPDF=new VistaPDF();
+            //vistaPDF.ShowDialog();
+        }
+       
     }
 }

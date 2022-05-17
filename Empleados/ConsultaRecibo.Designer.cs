@@ -90,6 +90,7 @@ namespace Proyecto_MAD.Empleados
             this.Inicio_Btn.Text = "PDF";
             this.Inicio_Btn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Inicio_Btn.UseVisualStyleBackColor = false;
+            this.Inicio_Btn.Click += new System.EventHandler(this.Inicio_Btn_Click);
             // 
             // DGV_Recibos
             // 

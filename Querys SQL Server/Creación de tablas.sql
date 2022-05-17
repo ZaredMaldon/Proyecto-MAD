@@ -104,7 +104,7 @@ IdDeduccion				int			IDENTITY (1,1)	NOT NULL,
 NombreDeduccion			varchar(25)	NOT NULL,
 FechaAplicada			date		NOT NULL,
 Descuento				money		    NULL DEFAULT('NO APLICA'),
-DescuentoPorcentaje		float			NOT NULL,
+DescuentoPorcentaje		float			 NULL,
 CONSTRAINT PK_Deducciones PRIMARY KEY(IdDeduccion),
 constraint UQ_Deducciones_Nombre UNIQUE (NombreDeduccion)
 )
@@ -114,7 +114,7 @@ IdPercepcion      int			IDENTITY (1,1)	NOT NULL,
 NombrePercepcion  varchar(25)	NOT NULL,
 FechaAplicada	  date			NOT NULL,	
 Bono              money		    NULL DEFAULT('NO APLICA'),
-BonoPorcentaje    float			NOT NULL,
+BonoPorcentaje    float			 NULL,
 CONSTRAINT PK_Percepciones PRIMARY KEY(IdPercepcion),
 constraint UQ_Percepciones_Nombre UNIQUE (NombrePercepcion)
 )

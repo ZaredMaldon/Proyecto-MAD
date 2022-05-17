@@ -8,8 +8,10 @@ namespace Proyecto_MAD.Empleados
 {
     public partial class VistaPDF : Form
     {
-        
-        
+
+        EnlaceDB.EnlaceDB db = new EnlaceDB.EnlaceDB();
+        GeneracionRecibo R = new GeneracionRecibo();
+
         public VistaPDF()
         {
             InitializeComponent();
@@ -29,6 +31,13 @@ namespace Proyecto_MAD.Empleados
         {
             this.Dispose();
             
+
+        }
+
+        private void Inicio_Btn_Click(object sender, EventArgs e)
+        {
+            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp);
+            R.GenerarRecibo();
 
         }
     }

@@ -112,7 +112,7 @@ END
 /*------------------------------------------------------------------------------------Contar empleados en departamentos con filtro de a;os y meses parte 1 -----------------------------------------------------------------------------------------*/
 --Parte1
 go
-alter function fn_ContarEDep(@Opc int,@idDpto int,@idPuesto int,@Año int,@Mes int) returns int
+create function fn_ContarEDep(@Opc int,@idDpto int,@idPuesto int,@Año int,@Mes int) returns int
 as
 BEGIN
 Declare @Cuenta int
@@ -150,7 +150,7 @@ END
 
 /*------------------------------------------------------------------------------------Contar empleados en departamentos sin filtro-----------------------------------------------------------------------------------------*/
 go
-Alter function fn_ContarEDep2(@idDpto int,@idPuesto int ) returns int--Todos 
+create function fn_ContarEDep2(@idDpto int,@idPuesto int ) returns int--Todos 
 as
 BEGIN
 Declare @Cuenta int
@@ -177,7 +177,7 @@ return @Cuenta
 END
 
 go
-alter function fn_ContarEmpleados2(@Opc int,@idDpto int,@Año int,@Mes int) returns int
+create function fn_ContarEmpleados2(@Opc int,@idDpto int,@Año int,@Mes int) returns int
 as
 BEGIN
 Declare @Cuenta int
@@ -273,7 +273,7 @@ begin
 	Select @Suma = SUM(DescuentoPorcentaje) from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
 	join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
 	join Empleados e on e.NoEmpleado=de.Empleadofk
-	where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
+	where e.NoEmpleado=@idEmp and (MONTH(de.FechaAplicada)=MONTH(@FechaNomina) and YEAR(de.FechaAplicada)=YEAR(@FechaNomina))
 
 	set @PorcentajeSueldo=(@Suma*@SueldoBruto)
 

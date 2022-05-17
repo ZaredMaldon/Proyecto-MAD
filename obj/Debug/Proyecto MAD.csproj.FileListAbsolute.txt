@@ -191,3 +191,16 @@ H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\obj\Debug\Proyecto_MA
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Apitron.PDF.Controls.dll
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Apitron.PDF.Rasterizer.dll
 H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\bin\Debug\Apitron.PDF.Controls.xml
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\Apitron.PDF.Controls.dll
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\Apitron.PDF.Rasterizer.dll
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Security.AccessControl.dll
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Security.Permissions.dll
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Security.Principal.Windows.dll
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\Apitron.PDF.Controls.xml
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Drawing.Common.xml
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Security.AccessControl.xml
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Security.Permissions.xml
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\bin\Debug\System.Security.Principal.Windows.xml
+C:\Users\Samantha Charles\Documents\6 semestre\Modelo de administración de datos (3)\Proyecto-MAD\obj\Debug\Proyecto_MAD.Empleados.VistaPDF.resources

@@ -35,7 +35,7 @@ namespace Proyecto_MAD.Tools
         public static void CrearCsv(DataTable datatable,string path) 
         {
             string separador = ",";
-            string direccion = @"H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\Csv\" + path+".csv";//revisar direccion
+            string direccion = "../../Csv/" + path+".csv";//revisar direccion
             List<string> lineas = new List<string>(), columnas = new List<string>();
 
             foreach(DataColumn col in datatable.Columns)

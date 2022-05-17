@@ -32,9 +32,14 @@ namespace Proyecto_MAD
             page1.Artifacts.Add(background);
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
             AgregarDatos1();
+           // AgregarDatos2();
+            //AgregarDatos3();
+            //AgregarDatos4();
+
+            MessageBox.Show("PDF creado","Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             //Guardar el documento, solamente con la imagen de fondo
-            
+
 
             return pdfName;
         }
@@ -47,7 +52,8 @@ namespace Proyecto_MAD
             Page page = pdfDocument.Pages[1];
 
             //Texto del nombre completo empleado
-            TextFragment Nombre = new TextFragment(DAO.DAO_GenerarRecibo.Nombre);
+            TextFragment Nombre = new TextFragment(DAO_GenerarRecibo.Nombre);
+            //TextFragment Nombre = new TextFragment("LALAL");
             Nombre.Position = new Position(100,100);
             Nombre.TextState.FontSize = 30;
             Nombre.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -55,7 +61,7 @@ namespace Proyecto_MAD
             Nombre.TextState.FontStyle = FontStyles.Bold;
 
             //NSS EMPLEADO
-            TextFragment NSSemp = new TextFragment(DAO.DAO_GenerarRecibo.NSS.ToString());
+            TextFragment NSSemp = new TextFragment(DAO_GenerarRecibo.NSS);
             NSSemp.Position = new Position(40, 674);
             NSSemp.TextState.FontSize = 16;
             NSSemp.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -63,7 +69,7 @@ namespace Proyecto_MAD
             NSSemp.TextState.FontStyle = FontStyles.Bold;
 
             //CURP EMPLEADO
-            TextFragment CURPemp = new TextFragment(DAO.DAO_GenerarRecibo.CURP.ToString());
+            TextFragment CURPemp = new TextFragment(DAO_GenerarRecibo.CURP);
             CURPemp.Position = new Position(40, 674);
             CURPemp.TextState.FontSize = 16;
             CURPemp.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -71,7 +77,7 @@ namespace Proyecto_MAD
             CURPemp.TextState.FontStyle = FontStyles.Bold;
 
             //RFC EMPLEADO
-            TextFragment RFCemp = new TextFragment(DAO.DAO_GenerarRecibo.RFCE.ToString());
+            TextFragment RFCemp = new TextFragment(DAO_GenerarRecibo.RFCE);
             RFCemp.Position = new Position(40, 674);
             RFCemp.TextState.FontSize = 16;
             RFCemp.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -117,7 +123,7 @@ namespace Proyecto_MAD
             Page page = pdfDocument.Pages[1];
 
             //Texto de RFC Empres
-            TextFragment RFCEm = new TextFragment(DAO.DAO_GenerarRecibo.RFCEm.ToString());
+            TextFragment RFCEm = new TextFragment(DAO_GenerarRecibo.RFCEm.ToString());
             RFCEm.Position = new Position(100, 100);
             RFCEm.TextState.FontSize = 30;
             RFCEm.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -125,7 +131,7 @@ namespace Proyecto_MAD
             RFCEm.TextState.FontStyle = FontStyles.Bold;
 
             //Registro Patronal
-            TextFragment RegistroPatronal = new TextFragment(DAO.DAO_GenerarRecibo.RegistroPatronal.ToString());
+            TextFragment RegistroPatronal = new TextFragment(DAO_GenerarRecibo.RegistroPatronal.ToString());
             RegistroPatronal.Position = new Position(100, 100);
             RegistroPatronal.TextState.FontSize = 30;
             RegistroPatronal.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -133,7 +139,7 @@ namespace Proyecto_MAD
             RegistroPatronal.TextState.FontStyle = FontStyles.Bold;
 
             //Fecha de Nomina
-            TextFragment FechaNomina = new TextFragment(DAO.DAO_GenerarRecibo.FechaNomina.ToString());
+            TextFragment FechaNomina = new TextFragment(DAO_GenerarRecibo.FechaNomina.ToString());
             FechaNomina.Position = new Position(100, 100);
             FechaNomina.TextState.FontSize = 30;
             FechaNomina.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -141,7 +147,7 @@ namespace Proyecto_MAD
             FechaNomina.TextState.FontStyle = FontStyles.Bold;
 
             //puesto
-            TextFragment Puesto = new TextFragment(DAO.DAO_GenerarRecibo.NombrePuesto);
+            TextFragment Puesto = new TextFragment(DAO_GenerarRecibo.NombrePuesto);
             Puesto.Position = new Position(100, 100);
             Puesto.TextState.FontSize = 30;
             Puesto.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -149,7 +155,7 @@ namespace Proyecto_MAD
             Puesto.TextState.FontStyle = FontStyles.Bold;
 
             //departamento
-            TextFragment Departamento = new TextFragment(DAO.DAO_GenerarRecibo.NombreDepto);
+            TextFragment Departamento = new TextFragment(DAO_GenerarRecibo.NombreDepto);
             Departamento.Position = new Position(100, 100);
             Departamento.TextState.FontSize = 30;
             Departamento.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -171,7 +177,7 @@ namespace Proyecto_MAD
             Page page = pdfDocument.Pages[1];
 
             //Texto de ID Percepcion
-            TextFragment idPer = new TextFragment(DAO.DAO_GenerarRecibo.idPer.ToString());
+            TextFragment idPer = new TextFragment(DAO_GenerarRecibo.idPer.ToString());
             idPer.Position = new Position(100, 100);
             idPer.TextState.FontSize = 30;
             idPer.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -179,7 +185,7 @@ namespace Proyecto_MAD
             idPer.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de Concepto Percepcion
-            TextFragment NombrePer = new TextFragment(DAO.DAO_GenerarRecibo.NombrePer);
+            TextFragment NombrePer = new TextFragment(DAO_GenerarRecibo.NombrePer);
             NombrePer.Position = new Position(100, 100);
             NombrePer.TextState.FontSize = 30;
             NombrePer.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -187,7 +193,7 @@ namespace Proyecto_MAD
             NombrePer.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de ID Deduccion
-            TextFragment idDed = new TextFragment(DAO.DAO_GenerarRecibo.idDed.ToString());
+            TextFragment idDed = new TextFragment(DAO_GenerarRecibo.idDed.ToString());
             idDed.Position = new Position(100, 100);
             idDed.TextState.FontSize = 30;
             idDed.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -195,7 +201,7 @@ namespace Proyecto_MAD
             idDed.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de Concepto Deduccion
-            TextFragment NombreDed = new TextFragment(DAO.DAO_GenerarRecibo.Nombreded);
+            TextFragment NombreDed = new TextFragment(DAO_GenerarRecibo.Nombreded);
             NombreDed.Position = new Position(100, 100);
             NombreDed.TextState.FontSize = 30;
             NombreDed.TextState.Font = FontRepository.FindFont("Century Gothic");

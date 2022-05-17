@@ -1,4 +1,2 @@
-No.Nómina,No.Empleado,Nombre Completo,Fecha,Sueldo,Banco,No.Cuenta
-1000085,100019,Marcelo Rodiguez Garcia,01/01/2022 12:00:00 a. m.,$13175.00,HSBC,789456
-1000086,100020,Zared Maldonado Rodriguez,01/01/2022 12:00:00 a. m.,$13079.38,BBVA,846598
-1000087,100022,Abigail Carbajal Aguilar,01/01/2022 12:00:00 a. m.,$2369.88,BBVA,465125
+No.Nómina,No.Empleado,Nombre Completo,Fecha,Sueldo Bruto,Sueldo Neto,Banco,No.Cuenta
+1000000,100000,Samantha Charles Silva,01/01/2022 12:00:00 a. m.,$7750.00,$7412.50,BBVA,458516

@@ -34,12 +34,8 @@ namespace Proyecto_MAD.Empleados
 
         private void Inicio_Btn_Click(object sender, EventArgs e)
         {
-            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.IdEmp);
-
-            VistaPDF vistaPDF=new VistaPDF();
-            vistaPDF.ShowDialog();
-
-
+            //VistaPDF vistaPDF=new VistaPDF();
+            //vistaPDF.ShowDialog();
         }
        
     }

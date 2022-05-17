@@ -9,20 +9,19 @@ namespace Proyecto_MAD.DAO
     class DAO_GenerarRecibo
     {
         //Nomina
-        public static float SueldoBruto { get; set; }
-        public static float SueldoNeto { get; set; }
+         public static int NoNomina { get; set; }
+        public static string SueldoBruto { get; set; }
+        public static string SueldoNeto { get; set; }
         public static string Banco { get; set; }
         public static int NoCuenta { get; set; }
         public static DateTime FechaNomina { get; set; }
 
         //Empleado
-
-        public static int IdEmp{ get; set; }
-        public static string Nombre { get; set; }
-        public static int NSS{ get; set; }
-        public static int CURP{ get; set; }
-        public static int RFCE{ get; set; }
         public static int NoEmp{ get; set; }
+        public static string Nombre { get; set; }
+        public static string NSS{ get; set; }
+        public static string CURP{ get; set; }
+        public static string RFCE{ get; set; }
 
         //PuestoDepartamento
         public static string NombrePuesto{ get; set; }

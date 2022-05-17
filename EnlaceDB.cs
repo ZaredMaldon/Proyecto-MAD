@@ -1196,13 +1196,18 @@ namespace Proyecto_MAD.EnlaceDB
 
                 while (dr.Read())//si no pasa este es porque no hay nada en el query
                 {
-                    DAO_GenerarRecibo.NoEmp = dr.GetInt32(0);
-                    DAO_GenerarRecibo.Nombre = dr.GetString(1);
-                    DAO_GenerarRecibo.FechaNomina = dr.GetDateTime(2);
-                    DAO_GenerarRecibo.SueldoNeto = dr.GetInt32(3);
-                    DAO_GenerarRecibo.SueldoBruto = dr.GetInt32(4);
-                    DAO_GenerarRecibo.Banco = dr.GetString(5);
-                    DAO_GenerarRecibo.NoCuenta = dr.GetInt32(6);
+                    DAO_GenerarRecibo.NoNomina = dr.GetInt32(0);
+                    DAO_GenerarRecibo.NoEmp = dr.GetInt32(1);
+                    DAO_GenerarRecibo.Nombre = dr.GetString(2);
+                    DAO_GenerarRecibo.FechaNomina = dr.GetDateTime(3);
+                    DAO_GenerarRecibo.SueldoNeto = dr.GetString(4);
+                    DAO_GenerarRecibo.SueldoBruto = dr.GetString(5);
+                    DAO_GenerarRecibo.Banco = dr.GetString(6);
+                    DAO_GenerarRecibo.NoCuenta = dr.GetInt32(7);
+                    DAO_GenerarRecibo.CURP = dr.GetString(8);
+                    DAO_GenerarRecibo.NSS = dr.GetString(9);
+                    DAO_GenerarRecibo.RFCE = dr.GetString(10);
+                    DAO_GenerarRecibo.NoEmp = dr.GetInt32(11);
 
                 }
 
@@ -1254,7 +1259,7 @@ namespace Proyecto_MAD.EnlaceDB
 
                 while (dr.Read())//si no pasa este es porque no hay nada en el query
                 {
-                    DAO_GenerarRecibo.IdEmp = dr.GetInt32(0);
+                    DAO_GenerarRecibo.NoEmp = dr.GetInt32(0);
                 }
 
 

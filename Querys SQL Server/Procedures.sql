@@ -1,7 +1,7 @@
 use BD_MAD_1;
 /*--------------------------------------------validacion login ------------------------------------------------*/
 go
-create procedure SP_ValidaUser 
+alter procedure SP_ValidaUser 
 @u varchar(10),
 @p varchar(10),
 @Opc int 
@@ -440,7 +440,7 @@ end
 
 /*-------------------------------------------------------------------------------------Calculo------------------------------------------------------------------------------------------*/
 go
-alter procedure SP_Calculo
+create procedure SP_Calculo
 @FechaNomina date = null
 
 as
@@ -534,20 +534,20 @@ end
 END
 /*-------------------------------------------------------------------------------------Mostrar nomina------------------------------------------------------------------------------------------*/
 go
-Create procedure Sp_MostrarNomina
+ALTER procedure Sp_MostrarNomina
 @Opc int
 
 as
 BEGIN
 if(@Opc=1)
 begin
-	Select [No.Nómina],[No.Empleado],[Nombre Completo],Fecha,Sueldo,Banco,[No.Cuenta] from vw_Nomina
+	Select [No.Nómina],[No.Empleado],[Nombre Completo],Fecha,SueldoB as [Sueldo Bruto],SueldoN as [Sueldo Neto],Banco,[No.Cuenta] from vw_Nomina
 end
 END
 /*---------------------------------------------------------------------------------------- Reportes ---------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------------- Reporte General de Nomina ----------------------------------------------------------------------------------------*/
 go
-alter procedure Sp_ReporteGeneralNomina
+create procedure Sp_ReporteGeneralNomina
 @Opc int,
 @Mes int = null,
 @Año int = null
@@ -580,7 +580,7 @@ END
 
 /*-----------------------------------------------------------------------------------Reporte Headcounter---------------------------------------------------------------------------------*/
 go
-alter procedure SP_ReporteHeadcounter
+create procedure SP_ReporteHeadcounter
 @Opc int,
 @Month int=null,
 @Year int = null,
@@ -600,8 +600,8 @@ Select Departamento,[Cantidad de Empleados] from vw_ReporteHeadcounterp2
 order by Departamento
 end
 
-if(@Departamento is not null)
-begin
+/*if(@Departamento is not null)*/
+end
 
 ------------------------------------------------------------Parte 1---------------------------------------------------------------------------------------------------
 
@@ -702,7 +702,7 @@ END
 
 /*----------------------------------------------------------------------------------Reporte de Nómina----------------------------------------------------------------------------------*/
 go
-alter procedure SP_ReporteNomina
+create procedure SP_ReporteNomina
 @Año int = null
 as
 begin

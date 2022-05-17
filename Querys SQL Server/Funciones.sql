@@ -268,16 +268,14 @@ begin
 end
 if(@Opc=2)--Deducciones
 begin
-	declare @Fijos money/*imms e isr*/
 	
-	 Select @Fijos=Sum(DescuentoPorcentaje)*@SueldoBruto from Deducciones where NombreDeduccion='IMMS' or NombreDeduccion='ISR'
 
 	Select @Suma = SUM(DescuentoPorcentaje) from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
 	join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
 	join Empleados e on e.NoEmpleado=de.Empleadofk
 	where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
 
-	set @PorcentajeSueldo=(@Suma*@SueldoBruto)+@Fijos
+	set @PorcentajeSueldo=(@Suma*@SueldoBruto)
 
 
 end

@@ -27,6 +27,7 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
 
         private void Percepciones_Load(object sender, EventArgs e)
         {
+            CHB_Porcentaje_CheckedChanged(this,e);
             DataTable dt = new DataTable();
             dt=db.DataTable_MostrarPercep(3);
             Dgv_Percepciones.DataSource=dt;
@@ -146,6 +147,33 @@ namespace Proyecto_MAD.Percepciones_y_deducciones
                 MessageBox.Show("Ingrese solo letras", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
                 return;
+            }
+        }
+
+        private void CHB_Porcentaje_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CHB_Porcentaje.Checked == true)
+            { 
+                lbl_signo.Text = "%";
+                TB_Porcentaje.Visible = true;
+                Lbl_Porcentaje.Visible = true;
+
+                Lbl_Bono.Visible = false;
+                TB_Bono.Text = "";
+                TB_Bono.Visible = false;
+
+                TB_Porcentaje.Location = new System.Drawing.Point(269, 91);
+                Lbl_Porcentaje.Location = new System.Drawing.Point(292, 75);
+            }
+            else
+            {
+                lbl_signo.Text = "$";
+                TB_Porcentaje.Visible = false;
+                Lbl_Porcentaje.Visible = false;
+
+                Lbl_Bono.Visible = true;
+                TB_Porcentaje.Text = "";
+                TB_Bono.Visible = true;
             }
         }
     }

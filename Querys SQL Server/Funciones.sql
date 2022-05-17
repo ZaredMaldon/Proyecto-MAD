@@ -243,3 +243,44 @@ set @retorno= @SueldoNetoT
 end
 return @retorno
 END
+
+/*-------------------------------------------------------Sumatoria Percepciones y deducciones-----------------------------------------------------------*/
+go
+
+create function fn_SumPeDe(@Opc int,@SueldoBruto money,@FechaNomina date,@idEmp int) returns money
+as
+begin
+declare @Suma money
+declare @PorcentajeSueldo money
+
+
+if(@Opc=1)--Percepciones
+begin
+	
+
+	Select @Suma= SUM(BonoPorcentaje) from Percepciones_Empleado pe
+	join Percepciones p on p.IdPercepcion=pe.Percepcionfk
+	join Empleados e on e.NoEmpleado=pe.Empleadofk
+	where (MONTH(pe.FechaAplicada) = MONTH(@FechaNomina) and YEAR(pe.FechaAplicada) = YEAR(@FechaNomina)) and pe.Empleadofk=@idEmp
+
+	set @PorcentajeSueldo = @Suma*@SueldoBruto;
+
+end
+if(@Opc=2)--Deducciones
+begin
+	declare @Fijos money/*imms e isr*/
+	
+	 Select @Fijos=Sum(DescuentoPorcentaje)*@SueldoBruto from Deducciones where NombreDeduccion='IMMS' or NombreDeduccion='ISR'
+
+	Select @Suma = SUM(DescuentoPorcentaje) from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
+	join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
+	join Empleados e on e.NoEmpleado=de.Empleadofk
+	where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
+
+	set @PorcentajeSueldo=(@Suma*@SueldoBruto)+@Fijos
+
+
+end
+
+return @PorcentajeSueldo
+end

@@ -1208,7 +1208,9 @@ namespace Proyecto_MAD.EnlaceDB
                     DAO_GenerarRecibo.NSS = dr.GetString(9);
                     DAO_GenerarRecibo.RFCE = dr.GetString(10);
                     DAO_GenerarRecibo.NoEmp = dr.GetInt32(11);
-
+                    DAO_GenerarRecibo.NombrePuesto = dr.GetString(12);
+                    DAO_GenerarRecibo.NombreDepto = dr.GetString(13);
+                  
                 }
 
 

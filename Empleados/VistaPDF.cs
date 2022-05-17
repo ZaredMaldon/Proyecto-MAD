@@ -19,7 +19,7 @@ namespace Proyecto_MAD.Empleados
         private void VistaPDF_Load(object sender, EventArgs e)
         {
             FileStream fs= null;
-            fs = new FileStream(@"H:\Escuela documentos\semestre 6\MAD\proyecto\Proyecto MAD\Recibos PDF\Nomina.pdf",FileMode.Open);
+            fs = new FileStream("../../Recibos PDF/Nomina.pdf",FileMode.Open);
             
             pdfViewer1.Document = new Document(fs);
            

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Proyecto_MAD;
+using Proyecto_MAD.Tools;
 
 namespace Proyecto_MAD.Empleados
 {
@@ -35,6 +36,7 @@ namespace Proyecto_MAD.Empleados
         private void Inicio_Btn_Click(object sender, EventArgs e)
         {
             db.Toma_Datos_Empresa(1, 1);
+            db.Toma_Datos_Deducciones(2,DAO.DAO_GenerarRecibo.NoEmp,Tools_z.ConvertirStringFechas(CB_Año.Text, CB_Mes.Text));
             db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp);
             R.GenerarRecibo();
             //VistaPDF vistaPDF=new VistaPDF();

@@ -9,15 +9,19 @@ using Aspose.Pdf;
 using Aspose.Pdf.Text;
 using Proyecto_MAD.DAO;
 
+
 namespace Proyecto_MAD
 {
     class GeneracionRecibo
     {
         string pdfName = "Nomina.pdf";
-
+        EnlaceDB.EnlaceDB db=new EnlaceDB.EnlaceDB();
+        private int SumaY = 0;
         public string GenerarRecibo()
         {
-
+          
+            List<DAO_Deducciones> aO_Deducciones = db.Toma_Datos_Deducciones(2,DAO_GenerarRecibo.NoEmp,DateTime.Parse("01/01/2022"));//DEBEMOS CAMBIAR ESTA FECHA
+            List<DAO_Percepciones> _Percepciones = db.Toma_Datos_Percepciones(1, DAO_GenerarRecibo.NoEmp, DateTime.Parse("01/01/2022"));//DEBEMOS CAMBIAR ESTA FECHA
             //Generar un nuevo documento
             Document pdfDocument = new Document();
 
@@ -31,10 +35,23 @@ namespace Proyecto_MAD
             //Añadir la imagen de fondo a la página
             page1.Artifacts.Add(background);
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
-            AgregarDatos1();
-            AgregarDatos2();
-            //AgregarDatos3();
-            AgregarDatos4();
+            //AgregarDatos1();
+            //AgregarDatos2();
+            SumaY = 0;
+            foreach (DAO_Deducciones deduc in aO_Deducciones )
+            {
+                
+                AgregarDatos3(deduc.IdDeduccion,deduc.Nombre,deduc.Descuento,deduc.Porcentaje);
+                SumaY = SumaY + 20;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
+
+            }
+            SumaY = 0;
+            foreach (DAO_Percepciones p in _Percepciones)
+            {
+                AgregarDatos4(p.IdPerc,p.Nombre,p.Bono,p.Porcentaje);
+                SumaY = SumaY + 20;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
+            }
+            //AgregarDatos4();
 
             MessageBox.Show("PDF creado","Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -102,20 +119,7 @@ namespace Proyecto_MAD
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
 
         }
-        /*  public void prueba()
-          {
-              string dataDir = "../../Recibos PDF/";
-
-              // Initialize document object
-              Document document = new Document();
-              // Add page
-              Page page = document.Pages.Add();
-              // Add text to new page
-              page.Paragraphs.Add(new Aspose.Pdf.Text.TextFragment("Hello World!"));
-              // Save updated PDF
-              document.Save(dataDir + "HelloWorld_out.pdf");
-          }*/
-
+   
         public void AgregarDatos2()
         {
             Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
@@ -172,53 +176,98 @@ namespace Proyecto_MAD
 
         }
 
-        public void AgregarDatos3()
+        public void AgregarDatos3(int idDeduc,string NombreDeduc,string Descuento,string Porcentaje)//Acomoda los datos horizontales para que creen una tabla
+        {
+            Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
+            Page page = pdfDocument.Pages[1];
+
+            //Texto de IDDeduccion
+            TextFragment idDeduccion = new TextFragment(idDeduc.ToString());
+            idDeduccion.Position = new Position(70+SumaY, 100);
+            idDeduccion.TextState.FontSize = 12;
+            idDeduccion.TextState.Font = FontRepository.FindFont("Century Gothic");
+            idDeduccion.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            idDeduccion.TextState.FontStyle = FontStyles.Bold;
+
+            //Texto de ConceptoDeduccion
+            TextFragment NombreDe = new TextFragment(NombreDeduc);
+            NombreDe.Position = new Position(80+SumaY, 100);
+            NombreDe.TextState.FontSize = 12;
+            NombreDe.TextState.Font = FontRepository.FindFont("Century Gothic");
+            NombreDe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            NombreDe.TextState.FontStyle = FontStyles.Bold;
+
+            //Texto de Importe deduccion
+            TextFragment importe = new TextFragment(Descuento);
+            importe.Position = new Position(90 + SumaY, 100);
+            importe.TextState.FontSize = 12;
+            importe.TextState.Font = FontRepository.FindFont("Century Gothic");
+            importe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            importe.TextState.FontStyle = FontStyles.Bold;
+
+            TextFragment Por = new TextFragment(Porcentaje);
+            Por.Position = new Position(90 + SumaY, 100);
+            Por.TextState.FontSize = 12;
+            Por.TextState.Font = FontRepository.FindFont("Century Gothic");
+            Por.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            Por.TextState.FontStyle = FontStyles.Bold;
+
+
+
+            TextBuilder txtBuild = new TextBuilder(page);
+            txtBuild.AppendText(idDeduccion);
+            txtBuild.AppendText(NombreDe);
+            txtBuild.AppendText(importe);
+            txtBuild.AppendText(Por);
+
+            pdfDocument.Save("../../Recibos PDF/" + pdfName);
+        }
+        public void AgregarDatos4(int idPerc,string NombrePerc,string Bono,string Porcentaje)
         {
             Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
             Page page = pdfDocument.Pages[1];
 
             //Texto de ID Percepcion
-            TextFragment idPer = new TextFragment(DAO_GenerarRecibo.idPer.ToString());
-            idPer.Position = new Position(70, 100);
+            TextFragment idPer = new TextFragment(idPerc.ToString());
+            idPer.Position = new Position(70 + SumaY, 100);
             idPer.TextState.FontSize = 12;
             idPer.TextState.Font = FontRepository.FindFont("Century Gothic");
             idPer.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             idPer.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de Concepto Percepcion
-            TextFragment NombrePer = new TextFragment(DAO_GenerarRecibo.NombrePer);
-            NombrePer.Position = new Position(80, 100);
+            TextFragment NombrePer = new TextFragment(NombrePerc);
+            NombrePer.Position = new Position(80 + SumaY, 100);
             NombrePer.TextState.FontSize = 12;
             NombrePer.TextState.Font = FontRepository.FindFont("Century Gothic");
             NombrePer.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             NombrePer.TextState.FontStyle = FontStyles.Bold;
 
-            //Texto de ID Deduccion
-            TextFragment idDed = new TextFragment(DAO_GenerarRecibo.idDed.ToString());
-            idDed.Position = new Position(90, 100);
-            idDed.TextState.FontSize = 12;
-            idDed.TextState.Font = FontRepository.FindFont("Century Gothic");
-            idDed.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
-            idDed.TextState.FontStyle = FontStyles.Bold;
+            TextFragment bono = new TextFragment(Bono);
+            bono.Position = new Position(90 + SumaY, 100);
+            bono.TextState.FontSize = 12;
+            bono.TextState.Font = FontRepository.FindFont("Century Gothic");
+            bono.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            bono.TextState.FontStyle = FontStyles.Bold;
 
-            //Texto de Concepto Deduccion
-            TextFragment NombreDed = new TextFragment(DAO_GenerarRecibo.Nombreded);
-            NombreDed.Position = new Position(100, 100);
-            NombreDed.TextState.FontSize = 12;
-            NombreDed.TextState.Font = FontRepository.FindFont("Century Gothic");
-            NombreDed.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
-            NombreDed.TextState.FontStyle = FontStyles.Bold;
+
+            TextFragment Por = new TextFragment(Porcentaje);
+            Por.Position = new Position(90 + SumaY, 100);
+            Por.TextState.FontSize = 12;
+            Por.TextState.Font = FontRepository.FindFont("Century Gothic");
+            Por.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            Por.TextState.FontStyle = FontStyles.Bold;
+
 
             TextBuilder txtBuild = new TextBuilder(page);
             txtBuild.AppendText(idPer);
             txtBuild.AppendText(NombrePer);
-            txtBuild.AppendText(idDed);
-            txtBuild.AppendText(NombreDed);
+            txtBuild.AppendText(bono);
+            txtBuild.AppendText(Por);
 
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
         }
-
-        public void AgregarDatos4()
+        public void AgregarDatos5()
         {
             Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
             Page page = pdfDocument.Pages[1];

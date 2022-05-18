@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Proyecto_MAD.DAO
 {
-    class DAO_Deducciones
+    public class DAO_Deducciones
     {
         public int IdDeduccion { get; set; }
         public string Nombre { get; set; }
-        public decimal Importe { get; set; }
+        public string Descuento { get; set; }
+        public string Porcentaje { get; set; }
 
     }
 }

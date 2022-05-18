@@ -73,7 +73,7 @@ end
 /*------------------------------------------------------------Mostrar percepciones y deducciones----------------------------------------------------------*/
 
 go 
-create procedure SP_MostrarDedPer
+alter procedure SP_MostrarDedPer
 @Opc int,
 @idEmp int = null,
 @FechaNomina date = null
@@ -82,13 +82,13 @@ as
 begin
 If(@Opc = 1) /*Mostrar percepciones*/
 begin
-SELECT* from Percepciones_Empleado pE 
+SELECT p.IdPercepcion,p.NombrePercepcion,Concat('$',p.Bono) as Bono,Concat('%',(p.BonoPorcentaje*100)) as Porcentaje from Percepciones_Empleado pE 
 join Percepciones p on p.IdPercepcion = pE.Percepcionfk
 where pE.Empleadofk = @idEmp and (MONTH(pE.FechaAplicada)=MONTH(@FechaNomina) and YEAR(pE.FechaAplicada)=YEAR(@FechaNomina))
 end
 if(@Opc = 2) /*Mostrar Deducciones*/
 begin
-SELECT* from Deducciones_Empleado dE 
+SELECT d.IdDeduccion,d.NombreDeduccion,Concat('$',d.Descuento) as Descuento,Concat('%',(d.DescuentoPorcentaje*100))as Porcentaje from Deducciones_Empleado dE 
 join Deducciones d on d.IdDeduccion = dE.Deduccionfk
 where dE.Empleadofk = @idEmp and (MONTH(dE.FechaAplicada)=MONTH(@FechaNomina) and YEAR(dE.FechaAplicada)=YEAR(@FechaNomina))
 end

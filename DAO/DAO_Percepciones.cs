@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Proyecto_MAD.DAO
 {
-    class DAO_Percepcioness
+    public class DAO_Percepciones
     {
-        public int IdPercepcion { get; set; }
+        public int IdPerc { get; set; }
         public string Nombre { get; set; }
-        public decimal Importe { get; set; }
+        public string Bono { get; set; }
+        public string Porcentaje { get; set; }
     }
 }

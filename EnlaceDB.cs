@@ -19,6 +19,7 @@ namespace Proyecto_MAD.EnlaceDB
         static private SqlCommand _comandosql = new SqlCommand();
         static private DataTable _tabla = new DataTable();
         static private DataSet _DS = new DataSet();
+  
         //static public bool login_tipo;
 
         public DataTable obtenertabla
@@ -1287,10 +1288,10 @@ namespace Proyecto_MAD.EnlaceDB
 
         }
 
-        public void Toma_Datos_Deducciones(int Opc, int idEmp, DateTime FechaNomina)
+        public List<DAO_Deducciones> Toma_Datos_Deducciones(int Opc, int idEmp, DateTime FechaNomina)
         {
             var msg = "";
-
+            List<DAO_Deducciones> deducciones = new List<DAO_Deducciones>();
 
             try
             {
@@ -1304,7 +1305,7 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro1.Value = Opc;
                 var parametro2 = _comandosql.Parameters.Add("@idEmp", SqlDbType.Int);
                 parametro2.Value = idEmp;   
-                var parametro3 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Int);
+                var parametro3 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Date);
                 parametro3.Value = FechaNomina;
 
 
@@ -1312,7 +1313,7 @@ namespace Proyecto_MAD.EnlaceDB
 
                 SqlDataReader dr = _comandosql.ExecuteReader();
 
-                List<DAO_Deducciones> deducciones = new List<DAO_Deducciones>();
+               
                 //deducciones.AddRange(dr.GetInt32(0), dr.GetString(1), (decimal) dr.GetSqlMoney(2));
 
                 while (dr.Read())//si no pasa este es porque no hay nada en el query
@@ -1320,9 +1321,11 @@ namespace Proyecto_MAD.EnlaceDB
                     DAO_Deducciones ded = new DAO_Deducciones();
                     ded.IdDeduccion = dr.GetInt32(0);
                     ded.Nombre = dr.GetString(1);
-                    ded.Importe = (decimal)dr.GetSqlMoney(2);
+                    ded.Descuento = dr.GetString(2);
+                    ded.Porcentaje = dr.GetString(3);
                     deducciones.Add(ded);
                 }
+
 
 
             }
@@ -1337,11 +1340,12 @@ namespace Proyecto_MAD.EnlaceDB
             {
                 desconectar();
             }
+            return deducciones;
         }
-        public void Toma_Datos_Percepciones(int Opc, int idEmp, DateTime FechaNomina)
+        public List<DAO_Percepciones> Toma_Datos_Percepciones(int Opc, int idEmp, DateTime FechaNomina)
         {
             var msg = "";
-
+            List<DAO_Percepciones> percepciones= new List<DAO_Percepciones>();
 
             try
             {
@@ -1355,7 +1359,7 @@ namespace Proyecto_MAD.EnlaceDB
                 parametro1.Value = Opc;
                 var parametro2 = _comandosql.Parameters.Add("@idEmp", SqlDbType.Int);
                 parametro2.Value = idEmp;
-                var parametro3 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Int);
+                var parametro3 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Date);
                 parametro3.Value = FechaNomina;
 
 
@@ -1363,15 +1367,16 @@ namespace Proyecto_MAD.EnlaceDB
 
                 SqlDataReader dr = _comandosql.ExecuteReader();
 
-                List<DAO_Percepcioness> percepciones = new List<DAO_Percepcioness>();
+               
                 //deducciones.AddRange(dr.GetInt32(0), dr.GetString(1), (decimal) dr.GetSqlMoney(2));
 
                 while (dr.Read())//si no pasa este es porque no hay nada en el query
                 {
-                    DAO_Percepcioness per = new DAO_Percepcioness();
-                    per.IdPercepcion = dr.GetInt32(0);
+                    DAO_Percepciones per = new DAO_Percepciones();
+                    per.IdPerc = dr.GetInt32(0);
                     per.Nombre = dr.GetString(1);
-                    per.Importe = (decimal)dr.GetSqlMoney(2);
+                    per.Bono=dr.GetString(2);
+                    per.Porcentaje=dr.GetString(3);
                     percepciones.Add(per);
                 }
 
@@ -1388,6 +1393,7 @@ namespace Proyecto_MAD.EnlaceDB
             {
                 desconectar();
             }
+            return percepciones;
         }
 
         #endregion

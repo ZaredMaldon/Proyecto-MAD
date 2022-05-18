@@ -1,8 +1,8 @@
-	/*-------------------------------------------------------------View GenerarRecibo----------------------------------------------------------------------------------------------*/
+/*-------------------------------------------------------------View GenerarRecibo----------------------------------------------------------------------------------------------*/
 go
 alter view vw_GenerarRecibo
 as 
-Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as SueldoN, Concat('$',n.Sueldo_bruto) as SueldoB,e.Banco as Banco ,e.NoCuenta as [No.Cuenta], pd.SalarioDiario, dbo.fn_Diastrabajados(n.FechaNomina, e.Contratacion) as DiasTrabajados, e.CURP, e.NSS, e.RFC, e.NoEmpleado, p.NombrePuesto as [Puesto], d.NombreDpto as [Departamento] from NOMINA n
+Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as SueldoN, Concat('$',n.Sueldo_bruto) as SueldoB,e.Banco as Banco ,e.NoCuenta as [No.Cuenta], pd.SalarioDiario, dbo.fn_Diastrabajados(n.FechaNomina, e.Contratacion) as DiasTrabajados, e.CURP, e.NSS, e.RFC, p.NombrePuesto as [Puesto], d.NombreDpto as [Departamento], e.Contratacion from NOMINA n
 join Empleados e on e.NoEmpleado = n.Empleadofk
 join Usuarios u on e.Usuariofk = u.idUsuario
 join Asiganciones a on a.Empleadofk = n.Empleadofk 
@@ -29,7 +29,7 @@ Where u.usuario=@usuario and u.Contraseña = @contra
 end
 if(@Opc = 2) /*mostrar*/
 begin
-SELECT [No.Nómina],[No.Empleado], [Nombre Completo], Fecha, SueldoN, SueldoB, Banco, [No.Cuenta], CURP, NSS, RFC, NoEmpleado, [Puesto], [Departamento] from vw_GenerarRecibo 
+SELECT [No.Nómina],[No.Empleado], [Nombre Completo], Fecha, SueldoN, SueldoB, Banco, [No.Cuenta], SalarioDiario, DiasTrabajados, CURP, NSS, RFC, [Puesto],[Departamento], Contratacion from vw_GenerarRecibo 
 WHERE [No.Empleado] = @Empleadofk
 end
 if (@Opc = 3) /*Cargar*/
@@ -70,3 +70,26 @@ Select @TotalDeducciones=SUM(ded.Descuento)+@Fijos+dbo.fn_SumPeDe(2,@SueldoBruto
 
 end
 
+/*------------------------------------------------------------Mostrar percepciones y deducciones----------------------------------------------------------*/
+
+go 
+create procedure SP_MostrarDedPer
+@Opc int,
+@idEmp int = null,
+@FechaNomina date = null
+
+as
+begin
+If(@Opc = 1) /*Mostrar percepciones*/
+begin
+SELECT* from Percepciones_Empleado pE 
+join Percepciones p on p.IdPercepcion = pE.Percepcionfk
+where pE.Empleadofk = @idEmp and (MONTH(pE.FechaAplicada)=MONTH(@FechaNomina) and YEAR(pE.FechaAplicada)=YEAR(@FechaNomina))
+end
+if(@Opc = 2) /*Mostrar Deducciones*/
+begin
+SELECT* from Deducciones_Empleado dE 
+join Deducciones d on d.IdDeduccion = dE.Deduccionfk
+where dE.Empleadofk = @idEmp and (MONTH(dE.FechaAplicada)=MONTH(@FechaNomina) and YEAR(dE.FechaAplicada)=YEAR(@FechaNomina))
+end
+end

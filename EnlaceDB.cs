@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
@@ -1202,15 +1203,16 @@ namespace Proyecto_MAD.EnlaceDB
                     DAO_GenerarRecibo.FechaNomina = dr.GetDateTime(3);
                     DAO_GenerarRecibo.SueldoNeto = dr.GetString(4);
                     DAO_GenerarRecibo.SueldoBruto = dr.GetString(5);
-                    DAO_GenerarRecibo.Banco = dr.GetString(6);
-                    DAO_GenerarRecibo.NoCuenta = dr.GetInt32(7);
-                    DAO_GenerarRecibo.CURP = dr.GetString(8);
-                    DAO_GenerarRecibo.NSS = dr.GetString(9);
-                    DAO_GenerarRecibo.RFCE = dr.GetString(10);
-                    DAO_GenerarRecibo.NoEmp = dr.GetInt32(11);
-                    DAO_GenerarRecibo.NombrePuesto = dr.GetString(12);
-                    DAO_GenerarRecibo.NombreDepto = dr.GetString(13);
-                  
+                   // DAO_GenerarRecibo.SalarioDiario = dr.GetString(8);
+                    DAO_GenerarRecibo.Dias = dr.GetInt32(9);
+                    DAO_GenerarRecibo.CURP = dr.GetString(10);
+                    DAO_GenerarRecibo.NSS = dr.GetString(11);
+                    DAO_GenerarRecibo.RFCE = dr.GetString(12);
+                    DAO_GenerarRecibo.NombrePuesto = dr.GetString(13);
+                    DAO_GenerarRecibo.NombreDepto = dr.GetString(14);
+                    DAO_GenerarRecibo.Contratacion = dr.GetDateTime(15);
+
+
                 }
 
 
@@ -1285,6 +1287,108 @@ namespace Proyecto_MAD.EnlaceDB
 
         }
 
+        public void Toma_Datos_Deducciones(int Opc, int idEmp, DateTime FechaNomina)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_MostrarDedPer";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@idEmp", SqlDbType.Int);
+                parametro2.Value = idEmp;   
+                var parametro3 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Int);
+                parametro3.Value = FechaNomina;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                List<DAO_Deducciones> deducciones = new List<DAO_Deducciones>();
+                //deducciones.AddRange(dr.GetInt32(0), dr.GetString(1), (decimal) dr.GetSqlMoney(2));
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_Deducciones ded = new DAO_Deducciones();
+                    ded.IdDeduccion = dr.GetInt32(0);
+                    ded.Nombre = dr.GetString(1);
+                    ded.Importe = (decimal)dr.GetSqlMoney(2);
+                    deducciones.Add(ded);
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
+        public void Toma_Datos_Percepciones(int Opc, int idEmp, DateTime FechaNomina)
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_MostrarDedPer";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@idEmp", SqlDbType.Int);
+                parametro2.Value = idEmp;
+                var parametro3 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Int);
+                parametro3.Value = FechaNomina;
+
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                List<DAO_Percepcioness> percepciones = new List<DAO_Percepcioness>();
+                //deducciones.AddRange(dr.GetInt32(0), dr.GetString(1), (decimal) dr.GetSqlMoney(2));
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    DAO_Percepcioness per = new DAO_Percepcioness();
+                    per.IdPercepcion = dr.GetInt32(0);
+                    per.Nombre = dr.GetString(1);
+                    per.Importe = (decimal)dr.GetSqlMoney(2);
+                    percepciones.Add(per);
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+        }
 
         #endregion
 

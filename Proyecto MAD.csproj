@@ -130,10 +130,12 @@
     <Compile Include="Calculo\DatosEmpresa.Designer.cs">
       <DependentUpon>DatosEmpresa.cs</DependentUpon>
     </Compile>
+    <Compile Include="DAO\DAO_Deducciones.cs" />
     <Compile Include="DAO\DAO_Departamentos.cs" />
     <Compile Include="DAO\DAO_Empleado.cs" />
     <Compile Include="DAO\DAO_Empresa.cs" />
     <Compile Include="DAO\DAO_GenerarRecibo.cs" />
+    <Compile Include="DAO\DAO_Percepcioness.cs" />
     <Compile Include="DAO\DAO_Puestos.cs" />
     <Compile Include="Empleados\CambiarContra.cs">
       <SubType>Form</SubType>

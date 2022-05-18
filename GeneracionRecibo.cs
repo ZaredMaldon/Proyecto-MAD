@@ -32,9 +32,9 @@ namespace Proyecto_MAD
             page1.Artifacts.Add(background);
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
             AgregarDatos1();
-            //AgregarDatos2();
+            AgregarDatos2();
             //AgregarDatos3();
-            //AgregarDatos4();
+            AgregarDatos4();
 
             MessageBox.Show("PDF creado","Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -53,41 +53,40 @@ namespace Proyecto_MAD
 
             //Texto del nombre completo empleado
             TextFragment Nombre = new TextFragment(DAO_GenerarRecibo.Nombre);
-            //TextFragment Nombre = new TextFragment("LALAL");
-            Nombre.Position = new Position(100,100);
-            Nombre.TextState.FontSize = 12;
+            Nombre.Position = new Position(65,640);
+            Nombre.TextState.FontSize = 8;
             Nombre.TextState.Font = FontRepository.FindFont("Century Gothic");
             Nombre.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             Nombre.TextState.FontStyle = FontStyles.Bold;
 
             //NSS EMPLEADO
             TextFragment NSSemp = new TextFragment(DAO_GenerarRecibo.NSS);
-            NSSemp.Position = new Position(40, 540);
-            NSSemp.TextState.FontSize = 12;
+            NSSemp.Position = new Position(220, 640);
+            NSSemp.TextState.FontSize = 8;
             NSSemp.TextState.Font = FontRepository.FindFont("Century Gothic");
             NSSemp.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             NSSemp.TextState.FontStyle = FontStyles.Bold;
 
             //CURP EMPLEADO
             TextFragment CURPemp = new TextFragment(DAO_GenerarRecibo.CURP);
-            CURPemp.Position = new Position(40, 530);
-            CURPemp.TextState.FontSize = 12;
+            CURPemp.Position = new Position(300, 640);
+            CURPemp.TextState.FontSize = 8;
             CURPemp.TextState.Font = FontRepository.FindFont("Century Gothic");
             CURPemp.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             CURPemp.TextState.FontStyle = FontStyles.Bold;
 
             //RFC EMPLEADO
             TextFragment RFCemp = new TextFragment(DAO_GenerarRecibo.RFCE);
-            RFCemp.Position = new Position(40, 520);
-            RFCemp.TextState.FontSize = 12;
+            RFCemp.Position = new Position(450, 640);
+            RFCemp.TextState.FontSize = 8;
             RFCemp.TextState.Font = FontRepository.FindFont("Century Gothic");
             RFCemp.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             RFCemp.TextState.FontStyle = FontStyles.Bold;
 
             //NO. EMPLEADO
             TextFragment NoEmp = new TextFragment(DAO.DAO_GenerarRecibo.NoEmp.ToString());
-            NoEmp.Position = new Position(40, 500);
-            NoEmp.TextState.FontSize = 12;
+            NoEmp.Position = new Position(185, 615);
+            NoEmp.TextState.FontSize = 8;
             NoEmp.TextState.Font = FontRepository.FindFont("Century Gothic");
             NoEmp.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             NoEmp.TextState.FontStyle = FontStyles.Bold;
@@ -123,41 +122,41 @@ namespace Proyecto_MAD
             Page page = pdfDocument.Pages[1];
 
             //Texto de RFC Empres
-            TextFragment RFCEm = new TextFragment(DAO_GenerarRecibo.RFCEm.ToString());
-            RFCEm.Position = new Position(50, 200);
-            RFCEm.TextState.FontSize = 12;
+            TextFragment RFCEm = new TextFragment(DAO_Empresa.RFC.ToString());
+            RFCEm.Position = new Position(90, 719);
+            RFCEm.TextState.FontSize = 8;
             RFCEm.TextState.Font = FontRepository.FindFont("Century Gothic");
             RFCEm.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             RFCEm.TextState.FontStyle = FontStyles.Bold;
 
             //Registro Patronal
-            TextFragment RegistroPatronal = new TextFragment(DAO_GenerarRecibo.RegistroPatronal.ToString());
-            RegistroPatronal.Position = new Position(50, 210);
-            RegistroPatronal.TextState.FontSize = 12;
+            TextFragment RegistroPatronal = new TextFragment(DAO_Empresa.RegistroPatronal.ToString());
+            RegistroPatronal.Position = new Position(270, 719);
+            RegistroPatronal.TextState.FontSize = 8;
             RegistroPatronal.TextState.Font = FontRepository.FindFont("Century Gothic");
             RegistroPatronal.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             RegistroPatronal.TextState.FontStyle = FontStyles.Bold;
 
             //Fecha de Nomina
             TextFragment FechaNomina = new TextFragment(DAO_GenerarRecibo.FechaNomina.ToString());
-            FechaNomina.Position = new Position(50, 220);
-            FechaNomina.TextState.FontSize = 12;
+            FechaNomina.Position = new Position(150, 700);
+            FechaNomina.TextState.FontSize = 8;
             FechaNomina.TextState.Font = FontRepository.FindFont("Century Gothic");
             FechaNomina.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             FechaNomina.TextState.FontStyle = FontStyles.Bold;
 
             //puesto
             TextFragment Puesto = new TextFragment(DAO_GenerarRecibo.NombrePuesto);
-            Puesto.Position = new Position(50, 230);
-            Puesto.TextState.FontSize = 12;
+            Puesto.Position = new Position(268, 615);
+            Puesto.TextState.FontSize = 8;
             Puesto.TextState.Font = FontRepository.FindFont("Century Gothic");
             Puesto.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             Puesto.TextState.FontStyle = FontStyles.Bold;
 
             //departamento
             TextFragment Departamento = new TextFragment(DAO_GenerarRecibo.NombreDepto);
-            Departamento.Position = new Position(50, 240);
-            Departamento.TextState.FontSize = 12;
+            Departamento.Position = new Position(410, 615);
+            Departamento.TextState.FontSize = 8;
             Departamento.TextState.Font = FontRepository.FindFont("Century Gothic");
             Departamento.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             Departamento.TextState.FontStyle = FontStyles.Bold;
@@ -168,6 +167,8 @@ namespace Proyecto_MAD
             txtBuild.AppendText(FechaNomina);
             txtBuild.AppendText(Puesto);
             txtBuild.AppendText(Departamento);
+
+            pdfDocument.Save("../../Recibos PDF/" + pdfName);
 
         }
 
@@ -214,6 +215,7 @@ namespace Proyecto_MAD
             txtBuild.AppendText(idDed);
             txtBuild.AppendText(NombreDed);
 
+            pdfDocument.Save("../../Recibos PDF/" + pdfName);
         }
 
         public void AgregarDatos4()
@@ -223,45 +225,56 @@ namespace Proyecto_MAD
 
             //Texto de Sueldo Bruto
             TextFragment SueldoBruto = new TextFragment(DAO_GenerarRecibo.SueldoBruto.ToString());
-            SueldoBruto.Position = new Position(10, 10);
-            SueldoBruto.TextState.FontSize = 12;
+            SueldoBruto.Position = new Position(500, 364);
+            SueldoBruto.TextState.FontSize = 8
+                ;
             SueldoBruto.TextState.Font = FontRepository.FindFont("Century Gothic");
             SueldoBruto.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             SueldoBruto.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de Sueldo Neto
             TextFragment SueldoNeto = new TextFragment(DAO_GenerarRecibo.SueldoNeto.ToString());
-            SueldoNeto.Position = new Position(20, 20);
-            SueldoNeto.TextState.FontSize = 12;
+            SueldoNeto.Position = new Position(500, 354);
+            SueldoNeto.TextState.FontSize = 8;
             SueldoNeto.TextState.Font = FontRepository.FindFont("Century Gothic");
             SueldoNeto.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             SueldoNeto.TextState.FontStyle = FontStyles.Bold;
 
-            //Texto de Banco
-            TextFragment Banco = new TextFragment(DAO_GenerarRecibo.Banco);
-            Banco.Position = new Position(30, 30);
-            Banco.TextState.FontSize = 12;
-            Banco.TextState.Font = FontRepository.FindFont("Century Gothic");
-            Banco.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
-            Banco.TextState.FontStyle = FontStyles.Bold;
+            //Dias trabajados
+            TextFragment Dias = new TextFragment(DAO_GenerarRecibo.Dias.ToString());
+            Dias.Position = new Position(70, 582);
+            Dias.TextState.FontSize = 8;
+            Dias.TextState.Font = FontRepository.FindFont("Century Gothic");
+            Dias.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            Dias.TextState.FontStyle = FontStyles.Bold;
 
-            //Texto de numero de cuenta
-            TextFragment NoCuenta = new TextFragment(DAO_GenerarRecibo.NoCuenta.ToString());
-            NoCuenta.Position = new Position(40, 40);
-            NoCuenta.TextState.FontSize = 12;
-            NoCuenta.TextState.Font = FontRepository.FindFont("Century Gothic");
-            NoCuenta.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
-            NoCuenta.TextState.FontStyle = FontStyles.Bold;
+            //SalarioDiario
+            //TextFragment SalarioDiario = new TextFragment(DAO_GenerarRecibo.SalarioDiario.ToString());
+            //SalarioDiario.Position = new Position(220, 550);
+            //SalarioDiario.TextState.FontSize = 8;
+            //SalarioDiario.TextState.Font = FontRepository.FindFont("Century Gothic");
+            //SalarioDiario.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            //SalarioDiario.TextState.FontStyle = FontStyles.Bold;
+
+            //Fecha de Contratacion
+            TextFragment Contratacion = new TextFragment(DAO_GenerarRecibo.Contratacion.ToString());
+            Contratacion.Position = new Position(440, 582);
+            Contratacion.TextState.FontSize = 8;
+            Contratacion.TextState.Font = FontRepository.FindFont("Century Gothic");
+            Contratacion.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            Contratacion.TextState.FontStyle = FontStyles.Bold;
+
 
             TextBuilder txtBuild = new TextBuilder(page);
+            txtBuild.AppendText(Dias);
+            //txtBuild.AppendText(SalarioDiario);
+            txtBuild.AppendText(Contratacion);
             txtBuild.AppendText(SueldoNeto);
             txtBuild.AppendText(SueldoBruto);
-            txtBuild.AppendText(Banco);
-            txtBuild.AppendText(NoCuenta);
 
-        }
+            pdfDocument.Save("../../Recibos PDF/" + pdfName);
 
-
+        }    
 
     }
 

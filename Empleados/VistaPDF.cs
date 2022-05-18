@@ -29,15 +29,14 @@ namespace Proyecto_MAD.Empleados
 
         private void VistaPDF_Leave(object sender, EventArgs e)
         {
-            this.Dispose();
-            
+            this.Dispose();           
 
         }
 
         private void Inicio_Btn_Click(object sender, EventArgs e)
         {
-            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp);
-            R.GenerarRecibo();
+           // db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp);
+           // R.GenerarRecibo();
 
         }
     }

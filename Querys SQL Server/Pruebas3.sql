@@ -47,3 +47,6 @@ Delete from Puestos where IdPuesto = 2;
 
 insert Usuarios values ('sam','sam*12','Gerente');
 SELECT IdPD,Puestofk,Departamentofk from PuestoDepartamento where Puestofk=6 and Departamentofk=3;
+
+select* from empresa
+DBCC CHECKIDENT('Empresa',RESEED,0);  /*RESETEAR EL IDENTITY*/

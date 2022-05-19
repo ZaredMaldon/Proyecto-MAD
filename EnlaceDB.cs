@@ -1204,7 +1204,7 @@ namespace Proyecto_MAD.EnlaceDB
                     DAO_GenerarRecibo.FechaNomina = dr.GetDateTime(3);
                     DAO_GenerarRecibo.SueldoNeto = dr.GetString(4);
                     DAO_GenerarRecibo.SueldoBruto = dr.GetString(5);
-                   // DAO_GenerarRecibo.SalarioDiario = dr.GetString(8);
+                    DAO_GenerarRecibo.SalarioDiario = dr.GetDecimal(8).ToString();
                     DAO_GenerarRecibo.Dias = dr.GetInt32(9);
                     DAO_GenerarRecibo.CURP = dr.GetString(10);
                     DAO_GenerarRecibo.NSS = dr.GetString(11);

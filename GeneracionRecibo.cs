@@ -35,8 +35,11 @@ namespace Proyecto_MAD
             //Añadir la imagen de fondo a la página
             page1.Artifacts.Add(background);
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
-            //AgregarDatos1();
-            //AgregarDatos2();
+            AgregarDatos1();
+            AgregarDatos2();
+           // AgregarDatos3();
+            //AgregarDatos4();
+            AgregarDatos5();
             SumaY = 0;
             foreach (DAO_Deducciones deduc in aO_Deducciones )
             {
@@ -51,7 +54,7 @@ namespace Proyecto_MAD
                 AgregarDatos4(p.IdPerc,p.Nombre,p.Bono,p.Porcentaje);
                 SumaY = SumaY + 20;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
             }
-            //AgregarDatos4();
+           // AgregarDatos4();
 
             MessageBox.Show("PDF creado","Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -275,8 +278,7 @@ namespace Proyecto_MAD
             //Texto de Sueldo Bruto
             TextFragment SueldoBruto = new TextFragment(DAO_GenerarRecibo.SueldoBruto.ToString());
             SueldoBruto.Position = new Position(500, 364);
-            SueldoBruto.TextState.FontSize = 8
-                ;
+            SueldoBruto.TextState.FontSize = 8;
             SueldoBruto.TextState.Font = FontRepository.FindFont("Century Gothic");
             SueldoBruto.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             SueldoBruto.TextState.FontStyle = FontStyles.Bold;
@@ -298,12 +300,12 @@ namespace Proyecto_MAD
             Dias.TextState.FontStyle = FontStyles.Bold;
 
             //SalarioDiario
-            //TextFragment SalarioDiario = new TextFragment(DAO_GenerarRecibo.SalarioDiario.ToString());
-            //SalarioDiario.Position = new Position(220, 550);
-            //SalarioDiario.TextState.FontSize = 8;
-            //SalarioDiario.TextState.Font = FontRepository.FindFont("Century Gothic");
-            //SalarioDiario.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
-            //SalarioDiario.TextState.FontStyle = FontStyles.Bold;
+            TextFragment SalarioDiario = new TextFragment(DAO_GenerarRecibo.SalarioDiario.ToString());
+            SalarioDiario.Position = new Position(220, 582);
+            SalarioDiario.TextState.FontSize = 8;
+            SalarioDiario.TextState.Font = FontRepository.FindFont("Century Gothic");
+            SalarioDiario.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            SalarioDiario.TextState.FontStyle = FontStyles.Bold;
 
             //Fecha de Contratacion
             TextFragment Contratacion = new TextFragment(DAO_GenerarRecibo.Contratacion.ToString());
@@ -316,7 +318,7 @@ namespace Proyecto_MAD
 
             TextBuilder txtBuild = new TextBuilder(page);
             txtBuild.AppendText(Dias);
-            //txtBuild.AppendText(SalarioDiario);
+            txtBuild.AppendText(SalarioDiario);
             txtBuild.AppendText(Contratacion);
             txtBuild.AppendText(SueldoNeto);
             txtBuild.AppendText(SueldoBruto);

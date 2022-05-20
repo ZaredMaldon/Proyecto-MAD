@@ -37,8 +37,10 @@ namespace Proyecto_MAD.Empleados
         {
             db.Toma_Datos_Empresa(1, 1);
             db.Toma_Datos_Deducciones(2,DAO.DAO_GenerarRecibo.NoEmp,Tools_z.ConvertirStringFechas(CB_Año.Text, CB_Mes.Text));
-            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp);
-            R.GenerarRecibo();
+            db.Toma_Datos_Recibo2(4, DAO.DAO_GenerarRecibo.NoEmp);
+            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp);//falta la toma de datos de percepciones
+            R.GenerarRecibo(db.Toma_Datos_Deducciones(2, DAO.DAO_GenerarRecibo.NoEmp, Tools_z.ConvertirStringFechas(CB_Año.Text, CB_Mes.Text)),
+                            db.Toma_Datos_Percepciones(1, DAO.DAO_GenerarRecibo.NoEmp, Tools_z.ConvertirStringFechas(CB_Año.Text, CB_Mes.Text)));
             //VistaPDF vistaPDF=new VistaPDF();
             //vistaPDF.ShowDialog();
         }

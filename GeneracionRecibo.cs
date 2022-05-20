@@ -14,14 +14,20 @@ namespace Proyecto_MAD
 {
     class GeneracionRecibo
     {
-        string pdfName = "Nomina.pdf";
-        EnlaceDB.EnlaceDB db=new EnlaceDB.EnlaceDB();
+        Moneda moneda=new Moneda();
+        private string pdfName { get; set; }
+        //private List<DAO_Deducciones> deducc { get; set; }
+        //private List<DAO_Percepciones> percepc { get; set; }
+
+          EnlaceDB.EnlaceDB db=new EnlaceDB.EnlaceDB();
         private int SumaY = 0;
-        public string GenerarRecibo()
+
+
+        public string GenerarRecibo(List<DAO_Deducciones> dAO_Deducciones, List<DAO_Percepciones> dAO_Percepciones)
         {
-          
-            List<DAO_Deducciones> aO_Deducciones = db.Toma_Datos_Deducciones(2,DAO_GenerarRecibo.NoEmp,DateTime.Parse("01/01/2022"));//DEBEMOS CAMBIAR ESTA FECHA
-            List<DAO_Percepciones> _Percepciones = db.Toma_Datos_Percepciones(1, DAO_GenerarRecibo.NoEmp, DateTime.Parse("01/01/2022"));//DEBEMOS CAMBIAR ESTA FECHA
+            pdfName="Nomina_" + DAO_GenerarRecibo.Nombre + "_" + "01-" + DAO_GenerarRecibo.FechaNomina.Month.ToString() + "-" + DAO_GenerarRecibo.FechaNomina.Year.ToString() + ".pdf";
+            //List<DAO_Deducciones> aO_Deducciones = db.Toma_Datos_Deducciones(2,DAO_GenerarRecibo.NoEmp,DateTime.Parse(DAO_GenerarRecibo.FechaNomina.ToShortDateString()));
+            //List<DAO_Percepciones> _Percepciones = db.Toma_Datos_Percepciones(1, DAO_GenerarRecibo.NoEmp, DateTime.Parse(DAO_GenerarRecibo.FechaNomina.ToShortDateString()));
             //Generar un nuevo documento
             Document pdfDocument = new Document();
 
@@ -37,11 +43,9 @@ namespace Proyecto_MAD
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
             AgregarDatos1();
             AgregarDatos2();
-           // AgregarDatos3();
-            //AgregarDatos4();
-            AgregarDatos5();
+            
             SumaY = 0;
-            foreach (DAO_Deducciones deduc in aO_Deducciones )
+            foreach (DAO_Deducciones deduc in dAO_Deducciones)
             {
                 
                 AgregarDatos3(deduc.IdDeduccion,deduc.Nombre,deduc.Descuento,deduc.Porcentaje);
@@ -49,12 +53,14 @@ namespace Proyecto_MAD
 
             }
             SumaY = 0;
-            foreach (DAO_Percepciones p in _Percepciones)
+            foreach (DAO_Percepciones p in dAO_Percepciones)
             {
                 AgregarDatos4(p.IdPerc,p.Nombre,p.Bono,p.Porcentaje);
                 SumaY = SumaY + 20;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
             }
-           // AgregarDatos4();
+
+            AgregarDatos5();
+            AgregarDatos6();
 
             MessageBox.Show("PDF creado","Enhorabuena", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -73,7 +79,7 @@ namespace Proyecto_MAD
 
             //Texto del nombre completo empleado
             TextFragment Nombre = new TextFragment(DAO_GenerarRecibo.Nombre);
-            Nombre.Position = new Position(65,640);
+            Nombre.Position = new Position(62,640);
             Nombre.TextState.FontSize = 8;
             Nombre.TextState.Font = FontRepository.FindFont("Century Gothic");
             Nombre.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -145,7 +151,7 @@ namespace Proyecto_MAD
             RegistroPatronal.TextState.FontStyle = FontStyles.Bold;
 
             //Fecha de Nomina
-            TextFragment FechaNomina = new TextFragment(DAO_GenerarRecibo.FechaNomina.ToString());
+            TextFragment FechaNomina = new TextFragment(DAO_GenerarRecibo.FechaNomina.ToShortDateString());
             FechaNomina.Position = new Position(150, 700);
             FechaNomina.TextState.FontSize = 8;
             FechaNomina.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -194,7 +200,7 @@ namespace Proyecto_MAD
 
             //Texto de ConceptoDeduccion
             TextFragment NombreDe = new TextFragment(NombreDeduc);
-            NombreDe.Position = new Position(80+SumaY, 100);
+            NombreDe.Position = new Position(80, 100);
             NombreDe.TextState.FontSize = 12;
             NombreDe.TextState.Font = FontRepository.FindFont("Century Gothic");
             NombreDe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -202,14 +208,14 @@ namespace Proyecto_MAD
 
             //Texto de Importe deduccion
             TextFragment importe = new TextFragment(Descuento);
-            importe.Position = new Position(90 + SumaY, 100);
+            importe.Position = new Position(90 , 100);
             importe.TextState.FontSize = 12;
             importe.TextState.Font = FontRepository.FindFont("Century Gothic");
             importe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             importe.TextState.FontStyle = FontStyles.Bold;
 
             TextFragment Por = new TextFragment(Porcentaje);
-            Por.Position = new Position(90 + SumaY, 100);
+            Por.Position = new Position(90 , 100);
             Por.TextState.FontSize = 12;
             Por.TextState.Font = FontRepository.FindFont("Century Gothic");
             Por.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -277,7 +283,7 @@ namespace Proyecto_MAD
 
             //Texto de Sueldo Bruto
             TextFragment SueldoBruto = new TextFragment(DAO_GenerarRecibo.SueldoBruto.ToString());
-            SueldoBruto.Position = new Position(500, 364);
+            SueldoBruto.Position = new Position(500, 370);
             SueldoBruto.TextState.FontSize = 8;
             SueldoBruto.TextState.Font = FontRepository.FindFont("Century Gothic");
             SueldoBruto.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -285,7 +291,7 @@ namespace Proyecto_MAD
 
             //Texto de Sueldo Neto
             TextFragment SueldoNeto = new TextFragment(DAO_GenerarRecibo.SueldoNeto.ToString());
-            SueldoNeto.Position = new Position(500, 354);
+            SueldoNeto.Position = new Position(500, 360);
             SueldoNeto.TextState.FontSize = 8;
             SueldoNeto.TextState.Font = FontRepository.FindFont("Century Gothic");
             SueldoNeto.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -300,7 +306,7 @@ namespace Proyecto_MAD
             Dias.TextState.FontStyle = FontStyles.Bold;
 
             //SalarioDiario
-            TextFragment SalarioDiario = new TextFragment(DAO_GenerarRecibo.SalarioDiario.ToString());
+            TextFragment SalarioDiario = new TextFragment("$"+DAO_GenerarRecibo.SalarioDiario.ToString());
             SalarioDiario.Position = new Position(220, 582);
             SalarioDiario.TextState.FontSize = 8;
             SalarioDiario.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -308,7 +314,7 @@ namespace Proyecto_MAD
             SalarioDiario.TextState.FontStyle = FontStyles.Bold;
 
             //Fecha de Contratacion
-            TextFragment Contratacion = new TextFragment(DAO_GenerarRecibo.Contratacion.ToString());
+            TextFragment Contratacion = new TextFragment(DAO_GenerarRecibo.Contratacion.ToShortDateString());
             Contratacion.Position = new Position(440, 582);
             Contratacion.TextState.FontSize = 8;
             Contratacion.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -325,8 +331,59 @@ namespace Proyecto_MAD
 
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
 
-        }    
+        }
+        public void AgregarDatos6()
+        {
+            Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
+            Page page = pdfDocument.Pages[1];
 
+            //Total texto
+            TextFragment TTex = new TextFragment(moneda.Convertir(QuitarSigno(DAO_GenerarRecibo.SueldoNeto),true,"PESOS"));
+            TTex.Position = new Position(372, 340);
+            TTex.TextState.FontSize = 8;
+            TTex.TextState.Font = FontRepository.FindFont("Century Gothic");
+            TTex.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            TTex.TextState.FontStyle = FontStyles.Bold;
+
+            //numero de nomina
+            TextFragment NoNomina = new TextFragment(DAO_GenerarRecibo.NoNomina.ToString());
+            NoNomina.Position = new Position(150,677);
+            NoNomina.TextState.FontSize = 8;
+            NoNomina.TextState.Font = FontRepository.FindFont("Century Gothic");
+            NoNomina.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            NoNomina.TextState.FontStyle = FontStyles.Bold;
+
+            //Periodo de nomina
+            TextFragment Period = new TextFragment(DAO_GenerarRecibo.Periodo);
+            Period.Position = new Position(400, 677);
+            Period.TextState.FontSize = 8;
+            Period.TextState.Font = FontRepository.FindFont("Century Gothic");
+            Period.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            Period.TextState.FontStyle = FontStyles.Bold;
+
+
+            TextBuilder txtBuild = new TextBuilder(page);
+            txtBuild.AppendText(TTex);
+            txtBuild.AppendText(NoNomina);
+            txtBuild.AppendText(Period);
+
+            pdfDocument.Save("../../Recibos PDF/" + pdfName);
+
+        }
+        
+        private string QuitarSigno(string a)
+        {
+            
+
+            int index= a.IndexOf('$')+1;
+            int length=a.Length;
+
+            string can = a.Substring(index,length-1);
+            
+            
+
+            return can;
+        }
     }
 
 

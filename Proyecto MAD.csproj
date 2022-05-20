@@ -199,6 +199,7 @@
     <Compile Include="Calculo\Percepciones.Designer.cs">
       <DependentUpon>Percepciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moneda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recibo\PEDE_Empleado.cs">

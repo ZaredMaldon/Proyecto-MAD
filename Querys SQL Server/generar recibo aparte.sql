@@ -37,11 +37,14 @@ begin
 SELECT IdNomina, Empleadofk,Sueldo_bruto, Sueldo_neto,	Bancofk, NoCuentafk, FechaNomina from NOMINA
 WHERE Empleadofk = @Empleadofk;
 end
+if(@Opc=4)/*Periodo DIA FINAL DEL MES*/
+begin
+Select CONCAT(FechaNomina,' / ', EOMONTH(FechaNomina)) as Periodo from NOMINA
+where Empleadofk=@Empleadofk
 end
 
-Select * from Usuarios
+end
 
-insert Usuarios values ('sss', 's3*', 'Empleado')
 
 /*--------------------------------------------------------------------View percepciones/deducciones------------------------------------------------------------------------------------------------*/
 go 

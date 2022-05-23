@@ -49,5 +49,18 @@ namespace Proyecto_MAD.Empleados
         {
 
         }
+
+        private void DGV_Recibos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void ConsultaRecibo_Load(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt = db.DataTable_MostrarNomina(2);
+            DGV_Recibos.DataSource = dt;
+            
+        }
     }
 }

@@ -129,6 +129,7 @@ namespace Proyecto_MAD.Empleados
             this.DGV_Recibos.Name = "DGV_Recibos";
             this.DGV_Recibos.Size = new System.Drawing.Size(623, 324);
             this.DGV_Recibos.TabIndex = 22;
+            this.DGV_Recibos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Recibos_CellContentClick);
             // 
             // CB_Mes
             // 
@@ -188,6 +189,7 @@ namespace Proyecto_MAD.Empleados
             this.Name = "ConsultaRecibo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.ConsultaRecibo_Load);
             this.Panel_Background.ResumeLayout(false);
             this.Panel_Background.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Recibos)).EndInit();

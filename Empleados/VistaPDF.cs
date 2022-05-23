@@ -2,15 +2,16 @@
 using System.Windows.Forms;
 using System.IO;
 using Apitron.PDF.Rasterizer;
-
+using Proyecto_MAD.DAO;
 
 namespace Proyecto_MAD.Empleados
 {
     public partial class VistaPDF : Form
     {
-
+        public static DateTime FechaNomina { get; set; }
         EnlaceDB.EnlaceDB db = new EnlaceDB.EnlaceDB();
         GeneracionRecibo R = new GeneracionRecibo();
+        FileStream fs ;
 
         public VistaPDF()
         {
@@ -20,25 +21,43 @@ namespace Proyecto_MAD.Empleados
 
         private void VistaPDF_Load(object sender, EventArgs e)
         {
-            FileStream fs= null;
-            fs = new FileStream("../../Recibos PDF/Nomina.pdf",FileMode.Open);
             
-            pdfViewer1.Document = new Document(fs);
+            try
+            {
+                
+                fs = new FileStream("../../Recibos PDF/Nomina_" + DAO.DAO_GenerarRecibo.Nombre + "_" + "01-" + FechaNomina.Month.ToString() + "-" + FechaNomina.Year.ToString() + ".pdf", FileMode.Open);
+
+                pdfViewer1.Document = new Document(fs);
+                
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Show("Intentelo de nuevo");
+               
+            }
+
            
         }
 
         private void VistaPDF_Leave(object sender, EventArgs e)
         {
-            this.Dispose();
-            
+                     
 
         }
 
-        private void Inicio_Btn_Click(object sender, EventArgs e)
-        {
-            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp);
-            R.GenerarRecibo();
+      
 
+        private void cerrar_Btn_Click(object sender, EventArgs e)
+        {
+            fs.Close();
+            this.Dispose();
+            
+        }
+
+        private void VistaPDF_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cerrar_Btn_Click(this, e);
         }
     }
 }

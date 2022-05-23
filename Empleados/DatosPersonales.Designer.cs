@@ -59,8 +59,6 @@ namespace Proyecto_MAD.Empleados
             this.label7 = new System.Windows.Forms.Label();
             this.LBL_Municipio = new System.Windows.Forms.Label();
             this.CB_Municipio = new System.Windows.Forms.ComboBox();
-            this.LBL_Estado = new System.Windows.Forms.Label();
-            this.CB_Estado = new System.Windows.Forms.ComboBox();
             this.LBL_NoInt = new System.Windows.Forms.Label();
             this.TB_NoInt = new System.Windows.Forms.TextBox();
             this.LBL_NoExt = new System.Windows.Forms.Label();
@@ -69,8 +67,6 @@ namespace Proyecto_MAD.Empleados
             this.TB_Calle = new System.Windows.Forms.TextBox();
             this.LBL_Colonia = new System.Windows.Forms.Label();
             this.TB_Colonia = new System.Windows.Forms.TextBox();
-            this.TB_Password = new System.Windows.Forms.TextBox();
-            this.LBL_Password = new System.Windows.Forms.Label();
             this.TB_Puesto = new System.Windows.Forms.TextBox();
             this.LBL_Puesto = new System.Windows.Forms.Label();
             this.TB_Departamento = new System.Windows.Forms.TextBox();
@@ -81,6 +77,9 @@ namespace Proyecto_MAD.Empleados
             this.TB_NoCuenta = new System.Windows.Forms.TextBox();
             this.LBL_Banco = new System.Windows.Forms.Label();
             this.TB_Banco = new System.Windows.Forms.TextBox();
+            this.Btn_Modificar = new FontAwesome.Sharp.IconButton();
+            this.lbl_CP = new System.Windows.Forms.Label();
+            this.TB_CP = new System.Windows.Forms.TextBox();
             this.Panel_DP.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -108,7 +107,6 @@ namespace Proyecto_MAD.Empleados
             this.Lbl_Fecha.Size = new System.Drawing.Size(148, 16);
             this.Lbl_Fecha.TabIndex = 2;
             this.Lbl_Fecha.Text = "Fecha de Nacimiento";
-            this.Lbl_Fecha.Click += new System.EventHandler(this.Lbl_Fecha_Click);
             // 
             // LBL_Nombre
             // 
@@ -120,7 +118,6 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Nombre.Size = new System.Drawing.Size(79, 16);
             this.LBL_Nombre.TabIndex = 2;
             this.LBL_Nombre.Text = "Nombre(s)";
-            this.LBL_Nombre.Click += new System.EventHandler(this.Lbl_Fecha_Click);
             // 
             // LBL_ApPat
             // 
@@ -132,7 +129,6 @@ namespace Proyecto_MAD.Empleados
             this.LBL_ApPat.Size = new System.Drawing.Size(119, 16);
             this.LBL_ApPat.TabIndex = 2;
             this.LBL_ApPat.Text = "Apellido Paterno";
-            this.LBL_ApPat.Click += new System.EventHandler(this.Lbl_Fecha_Click);
             // 
             // LBL_ApMat
             // 
@@ -144,7 +140,6 @@ namespace Proyecto_MAD.Empleados
             this.LBL_ApMat.Size = new System.Drawing.Size(122, 16);
             this.LBL_ApMat.TabIndex = 2;
             this.LBL_ApMat.Text = "Apellido Materno";
-            this.LBL_ApMat.Click += new System.EventHandler(this.Lbl_Fecha_Click);
             // 
             // TB_Nombre
             // 
@@ -162,7 +157,6 @@ namespace Proyecto_MAD.Empleados
             this.TB_ApPat.Name = "TB_ApPat";
             this.TB_ApPat.Size = new System.Drawing.Size(154, 23);
             this.TB_ApPat.TabIndex = 6;
-            this.TB_ApPat.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_ApPat_KeyDown);
             this.TB_ApPat.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_ApPat_KeyPress);
             // 
             // TB_NoEmpleado
@@ -170,9 +164,9 @@ namespace Proyecto_MAD.Empleados
             this.TB_NoEmpleado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_NoEmpleado.Location = new System.Drawing.Point(62, 31);
             this.TB_NoEmpleado.Name = "TB_NoEmpleado";
+            this.TB_NoEmpleado.ReadOnly = true;
             this.TB_NoEmpleado.Size = new System.Drawing.Size(154, 23);
             this.TB_NoEmpleado.TabIndex = 1;
-            this.TB_NoEmpleado.TextChanged += new System.EventHandler(this.TB_NoEmpleado_TextChanged);
             // 
             // TB_ApMat
             // 
@@ -192,7 +186,6 @@ namespace Proyecto_MAD.Empleados
             this.LBL_NoEmpleado.Size = new System.Drawing.Size(97, 16);
             this.LBL_NoEmpleado.TabIndex = 2;
             this.LBL_NoEmpleado.Text = "No.Empleado";
-            this.LBL_NoEmpleado.Click += new System.EventHandler(this.Lbl_Fecha_Click);
             // 
             // Panel_DP
             // 
@@ -371,11 +364,11 @@ namespace Proyecto_MAD.Empleados
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.panel1.Controls.Add(this.lbl_CP);
+            this.panel1.Controls.Add(this.TB_CP);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.LBL_Municipio);
             this.panel1.Controls.Add(this.CB_Municipio);
-            this.panel1.Controls.Add(this.LBL_Estado);
-            this.panel1.Controls.Add(this.CB_Estado);
             this.panel1.Controls.Add(this.LBL_NoInt);
             this.panel1.Controls.Add(this.TB_NoInt);
             this.panel1.Controls.Add(this.LBL_NoExt);
@@ -405,7 +398,7 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Municipio.AutoSize = true;
             this.LBL_Municipio.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Municipio.ForeColor = System.Drawing.Color.White;
-            this.LBL_Municipio.Location = new System.Drawing.Point(321, 45);
+            this.LBL_Municipio.Location = new System.Drawing.Point(321, 48);
             this.LBL_Municipio.Name = "LBL_Municipio";
             this.LBL_Municipio.Size = new System.Drawing.Size(72, 16);
             this.LBL_Municipio.TabIndex = 19;
@@ -415,37 +408,17 @@ namespace Proyecto_MAD.Empleados
             // 
             this.CB_Municipio.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.CB_Municipio.FormattingEnabled = true;
-            this.CB_Municipio.Location = new System.Drawing.Point(400, 42);
+            this.CB_Municipio.Location = new System.Drawing.Point(400, 45);
             this.CB_Municipio.Name = "CB_Municipio";
             this.CB_Municipio.Size = new System.Drawing.Size(150, 23);
             this.CB_Municipio.TabIndex = 16;
-            // 
-            // LBL_Estado
-            // 
-            this.LBL_Estado.AutoSize = true;
-            this.LBL_Estado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Estado.ForeColor = System.Drawing.Color.White;
-            this.LBL_Estado.Location = new System.Drawing.Point(20, 45);
-            this.LBL_Estado.Name = "LBL_Estado";
-            this.LBL_Estado.Size = new System.Drawing.Size(54, 16);
-            this.LBL_Estado.TabIndex = 17;
-            this.LBL_Estado.Text = "Estado";
-            // 
-            // CB_Estado
-            // 
-            this.CB_Estado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.CB_Estado.FormattingEnabled = true;
-            this.CB_Estado.Location = new System.Drawing.Point(74, 42);
-            this.CB_Estado.Name = "CB_Estado";
-            this.CB_Estado.Size = new System.Drawing.Size(150, 23);
-            this.CB_Estado.TabIndex = 15;
             // 
             // LBL_NoInt
             // 
             this.LBL_NoInt.AutoSize = true;
             this.LBL_NoInt.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_NoInt.ForeColor = System.Drawing.Color.White;
-            this.LBL_NoInt.Location = new System.Drawing.Point(314, 132);
+            this.LBL_NoInt.Location = new System.Drawing.Point(314, 131);
             this.LBL_NoInt.Name = "LBL_NoInt";
             this.LBL_NoInt.Size = new System.Drawing.Size(79, 16);
             this.LBL_NoInt.TabIndex = 14;
@@ -454,7 +427,7 @@ namespace Proyecto_MAD.Empleados
             // TB_NoInt
             // 
             this.TB_NoInt.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_NoInt.Location = new System.Drawing.Point(400, 129);
+            this.TB_NoInt.Location = new System.Drawing.Point(400, 128);
             this.TB_NoInt.Name = "TB_NoInt";
             this.TB_NoInt.Size = new System.Drawing.Size(150, 23);
             this.TB_NoInt.TabIndex = 20;
@@ -464,7 +437,7 @@ namespace Proyecto_MAD.Empleados
             this.LBL_NoExt.AutoSize = true;
             this.LBL_NoExt.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_NoExt.ForeColor = System.Drawing.Color.White;
-            this.LBL_NoExt.Location = new System.Drawing.Point(310, 103);
+            this.LBL_NoExt.Location = new System.Drawing.Point(310, 92);
             this.LBL_NoExt.Name = "LBL_NoExt";
             this.LBL_NoExt.Size = new System.Drawing.Size(83, 16);
             this.LBL_NoExt.TabIndex = 12;
@@ -473,7 +446,7 @@ namespace Proyecto_MAD.Empleados
             // TB_NoExt
             // 
             this.TB_NoExt.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_NoExt.Location = new System.Drawing.Point(400, 100);
+            this.TB_NoExt.Location = new System.Drawing.Point(400, 89);
             this.TB_NoExt.Name = "TB_NoExt";
             this.TB_NoExt.Size = new System.Drawing.Size(150, 23);
             this.TB_NoExt.TabIndex = 18;
@@ -485,7 +458,7 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Calle.AutoSize = true;
             this.LBL_Calle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Calle.ForeColor = System.Drawing.Color.White;
-            this.LBL_Calle.Location = new System.Drawing.Point(26, 129);
+            this.LBL_Calle.Location = new System.Drawing.Point(14, 89);
             this.LBL_Calle.Name = "LBL_Calle";
             this.LBL_Calle.Size = new System.Drawing.Size(41, 16);
             this.LBL_Calle.TabIndex = 10;
@@ -494,7 +467,7 @@ namespace Proyecto_MAD.Empleados
             // TB_Calle
             // 
             this.TB_Calle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Calle.Location = new System.Drawing.Point(74, 126);
+            this.TB_Calle.Location = new System.Drawing.Point(70, 86);
             this.TB_Calle.Name = "TB_Calle";
             this.TB_Calle.Size = new System.Drawing.Size(150, 23);
             this.TB_Calle.TabIndex = 19;
@@ -504,7 +477,7 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Colonia.AutoSize = true;
             this.LBL_Colonia.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Colonia.ForeColor = System.Drawing.Color.White;
-            this.LBL_Colonia.Location = new System.Drawing.Point(14, 100);
+            this.LBL_Colonia.Location = new System.Drawing.Point(10, 48);
             this.LBL_Colonia.Name = "LBL_Colonia";
             this.LBL_Colonia.Size = new System.Drawing.Size(57, 16);
             this.LBL_Colonia.TabIndex = 8;
@@ -513,39 +486,19 @@ namespace Proyecto_MAD.Empleados
             // TB_Colonia
             // 
             this.TB_Colonia.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Colonia.Location = new System.Drawing.Point(74, 97);
+            this.TB_Colonia.Location = new System.Drawing.Point(70, 45);
             this.TB_Colonia.Name = "TB_Colonia";
             this.TB_Colonia.Size = new System.Drawing.Size(150, 23);
             this.TB_Colonia.TabIndex = 17;
-            // 
-            // TB_Password
-            // 
-            this.TB_Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_Password.Location = new System.Drawing.Point(526, 31);
-            this.TB_Password.Name = "TB_Password";
-            this.TB_Password.Size = new System.Drawing.Size(146, 23);
-            this.TB_Password.TabIndex = 4;
-            this.TB_Password.TextChanged += new System.EventHandler(this.TB_Password_TextChanged);
-            // 
-            // LBL_Password
-            // 
-            this.LBL_Password.AutoSize = true;
-            this.LBL_Password.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBL_Password.Location = new System.Drawing.Point(554, 12);
-            this.LBL_Password.Name = "LBL_Password";
-            this.LBL_Password.Size = new System.Drawing.Size(84, 16);
-            this.LBL_Password.TabIndex = 6;
-            this.LBL_Password.Text = "Contraseña";
-            this.LBL_Password.Click += new System.EventHandler(this.LBL_Password_Click);
             // 
             // TB_Puesto
             // 
             this.TB_Puesto.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Puesto.Location = new System.Drawing.Point(374, 31);
             this.TB_Puesto.Name = "TB_Puesto";
+            this.TB_Puesto.ReadOnly = true;
             this.TB_Puesto.Size = new System.Drawing.Size(146, 23);
             this.TB_Puesto.TabIndex = 3;
-            this.TB_Puesto.TextChanged += new System.EventHandler(this.TB_Puesto_TextChanged);
             // 
             // LBL_Puesto
             // 
@@ -556,16 +509,15 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Puesto.Size = new System.Drawing.Size(53, 16);
             this.LBL_Puesto.TabIndex = 10;
             this.LBL_Puesto.Text = "Puesto";
-            this.LBL_Puesto.Click += new System.EventHandler(this.LBL_Puesto_Click);
             // 
             // TB_Departamento
             // 
             this.TB_Departamento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
             this.TB_Departamento.Location = new System.Drawing.Point(222, 31);
             this.TB_Departamento.Name = "TB_Departamento";
+            this.TB_Departamento.ReadOnly = true;
             this.TB_Departamento.Size = new System.Drawing.Size(146, 23);
             this.TB_Departamento.TabIndex = 2;
-            this.TB_Departamento.TextChanged += new System.EventHandler(this.TB_Departamento_TextChanged);
             // 
             // LBL_Departamento
             // 
@@ -576,7 +528,6 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Departamento.Size = new System.Drawing.Size(102, 16);
             this.LBL_Departamento.TabIndex = 8;
             this.LBL_Departamento.Text = "Departamento";
-            this.LBL_Departamento.Click += new System.EventHandler(this.LBL_Departamento_Click);
             // 
             // panel2
             // 
@@ -607,7 +558,7 @@ namespace Proyecto_MAD.Empleados
             this.LBL_NoCuenta.AutoSize = true;
             this.LBL_NoCuenta.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_NoCuenta.ForeColor = System.Drawing.Color.White;
-            this.LBL_NoCuenta.Location = new System.Drawing.Point(331, 41);
+            this.LBL_NoCuenta.Location = new System.Drawing.Point(310, 38);
             this.LBL_NoCuenta.Name = "LBL_NoCuenta";
             this.LBL_NoCuenta.Size = new System.Drawing.Size(77, 16);
             this.LBL_NoCuenta.TabIndex = 12;
@@ -616,7 +567,7 @@ namespace Proyecto_MAD.Empleados
             // TB_NoCuenta
             // 
             this.TB_NoCuenta.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.TB_NoCuenta.Location = new System.Drawing.Point(421, 38);
+            this.TB_NoCuenta.Location = new System.Drawing.Point(400, 35);
             this.TB_NoCuenta.MaxLength = 20;
             this.TB_NoCuenta.Name = "TB_NoCuenta";
             this.TB_NoCuenta.Size = new System.Drawing.Size(150, 23);
@@ -643,19 +594,62 @@ namespace Proyecto_MAD.Empleados
             this.TB_Banco.TabIndex = 21;
             this.TB_Banco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_Banco_KeyPress);
             // 
+            // Btn_Modificar
+            // 
+            this.Btn_Modificar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.Btn_Modificar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.Btn_Modificar.FlatAppearance.BorderSize = 2;
+            this.Btn_Modificar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.Btn_Modificar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.Btn_Modificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_Modificar.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_Modificar.ForeColor = System.Drawing.Color.White;
+            this.Btn_Modificar.IconChar = FontAwesome.Sharp.IconChar.FileImport;
+            this.Btn_Modificar.IconColor = System.Drawing.Color.White;
+            this.Btn_Modificar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.Btn_Modificar.IconSize = 45;
+            this.Btn_Modificar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Btn_Modificar.Location = new System.Drawing.Point(546, 21);
+            this.Btn_Modificar.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.Btn_Modificar.Name = "Btn_Modificar";
+            this.Btn_Modificar.Size = new System.Drawing.Size(126, 40);
+            this.Btn_Modificar.TabIndex = 54;
+            this.Btn_Modificar.Text = "Modificar";
+            this.Btn_Modificar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Btn_Modificar.UseVisualStyleBackColor = false;
+            this.Btn_Modificar.Click += new System.EventHandler(this.Btn_Modificar_Click);
+            // 
+            // lbl_CP
+            // 
+            this.lbl_CP.AutoSize = true;
+            this.lbl_CP.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CP.ForeColor = System.Drawing.Color.White;
+            this.lbl_CP.Location = new System.Drawing.Point(14, 135);
+            this.lbl_CP.Name = "lbl_CP";
+            this.lbl_CP.Size = new System.Drawing.Size(26, 16);
+            this.lbl_CP.TabIndex = 21;
+            this.lbl_CP.Text = "Cp";
+            // 
+            // TB_CP
+            // 
+            this.TB_CP.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.TB_CP.Location = new System.Drawing.Point(70, 128);
+            this.TB_CP.Name = "TB_CP";
+            this.TB_CP.Size = new System.Drawing.Size(150, 23);
+            this.TB_CP.TabIndex = 22;
+            // 
             // DatosPersonales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(732, 621);
+            this.Controls.Add(this.Btn_Modificar);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.TB_Puesto);
             this.Controls.Add(this.LBL_Puesto);
             this.Controls.Add(this.TB_Departamento);
             this.Controls.Add(this.LBL_Departamento);
-            this.Controls.Add(this.TB_Password);
-            this.Controls.Add(this.LBL_Password);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TB_NoEmpleado);
             this.Controls.Add(this.Panel_DP);
@@ -665,6 +659,7 @@ namespace Proyecto_MAD.Empleados
             this.Name = "DatosPersonales";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.DatosPersonales_Load);
             this.Panel_DP.ResumeLayout(false);
             this.Panel_DP.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -695,8 +690,6 @@ namespace Proyecto_MAD.Empleados
         private System.Windows.Forms.TextBox TB_CURP;
         private System.Windows.Forms.Label LBL_NSS;
         private System.Windows.Forms.Label LBL_RFC;
-        private System.Windows.Forms.TextBox TB_Password;
-        private System.Windows.Forms.Label LBL_Password;
         private System.Windows.Forms.TextBox TB_Puesto;
         private System.Windows.Forms.Label LBL_Puesto;
         private System.Windows.Forms.TextBox TB_Departamento;
@@ -708,8 +701,6 @@ namespace Proyecto_MAD.Empleados
         private System.Windows.Forms.TextBox TB_Email;
         private System.Windows.Forms.Label LBL_Municipio;
         private System.Windows.Forms.ComboBox CB_Municipio;
-        private System.Windows.Forms.Label LBL_Estado;
-        private System.Windows.Forms.ComboBox CB_Estado;
         private System.Windows.Forms.Label LBL_NoInt;
         private System.Windows.Forms.TextBox TB_NoInt;
         private System.Windows.Forms.Label LBL_NoExt;
@@ -728,5 +719,8 @@ namespace Proyecto_MAD.Empleados
         private System.Windows.Forms.TextBox TB_Banco;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
+        private FontAwesome.Sharp.IconButton Btn_Modificar;
+        private System.Windows.Forms.Label lbl_CP;
+        private System.Windows.Forms.TextBox TB_CP;
     }
 }

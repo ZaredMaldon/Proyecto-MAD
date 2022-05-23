@@ -124,6 +124,7 @@ namespace Proyecto_MAD.Gerente
             if (Tb_Password2.Text!=TB_Password.Text)
             {
                 MessageBox.Show("Las contrase;as deben ser iguales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                validaciones=false;
             }
 
             if (!email.IsMatch(TB_Email.Text))

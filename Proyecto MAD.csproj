@@ -130,12 +130,12 @@
     <Compile Include="Calculo\DatosEmpresa.Designer.cs">
       <DependentUpon>DatosEmpresa.cs</DependentUpon>
     </Compile>
-    <Compile Include="DAO\DAO_GeneraciondeRecibo.cs" />
-    <Compile Include="GeneraciondeRecibo.cs" />
+    <Compile Include="DAO\DAO_Deducciones.cs" />
     <Compile Include="DAO\DAO_Departamentos.cs" />
     <Compile Include="DAO\DAO_Empleado.cs" />
     <Compile Include="DAO\DAO_Empresa.cs" />
     <Compile Include="DAO\DAO_GenerarRecibo.cs" />
+    <Compile Include="DAO\DAO_Percepciones.cs" />
     <Compile Include="DAO\DAO_Puestos.cs" />
     <Compile Include="Empleados\CambiarContra.cs">
       <SubType>Form</SubType>
@@ -199,6 +199,7 @@
     <Compile Include="Calculo\Percepciones.Designer.cs">
       <DependentUpon>Percepciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Moneda.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recibo\PEDE_Empleado.cs">

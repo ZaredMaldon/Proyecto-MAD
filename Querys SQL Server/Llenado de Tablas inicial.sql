@@ -58,8 +58,6 @@ go
 select * from Direcciones
 insert into Direcciones (MunicipioFk,Cp,Colonia,Calle,NoExt)values(39,'66054','Centro','Guerrero',250)
 Declare @idDirecciones int=(Select @@IDENTITY)
-insert into Empresa(RazonSocial,Direccionfk,Telefono,Email,RegistroPatronal,RFC,FechaInicioOp) values ('Zama Industrie S.A',21,85461234,'Zama@zama.com','124456987456120','ZAI2004082K1','20200408');
+insert into Empresa(RazonSocial,Direccionfk,Telefono,Email,RegistroPatronal,RFC,FechaInicioOp) values ('Zama Industrie S.A',1,85461234,'Zama@zama.com','124456987456120','ZAI2004082K1','20200408');
 SELECT*FROM Empresa
 select * from Direcciones
-
-

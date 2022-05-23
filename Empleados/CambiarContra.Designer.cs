@@ -169,6 +169,7 @@ namespace Proyecto_MAD.Empleados
             this.Name = "CambiarContra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.CambiarContra_Load);
             this.Panel_Background.ResumeLayout(false);
             this.Panel_Background.PerformLayout();
             this.ResumeLayout(false);

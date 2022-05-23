@@ -722,7 +722,7 @@ where NombreDpto=@Departamento
 order by Departamento
 end
 
-end else /*Si es null Departamento*/
+end else/*Si es null Departamento*/
 begin
 
 ------------------------------------------------------------Parte 1---------------------------------------------------------------------------------------------------
@@ -763,7 +763,7 @@ END
 
 /*----------------------------------------------------------------------------------Reporte de Nómina----------------------------------------------------------------------------------*/
 go
-create procedure SP_ReporteNomina
+alter procedure SP_ReporteNomina
 @Año int = null
 as
 begin
@@ -773,13 +773,13 @@ if(@Año = 0)
 begin
 set @SueldoBrutoTotal =(Select Sum([Sueldo Bruto Dpto.]) from vw_ReporteNomina) 
 set @SueldoNetoTotal=(Select Sum([Sueldo Neto Dpto.]) from vw_ReporteNomina)
-select Departamento,Año,Mes,Concat('$',[Sueldo Bruto Dpto.]) as [Sueldo Bruto Dpto.],Concat('$',[Sueldo Neto Dpto.]) as [Sueldo Neto Dpto.],Concat('$',@SueldoBrutoTotal) as [SueldoBrutoTotal] ,Concat('$',@SueldoNetoTotal) as [SueldoNetoTotal] from vw_ReporteNomina
+select Departamento,Año,Mes, FORMAT([Sueldo Bruto Dpto.] ,'C','En-Us')as [Sueldo Bruto Dpto.], FORMAT([Sueldo Neto Dpto.],'C','En-Us') as [Sueldo Neto Dpto.], FORMAT(@SueldoBrutoTotal,'C','En-Us') as [SueldoBrutoTotal] , FORMAT(@SueldoNetoTotal,'C','En-Us') as [SueldoNetoTotal] from vw_ReporteNomina
 order by Departamento,Año,Mes
 end else
 begin
 set @SueldoBrutoTotal  =(Select Sum([Sueldo Bruto Dpto.]) from vw_ReporteNomina) 
 set @SueldoNetoTotal =(Select Sum([Sueldo Neto Dpto.]) from vw_ReporteNomina)
-select Departamento,Año,Mes,Concat('$',[Sueldo Bruto Dpto.]) as [Sueldo Bruto Dpto.],Concat('$',[Sueldo Neto Dpto.]) as [Sueldo Neto Dpto.],Concat('$',@SueldoBrutoTotal) as [SueldoBrutoTotal] ,Concat('$',@SueldoNetoTotal) as [SueldoNetoTotal] from vw_ReporteNomina
+select Departamento,Año,Mes, FORMAT([Sueldo Bruto Dpto.] ,'C','En-Us')as [Sueldo Bruto Dpto.], FORMAT([Sueldo Neto Dpto.],'C','En-Us') as [Sueldo Neto Dpto.], FORMAT(@SueldoBrutoTotal,'C','En-Us') as [SueldoBrutoTotal] , FORMAT(@SueldoNetoTotal,'C','En-Us') as [SueldoNetoTotal] from vw_ReporteNomina
 where Año<=@Año
 order by Departamento,Año,Mes
 end

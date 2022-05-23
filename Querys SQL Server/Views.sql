@@ -12,19 +12,19 @@ Inner join Municipios m on m.idMunicipio=d.MunicipioFk
 go
 ALTER view vw_Percepciones
 as
-SELECT IdPercepcion as ID,NombrePercepcion as Nombre ,CONCAT('$ ',Bono)AS Bono,BonoPorcentaje as Porcentaje from Percepciones;
+SELECT IdPercepcion as ID,NombrePercepcion as Nombre , FORMAT(Bono,'C','En-Us')AS Bono,BonoPorcentaje as Porcentaje from Percepciones;
 /*DATENAME(MONTH,FechaAplicada)as Mes,DATEPART(YEAR,FechaAplicada) as Año*/
 /*-------------------------------------------------------------- View de Deducciones ----------------------------------------------------------------------------------------*/
 go
 ALTER view vw_Deducciones
 as
-SELECT IdDeduccion as ID,NombreDeduccion as Nombre ,CONCAT('$ ',Descuento)AS Descuento,DescuentoPorcentaje as Porcentaje from Deducciones;
+SELECT IdDeduccion as ID,NombreDeduccion as Nombre , FORMAT(Descuento,'C','En-Us')AS Descuento,DescuentoPorcentaje as Porcentaje from Deducciones;
 
 /*-------------------------------------------------------------- View de Departamentos ----------------------------------------------------------------------------------------*/
 go
 alter view vw_Departamentos
 as
-SELECT idDpto as ID,NombreDpto as Nombre,CONCAT('$ ',SueldoBase)AS SueldoBase from Departamentos;
+SELECT idDpto as ID,NombreDpto as Nombre, FORMAT(SueldoBase,'C','En-Us')AS SueldoBase from Departamentos;
 
 /*-------------------------------------------------------------- View de Puestos ----------------------------------------------------------------------------------------*/
 go
@@ -57,7 +57,7 @@ join Puestos p on pd.Puestofk=p.IdPuesto;
 go
 alter view vw_Nomina
 as
-Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as SueldoN, Concat('$',n.Sueldo_bruto) as SueldoB,n.Bancofk as Banco ,n.NoCuentafk as [No.Cuenta] from NOMINA n
+Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,FORMAT(n.Sueldo_neto,'C','En-Us') as SueldoN,  FORMAT(n.Sueldo_bruto,'C','En-Us') as SueldoB,n.Bancofk as Banco ,n.NoCuentafk as [No.Cuenta] from NOMINA n
 join Empleados e on e.NoEmpleado=n.Empleadofk
 
 /*-------------------------------------------------------------View Reporte General de Nómina------------------------------------------------------------------------------*/
@@ -77,7 +77,7 @@ as
 Select d.NombreDpto as Departamento,dbo.fn_ContarEmpleados(d.idDpto) as [Cantidad de Empleados] from Departamentos d
 /*-------------------------------------------------------------View ReporteNomina----------------------------------------------------------------------------------------------*/
 go
-create view vw_ReporteNomina
+alter view vw_ReporteNomina
 as
 Select d.NombreDpto as Departamento,DATEPART(YEAR,n.FechaNomina) as Año,DATEPART(MONTH,n.FechaNomina) as Mes,DBO.fn_SumatoriaSBSN(1,d.idDpto) as [Sueldo Bruto Dpto.],DBO.fn_SumatoriaSBSN(2,d.idDpto) as [Sueldo Neto Dpto.] from NOMINA n
 join Asiganciones a on a.Empleadofk=n.Empleadofk

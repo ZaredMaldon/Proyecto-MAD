@@ -51,35 +51,40 @@ end
 
 /*--------------------------------------------------------------------View percepciones/deducciones------------------------------------------------------------------------------------------------*/
 go 
-create procedure SP_ImportePD
+ALTER procedure SP_ImportePD
+@Opc int,
 @idEmp int = null,
 @TotalPercepciones money = null,
 @TotalDeducciones money = null,
-@Fijos money = null,
 @FechaNomina date = null,
 @SueldoBruto money = null
 
 
 as 
 begin
-Select @TotalPercepciones=SUM(p.Bono) + dbo.fn_SumPeDe(1,@SueldoBruto,@FechaNomina,@idEmp) from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
+if(@Opc=1)
+begin
+
+Select  SUM(p.Bono) + dbo.fn_SumPeDe(1,@SueldoBruto,@FechaNomina,@idEmp) as TotalPercepciones from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
 			join Percepciones p on p.IdPercepcion=pe.Percepcionfk
 			join Empleados e on e.NoEmpleado=pe.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(pe.FechaAplicada)=MONTH(@FechaNomina) and YEAR(pe.FechaAplicada)=YEAR(@FechaNomina))
 
-            Select @Fijos=Sum(DescuentoPorcentaje)*@SueldoBruto from Deducciones where NombreDeduccion='IMMS' or NombreDeduccion='ISR'
-
-Select @TotalDeducciones=SUM(ded.Descuento)+@Fijos+dbo.fn_SumPeDe(2,@SueldoBruto,@FechaNomina,@idEmp)  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
+end
+If(@Opc=2)
+begin
+Select SUM(ded.Descuento)+dbo.fn_SumPeDe(2,@SueldoBruto,@FechaNomina,@idEmp)as TotalDeducciones  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
 			join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
 			join Empleados e on e.NoEmpleado=de.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(de.FechaAplicada)=MONTH(@FechaNomina) and YEAR(de.FechaAplicada)=YEAR(@FechaNomina))
-
+end
+           
 end
 
 /*------------------------------------------------------------Mostrar percepciones y deducciones----------------------------------------------------------*/
 
 go 
-alter procedure SP_MostrarDedPer
+create procedure SP_MostrarDedPer
 @Opc int,
 @idEmp int = null,
 @FechaNomina date = null

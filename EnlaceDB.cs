@@ -1661,6 +1661,63 @@ namespace Proyecto_MAD.EnlaceDB
 
         }
 
+        public void Toma_Datos_TotalPEDE(int Opc, int idEmp, DateTime FNomina,float SueldoBruto )//Toma total percepciones y deducciones
+        {
+            var msg = "";
+
+
+            try
+            {
+                conectar();
+                string qry = "SP_ImportePD";
+                _comandosql = new SqlCommand(qry, _conexion);
+                _comandosql.CommandType = CommandType.StoredProcedure;
+                _comandosql.CommandTimeout = 1200;
+
+                var parametro1 = _comandosql.Parameters.Add("@Opc", SqlDbType.Int);
+                parametro1.Value = Opc;
+                var parametro2 = _comandosql.Parameters.Add("@idEmp", SqlDbType.Int);
+                parametro2.Value = idEmp;
+                var parametro3 = _comandosql.Parameters.Add("@FechaNomina", SqlDbType.Date);
+                parametro3.Value = FNomina;
+                var parametro4 = _comandosql.Parameters.Add("@SueldoBruto", SqlDbType.Money);
+                parametro4.Value = SueldoBruto;
+
+                _adaptador.InsertCommand = _comandosql;
+
+                SqlDataReader dr = _comandosql.ExecuteReader();
+
+                while (dr.Read())//si no pasa este es porque no hay nada en el query
+                {
+                    if(Opc==1)
+                         DAO_GenerarRecibo.TotalPercepciones = (decimal)dr.GetSqlMoney(0);
+                    else if(Opc==2)
+                         DAO_GenerarRecibo.TotalDeducciones = (decimal)dr.GetSqlMoney(0);
+
+                    
+                }
+
+
+            }
+            catch (SqlException e)
+            {
+
+                msg = "Excepción de base de datos: \n";
+                msg += e.Message;
+                MessageBox.Show(msg, "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            finally
+            {
+                desconectar();
+            }
+
+
+            //Recibo
+
+
+
+        }
+
         public void Toma_Datos_Recibo(int Opc, string Usuario , string Contraseña)
         {
             var msg = "";

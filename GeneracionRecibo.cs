@@ -213,7 +213,7 @@ namespace Proyecto_MAD
             if (Porcentaje!="%0")
             {
                 //Texto de Importe deduccion
-                importe = new TextFragment(moneda.getPorcentaje(DAO_GenerarRecibo.SueldoBruto, Porcentaje));
+                importe = new TextFragment("$"+moneda.LimitadorDecimales2((moneda.getPorcentaje(DAO_GenerarRecibo.SueldoBruto, Porcentaje))));
                 importe.Position = new Position(450, y);
                 importe.TextState.FontSize = 8;
                 importe.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -222,7 +222,7 @@ namespace Proyecto_MAD
             }
             else
             {
-                importe = new TextFragment(Descuento);
+                importe = new TextFragment("$"+moneda.LimitadorDecimales2(Descuento));
                 importe.Position = new Position(450, y);
                 importe.TextState.FontSize = 8;
                 importe.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -275,7 +275,7 @@ namespace Proyecto_MAD
 
             if (Porcentaje != "%0")
             {
-                bono = new TextFragment(moneda.getPorcentaje(DAO_GenerarRecibo.SueldoBruto, Porcentaje));
+                bono = new TextFragment("$"+moneda.LimitadorDecimales2(moneda.getPorcentaje(DAO_GenerarRecibo.SueldoBruto, Porcentaje)));
                 bono.Position = new Position(175, y);
                 bono.TextState.FontSize = 8;
                 bono.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -284,7 +284,7 @@ namespace Proyecto_MAD
             }
             else
             {
-                bono = new TextFragment(Bono);
+                bono = new TextFragment("$"+moneda.LimitadorDecimales2(Bono));
                 bono.Position = new Position(175, y);
                 bono.TextState.FontSize = 8;
                 bono.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -315,7 +315,7 @@ namespace Proyecto_MAD
             Page page = pdfDocument.Pages[1];
 
             //Texto de Sueldo Bruto
-            TextFragment SueldoBruto = new TextFragment(DAO_GenerarRecibo.SueldoBruto.ToString());
+            TextFragment SueldoBruto = new TextFragment("$"+moneda.LimitadorDecimales2(DAO_GenerarRecibo.SueldoBruto));
             SueldoBruto.Position = new Position(500, 370);
             SueldoBruto.TextState.FontSize = 8;
             SueldoBruto.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -323,7 +323,7 @@ namespace Proyecto_MAD
             SueldoBruto.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de Sueldo Neto
-            TextFragment SueldoNeto = new TextFragment(DAO_GenerarRecibo.SueldoNeto.ToString());
+            TextFragment SueldoNeto = new TextFragment("$"+moneda.LimitadorDecimales2(DAO_GenerarRecibo.SueldoNeto));
             SueldoNeto.Position = new Position(500, 360);
             SueldoNeto.TextState.FontSize = 8;
             SueldoNeto.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -339,7 +339,7 @@ namespace Proyecto_MAD
             Dias.TextState.FontStyle = FontStyles.Bold;
 
             //SalarioDiario
-            TextFragment SalarioDiario = new TextFragment("$"+DAO_GenerarRecibo.SalarioDiario.ToString());
+            TextFragment SalarioDiario = new TextFragment("$"+moneda.LimitadorDecimales3(DAO_GenerarRecibo.SalarioDiario));
             SalarioDiario.Position = new Position(220, 582);
             SalarioDiario.TextState.FontSize = 8;
             SalarioDiario.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -395,16 +395,16 @@ namespace Proyecto_MAD
             Period.TextState.FontStyle = FontStyles.Bold;
 
             //Periodo de Total deducciones
-            TextFragment TotalDeduc= new TextFragment("$" + Totaldeduc.ToString());//DAn mal los resultados de todo, hacerlo por sql
-            TotalDeduc.Position = new Position(500, 380);
+            TextFragment TotalDeduc= new TextFragment("$" + moneda.LimitadorDecimales(DAO_GenerarRecibo.TotalDeducciones));
+            TotalDeduc.Position = new Position(500, 390);
             TotalDeduc.TextState.FontSize = 8;
             TotalDeduc.TextState.Font = FontRepository.FindFont("Century Gothic");
             TotalDeduc.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             TotalDeduc.TextState.FontStyle = FontStyles.Bold;
 
             //Periodo de Total Perc
-            TextFragment TotalPerc = new TextFragment("$"+Totalper.ToString());//Dan mal este resultado hacerlo por sql
-            TotalPerc.Position = new Position(500, 390);
+            TextFragment TotalPerc = new TextFragment("$"+ moneda.LimitadorDecimales(DAO_GenerarRecibo.TotalPercepciones));
+            TotalPerc.Position = new Position(500, 380);
             TotalPerc.TextState.FontSize = 8;
             TotalPerc.TextState.Font = FontRepository.FindFont("Century Gothic");
             TotalPerc.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);

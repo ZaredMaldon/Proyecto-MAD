@@ -177,5 +177,22 @@ namespace Proyecto_MAD
             }
             return n + getMiles(miles);
         }
+
+        public string getPorcentaje(string SueldoBruto,string porcentaje)
+        {
+            string Porcentaje,res;
+            float resu=0;
+            Porcentaje = porcentaje.Substring(1);
+            SueldoBruto=SueldoBruto.Substring(1);
+
+            float por = float.Parse(Porcentaje);
+            float SB=float.Parse(SueldoBruto);
+
+            por = por / 100;
+            resu = SB * por;
+            res = "$"+resu.ToString();
+
+            return res;
+        }
     }
 }

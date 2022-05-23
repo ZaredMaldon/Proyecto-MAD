@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 using Aspose.Pdf;
 using Aspose.Pdf.Text;
 using Proyecto_MAD.DAO;
-
+using Proyecto_MAD.Empleados;
 
 namespace Proyecto_MAD
 {
     class GeneracionRecibo
     {
         Moneda moneda=new Moneda();
+        decimal Totaldeduc, Totalper;
         private string pdfName { get; set; }
         //private List<DAO_Deducciones> deducc { get; set; }
         //private List<DAO_Percepciones> percepc { get; set; }
@@ -49,14 +50,16 @@ namespace Proyecto_MAD
             {
                 
                 AgregarDatos3(deduc.IdDeduccion,deduc.Nombre,deduc.Descuento,deduc.Porcentaje);
-                SumaY = SumaY + 20;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
+                SumaY = SumaY - 15;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
+                TotalDeducciones(deduc.Descuento);
 
             }
             SumaY = 0;
             foreach (DAO_Percepciones p in dAO_Percepciones)
             {
                 AgregarDatos4(p.IdPerc,p.Nombre,p.Bono,p.Porcentaje);
-                SumaY = SumaY + 20;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
+                SumaY = SumaY - 15;//Esto es lo que se movera hacia abajo cada que ponga todos los datos de arriba
+                TotalPercepciones(p.Bono);
             }
 
             AgregarDatos5();
@@ -151,7 +154,7 @@ namespace Proyecto_MAD
             RegistroPatronal.TextState.FontStyle = FontStyles.Bold;
 
             //Fecha de Nomina
-            TextFragment FechaNomina = new TextFragment(DAO_GenerarRecibo.FechaNomina.ToShortDateString());
+            TextFragment FechaNomina = new TextFragment(VistaPDF.FechaNomina.ToShortDateString());
             FechaNomina.Position = new Position(150, 700);
             FechaNomina.TextState.FontSize = 8;
             FechaNomina.TextState.Font = FontRepository.FindFont("Century Gothic");
@@ -187,12 +190,13 @@ namespace Proyecto_MAD
 
         public void AgregarDatos3(int idDeduc,string NombreDeduc,string Descuento,string Porcentaje)//Acomoda los datos horizontales para que creen una tabla
         {
+            TextFragment importe;
             Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
             Page page = pdfDocument.Pages[1];
-
+            int y = 515 + SumaY;
             //Texto de IDDeduccion
             TextFragment idDeduccion = new TextFragment(idDeduc.ToString());
-            idDeduccion.Position = new Position(330, 515);
+            idDeduccion.Position = new Position(330,y);
             idDeduccion.TextState.FontSize = 8;
             idDeduccion.TextState.Font = FontRepository.FindFont("Century Gothic");
             idDeduccion.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -200,22 +204,35 @@ namespace Proyecto_MAD
 
             //Texto de ConceptoDeduccion
             TextFragment NombreDe = new TextFragment(NombreDeduc);
-            NombreDe.Position = new Position(380, 515);
+            NombreDe.Position = new Position(380, y);
             NombreDe.TextState.FontSize = 8;
             NombreDe.TextState.Font = FontRepository.FindFont("Century Gothic");
             NombreDe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             NombreDe.TextState.FontStyle = FontStyles.Bold;
 
-            //Texto de Importe deduccion
-            TextFragment importe = new TextFragment(Descuento);
-            importe.Position = new Position(450 , 515);
-            importe.TextState.FontSize = 8;
-            importe.TextState.Font = FontRepository.FindFont("Century Gothic");
-            importe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
-            importe.TextState.FontStyle = FontStyles.Bold;
+            if (Porcentaje!="%0")
+            {
+                //Texto de Importe deduccion
+                importe = new TextFragment(moneda.getPorcentaje(DAO_GenerarRecibo.SueldoBruto, Porcentaje));
+                importe.Position = new Position(450, y);
+                importe.TextState.FontSize = 8;
+                importe.TextState.Font = FontRepository.FindFont("Century Gothic");
+                importe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+                importe.TextState.FontStyle = FontStyles.Bold;
+            }
+            else
+            {
+                importe = new TextFragment(Descuento);
+                importe.Position = new Position(450, y);
+                importe.TextState.FontSize = 8;
+                importe.TextState.Font = FontRepository.FindFont("Century Gothic");
+                importe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+                importe.TextState.FontStyle = FontStyles.Bold;
+            }
+           
 
             TextFragment Por = new TextFragment(Porcentaje);
-            Por.Position = new Position(520 , 515);
+            Por.Position = new Position(520 ,y);
             Por.TextState.FontSize = 8;
             Por.TextState.Font = FontRepository.FindFont("Century Gothic");
             Por.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -236,11 +253,13 @@ namespace Proyecto_MAD
         public void AgregarDatos4(int idPerc,string NombrePerc,string Bono,string Porcentaje)
         {
             Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);
+            TextFragment bono;
             Page page = pdfDocument.Pages[1];
+            int y = 515+SumaY;
 
             //Texto de ID Percepcion
             TextFragment idPer = new TextFragment(idPerc.ToString());
-            idPer.Position = new Position(70 , 515);
+            idPer.Position = new Position(70 ,y);
             idPer.TextState.FontSize = 8;
             idPer.TextState.Font = FontRepository.FindFont("Century Gothic");
             idPer.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -248,22 +267,34 @@ namespace Proyecto_MAD
 
             //Texto de Concepto Percepcion
             TextFragment NombrePer = new TextFragment(NombrePerc);
-            NombrePer.Position = new Position(135, 515);
+            NombrePer.Position = new Position(100, y);
             NombrePer.TextState.FontSize = 8;
             NombrePer.TextState.Font = FontRepository.FindFont("Century Gothic");
             NombrePer.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             NombrePer.TextState.FontStyle = FontStyles.Bold;
 
-            TextFragment bono = new TextFragment(Bono);
-            bono.Position = new Position(175, 515);
-            bono.TextState.FontSize = 8;
-            bono.TextState.Font = FontRepository.FindFont("Century Gothic");
-            bono.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
-            bono.TextState.FontStyle = FontStyles.Bold;
+            if (Porcentaje != "%0")
+            {
+                bono = new TextFragment(moneda.getPorcentaje(DAO_GenerarRecibo.SueldoBruto, Porcentaje));
+                bono.Position = new Position(175, y);
+                bono.TextState.FontSize = 8;
+                bono.TextState.Font = FontRepository.FindFont("Century Gothic");
+                bono.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+                bono.TextState.FontStyle = FontStyles.Bold;
+            }
+            else
+            {
+                bono = new TextFragment(Bono);
+                bono.Position = new Position(175, y);
+                bono.TextState.FontSize = 8;
+                bono.TextState.Font = FontRepository.FindFont("Century Gothic");
+                bono.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+                bono.TextState.FontStyle = FontStyles.Bold;
 
+            }
 
             TextFragment Por = new TextFragment(Porcentaje);
-            Por.Position = new Position(230 ,515);
+            Por.Position = new Position(230 ,y);
             Por.TextState.FontSize = 8;
             Por.TextState.Font = FontRepository.FindFont("Century Gothic");
             Por.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
@@ -363,11 +394,28 @@ namespace Proyecto_MAD
             Period.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             Period.TextState.FontStyle = FontStyles.Bold;
 
+            //Periodo de Total deducciones
+            TextFragment TotalDeduc= new TextFragment("$" + Totaldeduc.ToString());//DAn mal los resultados de todo, hacerlo por sql
+            TotalDeduc.Position = new Position(500, 380);
+            TotalDeduc.TextState.FontSize = 8;
+            TotalDeduc.TextState.Font = FontRepository.FindFont("Century Gothic");
+            TotalDeduc.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            TotalDeduc.TextState.FontStyle = FontStyles.Bold;
+
+            //Periodo de Total Perc
+            TextFragment TotalPerc = new TextFragment("$"+Totalper.ToString());//Dan mal este resultado hacerlo por sql
+            TotalPerc.Position = new Position(500, 390);
+            TotalPerc.TextState.FontSize = 8;
+            TotalPerc.TextState.Font = FontRepository.FindFont("Century Gothic");
+            TotalPerc.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
+            TotalPerc.TextState.FontStyle = FontStyles.Bold;
 
             TextBuilder txtBuild = new TextBuilder(page);
             txtBuild.AppendText(TTex);
             txtBuild.AppendText(NoNomina);
             txtBuild.AppendText(Period);
+            txtBuild.AppendText(TotalDeduc);
+            txtBuild.AppendText(TotalPerc);
 
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
 
@@ -385,6 +433,21 @@ namespace Proyecto_MAD
             
 
             return can;
+        }
+
+        private void TotalDeducciones(string deduc)
+        {
+            string a = deduc.Substring(1);
+            decimal ded=decimal.Parse(a);
+            Totaldeduc = Totaldeduc + ded;
+           
+        }
+        private void TotalPercepciones(string Perc)
+        {
+            string a =Perc.Substring(1);
+            decimal ded = decimal.Parse(a);
+            Totalper = Totalper + ded;
+
         }
     }
 

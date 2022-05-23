@@ -55,26 +55,31 @@ begin
 
 if(@Opc=1)/*Agregar Empleado*/
 begin
+		
 		Begin try
 			Begin Tran
-				Insert into Usuarios (Usuario,Contraseña,Tipo) values(@Usuario,@Contraseña,@Tipo);
+				Insert into Usuarios (Usuario,Contraseña,Tipo) values(@Usuario,@Contraseña,@Tipo);	
+			
 				SET  @IdUsuario=(SELECT @@IDENTITY);
 
 				Insert into Direcciones(MunicipioFk,Cp,Colonia,Calle,NoInterior,NoExt) values (@Municipio,@CP,@Colonia,@Calle,@Nointerior,@NoExt);
+			
 				SET @IdDireccion=(SELECT @@IDENTITY);
 
 				Insert into Empleados(Nombre,APaterno,AMaterno,FechaNacimiento,CURP,NSS,RFC,Email,Telefono1,Telefono2,Contratacion,Direccionfk,Usuariofk,Banco,NoCuenta)
 				values (@Nombre,@AP,@AM,@FechaNac,@CURP,@NSS,@RFC,@Email,@Telefono1,@Telefono2,@FContratacion,@IdDireccion,@IdUsuario,@Banco,@NoCuenta);
+			
 				SET @IdEmpleado=(Select @@IDENTITY);
 
-
+				
 				SELECT @IdPD=IdPD from vw_PuesDep where Puesto=@Puesto and Departamento=@Dpto;
 
 				Insert into Asiganciones(Empleadofk,PuestoDptofk) values (@IdEmpleado,@IdPD);
-
+			
 			commit tran
 	End try
 	Begin catch
+			raiserror('Error al insertar Empleado',16,1);
 			Rollback tran
 	end catch
 
@@ -138,7 +143,7 @@ inner join Direcciones d on d.idDireccion=e.Direccionfk
 inner join Municipios m on m.idMunicipio=d.MunicipioFk
 inner join Usuarios u on u.idUsuario=e.Usuariofk
 inner join Asiganciones a on e.NoEmpleado=a.Empleadofk
-inner join PuestoDepartamento  pd on pd.Departamentofk=a.PuestoDptofk
+inner join PuestoDepartamento  pd on pd.IdPD=a.PuestoDptofk
 inner join Puestos p on p.IdPuesto=pd.Puestofk
 inner join Departamentos de on de.idDpto=pd.Departamentofk
 where NoEmpleado=@IdEmpleado;
@@ -178,7 +183,8 @@ begin
 end
 if(@Opc=5)/*Llenado de CB Deduc por Deducciones*/
 begin
-	Select IdDeduccion,NombreDeduccion from Deducciones;
+	Select IdDeduccion,NombreDeduccion from Deducciones
+	where NombreDeduccion!='IMMS' and NombreDeduccion!='ISR';
 end
 END
 
@@ -440,7 +446,7 @@ end
 
 /*-------------------------------------------------------------------------------------Calculo------------------------------------------------------------------------------------------*/
 go
-create procedure SP_Calculo
+alter procedure SP_Calculo
 @FechaNomina date = null
 
 as
@@ -459,9 +465,14 @@ Declare @banco varchar(30),@noCuenta int
 		declare @tabla table(idEmpleado int,Ingreso date)
 		insert into @tabla(idEmpleado,Ingreso) select idEmp,Contratacion from vw_Asignaciones 
 		declare @count int=(select count(idEmpleado) from @tabla)
+
+		declare @IMMS int,@ISR int
+		set @IMMS=(select IdDeduccion from Deducciones where NombreDeduccion='IMMS')
+		set @ISR=(select IdDeduccion from Deducciones where NombreDeduccion='ISR')
 		
 		while @count>0
 		begin
+			
 			declare @idEmp int=(select top(1) idEmpleado from @tabla order by idEmpleado)
 			declare @FechaIngreso date=(Select top(1) Ingreso from @tabla order by idEmpleado)
 			declare @Diferencia int, @nombre varchar(50)
@@ -472,8 +483,13 @@ Declare @banco varchar(30),@noCuenta int
 			if(@Diferencia>=0)
 			begin
 
+			--Agregamos las deducciones basicas al empleado
+		
+			insert into Deducciones_Empleado (Empleadofk,Deduccionfk,FechaAplicada) values (@idEmp,@IMMS,@FechaNomina)
+			insert into Deducciones_Empleado (Empleadofk,Deduccionfk,FechaAplicada) values (@idEmp,@ISR,@FechaNomina)
+
 			--Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from  vw_Asignaciones  where idEmp=@idEmp--Sueldo mensual bruto con todos los dias
-			Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from PuestoDepartamento--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
+			Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from vw_Asignaciones where idEmp=@idEmp--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
 
 
 			Select @TotalPercepciones=SUM(p.Bono) + dbo.fn_SumPeDe(1,@SueldoBruto,@FechaNomina,@idEmp) from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
@@ -481,11 +497,11 @@ Declare @banco varchar(30),@noCuenta int
 			join Empleados e on e.NoEmpleado=pe.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
 
-			declare @Fijos money/*imms e isr*/
+			--declare @Fijos money/*imms e isr*/
 	
-			Select @Fijos=Sum(DescuentoPorcentaje)*@SueldoBruto from Deducciones where NombreDeduccion='IMMS' or NombreDeduccion='ISR'
+			--Select @Fijos=Sum(DescuentoPorcentaje)*@SueldoBruto from Deducciones where NombreDeduccion='IMMS' or NombreDeduccion='ISR'
 
-			Select @TotalDeducciones=SUM(ded.Descuento)+@Fijos+dbo.fn_SumPeDe(2,@SueldoBruto,@FechaNomina,@idEmp)  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
+			Select @TotalDeducciones=SUM(ded.Descuento)+dbo.fn_SumPeDe(2,@SueldoBruto,@FechaNomina,@idEmp)  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
 			join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
 			join Empleados e on e.NoEmpleado=de.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
@@ -503,13 +519,21 @@ Declare @banco varchar(30),@noCuenta int
 
 			Select @banco=Banco,@noCuenta=NoCuenta from Empleados where NoEmpleado=@idEmp
 
+			Declare @SDN money,@PuN varchar(25),@DeN varchar(25)
+			Select @SDN=pd.SalarioDiario,@PuN=p.NombrePuesto,@DeN=d.NombreDpto from Empleados e
+				join Asiganciones a on  a.Empleadofk=e.NoEmpleado
+				join PuestoDepartamento pd on pd.IdPD=a.PuestoDptofk
+				join Puestos p on p.IdPuesto=pd.Puestofk
+				join Departamentos d on d.idDpto=pd.Departamentofk
+				where e.NoEmpleado=@idEmp
+
 			if(@TotalPercepciones is null and @TotalDeducciones is null)
 			begin
-				insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina)values(@idEmp,@SueldoBruto,@SueldoBruto,@banco,@noCuenta,@FechaNomina)
+				insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina,SalarioDirario,Puesto,Departamento)values(@idEmp,@SueldoBruto,@SueldoBruto,@banco,@noCuenta,@FechaNomina,@SDN,@PuN,@DeN)
 			end
 			else if(@TotalDeducciones is not null or @TotalPercepciones is not null)
 			begin
-				insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina)values(@idEmp,@SueldoBruto,@SueldoNeto,@banco,@noCuenta,@FechaNomina)
+				insert into NOMINA (Empleadofk,Sueldo_bruto,Sueldo_neto,Bancofk,NoCuentafk,FechaNomina,SalarioDirario,Puesto,Departamento)values(@idEmp,@SueldoBruto,@SueldoNeto,@banco,@noCuenta,@FechaNomina,@SDN,@PuN,@DeN)
 			end
 
 			end else

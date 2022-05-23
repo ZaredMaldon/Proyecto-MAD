@@ -28,6 +28,7 @@ namespace Proyecto_MAD.Recibo
             CB_Modo.SelectedIndex = 0;
             CB_Year.SelectedIndex = 0;
             CB_Mes.SelectedIndex = 0;
+
         }
 
         private void CB_Modo_SelectedIndexChanged(object sender, EventArgs e)

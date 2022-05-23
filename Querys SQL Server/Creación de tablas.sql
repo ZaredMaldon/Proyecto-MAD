@@ -140,12 +140,15 @@ CONSTRAINT FK_Deducciones FOREIGN KEY(Deduccionfk) REFERENCES Deducciones(IdDedu
 
 CREATE TABLE NOMINA(
 IdNomina             int IDENTITY (1000000,1)	NOT NULL,
-Empleadofk           int				NOT NULL,
+Empleadofk           int						NOT NULL,
 Sueldo_bruto         money				NOT NULL,
 Sueldo_neto          money				NOT NULL,
-Bancofk	             varchar(30)		NOT NULL,
-NoCuentafk			 int				NOT NULL,	     
-FechaNomina			 date				NOT NULL,
+Bancofk	             varchar(30)			NOT NULL,
+NoCuentafk			 int					NOT NULL,	     
+FechaNomina			 date					NOT NULL,
+SalarioDiario			money		,
+Puesto					varchar(25),
+Departamento		varchar(25),
 CONSTRAINT PK_Nomina PRIMARY KEY(IdNomina),
 CONSTRAINT FK_Empleado3 FOREIGN KEY(Empleadofk) REFERENCES Empleados(NoEmpleado),
 )

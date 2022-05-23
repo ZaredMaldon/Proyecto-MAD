@@ -231,6 +231,8 @@ namespace Proyecto_MAD
 
             pdfDocument.Save("../../Recibos PDF/" + pdfName);
         }
+
+        //Datos de Percepciones
         public void AgregarDatos4(int idPerc,string NombrePerc,string Bono,string Porcentaje)
         {
             Document pdfDocument = new Document("../../Recibos PDF/" + pdfName);

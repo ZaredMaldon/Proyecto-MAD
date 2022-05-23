@@ -192,31 +192,31 @@ namespace Proyecto_MAD
 
             //Texto de IDDeduccion
             TextFragment idDeduccion = new TextFragment(idDeduc.ToString());
-            idDeduccion.Position = new Position(70+SumaY, 100);
-            idDeduccion.TextState.FontSize = 12;
+            idDeduccion.Position = new Position(330, 515);
+            idDeduccion.TextState.FontSize = 8;
             idDeduccion.TextState.Font = FontRepository.FindFont("Century Gothic");
             idDeduccion.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             idDeduccion.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de ConceptoDeduccion
             TextFragment NombreDe = new TextFragment(NombreDeduc);
-            NombreDe.Position = new Position(80, 100);
-            NombreDe.TextState.FontSize = 12;
+            NombreDe.Position = new Position(380, 515);
+            NombreDe.TextState.FontSize = 8;
             NombreDe.TextState.Font = FontRepository.FindFont("Century Gothic");
             NombreDe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             NombreDe.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de Importe deduccion
             TextFragment importe = new TextFragment(Descuento);
-            importe.Position = new Position(90 , 100);
-            importe.TextState.FontSize = 12;
+            importe.Position = new Position(450 , 515);
+            importe.TextState.FontSize = 8;
             importe.TextState.Font = FontRepository.FindFont("Century Gothic");
             importe.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             importe.TextState.FontStyle = FontStyles.Bold;
 
             TextFragment Por = new TextFragment(Porcentaje);
-            Por.Position = new Position(90 , 100);
-            Por.TextState.FontSize = 12;
+            Por.Position = new Position(520 , 515);
+            Por.TextState.FontSize = 8;
             Por.TextState.Font = FontRepository.FindFont("Century Gothic");
             Por.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             Por.TextState.FontStyle = FontStyles.Bold;
@@ -238,31 +238,31 @@ namespace Proyecto_MAD
 
             //Texto de ID Percepcion
             TextFragment idPer = new TextFragment(idPerc.ToString());
-            idPer.Position = new Position(70 + SumaY, 100);
-            idPer.TextState.FontSize = 12;
+            idPer.Position = new Position(70 , 515);
+            idPer.TextState.FontSize = 8;
             idPer.TextState.Font = FontRepository.FindFont("Century Gothic");
             idPer.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             idPer.TextState.FontStyle = FontStyles.Bold;
 
             //Texto de Concepto Percepcion
             TextFragment NombrePer = new TextFragment(NombrePerc);
-            NombrePer.Position = new Position(80 + SumaY, 100);
-            NombrePer.TextState.FontSize = 12;
+            NombrePer.Position = new Position(135, 515);
+            NombrePer.TextState.FontSize = 8;
             NombrePer.TextState.Font = FontRepository.FindFont("Century Gothic");
             NombrePer.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             NombrePer.TextState.FontStyle = FontStyles.Bold;
 
             TextFragment bono = new TextFragment(Bono);
-            bono.Position = new Position(90 + SumaY, 100);
-            bono.TextState.FontSize = 12;
+            bono.Position = new Position(175, 515);
+            bono.TextState.FontSize = 8;
             bono.TextState.Font = FontRepository.FindFont("Century Gothic");
             bono.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             bono.TextState.FontStyle = FontStyles.Bold;
 
 
             TextFragment Por = new TextFragment(Porcentaje);
-            Por.Position = new Position(90 + SumaY, 100);
-            Por.TextState.FontSize = 12;
+            Por.Position = new Position(230 ,515);
+            Por.TextState.FontSize = 8;
             Por.TextState.Font = FontRepository.FindFont("Century Gothic");
             Por.TextState.ForegroundColor = Aspose.Pdf.Color.FromRgb(System.Drawing.Color.Black);
             Por.TextState.FontStyle = FontStyles.Bold;

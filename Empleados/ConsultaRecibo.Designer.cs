@@ -31,14 +31,14 @@ namespace Proyecto_MAD.Empleados
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaRecibo));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.CB_Año = new System.Windows.Forms.ComboBox();
+            this.lbl_Año = new System.Windows.Forms.Label();
             this.LBL_Informacion = new System.Windows.Forms.Label();
             this.Inicio_Btn = new FontAwesome.Sharp.IconButton();
             this.DGV_Recibos = new System.Windows.Forms.DataGridView();
             this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
-            this.CB_Año = new System.Windows.Forms.ComboBox();
-            this.lbl_Año = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Recibos)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +59,31 @@ namespace Proyecto_MAD.Empleados
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 22;
             // 
+            // CB_Año
+            // 
+            this.CB_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CB_Año.FormattingEnabled = true;
+            this.CB_Año.Items.AddRange(new object[] {
+            "2022",
+            "2021",
+            "2020"});
+            this.CB_Año.Location = new System.Drawing.Point(338, 83);
+            this.CB_Año.Name = "CB_Año";
+            this.CB_Año.Size = new System.Drawing.Size(156, 23);
+            this.CB_Año.TabIndex = 26;
+            // 
+            // lbl_Año
+            // 
+            this.lbl_Año.AutoSize = true;
+            this.lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Año.ForeColor = System.Drawing.Color.White;
+            this.lbl_Año.Location = new System.Drawing.Point(398, 59);
+            this.lbl_Año.Name = "lbl_Año";
+            this.lbl_Año.Size = new System.Drawing.Size(45, 21);
+            this.lbl_Año.TabIndex = 25;
+            this.lbl_Año.Text = "Año";
+            this.lbl_Año.Click += new System.EventHandler(this.lbl_Año_Click);
+            // 
             // LBL_Informacion
             // 
             this.LBL_Informacion.AutoSize = true;
@@ -66,7 +91,7 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Informacion.ForeColor = System.Drawing.Color.Red;
             this.LBL_Informacion.Location = new System.Drawing.Point(23, 157);
             this.LBL_Informacion.Name = "LBL_Informacion";
-            this.LBL_Informacion.Size = new System.Drawing.Size(176, 16);
+            this.LBL_Informacion.Size = new System.Drawing.Size(177, 16);
             this.LBL_Informacion.TabIndex = 24;
             this.LBL_Informacion.Text = "*No hay recibos disponibles";
             this.LBL_Informacion.Visible = false;
@@ -150,30 +175,6 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Mes";
             this.LBL_Mes.Click += new System.EventHandler(this.LBL_Mes_Click);
-            // 
-            // CB_Año
-            // 
-            this.CB_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
-            this.CB_Año.FormattingEnabled = true;
-            this.CB_Año.Items.AddRange(new object[] {
-            "2022",
-            "2021",
-            "2020"});
-            this.CB_Año.Location = new System.Drawing.Point(338, 83);
-            this.CB_Año.Name = "CB_Año";
-            this.CB_Año.Size = new System.Drawing.Size(156, 23);
-            this.CB_Año.TabIndex = 26;
-            // 
-            // lbl_Año
-            // 
-            this.lbl_Año.AutoSize = true;
-            this.lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Año.ForeColor = System.Drawing.Color.White;
-            this.lbl_Año.Location = new System.Drawing.Point(398, 59);
-            this.lbl_Año.Name = "lbl_Año";
-            this.lbl_Año.Size = new System.Drawing.Size(46, 21);
-            this.lbl_Año.TabIndex = 25;
-            this.lbl_Año.Text = "Mes";
             // 
             // ConsultaRecibo
             // 

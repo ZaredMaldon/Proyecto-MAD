@@ -44,6 +44,10 @@ namespace Proyecto_MAD.Empleados
             //VistaPDF vistaPDF=new VistaPDF();
             //vistaPDF.ShowDialog();
         }
-       
+
+        private void lbl_Año_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

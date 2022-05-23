@@ -448,7 +448,7 @@ end
 go
 alter procedure SP_Calculo
 @FechaNomina date = null
-
+--nuevo
 as
 BEGIN
 declare @nomina int

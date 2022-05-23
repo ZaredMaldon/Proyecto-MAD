@@ -149,6 +149,7 @@ FechaNomina			 date					NOT NULL,
 SalarioDiario			money		,
 Puesto					varchar(25),
 Departamento		varchar(25),
+
 CONSTRAINT PK_Nomina PRIMARY KEY(IdNomina),
 CONSTRAINT FK_Empleado3 FOREIGN KEY(Empleadofk) REFERENCES Empleados(NoEmpleado),
 )

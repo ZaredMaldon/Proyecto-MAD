@@ -31,6 +31,8 @@ namespace Proyecto_MAD.Empleados
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaRecibo));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.CB_Año = new System.Windows.Forms.ComboBox();
+            this.lbl_Año = new System.Windows.Forms.Label();
             this.LBL_Informacion = new System.Windows.Forms.Label();
             this.Inicio_Btn = new FontAwesome.Sharp.IconButton();
             this.DGV_Recibos = new System.Windows.Forms.DataGridView();
@@ -44,6 +46,8 @@ namespace Proyecto_MAD.Empleados
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.CB_Año);
+            this.Panel_Background.Controls.Add(this.lbl_Año);
             this.Panel_Background.Controls.Add(this.LBL_Informacion);
             this.Panel_Background.Controls.Add(this.Inicio_Btn);
             this.Panel_Background.Controls.Add(this.DGV_Recibos);
@@ -54,6 +58,31 @@ namespace Proyecto_MAD.Empleados
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 22;
+            // 
+            // CB_Año
+            // 
+            this.CB_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10F);
+            this.CB_Año.FormattingEnabled = true;
+            this.CB_Año.Items.AddRange(new object[] {
+            "2022",
+            "2021",
+            "2020"});
+            this.CB_Año.Location = new System.Drawing.Point(338, 83);
+            this.CB_Año.Name = "CB_Año";
+            this.CB_Año.Size = new System.Drawing.Size(156, 23);
+            this.CB_Año.TabIndex = 26;
+            // 
+            // lbl_Año
+            // 
+            this.lbl_Año.AutoSize = true;
+            this.lbl_Año.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Año.ForeColor = System.Drawing.Color.White;
+            this.lbl_Año.Location = new System.Drawing.Point(398, 59);
+            this.lbl_Año.Name = "lbl_Año";
+            this.lbl_Año.Size = new System.Drawing.Size(45, 21);
+            this.lbl_Año.TabIndex = 25;
+            this.lbl_Año.Text = "Año";
+            this.lbl_Año.Click += new System.EventHandler(this.lbl_Año_Click);
             // 
             // LBL_Informacion
             // 
@@ -118,7 +147,7 @@ namespace Proyecto_MAD.Empleados
             "Octubre",
             "Noviembre",
             "Diciembre"});
-            this.CB_Mes.Location = new System.Drawing.Point(267, 78);
+            this.CB_Mes.Location = new System.Drawing.Point(165, 83);
             this.CB_Mes.Name = "CB_Mes";
             this.CB_Mes.Size = new System.Drawing.Size(156, 23);
             this.CB_Mes.TabIndex = 21;
@@ -140,7 +169,7 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Mes.AutoSize = true;
             this.LBL_Mes.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LBL_Mes.ForeColor = System.Drawing.Color.White;
-            this.LBL_Mes.Location = new System.Drawing.Point(324, 54);
+            this.LBL_Mes.Location = new System.Drawing.Point(222, 59);
             this.LBL_Mes.Name = "LBL_Mes";
             this.LBL_Mes.Size = new System.Drawing.Size(46, 21);
             this.LBL_Mes.TabIndex = 8;
@@ -175,5 +204,7 @@ namespace Proyecto_MAD.Empleados
         private System.Windows.Forms.ComboBox CB_Mes;
         private System.Windows.Forms.Label LBL_Informacion;
         private FontAwesome.Sharp.IconButton Inicio_Btn;
+        private System.Windows.Forms.ComboBox CB_Año;
+        private System.Windows.Forms.Label lbl_Año;
     }
 }

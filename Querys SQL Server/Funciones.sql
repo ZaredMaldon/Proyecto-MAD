@@ -254,7 +254,7 @@ declare @Suma money
 declare @PorcentajeSueldo money
 
 
-if(@Opc=1)--Percepciones
+if(@Opc=1)--Percepcioness
 begin
 	
 

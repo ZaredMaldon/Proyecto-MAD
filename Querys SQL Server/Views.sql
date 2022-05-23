@@ -1,6 +1,6 @@
 use BD_MAD_1
 go
-/***********************************************************View de Empleados para Gerentes********************************************************************************/
+/***********************************************************View de Empleados para Gerente********************************************************************************/
 create view vw_Empleados with encryption
 as 
 Select e.NoEmpleado as Número,CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,e.Contratacion as Ingreso,u.Usuario,m.NombreMunicipio as Municipio,CONCAT(d.Colonia,' ',d.Calle,' Int.',d.NoInterior,' Ext.',d.NoExt) as Direccion, e.Telefono1,e.Telefono2

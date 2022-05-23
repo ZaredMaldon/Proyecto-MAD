@@ -1,6 +1,6 @@
 use BD_MAD_1
 go
-/***********************************************************View de Empleados para Gerentes********************************************************************************/
+/***********************************************************View de Empleados para Gerente********************************************************************************/
 create view vw_Empleados with encryption
 as 
 Select e.NoEmpleado as Número,CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as Nombre,e.Contratacion as Ingreso,u.Usuario,m.NombreMunicipio as Municipio,CONCAT(d.Colonia,' ',d.Calle,' Int.',d.NoInterior,' Ext.',d.NoExt) as Direccion, e.Telefono1,e.Telefono2
@@ -55,9 +55,9 @@ join Puestos p on pd.Puestofk=p.IdPuesto;
 
 /*------------------------------------------------------------View de Nomina---------------------------------------------------------------------------------------------------*/
 go
-create view vw_Nomina
+alter view vw_Nomina
 as
-Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as SueldoN, Concat('$',n.Sueldo_bruto) as SueldoB,e.Banco as Banco ,e.NoCuenta as [No.Cuenta] from NOMINA n
+Select n.IdNomina as [No.Nómina],e.NoEmpleado as[No.Empleado],CONCAT(e.Nombre,' ',e.APaterno,' ',e.AMaterno) as [Nombre Completo],n.FechaNomina as Fecha,Concat('$',n.Sueldo_neto) as SueldoN, Concat('$',n.Sueldo_bruto) as SueldoB,n.Bancofk as Banco ,n.NoCuentafk as [No.Cuenta] from NOMINA n
 join Empleados e on e.NoEmpleado=n.Empleadofk
 
 /*-------------------------------------------------------------View Reporte General de Nómina------------------------------------------------------------------------------*/

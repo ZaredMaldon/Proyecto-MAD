@@ -150,10 +150,41 @@ where NoEmpleado=@IdEmpleado;
 end
 if(@Opc = 6) /*cambiar solo contra y us*/
 begin
+begin try
 UPDATE Usuarios SET Usuario=@Usuario,Contraseña=@Contraseña 
 			from Empleados e join Usuarios u
 			on e.Usuariofk=u.idUsuario
 			where e.NoEmpleado=@IdEmpleado;
+end try
+begin catch
+raiserror('No se logro modificar el Usuario',16,1)
+end catch
+end
+if(@Opc=7)/*Modificar Empleado*/
+begin
+	Begin try
+		Begin Tran
+
+			UPDATE Empleados SET Nombre=@Nombre,APaterno=@AP,AMaterno=@AM,FechaNacimiento=@FechaNac,CURP=@CURP,NSS=@NSS,RFC=@RFC,Email=@Email,Telefono1=@Telefono1,Telefono2=@Telefono2,
+			Banco=@Banco,NoCuenta=@NoCuenta
+			where NoEmpleado=@IdEmpleado
+			
+			declare @iddir int
+			Select @iddir=Direccionfk from Empleados
+			where NoEmpleado=@IdEmpleado
+
+			UPDATE Direcciones SET Cp=@CP,Colonia=@Colonia,Calle=@Calle,NoInterior=@Nointerior,NoExt=@NoExt
+			where idDireccion=@iddir
+
+			
+		commit tran
+  End try
+	Begin catch
+			Rollback tran
+			raiserror('No se logro hacer la modificacion',16,1)
+			
+	end catch
+	
 end
 
 end
@@ -204,7 +235,7 @@ Insert into Percepciones (NombrePercepcion,Bono,BonoPorcentaje) values (@NombreP
 end
 if(@Opc = 2)/*Eliminar*/
 begin
-Delete from Percepciones_Empleado where Percepcionfk=@idPer;
+Delete from Percepciones_Empleado where Percepcionfk=@idPer
 Delete from Percepciones where IdPercepcion=@idPer;
 end
 if(@Opc = 3)/*Tabla(view)*/
@@ -559,13 +590,19 @@ END
 /*-------------------------------------------------------------------------------------Mostrar nomina------------------------------------------------------------------------------------------*/
 go
 ALTER procedure Sp_MostrarNomina
-@Opc int
+@Opc int,
+@idEmp int = null
 
 as
 BEGIN
 if(@Opc=1)
 begin
 	Select [No.Nómina],[No.Empleado],[Nombre Completo],Fecha,SueldoB as [Sueldo Bruto],SueldoN as [Sueldo Neto],Banco,[No.Cuenta] from vw_Nomina
+end
+if(@Opc=2)
+begin
+	Select [No.Nómina],[No.Empleado],[Nombre Completo],Fecha,SueldoB as [Sueldo Bruto],SueldoN as [Sueldo Neto],Banco,[No.Cuenta] from vw_Nomina
+	where [No.Empleado]=@idEmp
 end
 END
 /*---------------------------------------------------------------------------------------- Reportes ---------------------------------------------------------------------------------------------------*/

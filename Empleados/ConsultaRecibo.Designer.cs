@@ -85,7 +85,6 @@ namespace Proyecto_MAD.Empleados
             this.DGV_Recibos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGV_Recibos.Size = new System.Drawing.Size(623, 438);
             this.DGV_Recibos.TabIndex = 22;
-            this.DGV_Recibos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Recibos_CellClick);
             this.DGV_Recibos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_Recibos_CellContentClick);
             // 
             // LBL_Title

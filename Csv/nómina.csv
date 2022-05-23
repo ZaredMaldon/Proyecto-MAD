@@ -1,2 +1,7 @@
 No.Nómina,No.Empleado,Nombre Completo,Fecha,Sueldo Bruto,Sueldo Neto,Banco,No.Cuenta
-1000000,100000,Samantha Charles Silva,01/01/2022 12:00:00 a. m.,$7750.00,$7412.50,BBVA,458516
+1000000,100019,Marcelo Rodiguez Garcia,01/01/2022 12:00:00 a. m.,$13175.00,$18845.00,HSBC,789455
+1000001,100020,Zared Maldonado Rodriguez,01/01/2022 12:00:00 a. m.,$10230.00,$9157.00,BBVA,846598
+1000002,100019,Marcelo Rodiguez Garcia,01/02/2022 12:00:00 a. m.,$11900.00,$11110.00,HSBC,789455
+1000003,100020,Zared Maldonado Rodriguez,01/02/2022 12:00:00 a. m.,$9240.00,$8316.00,BBVA,846598
+1000004,100019,Marcelo Rodiguez Garcia,01/03/2022 12:00:00 a. m.,$13175.00,$11857.50,HSBC,789455
+1000005,100020,Zared Maldonado Rodriguez,01/03/2022 12:00:00 a. m.,$10230.00,$9207.00,BBVA,846598

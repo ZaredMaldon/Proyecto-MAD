@@ -247,7 +247,7 @@ END
 /*-------------------------------------------------------Sumatoria Percepciones y deducciones-----------------------------------------------------------*/
 go
 
-create function fn_SumPeDe(@Opc int,@SueldoBruto money,@FechaNomina date,@idEmp int) returns money
+alter function fn_SumPeDe(@Opc int,@SueldoBruto money,@FechaNomina date,@idEmp int) returns money
 as
 begin
 declare @Suma money

@@ -13,9 +13,7 @@ namespace Proyecto_MAD.DAO
         public static int NoNomina { get; set; }
         public static string SueldoBruto { get; set; }
         public static string SueldoNeto { get; set; }
-
         public static string SalarioDiario { get; set; }
-
         public static DateTime FechaNomina { get; set; }
         public static DateTime Contratacion { get; set; }
 
@@ -32,20 +30,13 @@ namespace Proyecto_MAD.DAO
         public static string NombrePuesto{ get; set; }
         public static string NombreDepto{ get; set; }
 
-
         //Empresa
         public static int RFCEm{ get; set; }
         public static int RegistroPatronal{ get; set; }
 
-        //PER Y DED
-        public static int idPer{ get; set; }
-        public static string NombrePer{ get; set; }
-        public static int idDed{ get; set; }
-        public static string Nombreded{ get; set; }
-
-
-
-
-
+        //Percepciones y deducciones
+        public static decimal TotalPercepciones { get; set; }
+        public static decimal TotalDeducciones { get; set; }
+      
     }
 }

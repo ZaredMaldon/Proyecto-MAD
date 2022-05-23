@@ -32,25 +32,22 @@ namespace Proyecto_MAD.Empleados
             DGV_Recibos.DataSource = dt;
 
         }
-        private void LBL_Mes_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void CB_Mes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        #region Botones
 
         private void Inicio_Btn_Click(object sender, EventArgs e)
         {
 
             if (use)
             {
+                
                 db.Toma_Datos_Empresa(1, 1);
-                //db.Toma_Datos_Deducciones(2,DAO.DAO_GenerarRecibo.NoEmp,Tools_z.ConvertirStringFechas(CB_Año.Text, CB_Mes.Text));
                 db.Toma_Datos_Recibo2(4, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
                 db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);//falta la toma de datos de percepciones
+                string a = DAO.DAO_GenerarRecibo.SueldoBruto.Substring(1);
+                float SueldoBruto=float.Parse(a);
+                db.Toma_Datos_TotalPEDE(1, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina,SueldoBruto);//Percepciones
+                db.Toma_Datos_TotalPEDE(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina,SueldoBruto);//Deducciones
                 R.GenerarRecibo(db.Toma_Datos_Deducciones(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina),
                                 db.Toma_Datos_Percepciones(1, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina));
             }
@@ -61,17 +58,21 @@ namespace Proyecto_MAD.Empleados
            
             
         }
-
-        private void lbl_Año_Click(object sender, EventArgs e)
+        private void btn_Ver_Click(object sender, EventArgs e)
         {
-
+            
+            db.Toma_Datos_Empresa(1, 1);
+            db.Toma_Datos_Recibo2(4, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
+            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
+            string a = DAO.DAO_GenerarRecibo.SueldoBruto.Substring(1);
+            float SueldoBruto = float.Parse(a);
+            db.Toma_Datos_TotalPEDE(1, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina, SueldoBruto);//Percepciones
+            db.Toma_Datos_TotalPEDE(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina, SueldoBruto);//Deducciones
+            VistaPDF vistaPDF = new VistaPDF();
+            vistaPDF.ShowDialog();
         }
 
-        private void DGV_Recibos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
-
+        #endregion
         private void DGV_Recibos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -83,20 +84,14 @@ namespace Proyecto_MAD.Empleados
                 if (fecha != "")
                 {
                     use = true;
-                    //fecha = Convert.ToInt32(this.DGV_Recibos.SelectedRows[0].Cells[3].Value).ToString();  
+          
                 }
 
             }
 
         }
 
-        private void btn_Ver_Click(object sender, EventArgs e)
-        {
-            db.Toma_Datos_Empresa(1, 1);
-            db.Toma_Datos_Recibo2(4, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
-            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
-            VistaPDF vistaPDF = new VistaPDF();
-            vistaPDF.ShowDialog();
-        }
+
+      
     }
 }

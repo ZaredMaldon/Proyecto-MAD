@@ -194,5 +194,26 @@ namespace Proyecto_MAD
 
             return res;
         }
+
+        public string LimitadorDecimales(decimal a)//si es decimal
+        {
+            string salida = String.Format("{0:N2}", a);
+            return salida;
+        }
+        public string LimitadorDecimales2(string texto)//si tiene signo
+        {
+            decimal a;
+            texto= texto.Substring(1);
+            a=decimal.Parse(texto);
+            string salida = String.Format("{0:N2}", a);
+            return salida;
+        }
+        public string LimitadorDecimales3(string texto)//si no tiene signo
+        {
+            decimal a;    
+            a = decimal.Parse(texto);
+            string salida = String.Format("{0:N2}", a);
+            return salida;
+        }
     }
 }

@@ -31,10 +31,11 @@ namespace Proyecto_MAD.Empleados
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultaRecibo));
             this.Panel_Background = new System.Windows.Forms.Panel();
+            this.btn_Ver = new FontAwesome.Sharp.IconButton();
             this.Inicio_Btn = new FontAwesome.Sharp.IconButton();
             this.DGV_Recibos = new System.Windows.Forms.DataGridView();
             this.LBL_Title = new System.Windows.Forms.Label();
-            this.btn_Ver = new FontAwesome.Sharp.IconButton();
+            this.Lbl_Seleccionado = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_Recibos)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +43,7 @@ namespace Proyecto_MAD.Empleados
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.Lbl_Seleccionado);
             this.Panel_Background.Controls.Add(this.btn_Ver);
             this.Panel_Background.Controls.Add(this.Inicio_Btn);
             this.Panel_Background.Controls.Add(this.DGV_Recibos);
@@ -50,6 +52,31 @@ namespace Proyecto_MAD.Empleados
             this.Panel_Background.Name = "Panel_Background";
             this.Panel_Background.Size = new System.Drawing.Size(671, 567);
             this.Panel_Background.TabIndex = 22;
+            // 
+            // btn_Ver
+            // 
+            this.btn_Ver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.btn_Ver.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
+            this.btn_Ver.FlatAppearance.BorderSize = 2;
+            this.btn_Ver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
+            this.btn_Ver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
+            this.btn_Ver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Ver.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Ver.ForeColor = System.Drawing.Color.White;
+            this.btn_Ver.IconChar = FontAwesome.Sharp.IconChar.FileExport;
+            this.btn_Ver.IconColor = System.Drawing.Color.White;
+            this.btn_Ver.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btn_Ver.IconSize = 45;
+            this.btn_Ver.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Ver.Location = new System.Drawing.Point(563, 516);
+            this.btn_Ver.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.btn_Ver.Name = "btn_Ver";
+            this.btn_Ver.Size = new System.Drawing.Size(108, 51);
+            this.btn_Ver.TabIndex = 27;
+            this.btn_Ver.Text = "Ver";
+            this.btn_Ver.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Ver.UseVisualStyleBackColor = false;
+            this.btn_Ver.Click += new System.EventHandler(this.btn_Ver_Click);
             // 
             // Inicio_Btn
             // 
@@ -98,30 +125,17 @@ namespace Proyecto_MAD.Empleados
             this.LBL_Title.TabIndex = 20;
             this.LBL_Title.Text = "Recibo de Nómina";
             // 
-            // btn_Ver
+            // Lbl_Seleccionado
             // 
-            this.btn_Ver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
-            this.btn_Ver.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
-            this.btn_Ver.FlatAppearance.BorderSize = 2;
-            this.btn_Ver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;
-            this.btn_Ver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(101)))), ((int)(((byte)(139)))));
-            this.btn_Ver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Ver.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Ver.ForeColor = System.Drawing.Color.White;
-            this.btn_Ver.IconChar = FontAwesome.Sharp.IconChar.FileExport;
-            this.btn_Ver.IconColor = System.Drawing.Color.White;
-            this.btn_Ver.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.btn_Ver.IconSize = 45;
-            this.btn_Ver.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Ver.Location = new System.Drawing.Point(563, 516);
-            this.btn_Ver.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.btn_Ver.Name = "btn_Ver";
-            this.btn_Ver.Size = new System.Drawing.Size(108, 51);
-            this.btn_Ver.TabIndex = 27;
-            this.btn_Ver.Text = "Ver";
-            this.btn_Ver.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_Ver.UseVisualStyleBackColor = false;
-            this.btn_Ver.Click += new System.EventHandler(this.btn_Ver_Click);
+            this.Lbl_Seleccionado.AutoSize = true;
+            this.Lbl_Seleccionado.BackColor = System.Drawing.Color.IndianRed;
+            this.Lbl_Seleccionado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Seleccionado.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Seleccionado.Location = new System.Drawing.Point(518, 38);
+            this.Lbl_Seleccionado.Name = "Lbl_Seleccionado";
+            this.Lbl_Seleccionado.Size = new System.Drawing.Size(131, 21);
+            this.Lbl_Seleccionado.TabIndex = 47;
+            this.Lbl_Seleccionado.Text = "Seleccionado";
             // 
             // ConsultaRecibo
             // 
@@ -150,5 +164,6 @@ namespace Proyecto_MAD.Empleados
         private System.Windows.Forms.DataGridView DGV_Recibos;
         private FontAwesome.Sharp.IconButton Inicio_Btn;
         private FontAwesome.Sharp.IconButton btn_Ver;
+        private System.Windows.Forms.Label Lbl_Seleccionado;
     }
 }

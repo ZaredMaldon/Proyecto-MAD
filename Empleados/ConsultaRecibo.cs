@@ -53,23 +53,29 @@ namespace Proyecto_MAD.Empleados
             }
             else
             {
-               MessageBox.Show("Seleccione un empleado");
+               MessageBox.Show("Seleccione un Recibo");
             }
            
             
         }
         private void btn_Ver_Click(object sender, EventArgs e)
         {
-            
-            db.Toma_Datos_Empresa(1, 1);
-            db.Toma_Datos_Recibo2(4, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
-            db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
-            string a = DAO.DAO_GenerarRecibo.SueldoBruto.Substring(1);
-            float SueldoBruto = float.Parse(a);
-            db.Toma_Datos_TotalPEDE(1, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina, SueldoBruto);//Percepciones
-            db.Toma_Datos_TotalPEDE(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina, SueldoBruto);//Deducciones
-            VistaPDF vistaPDF = new VistaPDF();
-            vistaPDF.ShowDialog();
+            if (use)
+            {
+                db.Toma_Datos_Empresa(1, 1);
+                db.Toma_Datos_Recibo2(4, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
+                db.Toma_Datos_Recibo(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina);
+                string a = DAO.DAO_GenerarRecibo.SueldoBruto.Substring(1);
+                float SueldoBruto = float.Parse(a);
+                db.Toma_Datos_TotalPEDE(1, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina, SueldoBruto);//Percepciones
+                db.Toma_Datos_TotalPEDE(2, DAO.DAO_GenerarRecibo.NoEmp, VistaPDF.FechaNomina, SueldoBruto);//Deducciones
+                VistaPDF vistaPDF = new VistaPDF();
+                vistaPDF.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un Recibo");
+            }
         }
 
         #endregion
@@ -78,6 +84,7 @@ namespace Proyecto_MAD.Empleados
 
             if (DGV_Recibos.Rows.Count != 0)
             {
+                Lbl_Seleccionado.Text=DGV_Recibos.SelectedCells[0].Value.ToString();
                 fecha = DGV_Recibos.SelectedCells[3].Value.ToString();
                 VistaPDF.FechaNomina = DateTime.Parse(fecha);
                

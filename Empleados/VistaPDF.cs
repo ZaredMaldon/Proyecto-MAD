@@ -26,14 +26,15 @@ namespace Proyecto_MAD.Empleados
             {
                 
                 fs = new FileStream("../../Recibos PDF/Nomina_" + DAO.DAO_GenerarRecibo.Nombre + "_" + "01-" + FechaNomina.Month.ToString() + "-" + FechaNomina.Year.ToString() + ".pdf", FileMode.Open);
-
                 pdfViewer1.Document = new Document(fs);
+                 
                 
             }
             catch (Exception ex)
             {
                 
-                MessageBox.Show("Intentelo de nuevo");
+                MessageBox.Show("Verifique si existe un PDF\nPresione primero el Boton PDF","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                this.Dispose();
                
             }
 
@@ -50,9 +51,16 @@ namespace Proyecto_MAD.Empleados
 
         private void cerrar_Btn_Click(object sender, EventArgs e)
         {
-            fs.Close();
+            if (fs!=null)
+            {
+                fs.Close();
+                
+            }
+            this.Close();
             this.Dispose();
-            
+
+
+
         }
 
         private void VistaPDF_FormClosed(object sender, FormClosedEventArgs e)

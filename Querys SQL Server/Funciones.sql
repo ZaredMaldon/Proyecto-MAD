@@ -65,7 +65,7 @@ as
 BEGIN
 Declare @Edad int;
 Select @Edad=floor(
-(cast(convert(varchar(8),getdate(),112) as int)-
+(cast(convert(varchar(8),getdate(),112) as int)
 cast(convert(varchar(8),@FechaNacimiento,112) as int) ) / 10000)  
 
 return @Edad

@@ -416,11 +416,11 @@ namespace Proyecto_MAD.Recibo
             this.Lbl_Empleado.BackColor = System.Drawing.Color.IndianRed;
             this.Lbl_Empleado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Empleado.ForeColor = System.Drawing.Color.White;
-            this.Lbl_Empleado.Location = new System.Drawing.Point(564, 358);
+            this.Lbl_Empleado.Location = new System.Drawing.Point(518, 358);
             this.Lbl_Empleado.Name = "Lbl_Empleado";
-            this.Lbl_Empleado.Size = new System.Drawing.Size(42, 21);
+            this.Lbl_Empleado.Size = new System.Drawing.Size(131, 21);
             this.Lbl_Empleado.TabIndex = 46;
-            this.Lbl_Empleado.Text = "text";
+            this.Lbl_Empleado.Text = "Seleccionado";
             this.Lbl_Empleado.Click += new System.EventHandler(this.label4_Click);
             // 
             // PEDE_Empleado

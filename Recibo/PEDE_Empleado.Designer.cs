@@ -53,6 +53,7 @@ namespace Proyecto_MAD.Recibo
             this.CB_Mes = new System.Windows.Forms.ComboBox();
             this.LBL_Title = new System.Windows.Forms.Label();
             this.LBL_Mes = new System.Windows.Forms.Label();
+            this.Lbl_Empleado = new System.Windows.Forms.Label();
             this.Panel_Background.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_EmpDep)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +61,7 @@ namespace Proyecto_MAD.Recibo
             // Panel_Background
             // 
             this.Panel_Background.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(66)))), ((int)(((byte)(97)))));
+            this.Panel_Background.Controls.Add(this.Lbl_Empleado);
             this.Panel_Background.Controls.Add(this.Btn_ElimPercep);
             this.Panel_Background.Controls.Add(this.Btn_ElimDeduc);
             this.Panel_Background.Controls.Add(this.label3);
@@ -408,6 +410,19 @@ namespace Proyecto_MAD.Recibo
             this.LBL_Mes.TabIndex = 8;
             this.LBL_Mes.Text = "Mes";
             // 
+            // Lbl_Empleado
+            // 
+            this.Lbl_Empleado.AutoSize = true;
+            this.Lbl_Empleado.BackColor = System.Drawing.Color.IndianRed;
+            this.Lbl_Empleado.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_Empleado.ForeColor = System.Drawing.Color.White;
+            this.Lbl_Empleado.Location = new System.Drawing.Point(564, 358);
+            this.Lbl_Empleado.Name = "Lbl_Empleado";
+            this.Lbl_Empleado.Size = new System.Drawing.Size(42, 21);
+            this.Lbl_Empleado.TabIndex = 46;
+            this.Lbl_Empleado.Text = "text";
+            this.Lbl_Empleado.Click += new System.EventHandler(this.label4_Click);
+            // 
             // PEDE_Empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -451,5 +466,6 @@ namespace Proyecto_MAD.Recibo
         private System.Windows.Forms.Label label2;
         private FontAwesome.Sharp.IconButton Btn_ElimPercep;
         private FontAwesome.Sharp.IconButton Btn_ElimDeduc;
+        private System.Windows.Forms.Label Lbl_Empleado;
     }
 }

@@ -50,6 +50,7 @@
             // cerrar_Btn
             // 
             this.cerrar_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(83)))), ((int)(((byte)(121)))));
+            this.cerrar_Btn.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.cerrar_Btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(53)))), ((int)(((byte)(74)))));
             this.cerrar_Btn.FlatAppearance.BorderSize = 2;
             this.cerrar_Btn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DimGray;

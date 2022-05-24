@@ -62,22 +62,20 @@ ALTER procedure SP_ImportePD
 
 as 
 begin
-if(@Opc=1)
-begin
-
-Select  SUM(p.Bono) + dbo.fn_SumPeDe(1,@SueldoBruto,@FechaNomina,@idEmp) as TotalPercepciones from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado
+	IF(@Opc=1)--Percepciones
+	begin
+  			Select SUM(p.Bono)+dbo.fn_SumPeDe(1,@SueldoBruto,@FechaNomina,@idEmp) as Total  from Percepciones_Empleado pe--suma todas las deducciones del mes del empleado
 			join Percepciones p on p.IdPercepcion=pe.Percepcionfk
 			join Empleados e on e.NoEmpleado=pe.Empleadofk
 			where e.NoEmpleado=@idEmp and (MONTH(pe.FechaAplicada)=MONTH(@FechaNomina) and YEAR(pe.FechaAplicada)=YEAR(@FechaNomina))
-
-end
-If(@Opc=2)
-begin
-Select SUM(ded.Descuento)+dbo.fn_SumPeDe(2,@SueldoBruto,@FechaNomina,@idEmp)as TotalDeducciones  from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
+	end
+	IF(@Opc=2)--deducciones
+	begin
+			Select SUM(ded.Descuento)+dbo.fn_SumPeDe(2,@SueldoBruto,@FechaNomina,@idEmp) as Total from Deducciones_Empleado de--suma todas las deducciones del mes del empleado
 			join Deducciones ded on ded.IdDeduccion=de.Deduccionfk
 			join Empleados e on e.NoEmpleado=de.Empleadofk
-			where e.NoEmpleado=@idEmp and (MONTH(de.FechaAplicada)=MONTH(@FechaNomina) and YEAR(de.FechaAplicada)=YEAR(@FechaNomina))
-end
+			where e.NoEmpleado=@idEmp and (MONTH(FechaAplicada)=MONTH(@FechaNomina) and YEAR(FechaAplicada)=YEAR(@FechaNomina))
+	end
            
 end
 

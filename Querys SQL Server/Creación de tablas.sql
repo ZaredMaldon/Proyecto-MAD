@@ -102,7 +102,6 @@ CONSTRAINT FK_Puesto2 FOREIGN KEY(Puestofk) REFERENCES Puestos(IdPuesto)
 CREATE TABLE Deducciones(
 IdDeduccion				int			IDENTITY (1,1)	NOT NULL,
 NombreDeduccion			varchar(25)	NOT NULL,
-FechaAplicada			date		NOT NULL,
 Descuento				money		    NULL DEFAULT('NO APLICA'),
 DescuentoPorcentaje		float			 NULL,
 CONSTRAINT PK_Deducciones PRIMARY KEY(IdDeduccion),
@@ -112,7 +111,6 @@ constraint UQ_Deducciones_Nombre UNIQUE (NombreDeduccion)
 CREATE TABLE Percepciones(
 IdPercepcion      int			IDENTITY (1,1)	NOT NULL,
 NombrePercepcion  varchar(25)	NOT NULL,
-FechaAplicada	  date			NOT NULL,	
 Bono              money		    NULL DEFAULT('NO APLICA'),
 BonoPorcentaje    float			 NULL,
 CONSTRAINT PK_Percepciones PRIMARY KEY(IdPercepcion),

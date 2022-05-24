@@ -1689,8 +1689,16 @@ namespace Proyecto_MAD.EnlaceDB
 
                 while (dr.Read())//si no pasa este es porque no hay nada en el query
                 {
-                    if(Opc==1)
-                         DAO_GenerarRecibo.TotalPercepciones = (decimal)dr.GetSqlMoney(0);
+                    if (Opc == 1)
+                    {
+                        if (dr.IsDBNull(0))
+                        {
+                            DAO_GenerarRecibo.TotalPercepciones = 0;
+                        }
+                        else DAO_GenerarRecibo.TotalPercepciones = (decimal)dr.GetSqlMoney(0);//corregir por percepciones empleado
+
+                    }
+                         
                     else if(Opc==2)
                          DAO_GenerarRecibo.TotalDeducciones = (decimal)dr.GetSqlMoney(0);
 

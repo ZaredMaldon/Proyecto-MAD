@@ -492,15 +492,15 @@ Declare @TotalPercepciones money,@TotalDeducciones money
 Declare @SueldoNeto money
 Declare @banco varchar(30),@noCuenta int
 
+		declare @IMMS int,@ISR int
+
+		set @IMMS=(select IdDeduccion from Deducciones where NombreDeduccion='IMSS')
+		set @ISR=(select IdDeduccion from Deducciones where NombreDeduccion='ISR')
 /*while para recorrer los empleados que ya tengan asignado un puesto y un departamento*/
 		declare @tabla table(idEmpleado int,Ingreso date)
 		insert into @tabla(idEmpleado,Ingreso) select idEmp,Contratacion from vw_Asignaciones 
 		declare @count int=(select count(idEmpleado) from @tabla)
 
-		declare @IMMS int,@ISR int
-		set @IMMS=(select IdDeduccion from Deducciones where NombreDeduccion='IMMS')
-		set @ISR=(select IdDeduccion from Deducciones where NombreDeduccion='ISR')
-		
 		while @count>0
 		begin
 			
@@ -519,8 +519,9 @@ Declare @banco varchar(30),@noCuenta int
 			insert into Deducciones_Empleado (Empleadofk,Deduccionfk,FechaAplicada) values (@idEmp,@IMMS,@FechaNomina)
 			insert into Deducciones_Empleado (Empleadofk,Deduccionfk,FechaAplicada) values (@idEmp,@ISR,@FechaNomina)
 
-			--Select @SueldoMensualBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from  vw_Asignaciones  where idEmp=@idEmp--Sueldo mensual bruto con todos los dias
-			Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from vw_Asignaciones where idEmp=@idEmp--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
+			--Cambio para nomina con fecha de ingreso y sin fecha de ingreso
+			Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_DiasdelMes(@FechaNomina)) from  vw_Asignaciones  where idEmp=@idEmp--Sueldo mensual bruto con todos los dias
+			--Select @SueldoBruto=dbo.fn_SueldoMensualBruto(SalarioDiario,dbo.fn_Diastrabajados(@FechaNomina,@FechaIngreso)) from vw_Asignaciones where idEmp=@idEmp--Sueldo bruto tomando en cuenta el dia de ingreso del empleado
 
 
 			Select @TotalPercepciones=SUM(p.Bono) + dbo.fn_SumPeDe(1,@SueldoBruto,@FechaNomina,@idEmp) from Percepciones_Empleado pe--suma todas las percepciones del mes del empleado

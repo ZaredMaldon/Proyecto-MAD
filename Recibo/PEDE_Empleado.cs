@@ -53,34 +53,36 @@ namespace Proyecto_MAD.Recibo
         {
             string seleccion = "";
             seleccion = Cb_Percepciones.Text;
+            if (seleccion != "Selecciona una Percepción")
+                LB_Percepciones.Items.Add(seleccion);
+            //if (!NoRepeticion(LB_Percepciones, seleccion))
+            //{
+            //    MessageBox.Show("Este elemento ya ha sido agragado","Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            //    if (seleccion != "Selecciona una Percepción")
+            //        LB_Percepciones.Items.Add(seleccion);
+            //}
 
-            if (!NoRepeticion(LB_Percepciones, seleccion))
-            {
-                MessageBox.Show("Este elemento ya ha sido agragado","Advertencia",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
-            else
-            {
-                if (seleccion != "Selecciona una Percepción")
-                    LB_Percepciones.Items.Add(seleccion);
-            }
-            
         }
         //Agrega Deducción al list box deducciones
         private void BTN_ADed_Click(object sender, EventArgs e)
         {
             string seleccion = "";
             seleccion = Cb_Deducciones.Text;
+            if (seleccion != "Selecciona una Deduccion")
+                LB_Deducciones.Items.Add(seleccion);
+            //if (!NoRepeticion(LB_Deducciones, seleccion))
+            //{
+            //    MessageBox.Show("Este elemento ya ha sido agragado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            //    if (seleccion != "Selecciona una Deduccion")
+            //        LB_Deducciones.Items.Add(seleccion);
+            //}
 
-            if (!NoRepeticion(LB_Deducciones, seleccion))
-            {
-                MessageBox.Show("Este elemento ya ha sido agragado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                if (seleccion != "Selecciona una Deduccion")
-                    LB_Deducciones.Items.Add(seleccion);
-            }
-            
         }
 
         //Elimina los valores agregados de la lista deducciones
@@ -187,6 +189,7 @@ namespace Proyecto_MAD.Recibo
         private void Dgv_EmpDep_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string aux = this.Dgv_EmpDep.SelectedRows[0].Cells[0].Value.ToString();
+            Lbl_Empleado.Text = aux;
             if (aux != "")
             {
                 use = true;
@@ -244,6 +247,11 @@ namespace Proyecto_MAD.Recibo
             }
             
             return validaciones;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
